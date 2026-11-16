@@ -1,0 +1,10 @@
+Exercise 4 — LST
+================
+
+seed: 20261116
+task sets: 8  figures: 9  sweeps: 3  findings: 6
+feasible [E]: 4  infeasible [E]: 4
+naive comparisons agreeing: 7
+aligned comparisons agreeing: 8
+cap artefacts: 4
+independently valid witnesses: 4
