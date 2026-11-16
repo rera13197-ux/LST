@@ -6,7 +6,9 @@
 ## وضعیت فعلی (تولیدشده از داده)
 
 هفت تمرین کاملاند: آزمایشها، شکلها، تستها، گزارشهای دوزبانه (DOCX + PDF + MD)
-و دکها. جزئیات و هشها در [PROJECT_PROGRESS.md](PROJECT_PROGRESS.md) و
+و دکها. تمرین ۷ دربارهٔ الگوریتم خواننده-نویسنده است (بررسی جامع گرسنگیِ
+عادلانه و اندازهگیری انتظار)، نه تساویشکنی LST. جزئیات و هشها در
+[PROJECT_PROGRESS.md](PROJECT_PROGRESS.md) و
 [EXERCISE_BRANCH_INDEX.md](EXERCISE_BRANCH_INDEX.md).
 
 ### ابزارهای اضافهشده

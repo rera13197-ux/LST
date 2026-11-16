@@ -1,4 +1,4 @@
-"""Data layer for every LST report.
+"""Data layer for the six LST reports (exercises 1-6).
 
 Rule (project README, PROMPT_TEMPLATE section 4): a content module never
 contains a measured number.  It calls ``data()`` in ``lstN_data`` which reads
@@ -28,6 +28,9 @@ def json_path(n: int) -> str:
 
 
 def read(n: int) -> dict:
+    if n == 7:
+        raise ValueError("exercise 7 is readers-writers; use rw7_data, "
+                         "not the LST data layer")
     with open(json_path(n), "r", encoding="utf-8") as f:
         return json.load(f)
 
