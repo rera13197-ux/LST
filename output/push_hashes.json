@@ -1,0 +1,15 @@
+{
+ "generated": "2026-11-16",
+ "remote": "https://github.com/rera13197-ux/LST.git",
+ "kind": "content commit; the small status commit that carries this file is its child",
+ "branches": {
+  "main": "1441b0c188cc914e972b0b49a6cabe35ce0a1f79",
+  "Exercise-1-LST-Introduction": "4c4e6cb4fa712608ce349ecb36d569f2dd35ba3d",
+  "Exercise-2-LST-EDF-RM-Comparison": "18f824ef4e80e71954c41ba058adc6221e98e6f9",
+  "Exercise-3-LST-Manual-Scheduling": "7ab4e72e07adf53233c3b94ef5d5c3e113a35ba6",
+  "Exercise-4-LST-Optimality-And-Overload": "5a94c0d3c67a3326a8aab7916cd9713eaeacaf6f",
+  "Exercise-5-LST-Presentation": "7e2bc216cadaa7c4634be89931f27132efb0134f",
+  "Exercise-6-LST-Paper-And-Seminar": "9d39700c97d5d2d0227f39554ade14a838e284bc",
+  "Exercise-7-LST-Tie-Breaking-And-Thrashing": "20d546d9126c06cfa4c65c77129adbd463e1634f"
+ }
+}
