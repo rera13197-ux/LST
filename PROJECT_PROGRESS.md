@@ -13,17 +13,17 @@
 
 | تمرین | برنچ | وضعیت | صفحههای PDF (EN / FA) |
 |---|---|---|---|
-| 1 | `Exercise-1-LST-Introduction` | کامل، آمادهٔ انتشار | 36 / 36 |
-| 2 | `Exercise-2-LST-EDF-RM-Comparison` | کامل، آمادهٔ انتشار | 36 / 36 |
-| 3 | `Exercise-3-LST-Manual-Scheduling` | کامل، آمادهٔ انتشار | 36 / 36 |
-| 4 | `Exercise-4-LST-Optimality-And-Overload` | کامل، آمادهٔ انتشار | 37 / 37 |
-| 5 | `Exercise-5-LST-Presentation` | کامل، آمادهٔ انتشار | 35 / 35 |
-| 6 | `Exercise-6-LST-Paper-And-Seminar` | کامل، آمادهٔ انتشار | 36 / 36 |
-| 7 | `Exercise-7-LST-Tie-Breaking-And-Thrashing` | کامل، آمادهٔ انتشار | 37 / 37 |
+| 1 | `Exercise-1-LST-Introduction` | کامل و منتشر شده | 36 / 36 |
+| 2 | `Exercise-2-LST-EDF-RM-Comparison` | کامل و منتشر شده | 36 / 36 |
+| 3 | `Exercise-3-LST-Manual-Scheduling` | کامل و منتشر شده | 36 / 36 |
+| 4 | `Exercise-4-LST-Optimality-And-Overload` | کامل و منتشر شده | 37 / 37 |
+| 5 | `Exercise-5-LST-Presentation` | کامل و منتشر شده | 35 / 35 |
+| 6 | `Exercise-6-LST-Paper-And-Seminar` | کامل و منتشر شده | 36 / 36 |
+| 7 | `Exercise-7-LST-Tie-Breaking-And-Thrashing` | کامل و منتشر شده | 37 / 37 |
 
 همهٔ 14 گزارش ساخته شدهاند و `all_clean = True` است: تکتک ساختها `overflow == []`، 
 `missing_figures == []`، `missing_glyphs == []` و `pages == pdf_pages` دارند. 
-پس از ساخت، `main` و هفت برنچ تمرین پوش میشوند.
+هشت برنچ (`main` + هفت تمرین) روی `rera13197-ux/LST` پوش شدهاند.
 
 ## ۲. آنچه واقعاً انجام شده
 
@@ -80,9 +80,19 @@ READMEی بهروزشده دارد. تمرین ۵ دک کوتاه دوزبانه
 
 ## ۵. هشهای انتشار
 
-هنوز پوشی انجام نشده است؛ پس از انتشار، `tools/record_hashes.py` 
-هش کامیتهای محتوا را مینویسد و `tools/push_status.sh` آنها را در 
-همین فایل و در `EXERCISE_BRANCH_INDEX.md` ثبت میکند.
+هش **کامیت محتوا** هر برنچ (کامیت وضعیت، فرزند آن است). هش کامل در 
+`output/push_hashes.json` همین برنچ هم هست.
+
+| برنچ | هش کامیت محتوا |
+|---|---|
+| `main` | `1441b0c188cc914e972b0b49a6cabe35ce0a1f79` |
+| `Exercise-1-LST-Introduction` | `4c4e6cb4fa712608ce349ecb36d569f2dd35ba3d` |
+| `Exercise-2-LST-EDF-RM-Comparison` | `18f824ef4e80e71954c41ba058adc6221e98e6f9` |
+| `Exercise-3-LST-Manual-Scheduling` | `7ab4e72e07adf53233c3b94ef5d5c3e113a35ba6` |
+| `Exercise-4-LST-Optimality-And-Overload` | `5a94c0d3c67a3326a8aab7916cd9713eaeacaf6f` |
+| `Exercise-5-LST-Presentation` | `7e2bc216cadaa7c4634be89931f27132efb0134f` |
+| `Exercise-6-LST-Paper-And-Seminar` | `9d39700c97d5d2d0227f39554ade14a838e284bc` |
+| `Exercise-7-LST-Tie-Breaking-And-Thrashing` | `20d546d9126c06cfa4c65c77129adbd463e1634f` |
 
 ## ۶. تغییرات
 
