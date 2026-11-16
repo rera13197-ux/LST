@@ -1,0 +1,5226 @@
+{
+ "figures": [
+  {
+   "file": "fig_ex4_preemptions.png",
+   "kind": "bar",
+   "labels": [
+    "lst",
+    "lst:edf",
+    "lst:rm",
+    "lst:stay",
+    "lst:lzs",
+    "edf",
+    "rm",
+    "dm",
+    "fifo"
+   ],
+   "source": "task_sets[0].policies.*.preemptions",
+   "title": "Preemptions by policy on R1",
+   "values": [
+    0,
+    0,
+    4,
+    0,
+    0,
+    0,
+    4,
+    4,
+    0
+   ],
+   "xlabel": "",
+   "ylabel": "preemptions"
+  },
+  {
+   "file": "fig_ex4_misses.png",
+   "kind": "grouped_bar",
+   "labels": [
+    "R1",
+    "R2",
+    "R3",
+    "R4",
+    "R5",
+    "R6",
+    "R7",
+    "R8"
+   ],
+   "series": [
+    {
+     "name": "lst",
+     "values": [
+      0,
+      2,
+      0,
+      8,
+      2,
+      1,
+      0,
+      9
+     ]
+    },
+    {
+     "name": "edf",
+     "values": [
+      0,
+      2,
+      0,
+      8,
+      2,
+      1,
+      0,
+      8
+     ]
+    },
+    {
+     "name": "rm",
+     "values": [
+      4,
+      4,
+      0,
+      4,
+      2,
+      1,
+      0,
+      6
+     ]
+    }
+   ],
+   "source": "task_sets[*].policies.*.missed",
+   "title": "Missed deadlines per set and policy",
+   "xlabel": "task set",
+   "ylabel": "missed deadlines"
+  },
+  {
+   "file": "fig_ex4_ties.png",
+   "kind": "heatmap",
+   "matrix": [
+    [
+     6,
+     8,
+     6,
+     6,
+     4,
+     2,
+     0,
+     7
+    ],
+    [
+     6,
+     8,
+     6,
+     6,
+     4,
+     2,
+     0,
+     7
+    ],
+    [
+     6,
+     8,
+     6,
+     6,
+     4,
+     2,
+     0,
+     7
+    ],
+    [
+     6,
+     8,
+     6,
+     6,
+     4,
+     2,
+     0,
+     7
+    ],
+    [
+     6,
+     8,
+     6,
+     6,
+     4,
+     2,
+     0,
+     7
+    ]
+   ],
+   "source": "task_sets[*].policies.*.tie_events",
+   "title": "Tie events per set and policy",
+   "xlabels": [
+    "R1",
+    "R2",
+    "R3",
+    "R4",
+    "R5",
+    "R6",
+    "R7",
+    "R8"
+   ],
+   "ylabels": [
+    "lst",
+    "lst:edf",
+    "lst:rm",
+    "lst:stay",
+    "lst:lzs"
+   ]
+  },
+  {
+   "file": "fig_ex4_gantt.png",
+   "kind": "gantt",
+   "rows": [
+    [
+     "T1#0",
+     0,
+     2
+    ],
+    [
+     "T2#0",
+     2,
+     4
+    ],
+    [
+     "T3#0",
+     4,
+     7
+    ],
+    [
+     "T1#1",
+     7,
+     9
+    ],
+    [
+     "T2#1",
+     9,
+     11
+    ],
+    [
+     "T1#2",
+     12,
+     14
+    ],
+    [
+     "T3#1",
+     14,
+     17
+    ],
+    [
+     "T2#2",
+     17,
+     19
+    ],
+    [
+     "T1#3",
+     19,
+     21
+    ],
+    [
+     "T1#4",
+     24,
+     26
+    ],
+    [
+     "T2#3",
+     26,
+     28
+    ],
+    [
+     "T3#2",
+     28,
+     31
+    ],
+    [
+     "T1#5",
+     31,
+     33
+    ],
+    [
+     "T2#4",
+     33,
+     35
+    ],
+    [
+     "T1#6",
+     36,
+     38
+    ],
+    [
+     "T3#3",
+     38,
+     41
+    ]
+   ],
+   "source": "task_sets[0].gantt.lst",
+   "title": "lst schedule on R1"
+  },
+  {
+   "file": "fig_ex4_deadline_misses.png",
+   "kind": "line",
+   "series": [
+    {
+     "name": "lst_missed",
+     "values": [
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "edf_missed",
+     "values": [
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "rm_missed",
+     "values": [
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "checker_feasible",
+     "values": [
+      1,
+      1,
+      1,
+      1,
+      1
+     ]
+    }
+   ],
+   "source": "sweeps[0]",
+   "title": "Sweep deadline-misses: deadline of T1 (time units)",
+   "x": [
+    2,
+    3,
+    4,
+    5,
+    6
+   ],
+   "xlabel": "deadline of T1 (time units)",
+   "ylabel": "missed"
+  },
+  {
+   "file": "fig_ex4_deadline_pre.png",
+   "kind": "line",
+   "series": [
+    {
+     "name": "lst_preemptions",
+     "values": [
+      6,
+      6,
+      6,
+      6,
+      10
+     ]
+    },
+    {
+     "name": "edf_preemptions",
+     "values": [
+      4,
+      4,
+      4,
+      4,
+      0
+     ]
+    },
+    {
+     "name": "rm_preemptions",
+     "values": [
+      4,
+      4,
+      4,
+      4,
+      4
+     ]
+    }
+   ],
+   "source": "sweeps[1]",
+   "title": "Sweep deadline-first-miss: deadline of T1 (time units)",
+   "x": [
+    2,
+    3,
+    4,
+    5,
+    6
+   ],
+   "xlabel": "deadline of T1 (time units)",
+   "ylabel": "preemptions"
+  },
+  {
+   "file": "fig_ex4_alignment.png",
+   "kind": "line",
+   "series": [
+    {
+     "name": "naive_lst_missed",
+     "values": [
+      0,
+      2,
+      0,
+      8,
+      2,
+      1,
+      0,
+      9
+     ]
+    },
+    {
+     "name": "aligned_lst_missed",
+     "values": [
+      0,
+      1,
+      0,
+      4,
+      1,
+      0,
+      0,
+      4
+     ]
+    },
+    {
+     "name": "checker_feasible",
+     "values": [
+      1,
+      0,
+      1,
+      0,
+      0,
+      1,
+      1,
+      0
+     ]
+    }
+   ],
+   "source": "sweeps[2]",
+   "title": "Sweep alignment: task set",
+   "x": [
+    "R1",
+    "R2",
+    "R3",
+    "R4",
+    "R5",
+    "R6",
+    "R7",
+    "R8"
+   ],
+   "xlabel": "task set",
+   "ylabel": "count"
+  },
+  {
+   "file": "fig_ex4_study.png",
+   "kind": "bar",
+   "labels": [
+    "generated sets",
+    "feasible",
+    "infeasible",
+    "truncated runs",
+    "valid witnesses",
+    "LST misses on feasible sets",
+    "EDF misses on feasible sets",
+    "RM misses on feasible sets",
+    "tie-break verdict changes",
+    "cap artefacts",
+    "implicit control sets",
+    "implicit control feasible"
+   ],
+   "source": "random.table",
+   "title": "Fixed-seed random study counts",
+   "values": [
+    240,
+    140,
+    100,
+    0,
+    140,
+    0,
+    0,
+    23,
+    0,
+    100,
+    120,
+    120
+   ],
+   "xlabel": "",
+   "ylabel": "count"
+  },
+  {
+   "file": "fig_ex4_bins.png",
+   "kind": "bar",
+   "labels": [
+    "0-0.2",
+    "0.2-0.4",
+    "0.4-0.6",
+    "0.6-0.8",
+    "0.8-1.0"
+   ],
+   "source": "random.utilisation_counts",
+   "title": "Task sets per utilisation band",
+   "values": [
+    1,
+    14,
+    44,
+    67,
+    114
+   ],
+   "xlabel": "utilisation band",
+   "ylabel": "task sets"
+  }
+ ],
+ "findings": [
+  {
+   "detail_en": "[M] On R1, LST records 0 preemptions and 18 context switches; EDF records 0 and 18. Both miss 0 deadlines. [E] The checker verdict is feasible after 22 states. Correctness does not order these two policies; overhead does.",
+   "detail_fa": "[M] روی R1، LST برابر 0 پیشگیری و 18 تعویض زمینه ثبت میکند؛ EDF برابر 0 و 18. هر دو 0 ضربالاجل از دست میدهند. [E] حکم چککننده پس از 22 حالت «شدنی» است. درستی این دو سیاست را مرتب نمیکند؛ سربار میکند.",
+   "id": "F1",
+   "kind": "M",
+   "numbers": {
+    "checker_states": 22,
+    "edf_preemptions": 0,
+    "edf_switches": 18,
+    "lst_preemptions": 0,
+    "lst_switches": 18
+   },
+   "source": "task_sets[0].policies",
+   "title_en": "Minimising slack is not minimising overhead",
+   "title_fa": "کمینه کردن لَکسیَتی، کمینه کردن سربار نیست",
+   "witness": []
+  },
+  {
+   "detail_en": "[E] Of 1 sets with implicit deadlines, 1 are feasible. Of 7 constrained sets, 3 are feasible and 4 are infeasible. Feasibility has discriminating power only in the constrained regime; that is why every sweep here moves a deadline rather than a definition.",
+   "detail_fa": "[E] از 1 مجموعه با ضربالاجل ضمنی، 1 شدنیاند. از 7 مجموعهٔ مقید، 3 شدنی و 4 نشدنیاند. شدنیبودن فقط در رژیم مقید قدرت تفکیک دارد؛ برای همین هر جاروبی اینجا ضربالاجلی را جابهجا میکند، نه تعریفی را.",
+   "id": "F2",
+   "kind": "B",
+   "numbers": {
+    "constrained_feasible": 3,
+    "constrained_infeasible": 4,
+    "constrained_sets": 7,
+    "implicit_feasible": 1,
+    "implicit_sets": 1
+   },
+   "source": "task_sets[*].checker",
+   "title_en": "Implicit deadlines take the test away",
+   "title_fa": "ضربالاجل ضمنی، آزمون را از میان برمیدارد",
+   "witness": []
+  },
+  {
+   "detail_en": "[D] On R6 the checker says feasible, yet the naive two-hyperperiod LST run misses 1 deadlines while the aligned run misses 0. The two instruments were looking at different job sets. Aligning the release window removes the disagreement; the instrument, not the theorem, was at fault.",
+   "detail_fa": "[D] روی R6 چککننده «شدنی» میگوید، ولی اجرای سادهلوح LST در دو دورهٔ بزرگ 1 خطا میدهد و اجرای همتراز 0 خطا. دو ابزار به دو مجموعهٔ متفاوت از کارها نگاه میکردند. همتراز کردنِ پنجرهٔ انتشار اختلاف را برمیدارد؛ مقصر ابزار بود، نه برهان.",
+   "id": "F3",
+   "kind": "D",
+   "numbers": {
+    "aligned_agree": 8,
+    "aligned_missed_target": 0,
+    "naive_agree": 7,
+    "naive_missed_target": 1,
+    "set_count": 8
+   },
+   "source": "task_sets[*].alignment",
+   "title_en": "Naive versus aligned comparison",
+   "title_fa": "مقایسهٔ سادهلوح در برابر همتراز",
+   "witness": []
+  },
+  {
+   "detail_en": "[D] With a reduced state cap, R1 is reported infeasible 3 times, each run flagged truncated; with the cap restored the verdict is feasible after 22 states. The smallest truncating cap was 4. A truncated run is an artefact of the instrument and is never used as a finding.",
+   "detail_fa": "[D] با سقفِ حالتِ کاهش‌یافته، R1 به تعداد 3 بار نشدنی گزارش میشود که هر بار برچسب بریدگی دارد؛ با برگرداندن سقف، حکم پس از 22 حالت «شدنی» است. کمترین سقفِ بریدهکننده 4 بود. اجرای بریدهشده مصنوعِ ابزار است و هرگز یافته به حساب نمیآید.",
+   "id": "F4",
+   "kind": "D",
+   "numbers": {
+    "false_infeasible_runs": 3,
+    "full_feasible": 1,
+    "full_states": 22,
+    "smallest_truncating_limit": 4
+   },
+   "source": "task_sets[0].cap_control",
+   "title_en": "A state cap fabricates an infeasibility verdict",
+   "title_fa": "سقفِ حالت، حکمِ نشدنیبودن میسازد",
+   "witness": []
+  },
+  {
+   "detail_en": "[E] The fixed-seed study generated 240 constrained-deadline sets: 140 feasible, 100 infeasible, 0 truncated, 140 independently valid witnesses. [M] On the feasible sets LST and EDF miss 0 and 0 deadlines in the aligned run, while RM misses 23. Changing the LST tie-break changed the verdict on 0 sets. The control batch of 120 implicit-deadline sets produced 120 feasible verdicts, which is why that regime cannot refute the claim.",
+   "detail_fa": "[E] مطالعهٔ بذرثابت 240 مجموعهٔ ضربالاجلمقید ساخت: 140 شدنی، 100 نشدنی، 0 بریدهشده، 140 شاهد مستقل معتبر. [M] روی مجموعههای شدنی، LST و EDF در اجرای همتراز به ترتیب 0 و 0 خطا میدهند، در حالی که RM 23 خطا دارد. عوض کردنِ تساویشکنی LST حکم را روی 0 مجموعه عوض کرد. دستهٔ کنترلِ 120 مجموعه با ضربالاجل ضمنی، 120 حکم شدنی داد، و برای همین آن رژیم نمیتواند ادعا را نقض کند.",
+   "id": "F5",
+   "kind": "E",
+   "numbers": {
+    "edf_misses": 0,
+    "feasible": 140,
+    "generated": 240,
+    "implicit_feasible": 120,
+    "implicit_sets": 120,
+    "infeasible": 100,
+    "lst_misses": 0,
+    "rm_misses": 23,
+    "tie_verdict_changes": 0,
+    "truncated": 0,
+    "valid_witnesses": 140
+   },
+   "source": "random",
+   "title_en": "Optimality survives an exhaustive search on constrained deadlines",
+   "title_fa": "بهینگی در برابر جستجوی جامع روی ضربالاجلهای مقید دوام میآورد",
+   "witness": []
+  },
+  {
+   "detail_en": "[M] On the overloaded set R4 LST misses 8 deadlines with first miss at t=5, minimum observed laxity -4 and 1 switches at zero laxity; EDF misses 8 with first miss at t=5. [E] The checker says infeasible and returns no witness. Missed jobs are kept running rather than dropped, so these counts describe a degraded system, not a failed instrument.",
+   "detail_fa": "[M] روی مجموعهٔ پُربار R4، LST برابر 8 ضربالاجل از دست میدهد با نخستین خطا در t=5، کمینهٔ لَکسیَتی دیدهشده -4 و 1 تعویض در لَکسیَتی صفر؛ EDF 8 خطا با نخستین خطا در t=5. [E] چککننده «نشدنی» میگوید و شاهدی برنمیگرداند. کارهای خطاکرده حذف نمیشوند بلکه همچنان اجرا میشوند، پس این شمارشها سیستمی افتکرده را توصیف میکنند، نه ابزاری خراب را.",
+   "id": "F6",
+   "kind": "M",
+   "numbers": {
+    "edf_first_miss": 5,
+    "edf_missed": 8,
+    "lst_first_miss": 5,
+    "lst_min_laxity": -4,
+    "lst_missed": 8,
+    "lst_zero_switches": 1
+   },
+   "source": "task_sets[3].policies",
+   "title_en": "Under overload the interesting number is the first miss",
+   "title_fa": "زیر بار اضافه عددِ جالب نخستین خطا است",
+   "witness": []
+  }
+ ],
+ "meta": {
+  "exercise": 4,
+  "figures": 9,
+  "findings": 6,
+  "generator": "code/run_experiments.py",
+  "horizon_cycles": 2,
+  "lst_tie_breaks": [
+   "lst",
+   "lst:edf",
+   "lst:rm",
+   "lst:stay",
+   "lst:lzs"
+  ],
+  "policies": [
+   "lst",
+   "lst:edf",
+   "lst:rm",
+   "lst:stay",
+   "lst:lzs",
+   "edf",
+   "rm",
+   "dm",
+   "fifo"
+  ],
+  "question_en": "",
+  "question_fa": "",
+  "scope_en": "fixed-seed exhaustive verification on constrained deadlines, independent witness checks, an implicit-deadline control and overload",
+  "scope_fa": "بررسی جامع بذرثابت روی ضربالاجلهای مقید، راستیآزمایی مستقل شاهدها، کنترلِ ضربالاجل ضمنی و بار اضافه",
+  "seed": 20261116,
+  "sweeps": 3,
+  "task_sets": 8
+ },
+ "random": {
+  "cap_artifacts": 100,
+  "edf_misses_on_feasible": 0,
+  "feasible": 140,
+  "implicit_feasible": 120,
+  "implicit_sets": 120,
+  "infeasible": 100,
+  "lst_misses_on_feasible": 0,
+  "rm_misses_on_feasible": 23,
+  "seed": 20261120,
+  "sets_generated": 240,
+  "table": [
+   [
+    "generated sets",
+    240,
+    "[M]"
+   ],
+   [
+    "feasible",
+    140,
+    "[E]"
+   ],
+   [
+    "infeasible",
+    100,
+    "[E]"
+   ],
+   [
+    "truncated runs",
+    0,
+    "[E]"
+   ],
+   [
+    "valid witnesses",
+    140,
+    "[E]"
+   ],
+   [
+    "LST misses on feasible sets",
+    0,
+    "[M]"
+   ],
+   [
+    "EDF misses on feasible sets",
+    0,
+    "[M]"
+   ],
+   [
+    "RM misses on feasible sets",
+    23,
+    "[M]"
+   ],
+   [
+    "tie-break verdict changes",
+    0,
+    "[M]"
+   ],
+   [
+    "cap artefacts",
+    100,
+    "[D]"
+   ],
+   [
+    "implicit control sets",
+    120,
+    "[E]"
+   ],
+   [
+    "implicit control feasible",
+    120,
+    "[E]"
+   ]
+  ],
+  "tie_break_verdict_changes": 0,
+  "truncated": 0,
+  "utilisation_bins": [
+   "0-0.2",
+   "0.2-0.4",
+   "0.4-0.6",
+   "0.6-0.8",
+   "0.8-1.0"
+  ],
+  "utilisation_counts": [
+   1,
+   14,
+   44,
+   67,
+   114
+  ],
+  "witnesses_valid": 140
+ },
+ "sweeps": [
+  {
+   "figure": "fig_ex4_deadline_misses.png",
+   "id": "deadline-misses",
+   "series": [
+    {
+     "name": "lst_missed",
+     "values": [
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "edf_missed",
+     "values": [
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "rm_missed",
+     "values": [
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "checker_feasible",
+     "values": [
+      1,
+      1,
+      1,
+      1,
+      1
+     ]
+    }
+   ],
+   "source": "sweeps[0]",
+   "x": [
+    2,
+    3,
+    4,
+    5,
+    6
+   ],
+   "xlabel": "deadline of T1 (time units)",
+   "ylabel": "missed"
+  },
+  {
+   "figure": "fig_ex4_deadline_pre.png",
+   "id": "deadline-first-miss",
+   "series": [
+    {
+     "name": "lst_preemptions",
+     "values": [
+      6,
+      6,
+      6,
+      6,
+      10
+     ]
+    },
+    {
+     "name": "edf_preemptions",
+     "values": [
+      4,
+      4,
+      4,
+      4,
+      0
+     ]
+    },
+    {
+     "name": "rm_preemptions",
+     "values": [
+      4,
+      4,
+      4,
+      4,
+      4
+     ]
+    }
+   ],
+   "source": "sweeps[1]",
+   "x": [
+    2,
+    3,
+    4,
+    5,
+    6
+   ],
+   "xlabel": "deadline of T1 (time units)",
+   "ylabel": "preemptions"
+  },
+  {
+   "figure": "fig_ex4_alignment.png",
+   "id": "alignment",
+   "series": [
+    {
+     "name": "naive_lst_missed",
+     "values": [
+      0,
+      2,
+      0,
+      8,
+      2,
+      1,
+      0,
+      9
+     ]
+    },
+    {
+     "name": "aligned_lst_missed",
+     "values": [
+      0,
+      1,
+      0,
+      4,
+      1,
+      0,
+      0,
+      4
+     ]
+    },
+    {
+     "name": "checker_feasible",
+     "values": [
+      1,
+      0,
+      1,
+      0,
+      0,
+      1,
+      1,
+      0
+     ]
+    }
+   ],
+   "source": "sweeps[2]",
+   "x": [
+    "R1",
+    "R2",
+    "R3",
+    "R4",
+    "R5",
+    "R6",
+    "R7",
+    "R8"
+   ],
+   "xlabel": "task set",
+   "ylabel": "count"
+  }
+ ],
+ "task_sets": [
+  {
+   "alignment": {
+    "aligned": {
+     "edf": {
+      "horizon": 31,
+      "missed": 0,
+      "release_window": 24,
+      "released": 9
+     },
+     "lst": {
+      "horizon": 31,
+      "missed": 0,
+      "release_window": 24,
+      "released": 9
+     },
+     "rm": {
+      "horizon": 31,
+      "missed": 2,
+      "release_window": 24,
+      "released": 9
+     }
+    },
+    "aligned_agrees": true,
+    "checker_horizon": 24,
+    "checker_verdict": true,
+    "max_deadline": 7,
+    "naive": {
+     "edf": {
+      "horizon": 48,
+      "missed": 0,
+      "released": 18
+     },
+     "lst": {
+      "horizon": 48,
+      "missed": 0,
+      "released": 18
+     },
+     "rm": {
+      "horizon": 48,
+      "missed": 4,
+      "released": 18
+     }
+    },
+    "naive_agrees": true,
+    "optimal_policies": [
+     "lst",
+     "edf"
+    ],
+    "rm_control": {
+     "aligned_missed": 2,
+     "counterexample": true,
+     "naive_missed": 4
+    }
+   },
+   "cap_control": {
+    "explanation": "truncated runs are artefacts of the cap, not findings",
+    "false_infeasible_count": 3,
+    "full_truncated": false,
+    "full_verdict": true,
+    "rows": [
+     {
+      "feasible": false,
+      "limit": 4,
+      "states": 11,
+      "truncated": true
+     },
+     {
+      "feasible": false,
+      "limit": 8,
+      "states": 15,
+      "truncated": true
+     },
+     {
+      "feasible": false,
+      "limit": 16,
+      "states": 26,
+      "truncated": true
+     },
+     {
+      "feasible": true,
+      "limit": 4000000,
+      "states": 22,
+      "truncated": false
+     }
+    ],
+    "smallest_truncating_limit": 4
+   },
+   "checker": {
+    "allow_idle_false": true,
+    "allow_idle_true": true,
+    "feasible": true,
+    "horizon": 24,
+    "idle_enumeration_agrees": true,
+    "jobs": 9,
+    "pruned": 0,
+    "schedule": [
+     0,
+     0,
+     1,
+     1,
+     2,
+     2,
+     2,
+     3,
+     3,
+     4,
+     4,
+     -1,
+     5,
+     5,
+     6,
+     6,
+     6,
+     7,
+     7,
+     8,
+     8
+    ],
+    "schedule_length": 21,
+    "states": 22,
+    "truncated": false
+   },
+   "constrained_deadline": true,
+   "gantt": {
+    "edf": [
+     [
+      "T1#0",
+      0,
+      2
+     ],
+     [
+      "T2#0",
+      2,
+      4
+     ],
+     [
+      "T3#0",
+      4,
+      7
+     ],
+     [
+      "T1#1",
+      7,
+      9
+     ],
+     [
+      "T2#1",
+      9,
+      11
+     ],
+     [
+      "T1#2",
+      12,
+      14
+     ],
+     [
+      "T3#1",
+      14,
+      17
+     ],
+     [
+      "T2#2",
+      17,
+      19
+     ],
+     [
+      "T1#3",
+      19,
+      21
+     ],
+     [
+      "T1#4",
+      24,
+      26
+     ],
+     [
+      "T2#3",
+      26,
+      28
+     ],
+     [
+      "T3#2",
+      28,
+      31
+     ],
+     [
+      "T1#5",
+      31,
+      33
+     ],
+     [
+      "T2#4",
+      33,
+      35
+     ],
+     [
+      "T1#6",
+      36,
+      38
+     ],
+     [
+      "T3#3",
+      38,
+      41
+     ],
+     [
+      "T2#5",
+      41,
+      43
+     ],
+     [
+      "T1#7",
+      43,
+      45
+     ]
+    ],
+    "lst": [
+     [
+      "T1#0",
+      0,
+      2
+     ],
+     [
+      "T2#0",
+      2,
+      4
+     ],
+     [
+      "T3#0",
+      4,
+      7
+     ],
+     [
+      "T1#1",
+      7,
+      9
+     ],
+     [
+      "T2#1",
+      9,
+      11
+     ],
+     [
+      "T1#2",
+      12,
+      14
+     ],
+     [
+      "T3#1",
+      14,
+      17
+     ],
+     [
+      "T2#2",
+      17,
+      19
+     ],
+     [
+      "T1#3",
+      19,
+      21
+     ],
+     [
+      "T1#4",
+      24,
+      26
+     ],
+     [
+      "T2#3",
+      26,
+      28
+     ],
+     [
+      "T3#2",
+      28,
+      31
+     ],
+     [
+      "T1#5",
+      31,
+      33
+     ],
+     [
+      "T2#4",
+      33,
+      35
+     ],
+     [
+      "T1#6",
+      36,
+      38
+     ],
+     [
+      "T3#3",
+      38,
+      41
+     ],
+     [
+      "T2#5",
+      41,
+      43
+     ],
+     [
+      "T1#7",
+      43,
+      45
+     ]
+    ],
+    "rm": [
+     [
+      "T1#0",
+      0,
+      2
+     ],
+     [
+      "T2#0",
+      2,
+      4
+     ],
+     [
+      "T3#0",
+      4,
+      6
+     ],
+     [
+      "T1#1",
+      6,
+      8
+     ],
+     [
+      "T2#1",
+      8,
+      10
+     ],
+     [
+      "T3#0",
+      10,
+      11
+     ],
+     [
+      "T1#2",
+      12,
+      14
+     ],
+     [
+      "T3#1",
+      14,
+      16
+     ],
+     [
+      "T2#2",
+      16,
+      18
+     ],
+     [
+      "T1#3",
+      18,
+      20
+     ],
+     [
+      "T3#1",
+      20,
+      21
+     ],
+     [
+      "T1#4",
+      24,
+      26
+     ],
+     [
+      "T2#3",
+      26,
+      28
+     ],
+     [
+      "T3#2",
+      28,
+      30
+     ],
+     [
+      "T1#5",
+      30,
+      32
+     ],
+     [
+      "T2#4",
+      32,
+      34
+     ],
+     [
+      "T3#2",
+      34,
+      35
+     ],
+     [
+      "T1#6",
+      36,
+      38
+     ],
+     [
+      "T3#3",
+      38,
+      40
+     ],
+     [
+      "T2#5",
+      40,
+      42
+     ],
+     [
+      "T1#7",
+      42,
+      44
+     ],
+     [
+      "T3#3",
+      44,
+      45
+     ]
+    ]
+   },
+   "hyperperiod": 24,
+   "id": "R1",
+   "label": "feasible constrained",
+   "max_deadline": 7,
+   "policies": {
+    "dm": {
+     "busy": 40,
+     "completed": 18,
+     "context_switches": 22,
+     "first_miss": 7,
+     "horizon": 48,
+     "idle": 8,
+     "jitter": 9,
+     "laxity_zero_switches": 0,
+     "mean_response": 4.0,
+     "min_laxity": -4,
+     "miss_rate": 0.222222,
+     "missed": 4,
+     "preemptions": 4,
+     "released": 18,
+     "tie_events": 4,
+     "worst_response": 11
+    },
+    "edf": {
+     "busy": 40,
+     "completed": 18,
+     "context_switches": 18,
+     "first_miss": null,
+     "horizon": 48,
+     "idle": 8,
+     "jitter": 5,
+     "laxity_zero_switches": 0,
+     "mean_response": 3.5556,
+     "min_laxity": 0,
+     "miss_rate": 0.0,
+     "missed": 0,
+     "preemptions": 0,
+     "released": 18,
+     "tie_events": 6,
+     "worst_response": 7
+    },
+    "fifo": {
+     "busy": 40,
+     "completed": 18,
+     "context_switches": 18,
+     "first_miss": null,
+     "horizon": 48,
+     "idle": 8,
+     "jitter": 5,
+     "laxity_zero_switches": 0,
+     "mean_response": 3.5556,
+     "min_laxity": 0,
+     "miss_rate": 0.0,
+     "missed": 0,
+     "preemptions": 0,
+     "released": 18,
+     "tie_events": 6,
+     "worst_response": 7
+    },
+    "lst": {
+     "busy": 40,
+     "completed": 18,
+     "context_switches": 18,
+     "first_miss": null,
+     "horizon": 48,
+     "idle": 8,
+     "jitter": 5,
+     "laxity_zero_switches": 0,
+     "mean_response": 3.5556,
+     "min_laxity": 0,
+     "miss_rate": 0.0,
+     "missed": 0,
+     "preemptions": 0,
+     "released": 18,
+     "tie_events": 6,
+     "worst_response": 7
+    },
+    "lst:edf": {
+     "busy": 40,
+     "completed": 18,
+     "context_switches": 18,
+     "first_miss": null,
+     "horizon": 48,
+     "idle": 8,
+     "jitter": 5,
+     "laxity_zero_switches": 0,
+     "mean_response": 3.5556,
+     "min_laxity": 0,
+     "miss_rate": 0.0,
+     "missed": 0,
+     "preemptions": 0,
+     "released": 18,
+     "tie_events": 6,
+     "worst_response": 7
+    },
+    "lst:lzs": {
+     "busy": 40,
+     "completed": 18,
+     "context_switches": 18,
+     "first_miss": null,
+     "horizon": 48,
+     "idle": 8,
+     "jitter": 5,
+     "laxity_zero_switches": 0,
+     "mean_response": 3.5556,
+     "min_laxity": 0,
+     "miss_rate": 0.0,
+     "missed": 0,
+     "preemptions": 0,
+     "released": 18,
+     "tie_events": 6,
+     "worst_response": 7
+    },
+    "lst:rm": {
+     "busy": 40,
+     "completed": 18,
+     "context_switches": 22,
+     "first_miss": null,
+     "horizon": 48,
+     "idle": 8,
+     "jitter": 5,
+     "laxity_zero_switches": 0,
+     "mean_response": 3.6667,
+     "min_laxity": 0,
+     "miss_rate": 0.0,
+     "missed": 0,
+     "preemptions": 4,
+     "released": 18,
+     "tie_events": 6,
+     "worst_response": 7
+    },
+    "lst:stay": {
+     "busy": 40,
+     "completed": 18,
+     "context_switches": 18,
+     "first_miss": null,
+     "horizon": 48,
+     "idle": 8,
+     "jitter": 5,
+     "laxity_zero_switches": 0,
+     "mean_response": 3.5556,
+     "min_laxity": 0,
+     "miss_rate": 0.0,
+     "missed": 0,
+     "preemptions": 0,
+     "released": 18,
+     "tie_events": 6,
+     "worst_response": 7
+    },
+    "rm": {
+     "busy": 40,
+     "completed": 18,
+     "context_switches": 22,
+     "first_miss": 7,
+     "horizon": 48,
+     "idle": 8,
+     "jitter": 9,
+     "laxity_zero_switches": 0,
+     "mean_response": 4.0,
+     "min_laxity": -4,
+     "miss_rate": 0.222222,
+     "missed": 4,
+     "preemptions": 4,
+     "released": 18,
+     "tie_events": 4,
+     "worst_response": 11
+    }
+   },
+   "spec": "T1(T=6,C=2,D=4,ph=0), T2(T=8,C=2,D=5,ph=0), T3(T=12,C=3,D=7,ph=0)",
+   "task_count": 3,
+   "tasks": [
+    [
+     "T1",
+     6,
+     2,
+     4,
+     0
+    ],
+    [
+     "T2",
+     8,
+     2,
+     5,
+     0
+    ],
+    [
+     "T3",
+     12,
+     3,
+     7,
+     0
+    ]
+   ],
+   "utilisation": 0.833333,
+   "witness": {
+    "busy": 20,
+    "checked": true,
+    "jobs": 9,
+    "reason": "every job finished strictly before its deadline",
+    "steps": 21,
+    "valid": true
+   },
+   "witness_cost": {
+    "available": true,
+    "busy": 20,
+    "context_switches": 9,
+    "idle": 1,
+    "preemptions": 0,
+    "steps": 21
+   }
+  },
+  {
+   "alignment": {
+    "aligned": {
+     "edf": {
+      "horizon": 33,
+      "missed": 1,
+      "release_window": 30,
+      "released": 11
+     },
+     "lst": {
+      "horizon": 33,
+      "missed": 1,
+      "release_window": 30,
+      "released": 11
+     },
+     "rm": {
+      "horizon": 33,
+      "missed": 2,
+      "release_window": 30,
+      "released": 11
+     }
+    },
+    "aligned_agrees": true,
+    "checker_horizon": 30,
+    "checker_verdict": false,
+    "max_deadline": 3,
+    "naive": {
+     "edf": {
+      "horizon": 60,
+      "missed": 2,
+      "released": 22
+     },
+     "lst": {
+      "horizon": 60,
+      "missed": 2,
+      "released": 22
+     },
+     "rm": {
+      "horizon": 60,
+      "missed": 4,
+      "released": 22
+     }
+    },
+    "naive_agrees": true,
+    "optimal_policies": [
+     "lst",
+     "edf"
+    ],
+    "rm_control": {
+     "aligned_missed": 2,
+     "counterexample": false,
+     "naive_missed": 4
+    }
+   },
+   "cap_control": {
+    "explanation": "truncated runs are artefacts of the cap, not findings",
+    "false_infeasible_count": 0,
+    "full_truncated": false,
+    "full_verdict": false,
+    "rows": [
+     {
+      "feasible": false,
+      "limit": 4,
+      "states": 5,
+      "truncated": true
+     },
+     {
+      "feasible": false,
+      "limit": 8,
+      "states": 5,
+      "truncated": false
+     },
+     {
+      "feasible": false,
+      "limit": 16,
+      "states": 5,
+      "truncated": false
+     },
+     {
+      "feasible": false,
+      "limit": 4000000,
+      "states": 5,
+      "truncated": false
+     }
+    ],
+    "smallest_truncating_limit": null
+   },
+   "checker": {
+    "allow_idle_false": false,
+    "allow_idle_true": false,
+    "feasible": false,
+    "horizon": 30,
+    "idle_enumeration_agrees": true,
+    "jobs": 11,
+    "pruned": 4,
+    "schedule": [],
+    "schedule_length": 0,
+    "states": 5,
+    "truncated": false
+   },
+   "constrained_deadline": true,
+   "gantt": {
+    "edf": [
+     [
+      "T1#0",
+      0,
+      2
+     ],
+     [
+      "T2#0",
+      2,
+      4
+     ],
+     [
+      "T1#1",
+      5,
+      7
+     ],
+     [
+      "T2#1",
+      7,
+      9
+     ],
+     [
+      "T1#2",
+      10,
+      12
+     ],
+     [
+      "T2#2",
+      12,
+      14
+     ],
+     [
+      "T1#3",
+      15,
+      17
+     ],
+     [
+      "T2#3",
+      18,
+      20
+     ],
+     [
+      "T1#4",
+      20,
+      22
+     ],
+     [
+      "T2#4",
+      24,
+      26
+     ],
+     [
+      "T1#5",
+      26,
+      28
+     ],
+     [
+      "T1#6",
+      30,
+      32
+     ],
+     [
+      "T2#5",
+      32,
+      34
+     ],
+     [
+      "T1#7",
+      35,
+      37
+     ],
+     [
+      "T2#6",
+      37,
+      39
+     ],
+     [
+      "T1#8",
+      40,
+      42
+     ],
+     [
+      "T2#7",
+      42,
+      44
+     ],
+     [
+      "T1#9",
+      45,
+      47
+     ],
+     [
+      "T2#8",
+      48,
+      50
+     ],
+     [
+      "T1#10",
+      50,
+      52
+     ],
+     [
+      "T2#9",
+      54,
+      56
+     ],
+     [
+      "T1#11",
+      56,
+      58
+     ]
+    ],
+    "lst": [
+     [
+      "T1#0",
+      0,
+      1
+     ],
+     [
+      "T2#0",
+      1,
+      2
+     ],
+     [
+      "T1#0",
+      2,
+      3
+     ],
+     [
+      "T2#0",
+      3,
+      4
+     ],
+     [
+      "T1#1",
+      5,
+      7
+     ],
+     [
+      "T2#1",
+      7,
+      9
+     ],
+     [
+      "T1#2",
+      10,
+      12
+     ],
+     [
+      "T2#2",
+      12,
+      14
+     ],
+     [
+      "T1#3",
+      15,
+      17
+     ],
+     [
+      "T2#3",
+      18,
+      20
+     ],
+     [
+      "T1#4",
+      20,
+      22
+     ],
+     [
+      "T2#4",
+      24,
+      26
+     ],
+     [
+      "T1#5",
+      26,
+      28
+     ],
+     [
+      "T1#6",
+      30,
+      31
+     ],
+     [
+      "T2#5",
+      31,
+      32
+     ],
+     [
+      "T1#6",
+      32,
+      33
+     ],
+     [
+      "T2#5",
+      33,
+      34
+     ],
+     [
+      "T1#7",
+      35,
+      37
+     ],
+     [
+      "T2#6",
+      37,
+      39
+     ],
+     [
+      "T1#8",
+      40,
+      42
+     ],
+     [
+      "T2#7",
+      42,
+      44
+     ],
+     [
+      "T1#9",
+      45,
+      47
+     ],
+     [
+      "T2#8",
+      48,
+      50
+     ],
+     [
+      "T1#10",
+      50,
+      52
+     ],
+     [
+      "T2#9",
+      54,
+      56
+     ],
+     [
+      "T1#11",
+      56,
+      58
+     ]
+    ],
+    "rm": [
+     [
+      "T1#0",
+      0,
+      2
+     ],
+     [
+      "T2#0",
+      2,
+      4
+     ],
+     [
+      "T1#1",
+      5,
+      7
+     ],
+     [
+      "T2#1",
+      7,
+      9
+     ],
+     [
+      "T1#2",
+      10,
+      12
+     ],
+     [
+      "T2#2",
+      12,
+      14
+     ],
+     [
+      "T1#3",
+      15,
+      17
+     ],
+     [
+      "T2#3",
+      18,
+      20
+     ],
+     [
+      "T1#4",
+      20,
+      22
+     ],
+     [
+      "T2#4",
+      24,
+      25
+     ],
+     [
+      "T1#5",
+      25,
+      27
+     ],
+     [
+      "T2#4",
+      27,
+      28
+     ],
+     [
+      "T1#6",
+      30,
+      32
+     ],
+     [
+      "T2#5",
+      32,
+      34
+     ],
+     [
+      "T1#7",
+      35,
+      37
+     ],
+     [
+      "T2#6",
+      37,
+      39
+     ],
+     [
+      "T1#8",
+      40,
+      42
+     ],
+     [
+      "T2#7",
+      42,
+      44
+     ],
+     [
+      "T1#9",
+      45,
+      47
+     ],
+     [
+      "T2#8",
+      48,
+      50
+     ],
+     [
+      "T1#10",
+      50,
+      52
+     ],
+     [
+      "T2#9",
+      54,
+      55
+     ],
+     [
+      "T1#11",
+      55,
+      57
+     ],
+     [
+      "T2#9",
+      57,
+      58
+     ]
+    ]
+   },
+   "hyperperiod": 30,
+   "id": "R2",
+   "label": "infeasible constrained",
+   "max_deadline": 3,
+   "policies": {
+    "dm": {
+     "busy": 44,
+     "completed": 22,
+     "context_switches": 24,
+     "first_miss": 3,
+     "horizon": 60,
+     "idle": 16,
+     "jitter": 2,
+     "laxity_zero_switches": 0,
+     "mean_response": 2.4545,
+     "min_laxity": -1,
+     "miss_rate": 0.181818,
+     "missed": 4,
+     "preemptions": 2,
+     "released": 22,
+     "tie_events": 6,
+     "worst_response": 4
+    },
+    "edf": {
+     "busy": 44,
+     "completed": 22,
+     "context_switches": 22,
+     "first_miss": 3,
+     "horizon": 60,
+     "idle": 16,
+     "jitter": 2,
+     "laxity_zero_switches": 0,
+     "mean_response": 2.3636,
+     "min_laxity": -1,
+     "miss_rate": 0.090909,
+     "missed": 2,
+     "preemptions": 0,
+     "released": 22,
+     "tie_events": 6,
+     "worst_response": 4
+    },
+    "fifo": {
+     "busy": 44,
+     "completed": 22,
+     "context_switches": 22,
+     "first_miss": 3,
+     "horizon": 60,
+     "idle": 16,
+     "jitter": 2,
+     "laxity_zero_switches": 0,
+     "mean_response": 2.3636,
+     "min_laxity": -1,
+     "miss_rate": 0.090909,
+     "missed": 2,
+     "preemptions": 0,
+     "released": 22,
+     "tie_events": 6,
+     "worst_response": 4
+    },
+    "lst": {
+     "busy": 44,
+     "completed": 22,
+     "context_switches": 26,
+     "first_miss": 3,
+     "horizon": 60,
+     "idle": 16,
+     "jitter": 2,
+     "laxity_zero_switches": 2,
+     "mean_response": 2.4545,
+     "min_laxity": -1,
+     "miss_rate": 0.090909,
+     "missed": 2,
+     "preemptions": 4,
+     "released": 22,
+     "tie_events": 8,
+     "worst_response": 4
+    },
+    "lst:edf": {
+     "busy": 44,
+     "completed": 22,
+     "context_switches": 26,
+     "first_miss": 3,
+     "horizon": 60,
+     "idle": 16,
+     "jitter": 2,
+     "laxity_zero_switches": 2,
+     "mean_response": 2.4545,
+     "min_laxity": -1,
+     "miss_rate": 0.090909,
+     "missed": 2,
+     "preemptions": 4,
+     "released": 22,
+     "tie_events": 8,
+     "worst_response": 4
+    },
+    "lst:lzs": {
+     "busy": 44,
+     "completed": 22,
+     "context_switches": 26,
+     "first_miss": 3,
+     "horizon": 60,
+     "idle": 16,
+     "jitter": 2,
+     "laxity_zero_switches": 2,
+     "mean_response": 2.4545,
+     "min_laxity": -1,
+     "miss_rate": 0.090909,
+     "missed": 2,
+     "preemptions": 4,
+     "released": 22,
+     "tie_events": 8,
+     "worst_response": 4
+    },
+    "lst:rm": {
+     "busy": 44,
+     "completed": 22,
+     "context_switches": 30,
+     "first_miss": 3,
+     "horizon": 60,
+     "idle": 16,
+     "jitter": 2,
+     "laxity_zero_switches": 4,
+     "mean_response": 2.5455,
+     "min_laxity": -1,
+     "miss_rate": 0.090909,
+     "missed": 2,
+     "preemptions": 8,
+     "released": 22,
+     "tie_events": 8,
+     "worst_response": 4
+    },
+    "lst:stay": {
+     "busy": 44,
+     "completed": 22,
+     "context_switches": 24,
+     "first_miss": 3,
+     "horizon": 60,
+     "idle": 16,
+     "jitter": 2,
+     "laxity_zero_switches": 0,
+     "mean_response": 2.4545,
+     "min_laxity": -1,
+     "miss_rate": 0.090909,
+     "missed": 2,
+     "preemptions": 2,
+     "released": 22,
+     "tie_events": 8,
+     "worst_response": 4
+    },
+    "rm": {
+     "busy": 44,
+     "completed": 22,
+     "context_switches": 24,
+     "first_miss": 3,
+     "horizon": 60,
+     "idle": 16,
+     "jitter": 2,
+     "laxity_zero_switches": 0,
+     "mean_response": 2.4545,
+     "min_laxity": -1,
+     "miss_rate": 0.181818,
+     "missed": 4,
+     "preemptions": 2,
+     "released": 22,
+     "tie_events": 6,
+     "worst_response": 4
+    }
+   },
+   "spec": "T1(T=5,C=2,D=3,ph=0), T2(T=6,C=2,D=3,ph=0)",
+   "task_count": 2,
+   "tasks": [
+    [
+     "T1",
+     5,
+     2,
+     3,
+     0
+    ],
+    [
+     "T2",
+     6,
+     2,
+     3,
+     0
+    ]
+   ],
+   "utilisation": 0.733333,
+   "witness": {
+    "checked": false,
+    "reason": "no witness (infeasible verdict)",
+    "valid": null
+   },
+   "witness_cost": {
+    "available": false,
+    "busy": 0,
+    "context_switches": 0,
+    "idle": 0,
+    "preemptions": 0,
+    "steps": 0
+   }
+  },
+  {
+   "alignment": {
+    "aligned": {
+     "edf": {
+      "horizon": 36,
+      "missed": 0,
+      "release_window": 24,
+      "released": 9
+     },
+     "lst": {
+      "horizon": 36,
+      "missed": 0,
+      "release_window": 24,
+      "released": 9
+     },
+     "rm": {
+      "horizon": 36,
+      "missed": 0,
+      "release_window": 24,
+      "released": 9
+     }
+    },
+    "aligned_agrees": true,
+    "checker_horizon": 24,
+    "checker_verdict": true,
+    "max_deadline": 12,
+    "naive": {
+     "edf": {
+      "horizon": 48,
+      "missed": 0,
+      "released": 18
+     },
+     "lst": {
+      "horizon": 48,
+      "missed": 0,
+      "released": 18
+     },
+     "rm": {
+      "horizon": 48,
+      "missed": 0,
+      "released": 18
+     }
+    },
+    "naive_agrees": true,
+    "optimal_policies": [
+     "lst",
+     "edf"
+    ],
+    "rm_control": {
+     "aligned_missed": 0,
+     "counterexample": false,
+     "naive_missed": 0
+    }
+   },
+   "cap_control": {
+    "explanation": "truncated runs are artefacts of the cap, not findings",
+    "false_infeasible_count": 3,
+    "full_truncated": false,
+    "full_verdict": true,
+    "rows": [
+     {
+      "feasible": false,
+      "limit": 4,
+      "states": 11,
+      "truncated": true
+     },
+     {
+      "feasible": false,
+      "limit": 8,
+      "states": 16,
+      "truncated": true
+     },
+     {
+      "feasible": false,
+      "limit": 16,
+      "states": 27,
+      "truncated": true
+     },
+     {
+      "feasible": true,
+      "limit": 4000000,
+      "states": 22,
+      "truncated": false
+     }
+    ],
+    "smallest_truncating_limit": 4
+   },
+   "checker": {
+    "allow_idle_false": true,
+    "allow_idle_true": true,
+    "feasible": true,
+    "horizon": 24,
+    "idle_enumeration_agrees": true,
+    "jobs": 9,
+    "pruned": 0,
+    "schedule": [
+     0,
+     0,
+     1,
+     1,
+     2,
+     2,
+     2,
+     3,
+     3,
+     4,
+     4,
+     -1,
+     5,
+     5,
+     6,
+     6,
+     6,
+     7,
+     7,
+     8,
+     8
+    ],
+    "schedule_length": 21,
+    "states": 22,
+    "truncated": false
+   },
+   "constrained_deadline": false,
+   "gantt": {
+    "edf": [
+     [
+      "T1#0",
+      0,
+      2
+     ],
+     [
+      "T2#0",
+      2,
+      4
+     ],
+     [
+      "T3#0",
+      4,
+      7
+     ],
+     [
+      "T1#1",
+      7,
+      9
+     ],
+     [
+      "T2#1",
+      9,
+      11
+     ],
+     [
+      "T1#2",
+      12,
+      14
+     ],
+     [
+      "T3#1",
+      14,
+      17
+     ],
+     [
+      "T2#2",
+      17,
+      19
+     ],
+     [
+      "T1#3",
+      19,
+      21
+     ],
+     [
+      "T1#4",
+      24,
+      26
+     ],
+     [
+      "T2#3",
+      26,
+      28
+     ],
+     [
+      "T3#2",
+      28,
+      31
+     ],
+     [
+      "T1#5",
+      31,
+      33
+     ],
+     [
+      "T2#4",
+      33,
+      35
+     ],
+     [
+      "T1#6",
+      36,
+      38
+     ],
+     [
+      "T3#3",
+      38,
+      41
+     ],
+     [
+      "T2#5",
+      41,
+      43
+     ],
+     [
+      "T1#7",
+      43,
+      45
+     ]
+    ],
+    "lst": [
+     [
+      "T1#0",
+      0,
+      2
+     ],
+     [
+      "T2#0",
+      2,
+      4
+     ],
+     [
+      "T3#0",
+      4,
+      6
+     ],
+     [
+      "T1#1",
+      6,
+      7
+     ],
+     [
+      "T3#0",
+      7,
+      8
+     ],
+     [
+      "T1#1",
+      8,
+      9
+     ],
+     [
+      "T2#1",
+      9,
+      11
+     ],
+     [
+      "T1#2",
+      12,
+      14
+     ],
+     [
+      "T3#1",
+      14,
+      16
+     ],
+     [
+      "T2#2",
+      16,
+      17
+     ],
+     [
+      "T3#1",
+      17,
+      18
+     ],
+     [
+      "T1#3",
+      18,
+      19
+     ],
+     [
+      "T2#2",
+      19,
+      20
+     ],
+     [
+      "T1#3",
+      20,
+      21
+     ],
+     [
+      "T1#4",
+      24,
+      26
+     ],
+     [
+      "T2#3",
+      26,
+      28
+     ],
+     [
+      "T3#2",
+      28,
+      30
+     ],
+     [
+      "T1#5",
+      30,
+      31
+     ],
+     [
+      "T3#2",
+      31,
+      32
+     ],
+     [
+      "T1#5",
+      32,
+      33
+     ],
+     [
+      "T2#4",
+      33,
+      35
+     ],
+     [
+      "T1#6",
+      36,
+      38
+     ],
+     [
+      "T3#3",
+      38,
+      40
+     ],
+     [
+      "T2#5",
+      40,
+      41
+     ],
+     [
+      "T3#3",
+      41,
+      42
+     ],
+     [
+      "T1#7",
+      42,
+      43
+     ],
+     [
+      "T2#5",
+      43,
+      44
+     ],
+     [
+      "T1#7",
+      44,
+      45
+     ]
+    ],
+    "rm": [
+     [
+      "T1#0",
+      0,
+      2
+     ],
+     [
+      "T2#0",
+      2,
+      4
+     ],
+     [
+      "T3#0",
+      4,
+      6
+     ],
+     [
+      "T1#1",
+      6,
+      8
+     ],
+     [
+      "T2#1",
+      8,
+      10
+     ],
+     [
+      "T3#0",
+      10,
+      11
+     ],
+     [
+      "T1#2",
+      12,
+      14
+     ],
+     [
+      "T3#1",
+      14,
+      16
+     ],
+     [
+      "T2#2",
+      16,
+      18
+     ],
+     [
+      "T1#3",
+      18,
+      20
+     ],
+     [
+      "T3#1",
+      20,
+      21
+     ],
+     [
+      "T1#4",
+      24,
+      26
+     ],
+     [
+      "T2#3",
+      26,
+      28
+     ],
+     [
+      "T3#2",
+      28,
+      30
+     ],
+     [
+      "T1#5",
+      30,
+      32
+     ],
+     [
+      "T2#4",
+      32,
+      34
+     ],
+     [
+      "T3#2",
+      34,
+      35
+     ],
+     [
+      "T1#6",
+      36,
+      38
+     ],
+     [
+      "T3#3",
+      38,
+      40
+     ],
+     [
+      "T2#5",
+      40,
+      42
+     ],
+     [
+      "T1#7",
+      42,
+      44
+     ],
+     [
+      "T3#3",
+      44,
+      45
+     ]
+    ]
+   },
+   "hyperperiod": 24,
+   "id": "R3",
+   "label": "implicit control",
+   "max_deadline": 12,
+   "policies": {
+    "dm": {
+     "busy": 40,
+     "completed": 18,
+     "context_switches": 22,
+     "first_miss": null,
+     "horizon": 48,
+     "idle": 8,
+     "jitter": 9,
+     "laxity_zero_switches": 0,
+     "mean_response": 4.0,
+     "min_laxity": 1,
+     "miss_rate": 0.0,
+     "missed": 0,
+     "preemptions": 4,
+     "released": 18,
+     "tie_events": 6,
+     "worst_response": 11
+    },
+    "edf": {
+     "busy": 40,
+     "completed": 18,
+     "context_switches": 18,
+     "first_miss": null,
+     "horizon": 48,
+     "idle": 8,
+     "jitter": 5,
+     "laxity_zero_switches": 0,
+     "mean_response": 3.5556,
+     "min_laxity": 3,
+     "miss_rate": 0.0,
+     "missed": 0,
+     "preemptions": 0,
+     "released": 18,
+     "tie_events": 0,
+     "worst_response": 7
+    },
+    "fifo": {
+     "busy": 40,
+     "completed": 18,
+     "context_switches": 18,
+     "first_miss": null,
+     "horizon": 48,
+     "idle": 8,
+     "jitter": 5,
+     "laxity_zero_switches": 0,
+     "mean_response": 3.5556,
+     "min_laxity": 3,
+     "miss_rate": 0.0,
+     "missed": 0,
+     "preemptions": 0,
+     "released": 18,
+     "tie_events": 0,
+     "worst_response": 7
+    },
+    "lst": {
+     "busy": 40,
+     "completed": 18,
+     "context_switches": 28,
+     "first_miss": null,
+     "horizon": 48,
+     "idle": 8,
+     "jitter": 6,
+     "laxity_zero_switches": 0,
+     "mean_response": 3.8889,
+     "min_laxity": 3,
+     "miss_rate": 0.0,
+     "missed": 0,
+     "preemptions": 10,
+     "released": 18,
+     "tie_events": 6,
+     "worst_response": 8
+    },
+    "lst:edf": {
+     "busy": 40,
+     "completed": 18,
+     "context_switches": 28,
+     "first_miss": null,
+     "horizon": 48,
+     "idle": 8,
+     "jitter": 6,
+     "laxity_zero_switches": 0,
+     "mean_response": 3.8889,
+     "min_laxity": 3,
+     "miss_rate": 0.0,
+     "missed": 0,
+     "preemptions": 10,
+     "released": 18,
+     "tie_events": 6,
+     "worst_response": 8
+    },
+    "lst:lzs": {
+     "busy": 40,
+     "completed": 18,
+     "context_switches": 28,
+     "first_miss": null,
+     "horizon": 48,
+     "idle": 8,
+     "jitter": 6,
+     "laxity_zero_switches": 0,
+     "mean_response": 3.8889,
+     "min_laxity": 3,
+     "miss_rate": 0.0,
+     "missed": 0,
+     "preemptions": 10,
+     "released": 18,
+     "tie_events": 6,
+     "worst_response": 8
+    },
+    "lst:rm": {
+     "busy": 40,
+     "completed": 18,
+     "context_switches": 22,
+     "first_miss": null,
+     "horizon": 48,
+     "idle": 8,
+     "jitter": 7,
+     "laxity_zero_switches": 0,
+     "mean_response": 3.8889,
+     "min_laxity": 3,
+     "miss_rate": 0.0,
+     "missed": 0,
+     "preemptions": 4,
+     "released": 18,
+     "tie_events": 6,
+     "worst_response": 9
+    },
+    "lst:stay": {
+     "busy": 40,
+     "completed": 18,
+     "context_switches": 22,
+     "first_miss": null,
+     "horizon": 48,
+     "idle": 8,
+     "jitter": 7,
+     "laxity_zero_switches": 0,
+     "mean_response": 3.8889,
+     "min_laxity": 3,
+     "miss_rate": 0.0,
+     "missed": 0,
+     "preemptions": 4,
+     "released": 18,
+     "tie_events": 6,
+     "worst_response": 9
+    },
+    "rm": {
+     "busy": 40,
+     "completed": 18,
+     "context_switches": 22,
+     "first_miss": null,
+     "horizon": 48,
+     "idle": 8,
+     "jitter": 9,
+     "laxity_zero_switches": 0,
+     "mean_response": 4.0,
+     "min_laxity": 1,
+     "miss_rate": 0.0,
+     "missed": 0,
+     "preemptions": 4,
+     "released": 18,
+     "tie_events": 6,
+     "worst_response": 11
+    }
+   },
+   "spec": "T1(T=6,C=2,D=6,ph=0), T2(T=8,C=2,D=8,ph=0), T3(T=12,C=3,D=12,ph=0)",
+   "task_count": 3,
+   "tasks": [
+    [
+     "T1",
+     6,
+     2,
+     6,
+     0
+    ],
+    [
+     "T2",
+     8,
+     2,
+     8,
+     0
+    ],
+    [
+     "T3",
+     12,
+     3,
+     12,
+     0
+    ]
+   ],
+   "utilisation": 0.833333,
+   "witness": {
+    "busy": 20,
+    "checked": true,
+    "jobs": 9,
+    "reason": "every job finished strictly before its deadline",
+    "steps": 21,
+    "valid": true
+   },
+   "witness_cost": {
+    "available": true,
+    "busy": 20,
+    "context_switches": 9,
+    "idle": 1,
+    "preemptions": 0,
+    "steps": 21
+   }
+  },
+  {
+   "alignment": {
+    "aligned": {
+     "edf": {
+      "horizon": 17,
+      "missed": 4,
+      "release_window": 12,
+      "released": 5
+     },
+     "lst": {
+      "horizon": 17,
+      "missed": 4,
+      "release_window": 12,
+      "released": 5
+     },
+     "rm": {
+      "horizon": 17,
+      "missed": 2,
+      "release_window": 12,
+      "released": 5
+     }
+    },
+    "aligned_agrees": true,
+    "checker_horizon": 12,
+    "checker_verdict": false,
+    "max_deadline": 5,
+    "naive": {
+     "edf": {
+      "horizon": 24,
+      "missed": 8,
+      "released": 10
+     },
+     "lst": {
+      "horizon": 24,
+      "missed": 8,
+      "released": 10
+     },
+     "rm": {
+      "horizon": 24,
+      "missed": 4,
+      "released": 10
+     }
+    },
+    "naive_agrees": true,
+    "optimal_policies": [
+     "lst",
+     "edf"
+    ],
+    "rm_control": {
+     "aligned_missed": 2,
+     "counterexample": false,
+     "naive_missed": 4
+    }
+   },
+   "cap_control": {
+    "explanation": "truncated runs are artefacts of the cap, not findings",
+    "false_infeasible_count": 0,
+    "full_truncated": false,
+    "full_verdict": false,
+    "rows": [
+     {
+      "feasible": false,
+      "limit": 4,
+      "states": 6,
+      "truncated": true
+     },
+     {
+      "feasible": false,
+      "limit": 8,
+      "states": 8,
+      "truncated": false
+     },
+     {
+      "feasible": false,
+      "limit": 16,
+      "states": 8,
+      "truncated": false
+     },
+     {
+      "feasible": false,
+      "limit": 4000000,
+      "states": 8,
+      "truncated": false
+     }
+    ],
+    "smallest_truncating_limit": null
+   },
+   "checker": {
+    "allow_idle_false": false,
+    "allow_idle_true": false,
+    "feasible": false,
+    "horizon": 12,
+    "idle_enumeration_agrees": true,
+    "jobs": 5,
+    "pruned": 5,
+    "schedule": [],
+    "schedule_length": 0,
+    "states": 8,
+    "truncated": false
+   },
+   "constrained_deadline": true,
+   "gantt": {
+    "edf": [
+     [
+      "T1#0",
+      0,
+      3
+     ],
+     [
+      "T2#0",
+      3,
+      6
+     ],
+     [
+      "T1#1",
+      6,
+      9
+     ],
+     [
+      "T2#1",
+      9,
+      12
+     ],
+     [
+      "T1#2",
+      12,
+      15
+     ],
+     [
+      "T1#3",
+      15,
+      18
+     ],
+     [
+      "T2#2",
+      18,
+      21
+     ],
+     [
+      "T1#4",
+      21,
+      24
+     ]
+    ],
+    "lst": [
+     [
+      "T1#0",
+      0,
+      2
+     ],
+     [
+      "T2#0",
+      2,
+      3
+     ],
+     [
+      "T1#0",
+      3,
+      4
+     ],
+     [
+      "T2#0",
+      4,
+      6
+     ],
+     [
+      "T1#1",
+      6,
+      9
+     ],
+     [
+      "T2#1",
+      9,
+      11
+     ],
+     [
+      "T1#2",
+      11,
+      12
+     ],
+     [
+      "T2#1",
+      12,
+      13
+     ],
+     [
+      "T1#2",
+      13,
+      15
+     ],
+     [
+      "T1#3",
+      15,
+      17
+     ],
+     [
+      "T2#2",
+      17,
+      18
+     ],
+     [
+      "T1#3",
+      18,
+      19
+     ],
+     [
+      "T2#2",
+      19,
+      21
+     ],
+     [
+      "T1#4",
+      21,
+      24
+     ]
+    ],
+    "rm": [
+     [
+      "T1#0",
+      0,
+      3
+     ],
+     [
+      "T2#0",
+      3,
+      4
+     ],
+     [
+      "T1#1",
+      4,
+      7
+     ],
+     [
+      "T2#0",
+      7,
+      8
+     ],
+     [
+      "T1#2",
+      8,
+      11
+     ],
+     [
+      "T2#0",
+      11,
+      12
+     ],
+     [
+      "T1#3",
+      12,
+      15
+     ],
+     [
+      "T2#1",
+      15,
+      16
+     ],
+     [
+      "T1#4",
+      16,
+      19
+     ],
+     [
+      "T2#1",
+      19,
+      20
+     ],
+     [
+      "T1#5",
+      20,
+      23
+     ],
+     [
+      "T2#1",
+      23,
+      24
+     ]
+    ]
+   },
+   "hyperperiod": 12,
+   "id": "R4",
+   "label": "overload",
+   "max_deadline": 5,
+   "policies": {
+    "dm": {
+     "busy": 24,
+     "completed": 8,
+     "context_switches": 12,
+     "first_miss": 5,
+     "horizon": 24,
+     "idle": 0,
+     "jitter": 15,
+     "laxity_zero_switches": 0,
+     "mean_response": 6.0,
+     "min_laxity": -13,
+     "miss_rate": 0.4,
+     "missed": 4,
+     "preemptions": 4,
+     "released": 10,
+     "tie_events": 1,
+     "worst_response": 18
+    },
+    "edf": {
+     "busy": 24,
+     "completed": 8,
+     "context_switches": 8,
+     "first_miss": 5,
+     "horizon": 24,
+     "idle": 0,
+     "jitter": 6,
+     "laxity_zero_switches": 0,
+     "mean_response": 6.25,
+     "min_laxity": -4,
+     "miss_rate": 0.8,
+     "missed": 8,
+     "preemptions": 0,
+     "released": 10,
+     "tie_events": 3,
+     "worst_response": 9
+    },
+    "fifo": {
+     "busy": 24,
+     "completed": 8,
+     "context_switches": 8,
+     "first_miss": 5,
+     "horizon": 24,
+     "idle": 0,
+     "jitter": 6,
+     "laxity_zero_switches": 0,
+     "mean_response": 6.25,
+     "min_laxity": -4,
+     "miss_rate": 0.8,
+     "missed": 8,
+     "preemptions": 0,
+     "released": 10,
+     "tie_events": 3,
+     "worst_response": 9
+    },
+    "lst": {
+     "busy": 24,
+     "completed": 8,
+     "context_switches": 14,
+     "first_miss": 5,
+     "horizon": 24,
+     "idle": 0,
+     "jitter": 5,
+     "laxity_zero_switches": 1,
+     "mean_response": 6.625,
+     "min_laxity": -4,
+     "miss_rate": 0.8,
+     "missed": 8,
+     "preemptions": 6,
+     "released": 10,
+     "tie_events": 6,
+     "worst_response": 9
+    },
+    "lst:edf": {
+     "busy": 24,
+     "completed": 8,
+     "context_switches": 14,
+     "first_miss": 5,
+     "horizon": 24,
+     "idle": 0,
+     "jitter": 5,
+     "laxity_zero_switches": 1,
+     "mean_response": 6.625,
+     "min_laxity": -4,
+     "miss_rate": 0.8,
+     "missed": 8,
+     "preemptions": 6,
+     "released": 10,
+     "tie_events": 6,
+     "worst_response": 9
+    },
+    "lst:lzs": {
+     "busy": 24,
+     "completed": 8,
+     "context_switches": 14,
+     "first_miss": 5,
+     "horizon": 24,
+     "idle": 0,
+     "jitter": 5,
+     "laxity_zero_switches": 1,
+     "mean_response": 6.625,
+     "min_laxity": -4,
+     "miss_rate": 0.8,
+     "missed": 8,
+     "preemptions": 6,
+     "released": 10,
+     "tie_events": 6,
+     "worst_response": 9
+    },
+    "lst:rm": {
+     "busy": 24,
+     "completed": 8,
+     "context_switches": 16,
+     "first_miss": 5,
+     "horizon": 24,
+     "idle": 0,
+     "jitter": 5,
+     "laxity_zero_switches": 1,
+     "mean_response": 6.75,
+     "min_laxity": -4,
+     "miss_rate": 0.8,
+     "missed": 8,
+     "preemptions": 8,
+     "released": 10,
+     "tie_events": 6,
+     "worst_response": 9
+    },
+    "lst:stay": {
+     "busy": 24,
+     "completed": 8,
+     "context_switches": 14,
+     "first_miss": 4,
+     "horizon": 24,
+     "idle": 0,
+     "jitter": 4,
+     "laxity_zero_switches": 0,
+     "mean_response": 7.0,
+     "min_laxity": -4,
+     "miss_rate": 0.9,
+     "missed": 9,
+     "preemptions": 6,
+     "released": 10,
+     "tie_events": 6,
+     "worst_response": 9
+    },
+    "rm": {
+     "busy": 24,
+     "completed": 8,
+     "context_switches": 12,
+     "first_miss": 5,
+     "horizon": 24,
+     "idle": 0,
+     "jitter": 15,
+     "laxity_zero_switches": 0,
+     "mean_response": 6.0,
+     "min_laxity": -13,
+     "miss_rate": 0.4,
+     "missed": 4,
+     "preemptions": 4,
+     "released": 10,
+     "tie_events": 1,
+     "worst_response": 18
+    }
+   },
+   "spec": "T1(T=4,C=3,D=4,ph=0), T2(T=6,C=3,D=5,ph=0)",
+   "task_count": 2,
+   "tasks": [
+    [
+     "T1",
+     4,
+     3,
+     4,
+     0
+    ],
+    [
+     "T2",
+     6,
+     3,
+     5,
+     0
+    ]
+   ],
+   "utilisation": 1.25,
+   "witness": {
+    "checked": false,
+    "reason": "no witness (infeasible verdict)",
+    "valid": null
+   },
+   "witness_cost": {
+    "available": false,
+    "busy": 0,
+    "context_switches": 0,
+    "idle": 0,
+    "preemptions": 0,
+    "steps": 0
+   }
+  },
+  {
+   "alignment": {
+    "aligned": {
+     "edf": {
+      "horizon": 17,
+      "missed": 1,
+      "release_window": 10,
+      "released": 4
+     },
+     "lst": {
+      "horizon": 17,
+      "missed": 1,
+      "release_window": 10,
+      "released": 4
+     },
+     "rm": {
+      "horizon": 17,
+      "missed": 1,
+      "release_window": 10,
+      "released": 4
+     }
+    },
+    "aligned_agrees": true,
+    "checker_horizon": 10,
+    "checker_verdict": false,
+    "max_deadline": 7,
+    "naive": {
+     "edf": {
+      "horizon": 20,
+      "missed": 2,
+      "released": 8
+     },
+     "lst": {
+      "horizon": 20,
+      "missed": 2,
+      "released": 8
+     },
+     "rm": {
+      "horizon": 20,
+      "missed": 2,
+      "released": 8
+     }
+    },
+    "naive_agrees": true,
+    "optimal_policies": [
+     "lst",
+     "edf"
+    ],
+    "rm_control": {
+     "aligned_missed": 1,
+     "counterexample": false,
+     "naive_missed": 2
+    }
+   },
+   "cap_control": {
+    "explanation": "truncated runs are artefacts of the cap, not findings",
+    "false_infeasible_count": 0,
+    "full_truncated": false,
+    "full_verdict": false,
+    "rows": [
+     {
+      "feasible": false,
+      "limit": 4,
+      "states": 11,
+      "truncated": true
+     },
+     {
+      "feasible": false,
+      "limit": 8,
+      "states": 15,
+      "truncated": true
+     },
+     {
+      "feasible": false,
+      "limit": 16,
+      "states": 19,
+      "truncated": true
+     },
+     {
+      "feasible": false,
+      "limit": 4000000,
+      "states": 21,
+      "truncated": false
+     }
+    ],
+    "smallest_truncating_limit": null
+   },
+   "checker": {
+    "allow_idle_false": false,
+    "allow_idle_true": false,
+    "feasible": false,
+    "horizon": 10,
+    "idle_enumeration_agrees": true,
+    "jobs": 4,
+    "pruned": 15,
+    "schedule": [],
+    "schedule_length": 0,
+    "states": 21,
+    "truncated": false
+   },
+   "constrained_deadline": true,
+   "gantt": {
+    "edf": [
+     [
+      "T1#0",
+      0,
+      2
+     ],
+     [
+      "T2#0",
+      2,
+      5
+     ],
+     [
+      "T3#0",
+      5,
+      7
+     ],
+     [
+      "T1#1",
+      7,
+      9
+     ],
+     [
+      "T1#2",
+      10,
+      12
+     ],
+     [
+      "T2#1",
+      12,
+      15
+     ],
+     [
+      "T3#1",
+      15,
+      17
+     ],
+     [
+      "T1#3",
+      17,
+      19
+     ]
+    ],
+    "lst": [
+     [
+      "T1#0",
+      0,
+      2
+     ],
+     [
+      "T2#0",
+      2,
+      5
+     ],
+     [
+      "T3#0",
+      5,
+      7
+     ],
+     [
+      "T1#1",
+      7,
+      9
+     ],
+     [
+      "T1#2",
+      10,
+      12
+     ],
+     [
+      "T2#1",
+      12,
+      15
+     ],
+     [
+      "T3#1",
+      15,
+      17
+     ],
+     [
+      "T1#3",
+      17,
+      19
+     ]
+    ],
+    "rm": [
+     [
+      "T1#0",
+      0,
+      2
+     ],
+     [
+      "T2#0",
+      2,
+      5
+     ],
+     [
+      "T1#1",
+      5,
+      7
+     ],
+     [
+      "T3#0",
+      7,
+      9
+     ],
+     [
+      "T1#2",
+      10,
+      12
+     ],
+     [
+      "T2#1",
+      12,
+      15
+     ],
+     [
+      "T1#3",
+      15,
+      17
+     ],
+     [
+      "T3#1",
+      17,
+      19
+     ]
+    ]
+   },
+   "hyperperiod": 10,
+   "id": "R5",
+   "label": "heavy infeasible",
+   "max_deadline": 7,
+   "policies": {
+    "dm": {
+     "busy": 18,
+     "completed": 8,
+     "context_switches": 8,
+     "first_miss": 7,
+     "horizon": 20,
+     "idle": 2,
+     "jitter": 7,
+     "laxity_zero_switches": 0,
+     "mean_response": 4.5,
+     "min_laxity": -2,
+     "miss_rate": 0.25,
+     "missed": 2,
+     "preemptions": 0,
+     "released": 8,
+     "tie_events": 2,
+     "worst_response": 9
+    },
+    "edf": {
+     "busy": 18,
+     "completed": 8,
+     "context_switches": 8,
+     "first_miss": 8,
+     "horizon": 20,
+     "idle": 2,
+     "jitter": 5,
+     "laxity_zero_switches": 0,
+     "mean_response": 4.5,
+     "min_laxity": -1,
+     "miss_rate": 0.25,
+     "missed": 2,
+     "preemptions": 0,
+     "released": 8,
+     "tie_events": 4,
+     "worst_response": 7
+    },
+    "fifo": {
+     "busy": 18,
+     "completed": 8,
+     "context_switches": 8,
+     "first_miss": 8,
+     "horizon": 20,
+     "idle": 2,
+     "jitter": 5,
+     "laxity_zero_switches": 0,
+     "mean_response": 4.5,
+     "min_laxity": -1,
+     "miss_rate": 0.25,
+     "missed": 2,
+     "preemptions": 0,
+     "released": 8,
+     "tie_events": 4,
+     "worst_response": 7
+    },
+    "lst": {
+     "busy": 18,
+     "completed": 8,
+     "context_switches": 8,
+     "first_miss": 8,
+     "horizon": 20,
+     "idle": 2,
+     "jitter": 5,
+     "laxity_zero_switches": 0,
+     "mean_response": 4.5,
+     "min_laxity": -1,
+     "miss_rate": 0.25,
+     "missed": 2,
+     "preemptions": 0,
+     "released": 8,
+     "tie_events": 4,
+     "worst_response": 7
+    },
+    "lst:edf": {
+     "busy": 18,
+     "completed": 8,
+     "context_switches": 8,
+     "first_miss": 8,
+     "horizon": 20,
+     "idle": 2,
+     "jitter": 5,
+     "laxity_zero_switches": 0,
+     "mean_response": 4.5,
+     "min_laxity": -1,
+     "miss_rate": 0.25,
+     "missed": 2,
+     "preemptions": 0,
+     "released": 8,
+     "tie_events": 4,
+     "worst_response": 7
+    },
+    "lst:lzs": {
+     "busy": 18,
+     "completed": 8,
+     "context_switches": 8,
+     "first_miss": 8,
+     "horizon": 20,
+     "idle": 2,
+     "jitter": 5,
+     "laxity_zero_switches": 0,
+     "mean_response": 4.5,
+     "min_laxity": -1,
+     "miss_rate": 0.25,
+     "missed": 2,
+     "preemptions": 0,
+     "released": 8,
+     "tie_events": 4,
+     "worst_response": 7
+    },
+    "lst:rm": {
+     "busy": 18,
+     "completed": 8,
+     "context_switches": 12,
+     "first_miss": 7,
+     "horizon": 20,
+     "idle": 2,
+     "jitter": 6,
+     "laxity_zero_switches": 2,
+     "mean_response": 4.75,
+     "min_laxity": -1,
+     "miss_rate": 0.5,
+     "missed": 4,
+     "preemptions": 4,
+     "released": 8,
+     "tie_events": 4,
+     "worst_response": 8
+    },
+    "lst:stay": {
+     "busy": 18,
+     "completed": 8,
+     "context_switches": 8,
+     "first_miss": 8,
+     "horizon": 20,
+     "idle": 2,
+     "jitter": 5,
+     "laxity_zero_switches": 0,
+     "mean_response": 4.5,
+     "min_laxity": -1,
+     "miss_rate": 0.25,
+     "missed": 2,
+     "preemptions": 0,
+     "released": 8,
+     "tie_events": 4,
+     "worst_response": 7
+    },
+    "rm": {
+     "busy": 18,
+     "completed": 8,
+     "context_switches": 8,
+     "first_miss": 7,
+     "horizon": 20,
+     "idle": 2,
+     "jitter": 7,
+     "laxity_zero_switches": 0,
+     "mean_response": 4.5,
+     "min_laxity": -2,
+     "miss_rate": 0.25,
+     "missed": 2,
+     "preemptions": 0,
+     "released": 8,
+     "tie_events": 2,
+     "worst_response": 9
+    }
+   },
+   "spec": "T1(T=5,C=2,D=3,ph=0), T2(T=10,C=3,D=6,ph=0), T3(T=10,C=2,D=7,ph=0)",
+   "task_count": 3,
+   "tasks": [
+    [
+     "T1",
+     5,
+     2,
+     3,
+     0
+    ],
+    [
+     "T2",
+     10,
+     3,
+     6,
+     0
+    ],
+    [
+     "T3",
+     10,
+     2,
+     7,
+     0
+    ]
+   ],
+   "utilisation": 0.9,
+   "witness": {
+    "checked": false,
+    "reason": "no witness (infeasible verdict)",
+    "valid": null
+   },
+   "witness_cost": {
+    "available": false,
+    "busy": 0,
+    "context_switches": 0,
+    "idle": 0,
+    "preemptions": 0,
+    "steps": 0
+   }
+  },
+  {
+   "alignment": {
+    "aligned": {
+     "edf": {
+      "horizon": 8,
+      "missed": 0,
+      "release_window": 4,
+      "released": 2
+     },
+     "lst": {
+      "horizon": 8,
+      "missed": 0,
+      "release_window": 4,
+      "released": 2
+     },
+     "rm": {
+      "horizon": 8,
+      "missed": 0,
+      "release_window": 4,
+      "released": 2
+     }
+    },
+    "aligned_agrees": true,
+    "checker_horizon": 4,
+    "checker_verdict": true,
+    "max_deadline": 4,
+    "naive": {
+     "edf": {
+      "horizon": 8,
+      "missed": 1,
+      "released": 4
+     },
+     "lst": {
+      "horizon": 8,
+      "missed": 1,
+      "released": 4
+     },
+     "rm": {
+      "horizon": 8,
+      "missed": 1,
+      "released": 4
+     }
+    },
+    "naive_agrees": false,
+    "optimal_policies": [
+     "lst",
+     "edf"
+    ],
+    "rm_control": {
+     "aligned_missed": 0,
+     "counterexample": true,
+     "naive_missed": 1
+    }
+   },
+   "cap_control": {
+    "explanation": "truncated runs are artefacts of the cap, not findings",
+    "false_infeasible_count": 1,
+    "full_truncated": false,
+    "full_verdict": true,
+    "rows": [
+     {
+      "feasible": false,
+      "limit": 4,
+      "states": 5,
+      "truncated": true
+     },
+     {
+      "feasible": true,
+      "limit": 8,
+      "states": 7,
+      "truncated": false
+     },
+     {
+      "feasible": true,
+      "limit": 16,
+      "states": 7,
+      "truncated": false
+     },
+     {
+      "feasible": true,
+      "limit": 4000000,
+      "states": 7,
+      "truncated": false
+     }
+    ],
+    "smallest_truncating_limit": 4
+   },
+   "checker": {
+    "allow_idle_false": true,
+    "allow_idle_true": true,
+    "feasible": true,
+    "horizon": 4,
+    "idle_enumeration_agrees": true,
+    "jobs": 2,
+    "pruned": 0,
+    "schedule": [
+     0,
+     0,
+     -1,
+     1,
+     1,
+     1
+    ],
+    "schedule_length": 6,
+    "states": 7,
+    "truncated": false
+   },
+   "constrained_deadline": true,
+   "gantt": {
+    "edf": [
+     [
+      "T1#0",
+      0,
+      2
+     ],
+     [
+      "T2#0",
+      3,
+      6
+     ],
+     [
+      "T1#1",
+      6,
+      8
+     ]
+    ],
+    "lst": [
+     [
+      "T1#0",
+      0,
+      2
+     ],
+     [
+      "T2#0",
+      3,
+      5
+     ],
+     [
+      "T1#1",
+      5,
+      6
+     ],
+     [
+      "T2#0",
+      6,
+      7
+     ],
+     [
+      "T1#1",
+      7,
+      8
+     ]
+    ],
+    "rm": [
+     [
+      "T1#0",
+      0,
+      2
+     ],
+     [
+      "T2#0",
+      3,
+      6
+     ],
+     [
+      "T1#1",
+      6,
+      8
+     ]
+    ]
+   },
+   "hyperperiod": 4,
+   "id": "R6",
+   "label": "phased",
+   "max_deadline": 4,
+   "policies": {
+    "dm": {
+     "busy": 7,
+     "completed": 3,
+     "context_switches": 4,
+     "first_miss": 7,
+     "horizon": 8,
+     "idle": 1,
+     "jitter": 3,
+     "laxity_zero_switches": 0,
+     "mean_response": 3.0,
+     "min_laxity": -1,
+     "miss_rate": 0.25,
+     "missed": 1,
+     "preemptions": 1,
+     "released": 4,
+     "tie_events": 1,
+     "worst_response": 5
+    },
+    "edf": {
+     "busy": 7,
+     "completed": 3,
+     "context_switches": 3,
+     "first_miss": 7,
+     "horizon": 8,
+     "idle": 1,
+     "jitter": 2,
+     "laxity_zero_switches": 0,
+     "mean_response": 3.0,
+     "min_laxity": -1,
+     "miss_rate": 0.25,
+     "missed": 1,
+     "preemptions": 0,
+     "released": 4,
+     "tie_events": 1,
+     "worst_response": 4
+    },
+    "fifo": {
+     "busy": 7,
+     "completed": 3,
+     "context_switches": 3,
+     "first_miss": 7,
+     "horizon": 8,
+     "idle": 1,
+     "jitter": 2,
+     "laxity_zero_switches": 0,
+     "mean_response": 3.0,
+     "min_laxity": -1,
+     "miss_rate": 0.25,
+     "missed": 1,
+     "preemptions": 0,
+     "released": 4,
+     "tie_events": 1,
+     "worst_response": 4
+    },
+    "lst": {
+     "busy": 7,
+     "completed": 3,
+     "context_switches": 5,
+     "first_miss": 7,
+     "horizon": 8,
+     "idle": 1,
+     "jitter": 2,
+     "laxity_zero_switches": 1,
+     "mean_response": 3.3333,
+     "min_laxity": -1,
+     "miss_rate": 0.25,
+     "missed": 1,
+     "preemptions": 2,
+     "released": 4,
+     "tie_events": 2,
+     "worst_response": 4
+    },
+    "lst:edf": {
+     "busy": 7,
+     "completed": 3,
+     "context_switches": 5,
+     "first_miss": 7,
+     "horizon": 8,
+     "idle": 1,
+     "jitter": 2,
+     "laxity_zero_switches": 1,
+     "mean_response": 3.3333,
+     "min_laxity": -1,
+     "miss_rate": 0.25,
+     "missed": 1,
+     "preemptions": 2,
+     "released": 4,
+     "tie_events": 2,
+     "worst_response": 4
+    },
+    "lst:lzs": {
+     "busy": 7,
+     "completed": 3,
+     "context_switches": 5,
+     "first_miss": 7,
+     "horizon": 8,
+     "idle": 1,
+     "jitter": 2,
+     "laxity_zero_switches": 1,
+     "mean_response": 3.3333,
+     "min_laxity": -1,
+     "miss_rate": 0.25,
+     "missed": 1,
+     "preemptions": 2,
+     "released": 4,
+     "tie_events": 2,
+     "worst_response": 4
+    },
+    "lst:rm": {
+     "busy": 7,
+     "completed": 3,
+     "context_switches": 5,
+     "first_miss": 7,
+     "horizon": 8,
+     "idle": 1,
+     "jitter": 2,
+     "laxity_zero_switches": 1,
+     "mean_response": 3.3333,
+     "min_laxity": -1,
+     "miss_rate": 0.25,
+     "missed": 1,
+     "preemptions": 2,
+     "released": 4,
+     "tie_events": 2,
+     "worst_response": 4
+    },
+    "lst:stay": {
+     "busy": 7,
+     "completed": 3,
+     "context_switches": 4,
+     "first_miss": 7,
+     "horizon": 8,
+     "idle": 1,
+     "jitter": 3,
+     "laxity_zero_switches": 0,
+     "mean_response": 3.3333,
+     "min_laxity": -1,
+     "miss_rate": 0.25,
+     "missed": 1,
+     "preemptions": 1,
+     "released": 4,
+     "tie_events": 2,
+     "worst_response": 5
+    },
+    "rm": {
+     "busy": 7,
+     "completed": 3,
+     "context_switches": 3,
+     "first_miss": 7,
+     "horizon": 8,
+     "idle": 1,
+     "jitter": 2,
+     "laxity_zero_switches": 0,
+     "mean_response": 3.0,
+     "min_laxity": -1,
+     "miss_rate": 0.25,
+     "missed": 1,
+     "preemptions": 0,
+     "released": 4,
+     "tie_events": 1,
+     "worst_response": 4
+    }
+   },
+   "spec": "T1(T=4,C=2,D=3,ph=0), T2(T=4,C=3,D=4,ph=3)",
+   "task_count": 2,
+   "tasks": [
+    [
+     "T1",
+     4,
+     2,
+     3,
+     0
+    ],
+    [
+     "T2",
+     4,
+     3,
+     4,
+     3
+    ]
+   ],
+   "utilisation": 1.25,
+   "witness": {
+    "busy": 5,
+    "checked": true,
+    "jobs": 2,
+    "reason": "every job finished strictly before its deadline",
+    "steps": 6,
+    "valid": true
+   },
+   "witness_cost": {
+    "available": true,
+    "busy": 5,
+    "context_switches": 2,
+    "idle": 1,
+    "preemptions": 0,
+    "steps": 6
+   }
+  },
+  {
+   "alignment": {
+    "aligned": {
+     "edf": {
+      "horizon": 28,
+      "missed": 0,
+      "release_window": 16,
+      "released": 7
+     },
+     "lst": {
+      "horizon": 28,
+      "missed": 0,
+      "release_window": 16,
+      "released": 7
+     },
+     "rm": {
+      "horizon": 28,
+      "missed": 0,
+      "release_window": 16,
+      "released": 7
+     }
+    },
+    "aligned_agrees": true,
+    "checker_horizon": 16,
+    "checker_verdict": true,
+    "max_deadline": 12,
+    "naive": {
+     "edf": {
+      "horizon": 32,
+      "missed": 0,
+      "released": 14
+     },
+     "lst": {
+      "horizon": 32,
+      "missed": 0,
+      "released": 14
+     },
+     "rm": {
+      "horizon": 32,
+      "missed": 0,
+      "released": 14
+     }
+    },
+    "naive_agrees": true,
+    "optimal_policies": [
+     "lst",
+     "edf"
+    ],
+    "rm_control": {
+     "aligned_missed": 0,
+     "counterexample": false,
+     "naive_missed": 0
+    }
+   },
+   "cap_control": {
+    "explanation": "truncated runs are artefacts of the cap, not findings",
+    "false_infeasible_count": 2,
+    "full_truncated": false,
+    "full_verdict": true,
+    "rows": [
+     {
+      "feasible": false,
+      "limit": 4,
+      "states": 9,
+      "truncated": true
+     },
+     {
+      "feasible": false,
+      "limit": 8,
+      "states": 15,
+      "truncated": true
+     },
+     {
+      "feasible": true,
+      "limit": 16,
+      "states": 14,
+      "truncated": false
+     },
+     {
+      "feasible": true,
+      "limit": 4000000,
+      "states": 14,
+      "truncated": false
+     }
+    ],
+    "smallest_truncating_limit": 4
+   },
+   "checker": {
+    "allow_idle_false": true,
+    "allow_idle_true": true,
+    "feasible": true,
+    "horizon": 16,
+    "idle_enumeration_agrees": true,
+    "jobs": 7,
+    "pruned": 1,
+    "schedule": [
+     0,
+     1,
+     1,
+     2,
+     2,
+     2,
+     3,
+     2,
+     4,
+     5,
+     5,
+     -1,
+     6
+    ],
+    "schedule_length": 13,
+    "states": 14,
+    "truncated": false
+   },
+   "constrained_deadline": true,
+   "gantt": {
+    "edf": [
+     [
+      "T1#0",
+      0,
+      1
+     ],
+     [
+      "T2#0",
+      1,
+      3
+     ],
+     [
+      "T3#0",
+      3,
+      4
+     ],
+     [
+      "T1#1",
+      4,
+      5
+     ],
+     [
+      "T3#0",
+      5,
+      8
+     ],
+     [
+      "T1#2",
+      8,
+      9
+     ],
+     [
+      "T2#1",
+      9,
+      11
+     ],
+     [
+      "T1#3",
+      12,
+      13
+     ],
+     [
+      "T1#4",
+      16,
+      17
+     ],
+     [
+      "T2#2",
+      17,
+      19
+     ],
+     [
+      "T3#1",
+      19,
+      20
+     ],
+     [
+      "T1#5",
+      20,
+      21
+     ],
+     [
+      "T3#1",
+      21,
+      24
+     ],
+     [
+      "T1#6",
+      24,
+      25
+     ],
+     [
+      "T2#3",
+      25,
+      27
+     ],
+     [
+      "T1#7",
+      28,
+      29
+     ]
+    ],
+    "lst": [
+     [
+      "T1#0",
+      0,
+      1
+     ],
+     [
+      "T2#0",
+      1,
+      3
+     ],
+     [
+      "T3#0",
+      3,
+      4
+     ],
+     [
+      "T1#1",
+      4,
+      5
+     ],
+     [
+      "T3#0",
+      5,
+      8
+     ],
+     [
+      "T1#2",
+      8,
+      9
+     ],
+     [
+      "T2#1",
+      9,
+      11
+     ],
+     [
+      "T1#3",
+      12,
+      13
+     ],
+     [
+      "T1#4",
+      16,
+      17
+     ],
+     [
+      "T2#2",
+      17,
+      19
+     ],
+     [
+      "T3#1",
+      19,
+      20
+     ],
+     [
+      "T1#5",
+      20,
+      21
+     ],
+     [
+      "T3#1",
+      21,
+      24
+     ],
+     [
+      "T1#6",
+      24,
+      25
+     ],
+     [
+      "T2#3",
+      25,
+      27
+     ],
+     [
+      "T1#7",
+      28,
+      29
+     ]
+    ],
+    "rm": [
+     [
+      "T1#0",
+      0,
+      1
+     ],
+     [
+      "T2#0",
+      1,
+      3
+     ],
+     [
+      "T3#0",
+      3,
+      4
+     ],
+     [
+      "T1#1",
+      4,
+      5
+     ],
+     [
+      "T3#0",
+      5,
+      8
+     ],
+     [
+      "T1#2",
+      8,
+      9
+     ],
+     [
+      "T2#1",
+      9,
+      11
+     ],
+     [
+      "T1#3",
+      12,
+      13
+     ],
+     [
+      "T1#4",
+      16,
+      17
+     ],
+     [
+      "T2#2",
+      17,
+      19
+     ],
+     [
+      "T3#1",
+      19,
+      20
+     ],
+     [
+      "T1#5",
+      20,
+      21
+     ],
+     [
+      "T3#1",
+      21,
+      24
+     ],
+     [
+      "T1#6",
+      24,
+      25
+     ],
+     [
+      "T2#3",
+      25,
+      27
+     ],
+     [
+      "T1#7",
+      28,
+      29
+     ]
+    ]
+   },
+   "hyperperiod": 16,
+   "id": "R7",
+   "label": "harmonic",
+   "max_deadline": 12,
+   "policies": {
+    "dm": {
+     "busy": 24,
+     "completed": 14,
+     "context_switches": 16,
+     "first_miss": null,
+     "horizon": 32,
+     "idle": 8,
+     "jitter": 7,
+     "laxity_zero_switches": 0,
+     "mean_response": 2.5714,
+     "min_laxity": 2,
+     "miss_rate": 0.0,
+     "missed": 0,
+     "preemptions": 2,
+     "released": 14,
+     "tie_events": 0,
+     "worst_response": 8
+    },
+    "edf": {
+     "busy": 24,
+     "completed": 14,
+     "context_switches": 16,
+     "first_miss": null,
+     "horizon": 32,
+     "idle": 8,
+     "jitter": 7,
+     "laxity_zero_switches": 0,
+     "mean_response": 2.5714,
+     "min_laxity": 2,
+     "miss_rate": 0.0,
+     "missed": 0,
+     "preemptions": 2,
+     "released": 14,
+     "tie_events": 0,
+     "worst_response": 8
+    },
+    "fifo": {
+     "busy": 24,
+     "completed": 14,
+     "context_switches": 14,
+     "first_miss": 7,
+     "horizon": 32,
+     "idle": 8,
+     "jitter": 6,
+     "laxity_zero_switches": 0,
+     "mean_response": 2.8571,
+     "min_laxity": -1,
+     "miss_rate": 0.142857,
+     "missed": 2,
+     "preemptions": 0,
+     "released": 14,
+     "tie_events": 0,
+     "worst_response": 7
+    },
+    "lst": {
+     "busy": 24,
+     "completed": 14,
+     "context_switches": 16,
+     "first_miss": null,
+     "horizon": 32,
+     "idle": 8,
+     "jitter": 7,
+     "laxity_zero_switches": 0,
+     "mean_response": 2.5714,
+     "min_laxity": 2,
+     "miss_rate": 0.0,
+     "missed": 0,
+     "preemptions": 2,
+     "released": 14,
+     "tie_events": 0,
+     "worst_response": 8
+    },
+    "lst:edf": {
+     "busy": 24,
+     "completed": 14,
+     "context_switches": 16,
+     "first_miss": null,
+     "horizon": 32,
+     "idle": 8,
+     "jitter": 7,
+     "laxity_zero_switches": 0,
+     "mean_response": 2.5714,
+     "min_laxity": 2,
+     "miss_rate": 0.0,
+     "missed": 0,
+     "preemptions": 2,
+     "released": 14,
+     "tie_events": 0,
+     "worst_response": 8
+    },
+    "lst:lzs": {
+     "busy": 24,
+     "completed": 14,
+     "context_switches": 16,
+     "first_miss": null,
+     "horizon": 32,
+     "idle": 8,
+     "jitter": 7,
+     "laxity_zero_switches": 0,
+     "mean_response": 2.5714,
+     "min_laxity": 2,
+     "miss_rate": 0.0,
+     "missed": 0,
+     "preemptions": 2,
+     "released": 14,
+     "tie_events": 0,
+     "worst_response": 8
+    },
+    "lst:rm": {
+     "busy": 24,
+     "completed": 14,
+     "context_switches": 16,
+     "first_miss": null,
+     "horizon": 32,
+     "idle": 8,
+     "jitter": 7,
+     "laxity_zero_switches": 0,
+     "mean_response": 2.5714,
+     "min_laxity": 2,
+     "miss_rate": 0.0,
+     "missed": 0,
+     "preemptions": 2,
+     "released": 14,
+     "tie_events": 0,
+     "worst_response": 8
+    },
+    "lst:stay": {
+     "busy": 24,
+     "completed": 14,
+     "context_switches": 16,
+     "first_miss": null,
+     "horizon": 32,
+     "idle": 8,
+     "jitter": 7,
+     "laxity_zero_switches": 0,
+     "mean_response": 2.5714,
+     "min_laxity": 2,
+     "miss_rate": 0.0,
+     "missed": 0,
+     "preemptions": 2,
+     "released": 14,
+     "tie_events": 0,
+     "worst_response": 8
+    },
+    "rm": {
+     "busy": 24,
+     "completed": 14,
+     "context_switches": 16,
+     "first_miss": null,
+     "horizon": 32,
+     "idle": 8,
+     "jitter": 7,
+     "laxity_zero_switches": 0,
+     "mean_response": 2.5714,
+     "min_laxity": 2,
+     "miss_rate": 0.0,
+     "missed": 0,
+     "preemptions": 2,
+     "released": 14,
+     "tie_events": 0,
+     "worst_response": 8
+    }
+   },
+   "spec": "T1(T=4,C=1,D=3,ph=0), T2(T=8,C=2,D=6,ph=0), T3(T=16,C=4,D=12,ph=0)",
+   "task_count": 3,
+   "tasks": [
+    [
+     "T1",
+     4,
+     1,
+     3,
+     0
+    ],
+    [
+     "T2",
+     8,
+     2,
+     6,
+     0
+    ],
+    [
+     "T3",
+     16,
+     4,
+     12,
+     0
+    ]
+   ],
+   "utilisation": 0.75,
+   "witness": {
+    "busy": 12,
+    "checked": true,
+    "jobs": 7,
+    "reason": "every job finished strictly before its deadline",
+    "steps": 13,
+    "valid": true
+   },
+   "witness_cost": {
+    "available": true,
+    "busy": 12,
+    "context_switches": 8,
+    "idle": 1,
+    "preemptions": 1,
+    "steps": 13
+   }
+  },
+  {
+   "alignment": {
+    "aligned": {
+     "edf": {
+      "horizon": 16,
+      "missed": 4,
+      "release_window": 10,
+      "released": 5
+     },
+     "lst": {
+      "horizon": 16,
+      "missed": 4,
+      "release_window": 10,
+      "released": 5
+     },
+     "rm": {
+      "horizon": 16,
+      "missed": 3,
+      "release_window": 10,
+      "released": 5
+     }
+    },
+    "aligned_agrees": true,
+    "checker_horizon": 10,
+    "checker_verdict": false,
+    "max_deadline": 6,
+    "naive": {
+     "edf": {
+      "horizon": 20,
+      "missed": 8,
+      "released": 10
+     },
+     "lst": {
+      "horizon": 20,
+      "missed": 9,
+      "released": 10
+     },
+     "rm": {
+      "horizon": 20,
+      "missed": 6,
+      "released": 10
+     }
+    },
+    "naive_agrees": true,
+    "optimal_policies": [
+     "lst",
+     "edf"
+    ],
+    "rm_control": {
+     "aligned_missed": 3,
+     "counterexample": false,
+     "naive_missed": 6
+    }
+   },
+   "cap_control": {
+    "explanation": "truncated runs are artefacts of the cap, not findings",
+    "false_infeasible_count": 0,
+    "full_truncated": false,
+    "full_verdict": false,
+    "rows": [
+     {
+      "feasible": false,
+      "limit": 4,
+      "states": 6,
+      "truncated": true
+     },
+     {
+      "feasible": false,
+      "limit": 8,
+      "states": 6,
+      "truncated": false
+     },
+     {
+      "feasible": false,
+      "limit": 16,
+      "states": 6,
+      "truncated": false
+     },
+     {
+      "feasible": false,
+      "limit": 4000000,
+      "states": 6,
+      "truncated": false
+     }
+    ],
+    "smallest_truncating_limit": null
+   },
+   "checker": {
+    "allow_idle_false": false,
+    "allow_idle_true": false,
+    "feasible": false,
+    "horizon": 10,
+    "idle_enumeration_agrees": true,
+    "jobs": 5,
+    "pruned": 10,
+    "schedule": [],
+    "schedule_length": 0,
+    "states": 6,
+    "truncated": false
+   },
+   "constrained_deadline": true,
+   "gantt": {
+    "edf": [
+     [
+      "T1#0",
+      0,
+      2
+     ],
+     [
+      "T2#0",
+      2,
+      4
+     ],
+     [
+      "T3#0",
+      4,
+      7
+     ],
+     [
+      "T1#1",
+      7,
+      9
+     ],
+     [
+      "T2#1",
+      9,
+      11
+     ],
+     [
+      "T1#2",
+      11,
+      13
+     ],
+     [
+      "T2#2",
+      13,
+      15
+     ],
+     [
+      "T3#1",
+      15,
+      18
+     ],
+     [
+      "T1#3",
+      18,
+      20
+     ]
+    ],
+    "lst": [
+     [
+      "T1#0",
+      0,
+      1
+     ],
+     [
+      "T2#0",
+      1,
+      2
+     ],
+     [
+      "T1#0",
+      2,
+      3
+     ],
+     [
+      "T2#0",
+      3,
+      4
+     ],
+     [
+      "T3#0",
+      4,
+      7
+     ],
+     [
+      "T1#1",
+      7,
+      8
+     ],
+     [
+      "T2#1",
+      8,
+      9
+     ],
+     [
+      "T1#1",
+      9,
+      10
+     ],
+     [
+      "T2#1",
+      10,
+      11
+     ],
+     [
+      "T1#2",
+      11,
+      12
+     ],
+     [
+      "T2#2",
+      12,
+      13
+     ],
+     [
+      "T1#2",
+      13,
+      14
+     ],
+     [
+      "T2#2",
+      14,
+      15
+     ],
+     [
+      "T3#1",
+      15,
+      18
+     ],
+     [
+      "T1#3",
+      18,
+      19
+     ],
+     [
+      "T2#3",
+      19,
+      20
+     ]
+    ],
+    "rm": [
+     [
+      "T1#0",
+      0,
+      2
+     ],
+     [
+      "T2#0",
+      2,
+      4
+     ],
+     [
+      "T3#0",
+      4,
+      5
+     ],
+     [
+      "T1#1",
+      5,
+      7
+     ],
+     [
+      "T2#1",
+      7,
+      9
+     ],
+     [
+      "T3#0",
+      9,
+      10
+     ],
+     [
+      "T1#2",
+      10,
+      12
+     ],
+     [
+      "T2#2",
+      12,
+      14
+     ],
+     [
+      "T3#0",
+      14,
+      15
+     ],
+     [
+      "T1#3",
+      15,
+      17
+     ],
+     [
+      "T2#3",
+      17,
+      19
+     ],
+     [
+      "T3#1",
+      19,
+      20
+     ]
+    ]
+   },
+   "hyperperiod": 10,
+   "id": "R8",
+   "label": "tight three tasks",
+   "max_deadline": 6,
+   "policies": {
+    "dm": {
+     "busy": 20,
+     "completed": 9,
+     "context_switches": 12,
+     "first_miss": 3,
+     "horizon": 20,
+     "idle": 0,
+     "jitter": 13,
+     "laxity_zero_switches": 0,
+     "mean_response": 4.3333,
+     "min_laxity": -9,
+     "miss_rate": 0.6,
+     "missed": 6,
+     "preemptions": 2,
+     "released": 10,
+     "tie_events": 1,
+     "worst_response": 15
+    },
+    "edf": {
+     "busy": 20,
+     "completed": 9,
+     "context_switches": 9,
+     "first_miss": 3,
+     "horizon": 20,
+     "idle": 0,
+     "jitter": 6,
+     "laxity_zero_switches": 0,
+     "mean_response": 4.8889,
+     "min_laxity": -3,
+     "miss_rate": 0.8,
+     "missed": 8,
+     "preemptions": 0,
+     "released": 10,
+     "tie_events": 4,
+     "worst_response": 8
+    },
+    "fifo": {
+     "busy": 20,
+     "completed": 9,
+     "context_switches": 9,
+     "first_miss": 3,
+     "horizon": 20,
+     "idle": 0,
+     "jitter": 6,
+     "laxity_zero_switches": 0,
+     "mean_response": 4.8889,
+     "min_laxity": -3,
+     "miss_rate": 0.8,
+     "missed": 8,
+     "preemptions": 0,
+     "released": 10,
+     "tie_events": 4,
+     "worst_response": 8
+    },
+    "lst": {
+     "busy": 20,
+     "completed": 8,
+     "context_switches": 16,
+     "first_miss": 3,
+     "horizon": 20,
+     "idle": 0,
+     "jitter": 5,
+     "laxity_zero_switches": 1,
+     "mean_response": 5.25,
+     "min_laxity": -3,
+     "miss_rate": 0.9,
+     "missed": 9,
+     "preemptions": 7,
+     "released": 10,
+     "tie_events": 7,
+     "worst_response": 8
+    },
+    "lst:edf": {
+     "busy": 20,
+     "completed": 8,
+     "context_switches": 16,
+     "first_miss": 3,
+     "horizon": 20,
+     "idle": 0,
+     "jitter": 5,
+     "laxity_zero_switches": 1,
+     "mean_response": 5.25,
+     "min_laxity": -3,
+     "miss_rate": 0.9,
+     "missed": 9,
+     "preemptions": 7,
+     "released": 10,
+     "tie_events": 7,
+     "worst_response": 8
+    },
+    "lst:lzs": {
+     "busy": 20,
+     "completed": 8,
+     "context_switches": 16,
+     "first_miss": 3,
+     "horizon": 20,
+     "idle": 0,
+     "jitter": 5,
+     "laxity_zero_switches": 1,
+     "mean_response": 5.25,
+     "min_laxity": -3,
+     "miss_rate": 0.9,
+     "missed": 9,
+     "preemptions": 7,
+     "released": 10,
+     "tie_events": 7,
+     "worst_response": 8
+    },
+    "lst:rm": {
+     "busy": 20,
+     "completed": 8,
+     "context_switches": 16,
+     "first_miss": 3,
+     "horizon": 20,
+     "idle": 0,
+     "jitter": 5,
+     "laxity_zero_switches": 1,
+     "mean_response": 5.25,
+     "min_laxity": -3,
+     "miss_rate": 0.9,
+     "missed": 9,
+     "preemptions": 7,
+     "released": 10,
+     "tie_events": 7,
+     "worst_response": 8
+    },
+    "lst:stay": {
+     "busy": 20,
+     "completed": 8,
+     "context_switches": 13,
+     "first_miss": 3,
+     "horizon": 20,
+     "idle": 0,
+     "jitter": 5,
+     "laxity_zero_switches": 0,
+     "mean_response": 5.25,
+     "min_laxity": -3,
+     "miss_rate": 0.9,
+     "missed": 9,
+     "preemptions": 4,
+     "released": 10,
+     "tie_events": 7,
+     "worst_response": 8
+    },
+    "rm": {
+     "busy": 20,
+     "completed": 9,
+     "context_switches": 12,
+     "first_miss": 3,
+     "horizon": 20,
+     "idle": 0,
+     "jitter": 13,
+     "laxity_zero_switches": 0,
+     "mean_response": 4.3333,
+     "min_laxity": -9,
+     "miss_rate": 0.6,
+     "missed": 6,
+     "preemptions": 2,
+     "released": 10,
+     "tie_events": 1,
+     "worst_response": 15
+    }
+   },
+   "spec": "T1(T=5,C=2,D=3,ph=0), T2(T=5,C=2,D=3,ph=0), T3(T=10,C=3,D=6,ph=0)",
+   "task_count": 3,
+   "tasks": [
+    [
+     "T1",
+     5,
+     2,
+     3,
+     0
+    ],
+    [
+     "T2",
+     5,
+     2,
+     3,
+     0
+    ],
+    [
+     "T3",
+     10,
+     3,
+     6,
+     0
+    ]
+   ],
+   "utilisation": 1.1,
+   "witness": {
+    "checked": false,
+    "reason": "no witness (infeasible verdict)",
+    "valid": null
+   },
+   "witness_cost": {
+    "available": false,
+    "busy": 0,
+    "context_switches": 0,
+    "idle": 0,
+    "preemptions": 0,
+    "steps": 0
+   }
+  }
+ ]
+}

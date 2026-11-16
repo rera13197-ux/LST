@@ -1,0 +1,11771 @@
+{
+ "figures": [
+  {
+   "file": "fig_ex2_preemptions.png",
+   "kind": "bar",
+   "labels": [
+    "lst",
+    "lst:edf",
+    "lst:rm",
+    "lst:stay",
+    "lst:lzs",
+    "edf",
+    "rm",
+    "dm",
+    "fifo"
+   ],
+   "source": "task_sets[0].policies.*.preemptions",
+   "title": "Preemptions by policy on W1",
+   "values": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "xlabel": "",
+   "ylabel": "preemptions"
+  },
+  {
+   "file": "fig_ex2_misses.png",
+   "kind": "grouped_bar",
+   "labels": [
+    "W1",
+    "W2",
+    "W3",
+    "W4",
+    "W5",
+    "W6",
+    "W7",
+    "W8"
+   ],
+   "series": [
+    {
+     "name": "lst",
+     "values": [
+      0,
+      0,
+      0,
+      2,
+      0,
+      2,
+      0,
+      2
+     ]
+    },
+    {
+     "name": "edf",
+     "values": [
+      0,
+      0,
+      0,
+      2,
+      0,
+      2,
+      0,
+      2
+     ]
+    },
+    {
+     "name": "rm",
+     "values": [
+      0,
+      0,
+      0,
+      40,
+      0,
+      2,
+      2,
+      4
+     ]
+    }
+   ],
+   "source": "task_sets[*].policies.*.missed",
+   "title": "Missed deadlines per set and policy",
+   "xlabel": "task set",
+   "ylabel": "missed deadlines"
+  },
+  {
+   "file": "fig_ex2_ties.png",
+   "kind": "heatmap",
+   "matrix": [
+    [
+     0,
+     6,
+     0,
+     136,
+     4,
+     4,
+     6,
+     8
+    ],
+    [
+     0,
+     6,
+     0,
+     136,
+     4,
+     4,
+     6,
+     8
+    ],
+    [
+     0,
+     6,
+     0,
+     136,
+     4,
+     4,
+     6,
+     8
+    ],
+    [
+     0,
+     6,
+     0,
+     136,
+     4,
+     4,
+     6,
+     8
+    ],
+    [
+     0,
+     6,
+     0,
+     136,
+     4,
+     4,
+     6,
+     8
+    ]
+   ],
+   "source": "task_sets[*].policies.*.tie_events",
+   "title": "Tie events per set and policy",
+   "xlabels": [
+    "W1",
+    "W2",
+    "W3",
+    "W4",
+    "W5",
+    "W6",
+    "W7",
+    "W8"
+   ],
+   "ylabels": [
+    "lst",
+    "lst:edf",
+    "lst:rm",
+    "lst:stay",
+    "lst:lzs"
+   ]
+  },
+  {
+   "file": "fig_ex2_gantt.png",
+   "kind": "gantt",
+   "rows": [
+    [
+     "T1#0",
+     0,
+     2
+    ],
+    [
+     "T2#0",
+     2,
+     5
+    ],
+    [
+     "T1#1",
+     10,
+     12
+    ],
+    [
+     "T1#2",
+     20,
+     22
+    ],
+    [
+     "T2#1",
+     22,
+     25
+    ],
+    [
+     "T1#3",
+     30,
+     32
+    ]
+   ],
+   "source": "task_sets[0].gantt.lst",
+   "title": "lst schedule on W1"
+  },
+  {
+   "file": "fig_ex2_misses_sweep.png",
+   "kind": "line",
+   "series": [
+    {
+     "name": "lst_missed",
+     "values": [
+      0,
+      0,
+      0,
+      11
+     ]
+    },
+    {
+     "name": "edf_missed",
+     "values": [
+      0,
+      0,
+      0,
+      9
+     ]
+    },
+    {
+     "name": "rm_missed",
+     "values": [
+      0,
+      0,
+      2,
+      3
+     ]
+    },
+    {
+     "name": "checker_feasible",
+     "values": [
+      1,
+      1,
+      1,
+      0
+     ]
+    }
+   ],
+   "source": "sweeps[0]",
+   "title": "Sweep misses: C of T1 (time units)",
+   "x": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "xlabel": "C of T1 (time units)",
+   "ylabel": "missed"
+  },
+  {
+   "file": "fig_ex2_pre_sweep.png",
+   "kind": "line",
+   "series": [
+    {
+     "name": "lst_preemptions",
+     "values": [
+      0,
+      10,
+      16,
+      20
+     ]
+    },
+    {
+     "name": "edf_preemptions",
+     "values": [
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "rm_preemptions",
+     "values": [
+      0,
+      4,
+      4,
+      1
+     ]
+    }
+   ],
+   "source": "sweeps[1]",
+   "title": "Sweep preemptions: C of T1 (time units)",
+   "x": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "xlabel": "C of T1 (time units)",
+   "ylabel": "preemptions"
+  },
+  {
+   "file": "fig_ex2_alignment.png",
+   "kind": "line",
+   "series": [
+    {
+     "name": "naive_lst_missed",
+     "values": [
+      0,
+      0,
+      0,
+      2,
+      0,
+      2,
+      0,
+      2
+     ]
+    },
+    {
+     "name": "aligned_lst_missed",
+     "values": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      1
+     ]
+    },
+    {
+     "name": "checker_feasible",
+     "values": [
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0
+     ]
+    }
+   ],
+   "source": "sweeps[2]",
+   "title": "Sweep alignment: task set",
+   "x": [
+    "W1",
+    "W2",
+    "W3",
+    "W4",
+    "W5",
+    "W6",
+    "W7",
+    "W8"
+   ],
+   "xlabel": "task set",
+   "ylabel": "count"
+  },
+  {
+   "file": "fig_ex2_scatter.png",
+   "kind": "scatter",
+   "points": [
+    [
+     0.35,
+     0
+    ],
+    [
+     0.833333,
+     10
+    ],
+    [
+     0.75,
+     2
+    ],
+    [
+     0.958442,
+     162
+    ],
+    [
+     0.8,
+     4
+    ],
+    [
+     0.9,
+     0
+    ],
+    [
+     0.833333,
+     6
+    ],
+    [
+     0.733333,
+     4
+    ]
+   ],
+   "source": "task_sets[*].policies.lst.preemptions",
+   "title": "Utilisation versus LST preemptions across workloads",
+   "xlabel": "utilisation",
+   "ylabel": "LST preemptions"
+  },
+  {
+   "file": "fig_ex2_jitter.png",
+   "kind": "grouped_bar",
+   "labels": [
+    "W1",
+    "W2",
+    "W3",
+    "W4",
+    "W5",
+    "W6",
+    "W7",
+    "W8"
+   ],
+   "series": [
+    {
+     "name": "lst",
+     "values": [
+      3,
+      6,
+      7,
+      6,
+      9,
+      5,
+      4,
+      2
+     ]
+    },
+    {
+     "name": "edf",
+     "values": [
+      3,
+      5,
+      7,
+      6,
+      9,
+      5,
+      4,
+      2
+     ]
+    },
+    {
+     "name": "rm",
+     "values": [
+      3,
+      9,
+      7,
+      11,
+      9,
+      7,
+      6,
+      2
+     ]
+    }
+   ],
+   "source": "task_sets[*].policies.*.jitter",
+   "title": "Response jitter per workload and policy",
+   "xlabel": "workload",
+   "ylabel": "jitter"
+  }
+ ],
+ "findings": [
+  {
+   "detail_en": "[M] On W1, LST records 0 preemptions and 6 context switches; EDF records 0 and 6. Both miss 0 deadlines. [E] The checker verdict is feasible after 13 states. Correctness does not order these two policies; overhead does.",
+   "detail_fa": "[M] روی W1، LST برابر 0 پیشگیری و 6 تعویض زمینه ثبت میکند؛ EDF برابر 0 و 6. هر دو 0 ضربالاجل از دست میدهند. [E] حکم چککننده پس از 13 حالت «شدنی» است. درستی این دو سیاست را مرتب نمیکند؛ سربار میکند.",
+   "id": "F1",
+   "kind": "M",
+   "numbers": {
+    "checker_states": 13,
+    "edf_preemptions": 0,
+    "edf_switches": 6,
+    "lst_preemptions": 0,
+    "lst_switches": 6
+   },
+   "source": "task_sets[0].policies",
+   "title_en": "Minimising slack is not minimising overhead",
+   "title_fa": "کمینه کردن لَکسیَتی، کمینه کردن سربار نیست",
+   "witness": []
+  },
+  {
+   "detail_en": "[E] Of 1 sets with implicit deadlines, 1 are feasible. Of 7 constrained sets, 4 are feasible and 3 are infeasible. Feasibility has discriminating power only in the constrained regime; that is why every sweep here moves a deadline rather than a definition.",
+   "detail_fa": "[E] از 1 مجموعه با ضربالاجل ضمنی، 1 شدنیاند. از 7 مجموعهٔ مقید، 4 شدنی و 3 نشدنیاند. شدنیبودن فقط در رژیم مقید قدرت تفکیک دارد؛ برای همین هر جاروبی اینجا ضربالاجلی را جابهجا میکند، نه تعریفی را.",
+   "id": "F2",
+   "kind": "B",
+   "numbers": {
+    "constrained_feasible": 4,
+    "constrained_infeasible": 3,
+    "constrained_sets": 7,
+    "implicit_feasible": 1,
+    "implicit_sets": 1
+   },
+   "source": "task_sets[*].checker",
+   "title_en": "Implicit deadlines take the test away",
+   "title_fa": "ضربالاجل ضمنی، آزمون را از میان برمیدارد",
+   "witness": []
+  },
+  {
+   "detail_en": "[D] No naive-versus-aligned mismatch survives on these 8 sets: 8 naive and 8 aligned comparisons agree with the checker. The largest gap in missed deadlines between the two settings is 1 on W4. Reporting a disagreement that the data does not contain would be the mistake.",
+   "detail_fa": "[D] روی این 8 مجموعه هیچ ناهماهنگیِ سادهلوح/همتراز باقی نمیماند: 8 مقایسهٔ سادهلوح و 8 مقایسهٔ همتراز با چککننده جوراند. بیشترین شکافِ خطاها بین دو تنظیم برابر 1 روی W4 است. گزارشِ اختلافی که داده ندارد همان اشتباه است.",
+   "id": "F3",
+   "kind": "D",
+   "numbers": {
+    "aligned_agree": 8,
+    "aligned_missed_target": 1,
+    "naive_agree": 8,
+    "naive_missed_target": 2,
+    "set_count": 8
+   },
+   "source": "task_sets[*].alignment",
+   "title_en": "Naive versus aligned comparison",
+   "title_fa": "مقایسهٔ سادهلوح در برابر همتراز",
+   "witness": []
+  },
+  {
+   "detail_en": "[D] With a reduced state cap, W1 is reported infeasible 2 times, each run flagged truncated; with the cap restored the verdict is feasible after 13 states. The smallest truncating cap was 4. A truncated run is an artefact of the instrument and is never used as a finding.",
+   "detail_fa": "[D] با سقفِ حالتِ کاهش‌یافته، W1 به تعداد 2 بار نشدنی گزارش میشود که هر بار برچسب بریدگی دارد؛ با برگرداندن سقف، حکم پس از 13 حالت «شدنی» است. کمترین سقفِ بریدهکننده 4 بود. اجرای بریدهشده مصنوعِ ابزار است و هرگز یافته به حساب نمیآید.",
+   "id": "F4",
+   "kind": "D",
+   "numbers": {
+    "false_infeasible_runs": 2,
+    "full_feasible": 1,
+    "full_states": 13,
+    "smallest_truncating_limit": 4
+   },
+   "source": "task_sets[0].cap_control",
+   "title_en": "A state cap fabricates an infeasibility verdict",
+   "title_fa": "سقفِ حالت، حکمِ نشدنیبودن میسازد",
+   "witness": []
+  },
+  {
+   "detail_en": "[M] Across all 8 workloads LST records 188 preemptions and 6 missed deadlines, EDF records 44 and 6, and RM records 126 and 48. [E] Wherever the checker says feasible, both LST and EDF meet every deadline in the aligned run, while RM supplies genuine counterexamples. On the raw cost of being correct, EDF wins here; saying LST is better because it is optimal would confuse a verdict with a measurement.",
+   "detail_fa": "[M] روی همهٔ 8 بار کاری، LST برابر 188 پیشگیری و 6 خطا، EDF برابر 44 و 6، و RM برابر 126 و 48 ثبت میکند. [E] هرجا چککننده «شدنی» بگوید، هم LST و هم EDF در اجرای همتراز به همهٔ ضربالاجلها میرسند، در حالی که RM ضدمثالهای واقعی میدهد. در هزینهٔ خامِ درستبودن این EDF است که میبرد؛ بهتر دانستنِ LST چون بهینه است، یکی گرفتنِ حکم با اندازهگیری است.",
+   "id": "F5",
+   "kind": "M",
+   "numbers": {
+    "edf_missed": 6,
+    "edf_preemptions": 44,
+    "lst_missed": 6,
+    "lst_preemptions": 188,
+    "rm_missed": 48,
+    "rm_preemptions": 126,
+    "workloads": 8
+   },
+   "source": "task_sets[*].policies",
+   "title_en": "Cheapest correctness is not LST",
+   "title_fa": "ارزانترین درستی، LST نیست",
+   "witness": []
+  },
+  {
+   "detail_en": "[M] On 4 of 8 workloads all three policies miss zero deadlines, so correctness does not separate them at all. Preemptions still do, and so does response jitter: on 0 workloads LST has strictly smaller jitter than EDF even while costing more preemptions. That is not a contradiction and not a ranking; it is a measurement that separates one dimension while another stays inconclusive. The widest such workload is reported in the tables above, not guessed.",
+   "detail_fa": "[M] روی 4 از 8 بار کاری هر سه سیاست صفر خطا میدهند، پس سنجهٔ درستی اصلاً جدایشان نمیکند. پیشگیریها هنوز جدا میکنند و لرزش پاسخ هم: روی 0 بار کاری لرزش LST اکیداً کوچکتر از EDF است، هرچند پیشگیریش بیشتر است. این تناقض نیست و رتبهبندی هم نیست؛ اندازهای است که یک بُعد را جدا میکند در حالی که بُعد دیگر بیتصمیم میماند. اینجا ادعایی حدسی نشده؛ همهٔ این عددها از جدولهای بالا میآیند.",
+   "id": "F6",
+   "kind": "M",
+   "numbers": {
+    "all_zero_miss_sets": 4,
+    "edf_total_preemptions": 44,
+    "lst_lower_jitter_sets": 0,
+    "lst_total_preemptions": 188,
+    "workloads": 8
+   },
+   "source": "task_sets[*].policies.*.jitter",
+   "title_en": "Where the correctness metric cannot separate the policies",
+   "title_fa": "جایی که سنجهٔ درستی نمیتواند سیاستها را جدا کند",
+   "witness": []
+  }
+ ],
+ "meta": {
+  "exercise": 2,
+  "figures": 9,
+  "findings": 6,
+  "generator": "code/run_experiments.py",
+  "horizon_cycles": 2,
+  "lst_tie_breaks": [
+   "lst",
+   "lst:edf",
+   "lst:rm",
+   "lst:stay",
+   "lst:lzs"
+  ],
+  "policies": [
+   "lst",
+   "lst:edf",
+   "lst:rm",
+   "lst:stay",
+   "lst:lzs",
+   "edf",
+   "rm",
+   "dm",
+   "fifo"
+  ],
+  "question_en": "",
+  "question_fa": "",
+  "scope_en": "nine policies over light, heavy, harmonic, non-harmonic, phased and tight workloads, with misses, preemptions, jitter and switch counts",
+  "scope_fa": "نه سیاست روی بارهای سبک، سنگین، هماهنگ، ناهماهنگ، فازدار و تنگ، با خطاها، پیشگیریها، لرزش و شمارش تعویضها",
+  "seed": 20261116,
+  "sweeps": 3,
+  "task_sets": 8
+ },
+ "sweeps": [
+  {
+   "figure": "fig_ex2_misses_sweep.png",
+   "id": "misses",
+   "series": [
+    {
+     "name": "lst_missed",
+     "values": [
+      0,
+      0,
+      0,
+      11
+     ]
+    },
+    {
+     "name": "edf_missed",
+     "values": [
+      0,
+      0,
+      0,
+      9
+     ]
+    },
+    {
+     "name": "rm_missed",
+     "values": [
+      0,
+      0,
+      2,
+      3
+     ]
+    },
+    {
+     "name": "checker_feasible",
+     "values": [
+      1,
+      1,
+      1,
+      0
+     ]
+    }
+   ],
+   "source": "sweeps[0]",
+   "x": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "xlabel": "C of T1 (time units)",
+   "ylabel": "missed"
+  },
+  {
+   "figure": "fig_ex2_pre_sweep.png",
+   "id": "preemptions",
+   "series": [
+    {
+     "name": "lst_preemptions",
+     "values": [
+      0,
+      10,
+      16,
+      20
+     ]
+    },
+    {
+     "name": "edf_preemptions",
+     "values": [
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "name": "rm_preemptions",
+     "values": [
+      0,
+      4,
+      4,
+      1
+     ]
+    }
+   ],
+   "source": "sweeps[1]",
+   "x": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "xlabel": "C of T1 (time units)",
+   "ylabel": "preemptions"
+  },
+  {
+   "figure": "fig_ex2_alignment.png",
+   "id": "alignment",
+   "series": [
+    {
+     "name": "naive_lst_missed",
+     "values": [
+      0,
+      0,
+      0,
+      2,
+      0,
+      2,
+      0,
+      2
+     ]
+    },
+    {
+     "name": "aligned_lst_missed",
+     "values": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      1
+     ]
+    },
+    {
+     "name": "checker_feasible",
+     "values": [
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0
+     ]
+    }
+   ],
+   "source": "sweeps[2]",
+   "x": [
+    "W1",
+    "W2",
+    "W3",
+    "W4",
+    "W5",
+    "W6",
+    "W7",
+    "W8"
+   ],
+   "xlabel": "task set",
+   "ylabel": "count"
+  }
+ ],
+ "task_sets": [
+  {
+   "alignment": {
+    "aligned": {
+     "edf": {
+      "horizon": 35,
+      "missed": 0,
+      "release_window": 20,
+      "released": 3
+     },
+     "lst": {
+      "horizon": 35,
+      "missed": 0,
+      "release_window": 20,
+      "released": 3
+     },
+     "rm": {
+      "horizon": 35,
+      "missed": 0,
+      "release_window": 20,
+      "released": 3
+     }
+    },
+    "aligned_agrees": true,
+    "checker_horizon": 20,
+    "checker_verdict": true,
+    "max_deadline": 15,
+    "naive": {
+     "edf": {
+      "horizon": 40,
+      "missed": 0,
+      "released": 6
+     },
+     "lst": {
+      "horizon": 40,
+      "missed": 0,
+      "released": 6
+     },
+     "rm": {
+      "horizon": 40,
+      "missed": 0,
+      "released": 6
+     }
+    },
+    "naive_agrees": true,
+    "optimal_policies": [
+     "lst",
+     "edf"
+    ],
+    "rm_control": {
+     "aligned_missed": 0,
+     "counterexample": false,
+     "naive_missed": 0
+    }
+   },
+   "cap_control": {
+    "explanation": "truncated runs are artefacts of the cap, not findings",
+    "false_infeasible_count": 2,
+    "full_truncated": false,
+    "full_verdict": true,
+    "rows": [
+     {
+      "feasible": false,
+      "limit": 4,
+      "states": 7,
+      "truncated": true
+     },
+     {
+      "feasible": false,
+      "limit": 8,
+      "states": 11,
+      "truncated": true
+     },
+     {
+      "feasible": true,
+      "limit": 16,
+      "states": 13,
+      "truncated": false
+     },
+     {
+      "feasible": true,
+      "limit": 4000000,
+      "states": 13,
+      "truncated": false
+     }
+    ],
+    "smallest_truncating_limit": 4
+   },
+   "checker": {
+    "allow_idle_false": true,
+    "allow_idle_true": true,
+    "feasible": true,
+    "horizon": 20,
+    "idle_enumeration_agrees": true,
+    "jobs": 3,
+    "pruned": 0,
+    "schedule": [
+     0,
+     0,
+     1,
+     1,
+     1,
+     -1,
+     -1,
+     -1,
+     -1,
+     -1,
+     2,
+     2
+    ],
+    "schedule_length": 12,
+    "states": 13,
+    "truncated": false
+   },
+   "constrained_deadline": true,
+   "gantt": {
+    "edf": [
+     [
+      "T1#0",
+      0,
+      2
+     ],
+     [
+      "T2#0",
+      2,
+      5
+     ],
+     [
+      "T1#1",
+      10,
+      12
+     ],
+     [
+      "T1#2",
+      20,
+      22
+     ],
+     [
+      "T2#1",
+      22,
+      25
+     ],
+     [
+      "T1#3",
+      30,
+      32
+     ]
+    ],
+    "lst": [
+     [
+      "T1#0",
+      0,
+      2
+     ],
+     [
+      "T2#0",
+      2,
+      5
+     ],
+     [
+      "T1#1",
+      10,
+      12
+     ],
+     [
+      "T1#2",
+      20,
+      22
+     ],
+     [
+      "T2#1",
+      22,
+      25
+     ],
+     [
+      "T1#3",
+      30,
+      32
+     ]
+    ],
+    "rm": [
+     [
+      "T1#0",
+      0,
+      2
+     ],
+     [
+      "T2#0",
+      2,
+      5
+     ],
+     [
+      "T1#1",
+      10,
+      12
+     ],
+     [
+      "T1#2",
+      20,
+      22
+     ],
+     [
+      "T2#1",
+      22,
+      25
+     ],
+     [
+      "T1#3",
+      30,
+      32
+     ]
+    ]
+   },
+   "hyperperiod": 20,
+   "id": "W1",
+   "label": "light load",
+   "max_deadline": 15,
+   "policies": {
+    "dm": {
+     "busy": 14,
+     "completed": 6,
+     "context_switches": 6,
+     "first_miss": null,
+     "horizon": 40,
+     "idle": 26,
+     "jitter": 3,
+     "laxity_zero_switches": 0,
+     "mean_response": 3.0,
+     "min_laxity": 6,
+     "miss_rate": 0.0,
+     "missed": 0,
+     "preemptions": 0,
+     "released": 6,
+     "tie_events": 0,
+     "worst_response": 5
+    },
+    "edf": {
+     "busy": 14,
+     "completed": 6,
+     "context_switches": 6,
+     "first_miss": null,
+     "horizon": 40,
+     "idle": 26,
+     "jitter": 3,
+     "laxity_zero_switches": 0,
+     "mean_response": 3.0,
+     "min_laxity": 6,
+     "miss_rate": 0.0,
+     "missed": 0,
+     "preemptions": 0,
+     "released": 6,
+     "tie_events": 0,
+     "worst_response": 5
+    },
+    "fifo": {
+     "busy": 14,
+     "completed": 6,
+     "context_switches": 6,
+     "first_miss": null,
+     "horizon": 40,
+     "idle": 26,
+     "jitter": 3,
+     "laxity_zero_switches": 0,
+     "mean_response": 3.0,
+     "min_laxity": 6,
+     "miss_rate": 0.0,
+     "missed": 0,
+     "preemptions": 0,
+     "released": 6,
+     "tie_events": 0,
+     "worst_response": 5
+    },
+    "lst": {
+     "busy": 14,
+     "completed": 6,
+     "context_switches": 6,
+     "first_miss": null,
+     "horizon": 40,
+     "idle": 26,
+     "jitter": 3,
+     "laxity_zero_switches": 0,
+     "mean_response": 3.0,
+     "min_laxity": 6,
+     "miss_rate": 0.0,
+     "missed": 0,
+     "preemptions": 0,
+     "released": 6,
+     "tie_events": 0,
+     "worst_response": 5
+    },
+    "lst:edf": {
+     "busy": 14,
+     "completed": 6,
+     "context_switches": 6,
+     "first_miss": null,
+     "horizon": 40,
+     "idle": 26,
+     "jitter": 3,
+     "laxity_zero_switches": 0,
+     "mean_response": 3.0,
+     "min_laxity": 6,
+     "miss_rate": 0.0,
+     "missed": 0,
+     "preemptions": 0,
+     "released": 6,
+     "tie_events": 0,
+     "worst_response": 5
+    },
+    "lst:lzs": {
+     "busy": 14,
+     "completed": 6,
+     "context_switches": 6,
+     "first_miss": null,
+     "horizon": 40,
+     "idle": 26,
+     "jitter": 3,
+     "laxity_zero_switches": 0,
+     "mean_response": 3.0,
+     "min_laxity": 6,
+     "miss_rate": 0.0,
+     "missed": 0,
+     "preemptions": 0,
+     "released": 6,
+     "tie_events": 0,
+     "worst_response": 5
+    },
+    "lst:rm": {
+     "busy": 14,
+     "completed": 6,
+     "context_switches": 6,
+     "first_miss": null,
+     "horizon": 40,
+     "idle": 26,
+     "jitter": 3,
+     "laxity_zero_switches": 0,
+     "mean_response": 3.0,
+     "min_laxity": 6,
+     "miss_rate": 0.0,
+     "missed": 0,
+     "preemptions": 0,
+     "released": 6,
+     "tie_events": 0,
+     "worst_response": 5
+    },
+    "lst:stay": {
+     "busy": 14,
+     "completed": 6,
+     "context_switches": 6,
+     "first_miss": null,
+     "horizon": 40,
+     "idle": 26,
+     "jitter": 3,
+     "laxity_zero_switches": 0,
+     "mean_response": 3.0,
+     "min_laxity": 6,
+     "miss_rate": 0.0,
+     "missed": 0,
+     "preemptions": 0,
+     "released": 6,
+     "tie_events": 0,
+     "worst_response": 5
+    },
+    "rm": {
+     "busy": 14,
+     "completed": 6,
+     "context_switches": 6,
+     "first_miss": null,
+     "horizon": 40,
+     "idle": 26,
+     "jitter": 3,
+     "laxity_zero_switches": 0,
+     "mean_response": 3.0,
+     "min_laxity": 6,
+     "miss_rate": 0.0,
+     "missed": 0,
+     "preemptions": 0,
+     "released": 6,
+     "tie_events": 0,
+     "worst_response": 5
+    }
+   },
+   "spec": "T1(T=10,C=2,D=8,ph=0), T2(T=20,C=3,D=15,ph=0)",
+   "task_count": 2,
+   "tasks": [
+    [
+     "T1",
+     10,
+     2,
+     8,
+     0
+    ],
+    [
+     "T2",
+     20,
+     3,
+     15,
+     0
+    ]
+   ],
+   "utilisation": 0.35,
+   "witness": {
+    "busy": 7,
+    "checked": true,
+    "jobs": 3,
+    "reason": "every job finished strictly before its deadline",
+    "steps": 12,
+    "valid": true
+   },
+   "witness_cost": {
+    "available": true,
+    "busy": 7,
+    "context_switches": 3,
+    "idle": 5,
+    "preemptions": 0,
+    "steps": 12
+   }
+  },
+  {
+   "alignment": {
+    "aligned": {
+     "edf": {
+      "horizon": 36,
+      "missed": 0,
+      "release_window": 24,
+      "released": 9
+     },
+     "lst": {
+      "horizon": 36,
+      "missed": 0,
+      "release_window": 24,
+      "released": 9
+     },
+     "rm": {
+      "horizon": 36,
+      "missed": 0,
+      "release_window": 24,
+      "released": 9
+     }
+    },
+    "aligned_agrees": true,
+    "checker_horizon": 24,
+    "checker_verdict": true,
+    "max_deadline": 12,
+    "naive": {
+     "edf": {
+      "horizon": 48,
+      "missed": 0,
+      "released": 18
+     },
+     "lst": {
+      "horizon": 48,
+      "missed": 0,
+      "released": 18
+     },
+     "rm": {
+      "horizon": 48,
+      "missed": 0,
+      "released": 18
+     }
+    },
+    "naive_agrees": true,
+    "optimal_policies": [
+     "lst",
+     "edf"
+    ],
+    "rm_control": {
+     "aligned_missed": 0,
+     "counterexample": false,
+     "naive_missed": 0
+    }
+   },
+   "cap_control": {
+    "explanation": "truncated runs are artefacts of the cap, not findings",
+    "false_infeasible_count": 3,
+    "full_truncated": false,
+    "full_verdict": true,
+    "rows": [
+     {
+      "feasible": false,
+      "limit": 4,
+      "states": 11,
+      "truncated": true
+     },
+     {
+      "feasible": false,
+      "limit": 8,
+      "states": 16,
+      "truncated": true
+     },
+     {
+      "feasible": false,
+      "limit": 16,
+      "states": 27,
+      "truncated": true
+     },
+     {
+      "feasible": true,
+      "limit": 4000000,
+      "states": 22,
+      "truncated": false
+     }
+    ],
+    "smallest_truncating_limit": 4
+   },
+   "checker": {
+    "allow_idle_false": true,
+    "allow_idle_true": true,
+    "feasible": true,
+    "horizon": 24,
+    "idle_enumeration_agrees": true,
+    "jobs": 9,
+    "pruned": 0,
+    "schedule": [
+     0,
+     0,
+     1,
+     1,
+     2,
+     2,
+     2,
+     3,
+     3,
+     4,
+     4,
+     -1,
+     5,
+     5,
+     6,
+     6,
+     6,
+     7,
+     7,
+     8,
+     8
+    ],
+    "schedule_length": 21,
+    "states": 22,
+    "truncated": false
+   },
+   "constrained_deadline": false,
+   "gantt": {
+    "edf": [
+     [
+      "T1#0",
+      0,
+      2
+     ],
+     [
+      "T2#0",
+      2,
+      4
+     ],
+     [
+      "T3#0",
+      4,
+      7
+     ],
+     [
+      "T1#1",
+      7,
+      9
+     ],
+     [
+      "T2#1",
+      9,
+      11
+     ],
+     [
+      "T1#2",
+      12,
+      14
+     ],
+     [
+      "T3#1",
+      14,
+      17
+     ],
+     [
+      "T2#2",
+      17,
+      19
+     ],
+     [
+      "T1#3",
+      19,
+      21
+     ],
+     [
+      "T1#4",
+      24,
+      26
+     ],
+     [
+      "T2#3",
+      26,
+      28
+     ],
+     [
+      "T3#2",
+      28,
+      31
+     ],
+     [
+      "T1#5",
+      31,
+      33
+     ],
+     [
+      "T2#4",
+      33,
+      35
+     ],
+     [
+      "T1#6",
+      36,
+      38
+     ],
+     [
+      "T3#3",
+      38,
+      41
+     ],
+     [
+      "T2#5",
+      41,
+      43
+     ],
+     [
+      "T1#7",
+      43,
+      45
+     ]
+    ],
+    "lst": [
+     [
+      "T1#0",
+      0,
+      2
+     ],
+     [
+      "T2#0",
+      2,
+      4
+     ],
+     [
+      "T3#0",
+      4,
+      6
+     ],
+     [
+      "T1#1",
+      6,
+      7
+     ],
+     [
+      "T3#0",
+      7,
+      8
+     ],
+     [
+      "T1#1",
+      8,
+      9
+     ],
+     [
+      "T2#1",
+      9,
+      11
+     ],
+     [
+      "T1#2",
+      12,
+      14
+     ],
+     [
+      "T3#1",
+      14,
+      16
+     ],
+     [
+      "T2#2",
+      16,
+      17
+     ],
+     [
+      "T3#1",
+      17,
+      18
+     ],
+     [
+      "T1#3",
+      18,
+      19
+     ],
+     [
+      "T2#2",
+      19,
+      20
+     ],
+     [
+      "T1#3",
+      20,
+      21
+     ],
+     [
+      "T1#4",
+      24,
+      26
+     ],
+     [
+      "T2#3",
+      26,
+      28
+     ],
+     [
+      "T3#2",
+      28,
+      30
+     ],
+     [
+      "T1#5",
+      30,
+      31
+     ],
+     [
+      "T3#2",
+      31,
+      32
+     ],
+     [
+      "T1#5",
+      32,
+      33
+     ],
+     [
+      "T2#4",
+      33,
+      35
+     ],
+     [
+      "T1#6",
+      36,
+      38
+     ],
+     [
+      "T3#3",
+      38,
+      40
+     ],
+     [
+      "T2#5",
+      40,
+      41
+     ],
+     [
+      "T3#3",
+      41,
+      42
+     ],
+     [
+      "T1#7",
+      42,
+      43
+     ],
+     [
+      "T2#5",
+      43,
+      44
+     ],
+     [
+      "T1#7",
+      44,
+      45
+     ]
+    ],
+    "rm": [
+     [
+      "T1#0",
+      0,
+      2
+     ],
+     [
+      "T2#0",
+      2,
+      4
+     ],
+     [
+      "T3#0",
+      4,
+      6
+     ],
+     [
+      "T1#1",
+      6,
+      8
+     ],
+     [
+      "T2#1",
+      8,
+      10
+     ],
+     [
+      "T3#0",
+      10,
+      11
+     ],
+     [
+      "T1#2",
+      12,
+      14
+     ],
+     [
+      "T3#1",
+      14,
+      16
+     ],
+     [
+      "T2#2",
+      16,
+      18
+     ],
+     [
+      "T1#3",
+      18,
+      20
+     ],
+     [
+      "T3#1",
+      20,
+      21
+     ],
+     [
+      "T1#4",
+      24,
+      26
+     ],
+     [
+      "T2#3",
+      26,
+      28
+     ],
+     [
+      "T3#2",
+      28,
+      30
+     ],
+     [
+      "T1#5",
+      30,
+      32
+     ],
+     [
+      "T2#4",
+      32,
+      34
+     ],
+     [
+      "T3#2",
+      34,
+      35
+     ],
+     [
+      "T1#6",
+      36,
+      38
+     ],
+     [
+      "T3#3",
+      38,
+      40
+     ],
+     [
+      "T2#5",
+      40,
+      42
+     ],
+     [
+      "T1#7",
+      42,
+      44
+     ],
+     [
+      "T3#3",
+      44,
+      45
+     ]
+    ]
+   },
+   "hyperperiod": 24,
+   "id": "W2",
+   "label": "medium load, implicit deadlines",
+   "max_deadline": 12,
+   "policies": {
+    "dm": {
+     "busy": 40,
+     "completed": 18,
+     "context_switches": 22,
+     "first_miss": null,
+     "horizon": 48,
+     "idle": 8,
+     "jitter": 9,
+     "laxity_zero_switches": 0,
+     "mean_response": 4.0,
+     "min_laxity": 1,
+     "miss_rate": 0.0,
+     "missed": 0,
+     "preemptions": 4,
+     "released": 18,
+     "tie_events": 6,
+     "worst_response": 11
+    },
+    "edf": {
+     "busy": 40,
+     "completed": 18,
+     "context_switches": 18,
+     "first_miss": null,
+     "horizon": 48,
+     "idle": 8,
+     "jitter": 5,
+     "laxity_zero_switches": 0,
+     "mean_response": 3.5556,
+     "min_laxity": 3,
+     "miss_rate": 0.0,
+     "missed": 0,
+     "preemptions": 0,
+     "released": 18,
+     "tie_events": 0,
+     "worst_response": 7
+    },
+    "fifo": {
+     "busy": 40,
+     "completed": 18,
+     "context_switches": 18,
+     "first_miss": null,
+     "horizon": 48,
+     "idle": 8,
+     "jitter": 5,
+     "laxity_zero_switches": 0,
+     "mean_response": 3.5556,
+     "min_laxity": 3,
+     "miss_rate": 0.0,
+     "missed": 0,
+     "preemptions": 0,
+     "released": 18,
+     "tie_events": 0,
+     "worst_response": 7
+    },
+    "lst": {
+     "busy": 40,
+     "completed": 18,
+     "context_switches": 28,
+     "first_miss": null,
+     "horizon": 48,
+     "idle": 8,
+     "jitter": 6,
+     "laxity_zero_switches": 0,
+     "mean_response": 3.8889,
+     "min_laxity": 3,
+     "miss_rate": 0.0,
+     "missed": 0,
+     "preemptions": 10,
+     "released": 18,
+     "tie_events": 6,
+     "worst_response": 8
+    },
+    "lst:edf": {
+     "busy": 40,
+     "completed": 18,
+     "context_switches": 28,
+     "first_miss": null,
+     "horizon": 48,
+     "idle": 8,
+     "jitter": 6,
+     "laxity_zero_switches": 0,
+     "mean_response": 3.8889,
+     "min_laxity": 3,
+     "miss_rate": 0.0,
+     "missed": 0,
+     "preemptions": 10,
+     "released": 18,
+     "tie_events": 6,
+     "worst_response": 8
+    },
+    "lst:lzs": {
+     "busy": 40,
+     "completed": 18,
+     "context_switches": 28,
+     "first_miss": null,
+     "horizon": 48,
+     "idle": 8,
+     "jitter": 6,
+     "laxity_zero_switches": 0,
+     "mean_response": 3.8889,
+     "min_laxity": 3,
+     "miss_rate": 0.0,
+     "missed": 0,
+     "preemptions": 10,
+     "released": 18,
+     "tie_events": 6,
+     "worst_response": 8
+    },
+    "lst:rm": {
+     "busy": 40,
+     "completed": 18,
+     "context_switches": 22,
+     "first_miss": null,
+     "horizon": 48,
+     "idle": 8,
+     "jitter": 7,
+     "laxity_zero_switches": 0,
+     "mean_response": 3.8889,
+     "min_laxity": 3,
+     "miss_rate": 0.0,
+     "missed": 0,
+     "preemptions": 4,
+     "released": 18,
+     "tie_events": 6,
+     "worst_response": 9
+    },
+    "lst:stay": {
+     "busy": 40,
+     "completed": 18,
+     "context_switches": 22,
+     "first_miss": null,
+     "horizon": 48,
+     "idle": 8,
+     "jitter": 7,
+     "laxity_zero_switches": 0,
+     "mean_response": 3.8889,
+     "min_laxity": 3,
+     "miss_rate": 0.0,
+     "missed": 0,
+     "preemptions": 4,
+     "released": 18,
+     "tie_events": 6,
+     "worst_response": 9
+    },
+    "rm": {
+     "busy": 40,
+     "completed": 18,
+     "context_switches": 22,
+     "first_miss": null,
+     "horizon": 48,
+     "idle": 8,
+     "jitter": 9,
+     "laxity_zero_switches": 0,
+     "mean_response": 4.0,
+     "min_laxity": 1,
+     "miss_rate": 0.0,
+     "missed": 0,
+     "preemptions": 4,
+     "released": 18,
+     "tie_events": 6,
+     "worst_response": 11
+    }
+   },
+   "spec": "T1(T=6,C=2,D=6,ph=0), T2(T=8,C=2,D=8,ph=0), T3(T=12,C=3,D=12,ph=0)",
+   "task_count": 3,
+   "tasks": [
+    [
+     "T1",
+     6,
+     2,
+     6,
+     0
+    ],
+    [
+     "T2",
+     8,
+     2,
+     8,
+     0
+    ],
+    [
+     "T3",
+     12,
+     3,
+     12,
+     0
+    ]
+   ],
+   "utilisation": 0.833333,
+   "witness": {
+    "busy": 20,
+    "checked": true,
+    "jobs": 9,
+    "reason": "every job finished strictly before its deadline",
+    "steps": 21,
+    "valid": true
+   },
+   "witness_cost": {
+    "available": true,
+    "busy": 20,
+    "context_switches": 9,
+    "idle": 1,
+    "preemptions": 0,
+    "steps": 21
+   }
+  },
+  {
+   "alignment": {
+    "aligned": {
+     "edf": {
+      "horizon": 28,
+      "missed": 0,
+      "release_window": 16,
+      "released": 7
+     },
+     "lst": {
+      "horizon": 28,
+      "missed": 0,
+      "release_window": 16,
+      "released": 7
+     },
+     "rm": {
+      "horizon": 28,
+      "missed": 0,
+      "release_window": 16,
+      "released": 7
+     }
+    },
+    "aligned_agrees": true,
+    "checker_horizon": 16,
+    "checker_verdict": true,
+    "max_deadline": 12,
+    "naive": {
+     "edf": {
+      "horizon": 32,
+      "missed": 0,
+      "released": 14
+     },
+     "lst": {
+      "horizon": 32,
+      "missed": 0,
+      "released": 14
+     },
+     "rm": {
+      "horizon": 32,
+      "missed": 0,
+      "released": 14
+     }
+    },
+    "naive_agrees": true,
+    "optimal_policies": [
+     "lst",
+     "edf"
+    ],
+    "rm_control": {
+     "aligned_missed": 0,
+     "counterexample": false,
+     "naive_missed": 0
+    }
+   },
+   "cap_control": {
+    "explanation": "truncated runs are artefacts of the cap, not findings",
+    "false_infeasible_count": 2,
+    "full_truncated": false,
+    "full_verdict": true,
+    "rows": [
+     {
+      "feasible": false,
+      "limit": 4,
+      "states": 9,
+      "truncated": true
+     },
+     {
+      "feasible": false,
+      "limit": 8,
+      "states": 15,
+      "truncated": true
+     },
+     {
+      "feasible": true,
+      "limit": 16,
+      "states": 14,
+      "truncated": false
+     },
+     {
+      "feasible": true,
+      "limit": 4000000,
+      "states": 14,
+      "truncated": false
+     }
+    ],
+    "smallest_truncating_limit": 4
+   },
+   "checker": {
+    "allow_idle_false": true,
+    "allow_idle_true": true,
+    "feasible": true,
+    "horizon": 16,
+    "idle_enumeration_agrees": true,
+    "jobs": 7,
+    "pruned": 1,
+    "schedule": [
+     0,
+     1,
+     1,
+     2,
+     2,
+     2,
+     3,
+     2,
+     4,
+     5,
+     5,
+     -1,
+     6
+    ],
+    "schedule_length": 13,
+    "states": 14,
+    "truncated": false
+   },
+   "constrained_deadline": true,
+   "gantt": {
+    "edf": [
+     [
+      "T1#0",
+      0,
+      1
+     ],
+     [
+      "T2#0",
+      1,
+      3
+     ],
+     [
+      "T3#0",
+      3,
+      4
+     ],
+     [
+      "T1#1",
+      4,
+      5
+     ],
+     [
+      "T3#0",
+      5,
+      8
+     ],
+     [
+      "T1#2",
+      8,
+      9
+     ],
+     [
+      "T2#1",
+      9,
+      11
+     ],
+     [
+      "T1#3",
+      12,
+      13
+     ],
+     [
+      "T1#4",
+      16,
+      17
+     ],
+     [
+      "T2#2",
+      17,
+      19
+     ],
+     [
+      "T3#1",
+      19,
+      20
+     ],
+     [
+      "T1#5",
+      20,
+      21
+     ],
+     [
+      "T3#1",
+      21,
+      24
+     ],
+     [
+      "T1#6",
+      24,
+      25
+     ],
+     [
+      "T2#3",
+      25,
+      27
+     ],
+     [
+      "T1#7",
+      28,
+      29
+     ]
+    ],
+    "lst": [
+     [
+      "T1#0",
+      0,
+      1
+     ],
+     [
+      "T2#0",
+      1,
+      3
+     ],
+     [
+      "T3#0",
+      3,
+      4
+     ],
+     [
+      "T1#1",
+      4,
+      5
+     ],
+     [
+      "T3#0",
+      5,
+      8
+     ],
+     [
+      "T1#2",
+      8,
+      9
+     ],
+     [
+      "T2#1",
+      9,
+      11
+     ],
+     [
+      "T1#3",
+      12,
+      13
+     ],
+     [
+      "T1#4",
+      16,
+      17
+     ],
+     [
+      "T2#2",
+      17,
+      19
+     ],
+     [
+      "T3#1",
+      19,
+      20
+     ],
+     [
+      "T1#5",
+      20,
+      21
+     ],
+     [
+      "T3#1",
+      21,
+      24
+     ],
+     [
+      "T1#6",
+      24,
+      25
+     ],
+     [
+      "T2#3",
+      25,
+      27
+     ],
+     [
+      "T1#7",
+      28,
+      29
+     ]
+    ],
+    "rm": [
+     [
+      "T1#0",
+      0,
+      1
+     ],
+     [
+      "T2#0",
+      1,
+      3
+     ],
+     [
+      "T3#0",
+      3,
+      4
+     ],
+     [
+      "T1#1",
+      4,
+      5
+     ],
+     [
+      "T3#0",
+      5,
+      8
+     ],
+     [
+      "T1#2",
+      8,
+      9
+     ],
+     [
+      "T2#1",
+      9,
+      11
+     ],
+     [
+      "T1#3",
+      12,
+      13
+     ],
+     [
+      "T1#4",
+      16,
+      17
+     ],
+     [
+      "T2#2",
+      17,
+      19
+     ],
+     [
+      "T3#1",
+      19,
+      20
+     ],
+     [
+      "T1#5",
+      20,
+      21
+     ],
+     [
+      "T3#1",
+      21,
+      24
+     ],
+     [
+      "T1#6",
+      24,
+      25
+     ],
+     [
+      "T2#3",
+      25,
+      27
+     ],
+     [
+      "T1#7",
+      28,
+      29
+     ]
+    ]
+   },
+   "hyperperiod": 16,
+   "id": "W3",
+   "label": "harmonic periods",
+   "max_deadline": 12,
+   "policies": {
+    "dm": {
+     "busy": 24,
+     "completed": 14,
+     "context_switches": 16,
+     "first_miss": null,
+     "horizon": 32,
+     "idle": 8,
+     "jitter": 7,
+     "laxity_zero_switches": 0,
+     "mean_response": 2.5714,
+     "min_laxity": 2,
+     "miss_rate": 0.0,
+     "missed": 0,
+     "preemptions": 2,
+     "released": 14,
+     "tie_events": 0,
+     "worst_response": 8
+    },
+    "edf": {
+     "busy": 24,
+     "completed": 14,
+     "context_switches": 16,
+     "first_miss": null,
+     "horizon": 32,
+     "idle": 8,
+     "jitter": 7,
+     "laxity_zero_switches": 0,
+     "mean_response": 2.5714,
+     "min_laxity": 2,
+     "miss_rate": 0.0,
+     "missed": 0,
+     "preemptions": 2,
+     "released": 14,
+     "tie_events": 0,
+     "worst_response": 8
+    },
+    "fifo": {
+     "busy": 24,
+     "completed": 14,
+     "context_switches": 14,
+     "first_miss": 7,
+     "horizon": 32,
+     "idle": 8,
+     "jitter": 6,
+     "laxity_zero_switches": 0,
+     "mean_response": 2.8571,
+     "min_laxity": -1,
+     "miss_rate": 0.142857,
+     "missed": 2,
+     "preemptions": 0,
+     "released": 14,
+     "tie_events": 0,
+     "worst_response": 7
+    },
+    "lst": {
+     "busy": 24,
+     "completed": 14,
+     "context_switches": 16,
+     "first_miss": null,
+     "horizon": 32,
+     "idle": 8,
+     "jitter": 7,
+     "laxity_zero_switches": 0,
+     "mean_response": 2.5714,
+     "min_laxity": 2,
+     "miss_rate": 0.0,
+     "missed": 0,
+     "preemptions": 2,
+     "released": 14,
+     "tie_events": 0,
+     "worst_response": 8
+    },
+    "lst:edf": {
+     "busy": 24,
+     "completed": 14,
+     "context_switches": 16,
+     "first_miss": null,
+     "horizon": 32,
+     "idle": 8,
+     "jitter": 7,
+     "laxity_zero_switches": 0,
+     "mean_response": 2.5714,
+     "min_laxity": 2,
+     "miss_rate": 0.0,
+     "missed": 0,
+     "preemptions": 2,
+     "released": 14,
+     "tie_events": 0,
+     "worst_response": 8
+    },
+    "lst:lzs": {
+     "busy": 24,
+     "completed": 14,
+     "context_switches": 16,
+     "first_miss": null,
+     "horizon": 32,
+     "idle": 8,
+     "jitter": 7,
+     "laxity_zero_switches": 0,
+     "mean_response": 2.5714,
+     "min_laxity": 2,
+     "miss_rate": 0.0,
+     "missed": 0,
+     "preemptions": 2,
+     "released": 14,
+     "tie_events": 0,
+     "worst_response": 8
+    },
+    "lst:rm": {
+     "busy": 24,
+     "completed": 14,
+     "context_switches": 16,
+     "first_miss": null,
+     "horizon": 32,
+     "idle": 8,
+     "jitter": 7,
+     "laxity_zero_switches": 0,
+     "mean_response": 2.5714,
+     "min_laxity": 2,
+     "miss_rate": 0.0,
+     "missed": 0,
+     "preemptions": 2,
+     "released": 14,
+     "tie_events": 0,
+     "worst_response": 8
+    },
+    "lst:stay": {
+     "busy": 24,
+     "completed": 14,
+     "context_switches": 16,
+     "first_miss": null,
+     "horizon": 32,
+     "idle": 8,
+     "jitter": 7,
+     "laxity_zero_switches": 0,
+     "mean_response": 2.5714,
+     "min_laxity": 2,
+     "miss_rate": 0.0,
+     "missed": 0,
+     "preemptions": 2,
+     "released": 14,
+     "tie_events": 0,
+     "worst_response": 8
+    },
+    "rm": {
+     "busy": 24,
+     "completed": 14,
+     "context_switches": 16,
+     "first_miss": null,
+     "horizon": 32,
+     "idle": 8,
+     "jitter": 7,
+     "laxity_zero_switches": 0,
+     "mean_response": 2.5714,
+     "min_laxity": 2,
+     "miss_rate": 0.0,
+     "missed": 0,
+     "preemptions": 2,
+     "released": 14,
+     "tie_events": 0,
+     "worst_response": 8
+    }
+   },
+   "spec": "T1(T=4,C=1,D=3,ph=0), T2(T=8,C=2,D=6,ph=0), T3(T=16,C=4,D=12,ph=0)",
+   "task_count": 3,
+   "tasks": [
+    [
+     "T1",
+     4,
+     1,
+     3,
+     0
+    ],
+    [
+     "T2",
+     8,
+     2,
+     6,
+     0
+    ],
+    [
+     "T3",
+     16,
+     4,
+     12,
+     0
+    ]
+   ],
+   "utilisation": 0.75,
+   "witness": {
+    "busy": 12,
+    "checked": true,
+    "jobs": 7,
+    "reason": "every job finished strictly before its deadline",
+    "steps": 13,
+    "valid": true
+   },
+   "witness_cost": {
+    "available": true,
+    "busy": 12,
+    "context_switches": 8,
+    "idle": 1,
+    "preemptions": 1,
+    "steps": 13
+   }
+  },
+  {
+   "alignment": {
+    "aligned": {
+     "edf": {
+      "horizon": 393,
+      "missed": 1,
+      "release_window": 385,
+      "released": 167
+     },
+     "lst": {
+      "horizon": 393,
+      "missed": 1,
+      "release_window": 385,
+      "released": 167
+     },
+     "rm": {
+      "horizon": 393,
+      "missed": 20,
+      "release_window": 385,
+      "released": 167
+     }
+    },
+    "aligned_agrees": true,
+    "checker_horizon": 385,
+    "checker_verdict": false,
+    "max_deadline": 8,
+    "naive": {
+     "edf": {
+      "horizon": 770,
+      "missed": 2,
+      "released": 334
+     },
+     "lst": {
+      "horizon": 770,
+      "missed": 2,
+      "released": 334
+     },
+     "rm": {
+      "horizon": 770,
+      "missed": 40,
+      "released": 334
+     }
+    },
+    "naive_agrees": true,
+    "optimal_policies": [
+     "lst",
+     "edf"
+    ],
+    "rm_control": {
+     "aligned_missed": 20,
+     "counterexample": false,
+     "naive_missed": 40
+    }
+   },
+   "cap_control": {
+    "explanation": "truncated runs are artefacts of the cap, not findings",
+    "false_infeasible_count": 0,
+    "full_truncated": false,
+    "full_verdict": false,
+    "rows": [
+     {
+      "feasible": false,
+      "limit": 4,
+      "states": 11,
+      "truncated": true
+     },
+     {
+      "feasible": false,
+      "limit": 8,
+      "states": 17,
+      "truncated": true
+     },
+     {
+      "feasible": false,
+      "limit": 16,
+      "states": 31,
+      "truncated": true
+     },
+     {
+      "feasible": false,
+      "limit": 4000000,
+      "states": 80,
+      "truncated": false
+     }
+    ],
+    "smallest_truncating_limit": null
+   },
+   "checker": {
+    "allow_idle_false": false,
+    "allow_idle_true": false,
+    "feasible": false,
+    "horizon": 385,
+    "idle_enumeration_agrees": true,
+    "jobs": 167,
+    "pruned": 34,
+    "schedule": [],
+    "schedule_length": 0,
+    "states": 80,
+    "truncated": false
+   },
+   "constrained_deadline": true,
+   "gantt": {
+    "edf": [
+     [
+      "T1#0",
+      0,
+      2
+     ],
+     [
+      "T2#0",
+      2,
+      4
+     ],
+     [
+      "T3#0",
+      4,
+      7
+     ],
+     [
+      "T1#1",
+      7,
+      9
+     ],
+     [
+      "T2#1",
+      9,
+      11
+     ],
+     [
+      "T1#2",
+      11,
+      13
+     ],
+     [
+      "T3#1",
+      13,
+      16
+     ],
+     [
+      "T2#2",
+      16,
+      18
+     ],
+     [
+      "T1#3",
+      18,
+      20
+     ],
+     [
+      "T1#4",
+      20,
+      22
+     ],
+     [
+      "T2#3",
+      22,
+      24
+     ],
+     [
+      "T3#2",
+      24,
+      25
+     ],
+     [
+      "T1#5",
+      25,
+      27
+     ],
+     [
+      "T3#2",
+      27,
+      29
+     ],
+     [
+      "T2#4",
+      29,
+      31
+     ],
+     [
+      "T1#6",
+      31,
+      33
+     ],
+     [
+      "T3#3",
+      33,
+      35
+     ],
+     [
+      "T1#7",
+      35,
+      37
+     ],
+     [
+      "T2#5",
+      37,
+      39
+     ],
+     [
+      "T3#3",
+      39,
+      40
+     ],
+     [
+      "T1#8",
+      40,
+      42
+     ],
+     [
+      "T2#6",
+      42,
+      44
+     ],
+     [
+      "T3#4",
+      44,
+      45
+     ],
+     [
+      "T1#9",
+      45,
+      47
+     ],
+     [
+      "T3#4",
+      47,
+      49
+     ],
+     [
+      "T2#7",
+      49,
+      51
+     ],
+     [
+      "T1#10",
+      51,
+      53
+     ],
+     [
+      "T1#11",
+      55,
+      57
+     ],
+     [
+      "T2#8",
+      57,
+      59
+     ],
+     [
+      "T3#5",
+      59,
+      62
+     ],
+     [
+      "T1#12",
+      62,
+      64
+     ],
+     [
+      "T2#9",
+      64,
+      66
+     ],
+     [
+      "T1#13",
+      66,
+      68
+     ],
+     [
+      "T3#6",
+      68,
+      71
+     ],
+     [
+      "T1#14",
+      71,
+      73
+     ],
+     [
+      "T2#10",
+      73,
+      75
+     ],
+     [
+      "T1#15",
+      75,
+      77
+     ],
+     [
+      "T2#11",
+      77,
+      79
+     ],
+     [
+      "T3#7",
+      79,
+      80
+     ],
+     [
+      "T1#16",
+      80,
+      82
+     ],
+     [
+      "T3#7",
+      82,
+      84
+     ],
+     [
+      "T2#12",
+      84,
+      86
+     ],
+     [
+      "T1#17",
+      86,
+      88
+     ],
+     [
+      "T3#8",
+      88,
+      90
+     ],
+     [
+      "T1#18",
+      90,
+      92
+     ],
+     [
+      "T3#8",
+      92,
+      93
+     ],
+     [
+      "T2#13",
+      93,
+      95
+     ],
+     [
+      "T1#19",
+      95,
+      97
+     ],
+     [
+      "T2#14",
+      98,
+      100
+     ],
+     [
+      "T1#20",
+      100,
+      102
+     ],
+     [
+      "T3#9",
+      102,
+      105
+     ],
+     [
+      "T1#21",
+      105,
+      107
+     ],
+     [
+      "T2#15",
+      107,
+      109
+     ],
+     [
+      "T1#22",
+      110,
+      112
+     ],
+     [
+      "T2#16",
+      112,
+      114
+     ],
+     [
+      "T3#10",
+      114,
+      117
+     ],
+     [
+      "T1#23",
+      117,
+      119
+     ],
+     [
+      "T2#17",
+      119,
+      121
+     ],
+     [
+      "T1#24",
+      121,
+      123
+     ],
+     [
+      "T3#11",
+      123,
+      126
+     ],
+     [
+      "T1#25",
+      126,
+      128
+     ],
+     [
+      "T2#18",
+      128,
+      130
+     ],
+     [
+      "T1#26",
+      130,
+      132
+     ],
+     [
+      "T3#12",
+      132,
+      133
+     ],
+     [
+      "T2#19",
+      133,
+      135
+     ],
+     [
+      "T1#27",
+      135,
+      137
+     ],
+     [
+      "T3#12",
+      137,
+      139
+     ],
+     [
+      "T1#28",
+      140,
+      142
+     ],
+     [
+      "T2#20",
+      142,
+      144
+     ],
+     [
+      "T3#13",
+      144,
+      145
+     ],
+     [
+      "T1#29",
+      145,
+      147
+     ],
+     [
+      "T3#13",
+      147,
+      149
+     ],
+     [
+      "T2#21",
+      149,
+      151
+     ],
+     [
+      "T1#30",
+      151,
+      153
+     ],
+     [
+      "T2#22",
+      154,
+      156
+     ],
+     [
+      "T1#31",
+      156,
+      158
+     ],
+     [
+      "T3#14",
+      158,
+      161
+     ],
+     [
+      "T1#32",
+      161,
+      163
+     ],
+     [
+      "T2#23",
+      163,
+      165
+     ],
+     [
+      "T1#33",
+      165,
+      167
+     ],
+     [
+      "T3#15",
+      167,
+      170
+     ],
+     [
+      "T2#24",
+      170,
+      172
+     ],
+     [
+      "T1#34",
+      172,
+      174
+     ],
+     [
+      "T1#35",
+      175,
+      177
+     ],
+     [
+      "T2#25",
+      177,
+      179
+     ],
+     [
+      "T3#16",
+      179,
+      182
+     ],
+     [
+      "T1#36",
+      182,
+      184
+     ],
+     [
+      "T2#26",
+      184,
+      186
+     ],
+     [
+      "T1#37",
+      186,
+      188
+     ],
+     [
+      "T3#17",
+      188,
+      189
+     ],
+     [
+      "T2#27",
+      189,
+      191
+     ],
+     [
+      "T1#38",
+      191,
+      193
+     ],
+     [
+      "T3#17",
+      193,
+      195
+     ],
+     [
+      "T1#39",
+      195,
+      197
+     ],
+     [
+      "T2#28",
+      197,
+      199
+     ],
+     [
+      "T3#18",
+      199,
+      200
+     ],
+     [
+      "T1#40",
+      200,
+      202
+     ],
+     [
+      "T3#18",
+      202,
+      204
+     ],
+     [
+      "T2#29",
+      204,
+      206
+     ],
+     [
+      "T1#41",
+      206,
+      208
+     ],
+     [
+      "T3#19",
+      209,
+      210
+     ],
+     [
+      "T1#42",
+      210,
+      212
+     ],
+     [
+      "T2#30",
+      212,
+      214
+     ],
+     [
+      "T3#19",
+      214,
+      216
+     ],
+     [
+      "T1#43",
+      216,
+      218
+     ],
+     [
+      "T2#31",
+      218,
+      220
+     ],
+     [
+      "T1#44",
+      220,
+      222
+     ],
+     [
+      "T3#20",
+      222,
+      225
+     ],
+     [
+      "T2#32",
+      225,
+      227
+     ],
+     [
+      "T1#45",
+      227,
+      229
+     ],
+     [
+      "T1#46",
+      230,
+      232
+     ],
+     [
+      "T2#33",
+      232,
+      234
+     ],
+     [
+      "T3#21",
+      234,
+      237
+     ],
+     [
+      "T1#47",
+      237,
+      239
+     ],
+     [
+      "T2#34",
+      239,
+      241
+     ],
+     [
+      "T1#48",
+      241,
+      243
+     ],
+     [
+      "T3#22",
+      243,
+      245
+     ],
+     [
+      "T1#49",
+      245,
+      247
+     ],
+     [
+      "T3#22",
+      247,
+      248
+     ],
+     [
+      "T2#35",
+      248,
+      250
+     ],
+     [
+      "T1#50",
+      250,
+      252
+     ],
+     [
+      "T2#36",
+      252,
+      254
+     ],
+     [
+      "T3#23",
+      254,
+      255
+     ],
+     [
+      "T1#51",
+      255,
+      257
+     ],
+     [
+      "T3#23",
+      257,
+      259
+     ],
+     [
+      "T2#37",
+      259,
+      261
+     ],
+     [
+      "T1#52",
+      261,
+      263
+     ],
+     [
+      "T3#24",
+      264,
+      265
+     ],
+     [
+      "T1#53",
+      265,
+      267
+     ],
+     [
+      "T2#38",
+      267,
+      269
+     ],
+     [
+      "T3#24",
+      269,
+      271
+     ],
+     [
+      "T1#54",
+      271,
+      273
+     ],
+     [
+      "T2#39",
+      273,
+      275
+     ],
+     [
+      "T1#55",
+      275,
+      277
+     ],
+     [
+      "T3#25",
+      277,
+      280
+     ],
+     [
+      "T1#56",
+      280,
+      282
+     ],
+     [
+      "T2#40",
+      282,
+      284
+     ],
+     [
+      "T1#57",
+      285,
+      287
+     ],
+     [
+      "T2#41",
+      287,
+      289
+     ],
+     [
+      "T3#26",
+      289,
+      292
+     ],
+     [
+      "T1#58",
+      292,
+      294
+     ],
+     [
+      "T2#42",
+      294,
+      296
+     ],
+     [
+      "T1#59",
+      296,
+      298
+     ],
+     [
+      "T3#27",
+      298,
+      300
+     ],
+     [
+      "T1#60",
+      300,
+      302
+     ],
+     [
+      "T3#27",
+      302,
+      303
+     ],
+     [
+      "T2#43",
+      303,
+      305
+     ],
+     [
+      "T1#61",
+      305,
+      307
+     ],
+     [
+      "T2#44",
+      308,
+      310
+     ],
+     [
+      "T1#62",
+      310,
+      312
+     ],
+     [
+      "T3#28",
+      312,
+      315
+     ],
+     [
+      "T1#63",
+      315,
+      317
+     ],
+     [
+      "T2#45",
+      317,
+      319
+     ],
+     [
+      "T3#29",
+      319,
+      320
+     ],
+     [
+      "T1#64",
+      320,
+      322
+     ],
+     [
+      "T3#29",
+      322,
+      324
+     ],
+     [
+      "T2#46",
+      324,
+      326
+     ],
+     [
+      "T1#65",
+      326,
+      328
+     ],
+     [
+      "T2#47",
+      329,
+      331
+     ],
+     [
+      "T1#66",
+      331,
+      333
+     ],
+     [
+      "T3#30",
+      333,
+      336
+     ],
+     [
+      "T1#67",
+      336,
+      338
+     ],
+     [
+      "T2#48",
+      338,
+      340
+     ],
+     [
+      "T1#68",
+      340,
+      342
+     ],
+     [
+      "T3#31",
+      342,
+      343
+     ],
+     [
+      "T2#49",
+      343,
+      345
+     ],
+     [
+      "T3#31",
+      345,
+      347
+     ],
+     [
+      "T1#69",
+      347,
+      349
+     ],
+     [
+      "T1#70",
+      350,
+      352
+     ],
+     [
+      "T2#50",
+      352,
+      354
+     ],
+     [
+      "T3#32",
+      354,
+      355
+     ],
+     [
+      "T1#71",
+      355,
+      357
+     ],
+     [
+      "T3#32",
+      357,
+      359
+     ],
+     [
+      "T2#51",
+      359,
+      361
+     ],
+     [
+      "T1#72",
+      361,
+      363
+     ],
+     [
+      "T3#33",
+      363,
+      364
+     ],
+     [
+      "T2#52",
+      364,
+      366
+     ],
+     [
+      "T1#73",
+      366,
+      368
+     ],
+     [
+      "T3#33",
+      368,
+      370
+     ],
+     [
+      "T1#74",
+      370,
+      372
+     ],
+     [
+      "T2#53",
+      372,
+      374
+     ],
+     [
+      "T3#34",
+      374,
+      375
+     ],
+     [
+      "T1#75",
+      375,
+      377
+     ],
+     [
+      "T3#34",
+      377,
+      379
+     ],
+     [
+      "T2#54",
+      379,
+      381
+     ],
+     [
+      "T1#76",
+      381,
+      383
+     ],
+     [
+      "T1#77",
+      385,
+      387
+     ],
+     [
+      "T2#55",
+      387,
+      389
+     ],
+     [
+      "T3#35",
+      389,
+      392
+     ],
+     [
+      "T1#78",
+      392,
+      394
+     ],
+     [
+      "T2#56",
+      394,
+      396
+     ],
+     [
+      "T1#79",
+      396,
+      398
+     ],
+     [
+      "T3#36",
+      398,
+      401
+     ],
+     [
+      "T2#57",
+      401,
+      403
+     ],
+     [
+      "T1#80",
+      403,
+      405
+     ],
+     [
+      "T1#81",
+      405,
+      407
+     ],
+     [
+      "T2#58",
+      407,
+      409
+     ],
+     [
+      "T3#37",
+      409,
+      410
+     ],
+     [
+      "T1#82",
+      410,
+      412
+     ],
+     [
+      "T3#37",
+      412,
+      414
+     ],
+     [
+      "T2#59",
+      414,
+      416
+     ],
+     [
+      "T1#83",
+      416,
+      418
+     ],
+     [
+      "T3#38",
+      418,
+      420
+     ],
+     [
+      "T1#84",
+      420,
+      422
+     ],
+     [
+      "T2#60",
+      422,
+      424
+     ],
+     [
+      "T3#38",
+      424,
+      425
+     ],
+     [
+      "T1#85",
+      425,
+      427
+     ],
+     [
+      "T2#61",
+      427,
+      429
+     ],
+     [
+      "T3#39",
+      429,
+      430
+     ],
+     [
+      "T1#86",
+      430,
+      432
+     ],
+     [
+      "T3#39",
+      432,
+      434
+     ],
+     [
+      "T2#62",
+      434,
+      436
+     ],
+     [
+      "T1#87",
+      436,
+      438
+     ],
+     [
+      "T1#88",
+      440,
+      442
+     ],
+     [
+      "T2#63",
+      442,
+      444
+     ],
+     [
+      "T3#40",
+      444,
+      447
+     ],
+     [
+      "T1#89",
+      447,
+      449
+     ],
+     [
+      "T2#64",
+      449,
+      451
+     ],
+     [
+      "T1#90",
+      451,
+      453
+     ],
+     [
+      "T3#41",
+      453,
+      456
+     ],
+     [
+      "T1#91",
+      456,
+      458
+     ],
+     [
+      "T2#65",
+      458,
+      460
+     ],
+     [
+      "T1#92",
+      460,
+      462
+     ],
+     [
+      "T2#66",
+      462,
+      464
+     ],
+     [
+      "T3#42",
+      464,
+      465
+     ],
+     [
+      "T1#93",
+      465,
+      467
+     ],
+     [
+      "T3#42",
+      467,
+      469
+     ],
+     [
+      "T2#67",
+      469,
+      471
+     ],
+     [
+      "T1#94",
+      471,
+      473
+     ],
+     [
+      "T3#43",
+      473,
+      475
+     ],
+     [
+      "T1#95",
+      475,
+      477
+     ],
+     [
+      "T3#43",
+      477,
+      478
+     ],
+     [
+      "T2#68",
+      478,
+      480
+     ],
+     [
+      "T1#96",
+      480,
+      482
+     ],
+     [
+      "T2#69",
+      483,
+      485
+     ],
+     [
+      "T1#97",
+      485,
+      487
+     ],
+     [
+      "T3#44",
+      487,
+      490
+     ],
+     [
+      "T1#98",
+      490,
+      492
+     ],
+     [
+      "T2#70",
+      492,
+      494
+     ],
+     [
+      "T1#99",
+      495,
+      497
+     ],
+     [
+      "T2#71",
+      497,
+      499
+     ],
+     [
+      "T3#45",
+      499,
+      502
+     ],
+     [
+      "T1#100",
+      502,
+      504
+     ],
+     [
+      "T2#72",
+      504,
+      506
+     ],
+     [
+      "T1#101",
+      506,
+      508
+     ],
+     [
+      "T3#46",
+      508,
+      511
+     ],
+     [
+      "T1#102",
+      511,
+      513
+     ],
+     [
+      "T2#73",
+      513,
+      515
+     ],
+     [
+      "T1#103",
+      515,
+      517
+     ],
+     [
+      "T3#47",
+      517,
+      518
+     ],
+     [
+      "T2#74",
+      518,
+      520
+     ],
+     [
+      "T1#104",
+      520,
+      522
+     ],
+     [
+      "T3#47",
+      522,
+      524
+     ],
+     [
+      "T1#105",
+      525,
+      527
+     ],
+     [
+      "T2#75",
+      527,
+      529
+     ],
+     [
+      "T3#48",
+      529,
+      530
+     ],
+     [
+      "T1#106",
+      530,
+      532
+     ],
+     [
+      "T3#48",
+      532,
+      534
+     ],
+     [
+      "T2#76",
+      534,
+      536
+     ],
+     [
+      "T1#107",
+      536,
+      538
+     ],
+     [
+      "T2#77",
+      539,
+      541
+     ],
+     [
+      "T1#108",
+      541,
+      543
+     ],
+     [
+      "T3#49",
+      543,
+      546
+     ],
+     [
+      "T1#109",
+      546,
+      548
+     ],
+     [
+      "T2#78",
+      548,
+      550
+     ],
+     [
+      "T1#110",
+      550,
+      552
+     ],
+     [
+      "T3#50",
+      552,
+      555
+     ],
+     [
+      "T2#79",
+      555,
+      557
+     ],
+     [
+      "T1#111",
+      557,
+      559
+     ],
+     [
+      "T1#112",
+      560,
+      562
+     ],
+     [
+      "T2#80",
+      562,
+      564
+     ],
+     [
+      "T3#51",
+      564,
+      567
+     ],
+     [
+      "T1#113",
+      567,
+      569
+     ],
+     [
+      "T2#81",
+      569,
+      571
+     ],
+     [
+      "T1#114",
+      571,
+      573
+     ],
+     [
+      "T3#52",
+      573,
+      574
+     ],
+     [
+      "T2#82",
+      574,
+      576
+     ],
+     [
+      "T1#115",
+      576,
+      578
+     ],
+     [
+      "T3#52",
+      578,
+      580
+     ],
+     [
+      "T1#116",
+      580,
+      582
+     ],
+     [
+      "T2#83",
+      582,
+      584
+     ],
+     [
+      "T3#53",
+      584,
+      585
+     ],
+     [
+      "T1#117",
+      585,
+      587
+     ],
+     [
+      "T3#53",
+      587,
+      589
+     ],
+     [
+      "T2#84",
+      589,
+      591
+     ],
+     [
+      "T1#118",
+      591,
+      593
+     ],
+     [
+      "T3#54",
+      594,
+      595
+     ],
+     [
+      "T1#119",
+      595,
+      597
+     ],
+     [
+      "T2#85",
+      597,
+      599
+     ],
+     [
+      "T3#54",
+      599,
+      601
+     ],
+     [
+      "T1#120",
+      601,
+      603
+     ],
+     [
+      "T2#86",
+      603,
+      605
+     ],
+     [
+      "T1#121",
+      605,
+      607
+     ],
+     [
+      "T3#55",
+      607,
+      610
+     ],
+     [
+      "T2#87",
+      610,
+      612
+     ],
+     [
+      "T1#122",
+      612,
+      614
+     ],
+     [
+      "T1#123",
+      615,
+      617
+     ],
+     [
+      "T2#88",
+      617,
+      619
+     ],
+     [
+      "T3#56",
+      619,
+      622
+     ],
+     [
+      "T1#124",
+      622,
+      624
+     ],
+     [
+      "T2#89",
+      624,
+      626
+     ],
+     [
+      "T1#125",
+      626,
+      628
+     ],
+     [
+      "T3#57",
+      628,
+      630
+     ],
+     [
+      "T1#126",
+      630,
+      632
+     ],
+     [
+      "T3#57",
+      632,
+      633
+     ],
+     [
+      "T2#90",
+      633,
+      635
+     ],
+     [
+      "T1#127",
+      635,
+      637
+     ],
+     [
+      "T2#91",
+      637,
+      639
+     ],
+     [
+      "T3#58",
+      639,
+      640
+     ],
+     [
+      "T1#128",
+      640,
+      642
+     ],
+     [
+      "T3#58",
+      642,
+      644
+     ],
+     [
+      "T2#92",
+      644,
+      646
+     ],
+     [
+      "T1#129",
+      646,
+      648
+     ],
+     [
+      "T3#59",
+      649,
+      650
+     ],
+     [
+      "T1#130",
+      650,
+      652
+     ],
+     [
+      "T2#93",
+      652,
+      654
+     ],
+     [
+      "T3#59",
+      654,
+      656
+     ],
+     [
+      "T1#131",
+      656,
+      658
+     ],
+     [
+      "T2#94",
+      658,
+      660
+     ],
+     [
+      "T1#132",
+      660,
+      662
+     ],
+     [
+      "T3#60",
+      662,
+      665
+     ],
+     [
+      "T1#133",
+      665,
+      667
+     ],
+     [
+      "T2#95",
+      667,
+      669
+     ],
+     [
+      "T1#134",
+      670,
+      672
+     ],
+     [
+      "T2#96",
+      672,
+      674
+     ],
+     [
+      "T3#61",
+      674,
+      677
+     ],
+     [
+      "T1#135",
+      677,
+      679
+     ],
+     [
+      "T2#97",
+      679,
+      681
+     ],
+     [
+      "T1#136",
+      681,
+      683
+     ],
+     [
+      "T3#62",
+      683,
+      685
+     ],
+     [
+      "T1#137",
+      685,
+      687
+     ],
+     [
+      "T3#62",
+      687,
+      688
+     ],
+     [
+      "T2#98",
+      688,
+      690
+     ],
+     [
+      "T1#138",
+      690,
+      692
+     ],
+     [
+      "T2#99",
+      693,
+      695
+     ],
+     [
+      "T1#139",
+      695,
+      697
+     ],
+     [
+      "T3#63",
+      697,
+      700
+     ],
+     [
+      "T1#140",
+      700,
+      702
+     ],
+     [
+      "T2#100",
+      702,
+      704
+     ],
+     [
+      "T3#64",
+      704,
+      705
+     ],
+     [
+      "T1#141",
+      705,
+      707
+     ],
+     [
+      "T3#64",
+      707,
+      709
+     ],
+     [
+      "T2#101",
+      709,
+      711
+     ],
+     [
+      "T1#142",
+      711,
+      713
+     ],
+     [
+      "T2#102",
+      714,
+      716
+     ],
+     [
+      "T1#143",
+      716,
+      718
+     ],
+     [
+      "T3#65",
+      718,
+      721
+     ],
+     [
+      "T1#144",
+      721,
+      723
+     ],
+     [
+      "T2#103",
+      723,
+      725
+     ],
+     [
+      "T1#145",
+      725,
+      727
+     ],
+     [
+      "T3#66",
+      727,
+      728
+     ],
+     [
+      "T2#104",
+      728,
+      730
+     ],
+     [
+      "T3#66",
+      730,
+      732
+     ],
+     [
+      "T1#146",
+      732,
+      734
+     ],
+     [
+      "T1#147",
+      735,
+      737
+     ],
+     [
+      "T2#105",
+      737,
+      739
+     ],
+     [
+      "T3#67",
+      739,
+      740
+     ],
+     [
+      "T1#148",
+      740,
+      742
+     ],
+     [
+      "T3#67",
+      742,
+      744
+     ],
+     [
+      "T2#106",
+      744,
+      746
+     ],
+     [
+      "T1#149",
+      746,
+      748
+     ],
+     [
+      "T3#68",
+      748,
+      749
+     ],
+     [
+      "T2#107",
+      749,
+      751
+     ],
+     [
+      "T1#150",
+      751,
+      753
+     ],
+     [
+      "T3#68",
+      753,
+      755
+     ],
+     [
+      "T1#151",
+      755,
+      757
+     ],
+     [
+      "T2#108",
+      757,
+      759
+     ],
+     [
+      "T3#69",
+      759,
+      760
+     ],
+     [
+      "T1#152",
+      760,
+      762
+     ],
+     [
+      "T3#69",
+      762,
+      764
+     ],
+     [
+      "T2#109",
+      764,
+      766
+     ],
+     [
+      "T1#153",
+      766,
+      768
+     ]
+    ],
+    "lst": [
+     [
+      "T1#0",
+      0,
+      2
+     ],
+     [
+      "T2#0",
+      2,
+      4
+     ],
+     [
+      "T3#0",
+      4,
+      7
+     ],
+     [
+      "T1#1",
+      7,
+      9
+     ],
+     [
+      "T2#1",
+      9,
+      11
+     ],
+     [
+      "T1#2",
+      11,
+      13
+     ],
+     [
+      "T3#1",
+      13,
+      15
+     ],
+     [
+      "T2#2",
+      15,
+      16
+     ],
+     [
+      "T1#3",
+      16,
+      17
+     ],
+     [
+      "T3#1",
+      17,
+      18
+     ],
+     [
+      "T2#2",
+      18,
+      19
+     ],
+     [
+      "T1#3",
+      19,
+      20
+     ],
+     [
+      "T1#4",
+      20,
+      22
+     ],
+     [
+      "T2#3",
+      22,
+      24
+     ],
+     [
+      "T3#2",
+      24,
+      25
+     ],
+     [
+      "T1#5",
+      25,
+      26
+     ],
+     [
+      "T3#2",
+      26,
+      27
+     ],
+     [
+      "T1#5",
+      27,
+      28
+     ],
+     [
+      "T3#2",
+      28,
+      29
+     ],
+     [
+      "T2#4",
+      29,
+      31
+     ],
+     [
+      "T1#6",
+      31,
+      33
+     ],
+     [
+      "T3#3",
+      33,
+      35
+     ],
+     [
+      "T1#7",
+      35,
+      37
+     ],
+     [
+      "T2#5",
+      37,
+      39
+     ],
+     [
+      "T3#3",
+      39,
+      40
+     ],
+     [
+      "T1#8",
+      40,
+      42
+     ],
+     [
+      "T2#6",
+      42,
+      44
+     ],
+     [
+      "T3#4",
+      44,
+      45
+     ],
+     [
+      "T1#9",
+      45,
+      47
+     ],
+     [
+      "T3#4",
+      47,
+      49
+     ],
+     [
+      "T2#7",
+      49,
+      50
+     ],
+     [
+      "T1#10",
+      50,
+      51
+     ],
+     [
+      "T2#7",
+      51,
+      52
+     ],
+     [
+      "T1#10",
+      52,
+      53
+     ],
+     [
+      "T1#11",
+      55,
+      57
+     ],
+     [
+      "T2#8",
+      57,
+      58
+     ],
+     [
+      "T3#5",
+      58,
+      59
+     ],
+     [
+      "T2#8",
+      59,
+      60
+     ],
+     [
+      "T3#5",
+      60,
+      62
+     ],
+     [
+      "T1#12",
+      62,
+      64
+     ],
+     [
+      "T2#9",
+      64,
+      66
+     ],
+     [
+      "T1#13",
+      66,
+      68
+     ],
+     [
+      "T3#6",
+      68,
+      70
+     ],
+     [
+      "T1#14",
+      70,
+      71
+     ],
+     [
+      "T3#6",
+      71,
+      72
+     ],
+     [
+      "T1#14",
+      72,
+      73
+     ],
+     [
+      "T2#10",
+      73,
+      75
+     ],
+     [
+      "T1#15",
+      75,
+      77
+     ],
+     [
+      "T2#11",
+      77,
+      79
+     ],
+     [
+      "T3#7",
+      79,
+      80
+     ],
+     [
+      "T1#16",
+      80,
+      81
+     ],
+     [
+      "T3#7",
+      81,
+      82
+     ],
+     [
+      "T1#16",
+      82,
+      83
+     ],
+     [
+      "T3#7",
+      83,
+      84
+     ],
+     [
+      "T2#12",
+      84,
+      85
+     ],
+     [
+      "T1#17",
+      85,
+      86
+     ],
+     [
+      "T2#12",
+      86,
+      87
+     ],
+     [
+      "T1#17",
+      87,
+      88
+     ],
+     [
+      "T3#8",
+      88,
+      90
+     ],
+     [
+      "T1#18",
+      90,
+      92
+     ],
+     [
+      "T2#13",
+      92,
+      93
+     ],
+     [
+      "T3#8",
+      93,
+      94
+     ],
+     [
+      "T2#13",
+      94,
+      95
+     ],
+     [
+      "T1#19",
+      95,
+      97
+     ],
+     [
+      "T2#14",
+      98,
+      100
+     ],
+     [
+      "T1#20",
+      100,
+      102
+     ],
+     [
+      "T3#9",
+      102,
+      105
+     ],
+     [
+      "T1#21",
+      105,
+      107
+     ],
+     [
+      "T2#15",
+      107,
+      109
+     ],
+     [
+      "T1#22",
+      110,
+      112
+     ],
+     [
+      "T3#10",
+      112,
+      113
+     ],
+     [
+      "T2#16",
+      113,
+      114
+     ],
+     [
+      "T3#10",
+      114,
+      115
+     ],
+     [
+      "T2#16",
+      115,
+      116
+     ],
+     [
+      "T3#10",
+      116,
+      117
+     ],
+     [
+      "T1#23",
+      117,
+      119
+     ],
+     [
+      "T2#17",
+      119,
+      120
+     ],
+     [
+      "T1#24",
+      120,
+      121
+     ],
+     [
+      "T2#17",
+      121,
+      122
+     ],
+     [
+      "T1#24",
+      122,
+      123
+     ],
+     [
+      "T3#11",
+      123,
+      125
+     ],
+     [
+      "T1#25",
+      125,
+      126
+     ],
+     [
+      "T3#11",
+      126,
+      127
+     ],
+     [
+      "T1#25",
+      127,
+      128
+     ],
+     [
+      "T2#18",
+      128,
+      130
+     ],
+     [
+      "T1#26",
+      130,
+      132
+     ],
+     [
+      "T3#12",
+      132,
+      133
+     ],
+     [
+      "T2#19",
+      133,
+      135
+     ],
+     [
+      "T1#27",
+      135,
+      136
+     ],
+     [
+      "T3#12",
+      136,
+      137
+     ],
+     [
+      "T1#27",
+      137,
+      138
+     ],
+     [
+      "T3#12",
+      138,
+      139
+     ],
+     [
+      "T1#28",
+      140,
+      142
+     ],
+     [
+      "T2#20",
+      142,
+      144
+     ],
+     [
+      "T3#13",
+      144,
+      145
+     ],
+     [
+      "T1#29",
+      145,
+      147
+     ],
+     [
+      "T3#13",
+      147,
+      149
+     ],
+     [
+      "T2#21",
+      149,
+      151
+     ],
+     [
+      "T1#30",
+      151,
+      153
+     ],
+     [
+      "T2#22",
+      154,
+      155
+     ],
+     [
+      "T1#31",
+      155,
+      156
+     ],
+     [
+      "T2#22",
+      156,
+      157
+     ],
+     [
+      "T1#31",
+      157,
+      158
+     ],
+     [
+      "T3#14",
+      158,
+      161
+     ],
+     [
+      "T1#32",
+      161,
+      163
+     ],
+     [
+      "T2#23",
+      163,
+      165
+     ],
+     [
+      "T1#33",
+      165,
+      167
+     ],
+     [
+      "T3#15",
+      167,
+      169
+     ],
+     [
+      "T2#24",
+      169,
+      170
+     ],
+     [
+      "T3#15",
+      170,
+      171
+     ],
+     [
+      "T2#24",
+      171,
+      172
+     ],
+     [
+      "T1#34",
+      172,
+      174
+     ],
+     [
+      "T1#35",
+      175,
+      177
+     ],
+     [
+      "T2#25",
+      177,
+      179
+     ],
+     [
+      "T3#16",
+      179,
+      181
+     ],
+     [
+      "T1#36",
+      181,
+      182
+     ],
+     [
+      "T3#16",
+      182,
+      183
+     ],
+     [
+      "T1#36",
+      183,
+      184
+     ],
+     [
+      "T2#26",
+      184,
+      186
+     ],
+     [
+      "T1#37",
+      186,
+      188
+     ],
+     [
+      "T3#17",
+      188,
+      189
+     ],
+     [
+      "T2#27",
+      189,
+      190
+     ],
+     [
+      "T1#38",
+      190,
+      191
+     ],
+     [
+      "T3#17",
+      191,
+      192
+     ],
+     [
+      "T2#27",
+      192,
+      193
+     ],
+     [
+      "T1#38",
+      193,
+      194
+     ],
+     [
+      "T3#17",
+      194,
+      195
+     ],
+     [
+      "T1#39",
+      195,
+      197
+     ],
+     [
+      "T2#28",
+      197,
+      199
+     ],
+     [
+      "T3#18",
+      199,
+      200
+     ],
+     [
+      "T1#40",
+      200,
+      202
+     ],
+     [
+      "T3#18",
+      202,
+      204
+     ],
+     [
+      "T2#29",
+      204,
+      206
+     ],
+     [
+      "T1#41",
+      206,
+      208
+     ],
+     [
+      "T3#19",
+      209,
+      210
+     ],
+     [
+      "T1#42",
+      210,
+      212
+     ],
+     [
+      "T2#30",
+      212,
+      214
+     ],
+     [
+      "T3#19",
+      214,
+      216
+     ],
+     [
+      "T1#43",
+      216,
+      218
+     ],
+     [
+      "T2#31",
+      218,
+      220
+     ],
+     [
+      "T1#44",
+      220,
+      222
+     ],
+     [
+      "T3#20",
+      222,
+      225
+     ],
+     [
+      "T2#32",
+      225,
+      226
+     ],
+     [
+      "T1#45",
+      226,
+      227
+     ],
+     [
+      "T2#32",
+      227,
+      228
+     ],
+     [
+      "T1#45",
+      228,
+      229
+     ],
+     [
+      "T1#46",
+      230,
+      232
+     ],
+     [
+      "T2#33",
+      232,
+      234
+     ],
+     [
+      "T3#21",
+      234,
+      236
+     ],
+     [
+      "T1#47",
+      236,
+      237
+     ],
+     [
+      "T3#21",
+      237,
+      238
+     ],
+     [
+      "T1#47",
+      238,
+      239
+     ],
+     [
+      "T2#34",
+      239,
+      241
+     ],
+     [
+      "T1#48",
+      241,
+      243
+     ],
+     [
+      "T3#22",
+      243,
+      245
+     ],
+     [
+      "T1#49",
+      245,
+      247
+     ],
+     [
+      "T2#35",
+      247,
+      248
+     ],
+     [
+      "T3#22",
+      248,
+      249
+     ],
+     [
+      "T2#35",
+      249,
+      250
+     ],
+     [
+      "T1#50",
+      250,
+      252
+     ],
+     [
+      "T2#36",
+      252,
+      254
+     ],
+     [
+      "T3#23",
+      254,
+      255
+     ],
+     [
+      "T1#51",
+      255,
+      257
+     ],
+     [
+      "T3#23",
+      257,
+      259
+     ],
+     [
+      "T2#37",
+      259,
+      260
+     ],
+     [
+      "T1#52",
+      260,
+      261
+     ],
+     [
+      "T2#37",
+      261,
+      262
+     ],
+     [
+      "T1#52",
+      262,
+      263
+     ],
+     [
+      "T3#24",
+      264,
+      265
+     ],
+     [
+      "T1#53",
+      265,
+      267
+     ],
+     [
+      "T2#38",
+      267,
+      268
+     ],
+     [
+      "T3#24",
+      268,
+      269
+     ],
+     [
+      "T2#38",
+      269,
+      270
+     ],
+     [
+      "T3#24",
+      270,
+      271
+     ],
+     [
+      "T1#54",
+      271,
+      273
+     ],
+     [
+      "T2#39",
+      273,
+      275
+     ],
+     [
+      "T1#55",
+      275,
+      277
+     ],
+     [
+      "T3#25",
+      277,
+      280
+     ],
+     [
+      "T1#56",
+      280,
+      282
+     ],
+     [
+      "T2#40",
+      282,
+      284
+     ],
+     [
+      "T1#57",
+      285,
+      287
+     ],
+     [
+      "T2#41",
+      287,
+      288
+     ],
+     [
+      "T3#26",
+      288,
+      289
+     ],
+     [
+      "T2#41",
+      289,
+      290
+     ],
+     [
+      "T3#26",
+      290,
+      291
+     ],
+     [
+      "T1#58",
+      291,
+      292
+     ],
+     [
+      "T3#26",
+      292,
+      293
+     ],
+     [
+      "T1#58",
+      293,
+      294
+     ],
+     [
+      "T2#42",
+      294,
+      295
+     ],
+     [
+      "T1#59",
+      295,
+      296
+     ],
+     [
+      "T2#42",
+      296,
+      297
+     ],
+     [
+      "T1#59",
+      297,
+      298
+     ],
+     [
+      "T3#27",
+      298,
+      300
+     ],
+     [
+      "T1#60",
+      300,
+      302
+     ],
+     [
+      "T3#27",
+      302,
+      303
+     ],
+     [
+      "T2#43",
+      303,
+      305
+     ],
+     [
+      "T1#61",
+      305,
+      307
+     ],
+     [
+      "T2#44",
+      308,
+      310
+     ],
+     [
+      "T1#62",
+      310,
+      311
+     ],
+     [
+      "T3#28",
+      311,
+      312
+     ],
+     [
+      "T1#62",
+      312,
+      313
+     ],
+     [
+      "T3#28",
+      313,
+      315
+     ],
+     [
+      "T1#63",
+      315,
+      317
+     ],
+     [
+      "T2#45",
+      317,
+      319
+     ],
+     [
+      "T3#29",
+      319,
+      320
+     ],
+     [
+      "T1#64",
+      320,
+      322
+     ],
+     [
+      "T3#29",
+      322,
+      323
+     ],
+     [
+      "T2#46",
+      323,
+      324
+     ],
+     [
+      "T3#29",
+      324,
+      325
+     ],
+     [
+      "T2#46",
+      325,
+      326
+     ],
+     [
+      "T1#65",
+      326,
+      328
+     ],
+     [
+      "T2#47",
+      329,
+      330
+     ],
+     [
+      "T1#66",
+      330,
+      331
+     ],
+     [
+      "T2#47",
+      331,
+      332
+     ],
+     [
+      "T1#66",
+      332,
+      333
+     ],
+     [
+      "T3#30",
+      333,
+      336
+     ],
+     [
+      "T1#67",
+      336,
+      338
+     ],
+     [
+      "T2#48",
+      338,
+      340
+     ],
+     [
+      "T1#68",
+      340,
+      342
+     ],
+     [
+      "T3#31",
+      342,
+      343
+     ],
+     [
+      "T2#49",
+      343,
+      344
+     ],
+     [
+      "T3#31",
+      344,
+      345
+     ],
+     [
+      "T2#49",
+      345,
+      346
+     ],
+     [
+      "T1#69",
+      346,
+      347
+     ],
+     [
+      "T3#31",
+      347,
+      348
+     ],
+     [
+      "T1#69",
+      348,
+      349
+     ],
+     [
+      "T1#70",
+      350,
+      352
+     ],
+     [
+      "T2#50",
+      352,
+      354
+     ],
+     [
+      "T3#32",
+      354,
+      355
+     ],
+     [
+      "T1#71",
+      355,
+      356
+     ],
+     [
+      "T3#32",
+      356,
+      357
+     ],
+     [
+      "T1#71",
+      357,
+      358
+     ],
+     [
+      "T3#32",
+      358,
+      359
+     ],
+     [
+      "T2#51",
+      359,
+      361
+     ],
+     [
+      "T1#72",
+      361,
+      363
+     ],
+     [
+      "T3#33",
+      363,
+      364
+     ],
+     [
+      "T2#52",
+      364,
+      365
+     ],
+     [
+      "T1#73",
+      365,
+      366
+     ],
+     [
+      "T2#52",
+      366,
+      367
+     ],
+     [
+      "T1#73",
+      367,
+      368
+     ],
+     [
+      "T3#33",
+      368,
+      370
+     ],
+     [
+      "T1#74",
+      370,
+      372
+     ],
+     [
+      "T2#53",
+      372,
+      374
+     ],
+     [
+      "T3#34",
+      374,
+      375
+     ],
+     [
+      "T1#75",
+      375,
+      377
+     ],
+     [
+      "T3#34",
+      377,
+      379
+     ],
+     [
+      "T2#54",
+      379,
+      381
+     ],
+     [
+      "T1#76",
+      381,
+      383
+     ],
+     [
+      "T1#77",
+      385,
+      387
+     ],
+     [
+      "T2#55",
+      387,
+      389
+     ],
+     [
+      "T3#35",
+      389,
+      392
+     ],
+     [
+      "T1#78",
+      392,
+      394
+     ],
+     [
+      "T2#56",
+      394,
+      396
+     ],
+     [
+      "T1#79",
+      396,
+      398
+     ],
+     [
+      "T3#36",
+      398,
+      400
+     ],
+     [
+      "T2#57",
+      400,
+      401
+     ],
+     [
+      "T1#80",
+      401,
+      402
+     ],
+     [
+      "T3#36",
+      402,
+      403
+     ],
+     [
+      "T2#57",
+      403,
+      404
+     ],
+     [
+      "T1#80",
+      404,
+      405
+     ],
+     [
+      "T1#81",
+      405,
+      407
+     ],
+     [
+      "T2#58",
+      407,
+      409
+     ],
+     [
+      "T3#37",
+      409,
+      410
+     ],
+     [
+      "T1#82",
+      410,
+      411
+     ],
+     [
+      "T3#37",
+      411,
+      412
+     ],
+     [
+      "T1#82",
+      412,
+      413
+     ],
+     [
+      "T3#37",
+      413,
+      414
+     ],
+     [
+      "T2#59",
+      414,
+      416
+     ],
+     [
+      "T1#83",
+      416,
+      418
+     ],
+     [
+      "T3#38",
+      418,
+      420
+     ],
+     [
+      "T1#84",
+      420,
+      422
+     ],
+     [
+      "T2#60",
+      422,
+      424
+     ],
+     [
+      "T3#38",
+      424,
+      425
+     ],
+     [
+      "T1#85",
+      425,
+      427
+     ],
+     [
+      "T2#61",
+      427,
+      429
+     ],
+     [
+      "T3#39",
+      429,
+      430
+     ],
+     [
+      "T1#86",
+      430,
+      432
+     ],
+     [
+      "T3#39",
+      432,
+      434
+     ],
+     [
+      "T2#62",
+      434,
+      435
+     ],
+     [
+      "T1#87",
+      435,
+      436
+     ],
+     [
+      "T2#62",
+      436,
+      437
+     ],
+     [
+      "T1#87",
+      437,
+      438
+     ],
+     [
+      "T1#88",
+      440,
+      442
+     ],
+     [
+      "T2#63",
+      442,
+      443
+     ],
+     [
+      "T3#40",
+      443,
+      444
+     ],
+     [
+      "T2#63",
+      444,
+      445
+     ],
+     [
+      "T3#40",
+      445,
+      447
+     ],
+     [
+      "T1#89",
+      447,
+      449
+     ],
+     [
+      "T2#64",
+      449,
+      451
+     ],
+     [
+      "T1#90",
+      451,
+      453
+     ],
+     [
+      "T3#41",
+      453,
+      455
+     ],
+     [
+      "T1#91",
+      455,
+      456
+     ],
+     [
+      "T3#41",
+      456,
+      457
+     ],
+     [
+      "T1#91",
+      457,
+      458
+     ],
+     [
+      "T2#65",
+      458,
+      460
+     ],
+     [
+      "T1#92",
+      460,
+      462
+     ],
+     [
+      "T2#66",
+      462,
+      464
+     ],
+     [
+      "T3#42",
+      464,
+      465
+     ],
+     [
+      "T1#93",
+      465,
+      466
+     ],
+     [
+      "T3#42",
+      466,
+      467
+     ],
+     [
+      "T1#93",
+      467,
+      468
+     ],
+     [
+      "T3#42",
+      468,
+      469
+     ],
+     [
+      "T2#67",
+      469,
+      470
+     ],
+     [
+      "T1#94",
+      470,
+      471
+     ],
+     [
+      "T2#67",
+      471,
+      472
+     ],
+     [
+      "T1#94",
+      472,
+      473
+     ],
+     [
+      "T3#43",
+      473,
+      475
+     ],
+     [
+      "T1#95",
+      475,
+      477
+     ],
+     [
+      "T2#68",
+      477,
+      478
+     ],
+     [
+      "T3#43",
+      478,
+      479
+     ],
+     [
+      "T2#68",
+      479,
+      480
+     ],
+     [
+      "T1#96",
+      480,
+      482
+     ],
+     [
+      "T2#69",
+      483,
+      485
+     ],
+     [
+      "T1#97",
+      485,
+      487
+     ],
+     [
+      "T3#44",
+      487,
+      490
+     ],
+     [
+      "T1#98",
+      490,
+      492
+     ],
+     [
+      "T2#70",
+      492,
+      494
+     ],
+     [
+      "T1#99",
+      495,
+      497
+     ],
+     [
+      "T3#45",
+      497,
+      498
+     ],
+     [
+      "T2#71",
+      498,
+      499
+     ],
+     [
+      "T3#45",
+      499,
+      500
+     ],
+     [
+      "T2#71",
+      500,
+      501
+     ],
+     [
+      "T3#45",
+      501,
+      502
+     ],
+     [
+      "T1#100",
+      502,
+      504
+     ],
+     [
+      "T2#72",
+      504,
+      505
+     ],
+     [
+      "T1#101",
+      505,
+      506
+     ],
+     [
+      "T2#72",
+      506,
+      507
+     ],
+     [
+      "T1#101",
+      507,
+      508
+     ],
+     [
+      "T3#46",
+      508,
+      510
+     ],
+     [
+      "T1#102",
+      510,
+      511
+     ],
+     [
+      "T3#46",
+      511,
+      512
+     ],
+     [
+      "T1#102",
+      512,
+      513
+     ],
+     [
+      "T2#73",
+      513,
+      515
+     ],
+     [
+      "T1#103",
+      515,
+      517
+     ],
+     [
+      "T3#47",
+      517,
+      518
+     ],
+     [
+      "T2#74",
+      518,
+      520
+     ],
+     [
+      "T1#104",
+      520,
+      521
+     ],
+     [
+      "T3#47",
+      521,
+      522
+     ],
+     [
+      "T1#104",
+      522,
+      523
+     ],
+     [
+      "T3#47",
+      523,
+      524
+     ],
+     [
+      "T1#105",
+      525,
+      527
+     ],
+     [
+      "T2#75",
+      527,
+      529
+     ],
+     [
+      "T3#48",
+      529,
+      530
+     ],
+     [
+      "T1#106",
+      530,
+      532
+     ],
+     [
+      "T3#48",
+      532,
+      534
+     ],
+     [
+      "T2#76",
+      534,
+      536
+     ],
+     [
+      "T1#107",
+      536,
+      538
+     ],
+     [
+      "T2#77",
+      539,
+      540
+     ],
+     [
+      "T1#108",
+      540,
+      541
+     ],
+     [
+      "T2#77",
+      541,
+      542
+     ],
+     [
+      "T1#108",
+      542,
+      543
+     ],
+     [
+      "T3#49",
+      543,
+      546
+     ],
+     [
+      "T1#109",
+      546,
+      548
+     ],
+     [
+      "T2#78",
+      548,
+      550
+     ],
+     [
+      "T1#110",
+      550,
+      552
+     ],
+     [
+      "T3#50",
+      552,
+      554
+     ],
+     [
+      "T2#79",
+      554,
+      555
+     ],
+     [
+      "T3#50",
+      555,
+      556
+     ],
+     [
+      "T2#79",
+      556,
+      557
+     ],
+     [
+      "T1#111",
+      557,
+      559
+     ],
+     [
+      "T1#112",
+      560,
+      562
+     ],
+     [
+      "T2#80",
+      562,
+      564
+     ],
+     [
+      "T3#51",
+      564,
+      566
+     ],
+     [
+      "T1#113",
+      566,
+      567
+     ],
+     [
+      "T3#51",
+      567,
+      568
+     ],
+     [
+      "T1#113",
+      568,
+      569
+     ],
+     [
+      "T2#81",
+      569,
+      571
+     ],
+     [
+      "T1#114",
+      571,
+      573
+     ],
+     [
+      "T3#52",
+      573,
+      574
+     ],
+     [
+      "T2#82",
+      574,
+      575
+     ],
+     [
+      "T1#115",
+      575,
+      576
+     ],
+     [
+      "T3#52",
+      576,
+      577
+     ],
+     [
+      "T2#82",
+      577,
+      578
+     ],
+     [
+      "T1#115",
+      578,
+      579
+     ],
+     [
+      "T3#52",
+      579,
+      580
+     ],
+     [
+      "T1#116",
+      580,
+      582
+     ],
+     [
+      "T2#83",
+      582,
+      584
+     ],
+     [
+      "T3#53",
+      584,
+      585
+     ],
+     [
+      "T1#117",
+      585,
+      587
+     ],
+     [
+      "T3#53",
+      587,
+      589
+     ],
+     [
+      "T2#84",
+      589,
+      591
+     ],
+     [
+      "T1#118",
+      591,
+      593
+     ],
+     [
+      "T3#54",
+      594,
+      595
+     ],
+     [
+      "T1#119",
+      595,
+      597
+     ],
+     [
+      "T2#85",
+      597,
+      599
+     ],
+     [
+      "T3#54",
+      599,
+      601
+     ],
+     [
+      "T1#120",
+      601,
+      603
+     ],
+     [
+      "T2#86",
+      603,
+      605
+     ],
+     [
+      "T1#121",
+      605,
+      607
+     ],
+     [
+      "T3#55",
+      607,
+      610
+     ],
+     [
+      "T2#87",
+      610,
+      611
+     ],
+     [
+      "T1#122",
+      611,
+      612
+     ],
+     [
+      "T2#87",
+      612,
+      613
+     ],
+     [
+      "T1#122",
+      613,
+      614
+     ],
+     [
+      "T1#123",
+      615,
+      617
+     ],
+     [
+      "T2#88",
+      617,
+      619
+     ],
+     [
+      "T3#56",
+      619,
+      621
+     ],
+     [
+      "T1#124",
+      621,
+      622
+     ],
+     [
+      "T3#56",
+      622,
+      623
+     ],
+     [
+      "T1#124",
+      623,
+      624
+     ],
+     [
+      "T2#89",
+      624,
+      626
+     ],
+     [
+      "T1#125",
+      626,
+      628
+     ],
+     [
+      "T3#57",
+      628,
+      630
+     ],
+     [
+      "T1#126",
+      630,
+      632
+     ],
+     [
+      "T2#90",
+      632,
+      633
+     ],
+     [
+      "T3#57",
+      633,
+      634
+     ],
+     [
+      "T2#90",
+      634,
+      635
+     ],
+     [
+      "T1#127",
+      635,
+      637
+     ],
+     [
+      "T2#91",
+      637,
+      639
+     ],
+     [
+      "T3#58",
+      639,
+      640
+     ],
+     [
+      "T1#128",
+      640,
+      642
+     ],
+     [
+      "T3#58",
+      642,
+      644
+     ],
+     [
+      "T2#92",
+      644,
+      645
+     ],
+     [
+      "T1#129",
+      645,
+      646
+     ],
+     [
+      "T2#92",
+      646,
+      647
+     ],
+     [
+      "T1#129",
+      647,
+      648
+     ],
+     [
+      "T3#59",
+      649,
+      650
+     ],
+     [
+      "T1#130",
+      650,
+      652
+     ],
+     [
+      "T2#93",
+      652,
+      653
+     ],
+     [
+      "T3#59",
+      653,
+      654
+     ],
+     [
+      "T2#93",
+      654,
+      655
+     ],
+     [
+      "T3#59",
+      655,
+      656
+     ],
+     [
+      "T1#131",
+      656,
+      658
+     ],
+     [
+      "T2#94",
+      658,
+      660
+     ],
+     [
+      "T1#132",
+      660,
+      662
+     ],
+     [
+      "T3#60",
+      662,
+      665
+     ],
+     [
+      "T1#133",
+      665,
+      667
+     ],
+     [
+      "T2#95",
+      667,
+      669
+     ],
+     [
+      "T1#134",
+      670,
+      672
+     ],
+     [
+      "T2#96",
+      672,
+      673
+     ],
+     [
+      "T3#61",
+      673,
+      674
+     ],
+     [
+      "T2#96",
+      674,
+      675
+     ],
+     [
+      "T3#61",
+      675,
+      676
+     ],
+     [
+      "T1#135",
+      676,
+      677
+     ],
+     [
+      "T3#61",
+      677,
+      678
+     ],
+     [
+      "T1#135",
+      678,
+      679
+     ],
+     [
+      "T2#97",
+      679,
+      680
+     ],
+     [
+      "T1#136",
+      680,
+      681
+     ],
+     [
+      "T2#97",
+      681,
+      682
+     ],
+     [
+      "T1#136",
+      682,
+      683
+     ],
+     [
+      "T3#62",
+      683,
+      685
+     ],
+     [
+      "T1#137",
+      685,
+      687
+     ],
+     [
+      "T3#62",
+      687,
+      688
+     ],
+     [
+      "T2#98",
+      688,
+      690
+     ],
+     [
+      "T1#138",
+      690,
+      692
+     ],
+     [
+      "T2#99",
+      693,
+      695
+     ],
+     [
+      "T1#139",
+      695,
+      696
+     ],
+     [
+      "T3#63",
+      696,
+      697
+     ],
+     [
+      "T1#139",
+      697,
+      698
+     ],
+     [
+      "T3#63",
+      698,
+      700
+     ],
+     [
+      "T1#140",
+      700,
+      702
+     ],
+     [
+      "T2#100",
+      702,
+      704
+     ],
+     [
+      "T3#64",
+      704,
+      705
+     ],
+     [
+      "T1#141",
+      705,
+      707
+     ],
+     [
+      "T3#64",
+      707,
+      708
+     ],
+     [
+      "T2#101",
+      708,
+      709
+     ],
+     [
+      "T3#64",
+      709,
+      710
+     ],
+     [
+      "T2#101",
+      710,
+      711
+     ],
+     [
+      "T1#142",
+      711,
+      713
+     ],
+     [
+      "T2#102",
+      714,
+      715
+     ],
+     [
+      "T1#143",
+      715,
+      716
+     ],
+     [
+      "T2#102",
+      716,
+      717
+     ],
+     [
+      "T1#143",
+      717,
+      718
+     ],
+     [
+      "T3#65",
+      718,
+      721
+     ],
+     [
+      "T1#144",
+      721,
+      723
+     ],
+     [
+      "T2#103",
+      723,
+      725
+     ],
+     [
+      "T1#145",
+      725,
+      727
+     ],
+     [
+      "T3#66",
+      727,
+      728
+     ],
+     [
+      "T2#104",
+      728,
+      729
+     ],
+     [
+      "T3#66",
+      729,
+      730
+     ],
+     [
+      "T2#104",
+      730,
+      731
+     ],
+     [
+      "T1#146",
+      731,
+      732
+     ],
+     [
+      "T3#66",
+      732,
+      733
+     ],
+     [
+      "T1#146",
+      733,
+      734
+     ],
+     [
+      "T1#147",
+      735,
+      737
+     ],
+     [
+      "T2#105",
+      737,
+      739
+     ],
+     [
+      "T3#67",
+      739,
+      740
+     ],
+     [
+      "T1#148",
+      740,
+      741
+     ],
+     [
+      "T3#67",
+      741,
+      742
+     ],
+     [
+      "T1#148",
+      742,
+      743
+     ],
+     [
+      "T3#67",
+      743,
+      744
+     ],
+     [
+      "T2#106",
+      744,
+      746
+     ],
+     [
+      "T1#149",
+      746,
+      748
+     ],
+     [
+      "T3#68",
+      748,
+      749
+     ],
+     [
+      "T2#107",
+      749,
+      750
+     ],
+     [
+      "T1#150",
+      750,
+      751
+     ],
+     [
+      "T2#107",
+      751,
+      752
+     ],
+     [
+      "T1#150",
+      752,
+      753
+     ],
+     [
+      "T3#68",
+      753,
+      755
+     ],
+     [
+      "T1#151",
+      755,
+      757
+     ],
+     [
+      "T2#108",
+      757,
+      759
+     ],
+     [
+      "T3#69",
+      759,
+      760
+     ],
+     [
+      "T1#152",
+      760,
+      762
+     ],
+     [
+      "T3#69",
+      762,
+      764
+     ],
+     [
+      "T2#109",
+      764,
+      766
+     ],
+     [
+      "T1#153",
+      766,
+      768
+     ]
+    ],
+    "rm": [
+     [
+      "T1#0",
+      0,
+      2
+     ],
+     [
+      "T2#0",
+      2,
+      4
+     ],
+     [
+      "T3#0",
+      4,
+      5
+     ],
+     [
+      "T1#1",
+      5,
+      7
+     ],
+     [
+      "T2#1",
+      7,
+      9
+     ],
+     [
+      "T3#0",
+      9,
+      10
+     ],
+     [
+      "T1#2",
+      10,
+      12
+     ],
+     [
+      "T3#0",
+      12,
+      13
+     ],
+     [
+      "T3#1",
+      13,
+      14
+     ],
+     [
+      "T2#2",
+      14,
+      15
+     ],
+     [
+      "T1#3",
+      15,
+      17
+     ],
+     [
+      "T2#2",
+      17,
+      18
+     ],
+     [
+      "T3#1",
+      18,
+      20
+     ],
+     [
+      "T1#4",
+      20,
+      22
+     ],
+     [
+      "T2#3",
+      22,
+      24
+     ],
+     [
+      "T3#2",
+      24,
+      25
+     ],
+     [
+      "T1#5",
+      25,
+      27
+     ],
+     [
+      "T3#2",
+      27,
+      28
+     ],
+     [
+      "T2#4",
+      28,
+      30
+     ],
+     [
+      "T1#6",
+      30,
+      32
+     ],
+     [
+      "T3#2",
+      32,
+      33
+     ],
+     [
+      "T3#3",
+      33,
+      35
+     ],
+     [
+      "T1#7",
+      35,
+      37
+     ],
+     [
+      "T2#5",
+      37,
+      39
+     ],
+     [
+      "T3#3",
+      39,
+      40
+     ],
+     [
+      "T1#8",
+      40,
+      42
+     ],
+     [
+      "T2#6",
+      42,
+      44
+     ],
+     [
+      "T3#4",
+      44,
+      45
+     ],
+     [
+      "T1#9",
+      45,
+      47
+     ],
+     [
+      "T3#4",
+      47,
+      49
+     ],
+     [
+      "T2#7",
+      49,
+      50
+     ],
+     [
+      "T1#10",
+      50,
+      52
+     ],
+     [
+      "T2#7",
+      52,
+      53
+     ],
+     [
+      "T1#11",
+      55,
+      57
+     ],
+     [
+      "T2#8",
+      57,
+      59
+     ],
+     [
+      "T3#5",
+      59,
+      60
+     ],
+     [
+      "T1#12",
+      60,
+      62
+     ],
+     [
+      "T3#5",
+      62,
+      63
+     ],
+     [
+      "T2#9",
+      63,
+      65
+     ],
+     [
+      "T1#13",
+      65,
+      67
+     ],
+     [
+      "T3#5",
+      67,
+      68
+     ],
+     [
+      "T3#6",
+      68,
+      70
+     ],
+     [
+      "T1#14",
+      70,
+      72
+     ],
+     [
+      "T2#10",
+      72,
+      74
+     ],
+     [
+      "T3#6",
+      74,
+      75
+     ],
+     [
+      "T1#15",
+      75,
+      77
+     ],
+     [
+      "T2#11",
+      77,
+      79
+     ],
+     [
+      "T3#7",
+      79,
+      80
+     ],
+     [
+      "T1#16",
+      80,
+      82
+     ],
+     [
+      "T3#7",
+      82,
+      84
+     ],
+     [
+      "T2#12",
+      84,
+      85
+     ],
+     [
+      "T1#17",
+      85,
+      87
+     ],
+     [
+      "T2#12",
+      87,
+      88
+     ],
+     [
+      "T3#8",
+      88,
+      90
+     ],
+     [
+      "T1#18",
+      90,
+      92
+     ],
+     [
+      "T2#13",
+      92,
+      94
+     ],
+     [
+      "T3#8",
+      94,
+      95
+     ],
+     [
+      "T1#19",
+      95,
+      97
+     ],
+     [
+      "T2#14",
+      98,
+      100
+     ],
+     [
+      "T1#20",
+      100,
+      102
+     ],
+     [
+      "T3#9",
+      102,
+      105
+     ],
+     [
+      "T1#21",
+      105,
+      107
+     ],
+     [
+      "T2#15",
+      107,
+      109
+     ],
+     [
+      "T1#22",
+      110,
+      112
+     ],
+     [
+      "T2#16",
+      112,
+      114
+     ],
+     [
+      "T3#10",
+      114,
+      115
+     ],
+     [
+      "T1#23",
+      115,
+      117
+     ],
+     [
+      "T3#10",
+      117,
+      119
+     ],
+     [
+      "T2#17",
+      119,
+      120
+     ],
+     [
+      "T1#24",
+      120,
+      122
+     ],
+     [
+      "T2#17",
+      122,
+      123
+     ],
+     [
+      "T3#11",
+      123,
+      125
+     ],
+     [
+      "T1#25",
+      125,
+      127
+     ],
+     [
+      "T2#18",
+      127,
+      129
+     ],
+     [
+      "T3#11",
+      129,
+      130
+     ],
+     [
+      "T1#26",
+      130,
+      132
+     ],
+     [
+      "T3#12",
+      132,
+      133
+     ],
+     [
+      "T2#19",
+      133,
+      135
+     ],
+     [
+      "T1#27",
+      135,
+      137
+     ],
+     [
+      "T3#12",
+      137,
+      139
+     ],
+     [
+      "T1#28",
+      140,
+      142
+     ],
+     [
+      "T2#20",
+      142,
+      144
+     ],
+     [
+      "T3#13",
+      144,
+      145
+     ],
+     [
+      "T1#29",
+      145,
+      147
+     ],
+     [
+      "T2#21",
+      147,
+      149
+     ],
+     [
+      "T3#13",
+      149,
+      150
+     ],
+     [
+      "T1#30",
+      150,
+      152
+     ],
+     [
+      "T3#13",
+      152,
+      153
+     ],
+     [
+      "T2#22",
+      154,
+      155
+     ],
+     [
+      "T1#31",
+      155,
+      157
+     ],
+     [
+      "T2#22",
+      157,
+      158
+     ],
+     [
+      "T3#14",
+      158,
+      160
+     ],
+     [
+      "T1#32",
+      160,
+      162
+     ],
+     [
+      "T2#23",
+      162,
+      164
+     ],
+     [
+      "T3#14",
+      164,
+      165
+     ],
+     [
+      "T1#33",
+      165,
+      167
+     ],
+     [
+      "T3#15",
+      167,
+      168
+     ],
+     [
+      "T2#24",
+      168,
+      170
+     ],
+     [
+      "T1#34",
+      170,
+      172
+     ],
+     [
+      "T3#15",
+      172,
+      174
+     ],
+     [
+      "T1#35",
+      175,
+      177
+     ],
+     [
+      "T2#25",
+      177,
+      179
+     ],
+     [
+      "T3#16",
+      179,
+      180
+     ],
+     [
+      "T1#36",
+      180,
+      182
+     ],
+     [
+      "T2#26",
+      182,
+      184
+     ],
+     [
+      "T3#16",
+      184,
+      185
+     ],
+     [
+      "T1#37",
+      185,
+      187
+     ],
+     [
+      "T3#16",
+      187,
+      188
+     ],
+     [
+      "T3#17",
+      188,
+      189
+     ],
+     [
+      "T2#27",
+      189,
+      190
+     ],
+     [
+      "T1#38",
+      190,
+      192
+     ],
+     [
+      "T2#27",
+      192,
+      193
+     ],
+     [
+      "T3#17",
+      193,
+      195
+     ],
+     [
+      "T1#39",
+      195,
+      197
+     ],
+     [
+      "T2#28",
+      197,
+      199
+     ],
+     [
+      "T3#18",
+      199,
+      200
+     ],
+     [
+      "T1#40",
+      200,
+      202
+     ],
+     [
+      "T3#18",
+      202,
+      203
+     ],
+     [
+      "T2#29",
+      203,
+      205
+     ],
+     [
+      "T1#41",
+      205,
+      207
+     ],
+     [
+      "T3#18",
+      207,
+      208
+     ],
+     [
+      "T3#19",
+      209,
+      210
+     ],
+     [
+      "T1#42",
+      210,
+      212
+     ],
+     [
+      "T2#30",
+      212,
+      214
+     ],
+     [
+      "T3#19",
+      214,
+      215
+     ],
+     [
+      "T1#43",
+      215,
+      217
+     ],
+     [
+      "T2#31",
+      217,
+      219
+     ],
+     [
+      "T3#19",
+      219,
+      220
+     ],
+     [
+      "T1#44",
+      220,
+      222
+     ],
+     [
+      "T3#20",
+      222,
+      224
+     ],
+     [
+      "T2#32",
+      224,
+      225
+     ],
+     [
+      "T1#45",
+      225,
+      227
+     ],
+     [
+      "T2#32",
+      227,
+      228
+     ],
+     [
+      "T3#20",
+      228,
+      229
+     ],
+     [
+      "T1#46",
+      230,
+      232
+     ],
+     [
+      "T2#33",
+      232,
+      234
+     ],
+     [
+      "T3#21",
+      234,
+      235
+     ],
+     [
+      "T1#47",
+      235,
+      237
+     ],
+     [
+      "T3#21",
+      237,
+      238
+     ],
+     [
+      "T2#34",
+      238,
+      240
+     ],
+     [
+      "T1#48",
+      240,
+      242
+     ],
+     [
+      "T3#21",
+      242,
+      243
+     ],
+     [
+      "T3#22",
+      243,
+      245
+     ],
+     [
+      "T1#49",
+      245,
+      247
+     ],
+     [
+      "T2#35",
+      247,
+      249
+     ],
+     [
+      "T3#22",
+      249,
+      250
+     ],
+     [
+      "T1#50",
+      250,
+      252
+     ],
+     [
+      "T2#36",
+      252,
+      254
+     ],
+     [
+      "T3#23",
+      254,
+      255
+     ],
+     [
+      "T1#51",
+      255,
+      257
+     ],
+     [
+      "T3#23",
+      257,
+      259
+     ],
+     [
+      "T2#37",
+      259,
+      260
+     ],
+     [
+      "T1#52",
+      260,
+      262
+     ],
+     [
+      "T2#37",
+      262,
+      263
+     ],
+     [
+      "T3#24",
+      264,
+      265
+     ],
+     [
+      "T1#53",
+      265,
+      267
+     ],
+     [
+      "T2#38",
+      267,
+      269
+     ],
+     [
+      "T3#24",
+      269,
+      270
+     ],
+     [
+      "T1#54",
+      270,
+      272
+     ],
+     [
+      "T3#24",
+      272,
+      273
+     ],
+     [
+      "T2#39",
+      273,
+      275
+     ],
+     [
+      "T1#55",
+      275,
+      277
+     ],
+     [
+      "T3#25",
+      277,
+      280
+     ],
+     [
+      "T1#56",
+      280,
+      282
+     ],
+     [
+      "T2#40",
+      282,
+      284
+     ],
+     [
+      "T1#57",
+      285,
+      287
+     ],
+     [
+      "T2#41",
+      287,
+      289
+     ],
+     [
+      "T3#26",
+      289,
+      290
+     ],
+     [
+      "T1#58",
+      290,
+      292
+     ],
+     [
+      "T3#26",
+      292,
+      294
+     ],
+     [
+      "T2#42",
+      294,
+      295
+     ],
+     [
+      "T1#59",
+      295,
+      297
+     ],
+     [
+      "T2#42",
+      297,
+      298
+     ],
+     [
+      "T3#27",
+      298,
+      300
+     ],
+     [
+      "T1#60",
+      300,
+      302
+     ],
+     [
+      "T2#43",
+      302,
+      304
+     ],
+     [
+      "T3#27",
+      304,
+      305
+     ],
+     [
+      "T1#61",
+      305,
+      307
+     ],
+     [
+      "T2#44",
+      308,
+      310
+     ],
+     [
+      "T1#62",
+      310,
+      312
+     ],
+     [
+      "T3#28",
+      312,
+      315
+     ],
+     [
+      "T1#63",
+      315,
+      317
+     ],
+     [
+      "T2#45",
+      317,
+      319
+     ],
+     [
+      "T3#29",
+      319,
+      320
+     ],
+     [
+      "T1#64",
+      320,
+      322
+     ],
+     [
+      "T2#46",
+      322,
+      324
+     ],
+     [
+      "T3#29",
+      324,
+      325
+     ],
+     [
+      "T1#65",
+      325,
+      327
+     ],
+     [
+      "T3#29",
+      327,
+      328
+     ],
+     [
+      "T2#47",
+      329,
+      330
+     ],
+     [
+      "T1#66",
+      330,
+      332
+     ],
+     [
+      "T2#47",
+      332,
+      333
+     ],
+     [
+      "T3#30",
+      333,
+      335
+     ],
+     [
+      "T1#67",
+      335,
+      337
+     ],
+     [
+      "T2#48",
+      337,
+      339
+     ],
+     [
+      "T3#30",
+      339,
+      340
+     ],
+     [
+      "T1#68",
+      340,
+      342
+     ],
+     [
+      "T3#31",
+      342,
+      343
+     ],
+     [
+      "T2#49",
+      343,
+      345
+     ],
+     [
+      "T1#69",
+      345,
+      347
+     ],
+     [
+      "T3#31",
+      347,
+      349
+     ],
+     [
+      "T1#70",
+      350,
+      352
+     ],
+     [
+      "T2#50",
+      352,
+      354
+     ],
+     [
+      "T3#32",
+      354,
+      355
+     ],
+     [
+      "T1#71",
+      355,
+      357
+     ],
+     [
+      "T2#51",
+      357,
+      359
+     ],
+     [
+      "T3#32",
+      359,
+      360
+     ],
+     [
+      "T1#72",
+      360,
+      362
+     ],
+     [
+      "T3#32",
+      362,
+      363
+     ],
+     [
+      "T3#33",
+      363,
+      364
+     ],
+     [
+      "T2#52",
+      364,
+      365
+     ],
+     [
+      "T1#73",
+      365,
+      367
+     ],
+     [
+      "T2#52",
+      367,
+      368
+     ],
+     [
+      "T3#33",
+      368,
+      370
+     ],
+     [
+      "T1#74",
+      370,
+      372
+     ],
+     [
+      "T2#53",
+      372,
+      374
+     ],
+     [
+      "T3#34",
+      374,
+      375
+     ],
+     [
+      "T1#75",
+      375,
+      377
+     ],
+     [
+      "T3#34",
+      377,
+      378
+     ],
+     [
+      "T2#54",
+      378,
+      380
+     ],
+     [
+      "T1#76",
+      380,
+      382
+     ],
+     [
+      "T3#34",
+      382,
+      383
+     ],
+     [
+      "T1#77",
+      385,
+      387
+     ],
+     [
+      "T2#55",
+      387,
+      389
+     ],
+     [
+      "T3#35",
+      389,
+      390
+     ],
+     [
+      "T1#78",
+      390,
+      392
+     ],
+     [
+      "T2#56",
+      392,
+      394
+     ],
+     [
+      "T3#35",
+      394,
+      395
+     ],
+     [
+      "T1#79",
+      395,
+      397
+     ],
+     [
+      "T3#35",
+      397,
+      398
+     ],
+     [
+      "T3#36",
+      398,
+      399
+     ],
+     [
+      "T2#57",
+      399,
+      400
+     ],
+     [
+      "T1#80",
+      400,
+      402
+     ],
+     [
+      "T2#57",
+      402,
+      403
+     ],
+     [
+      "T3#36",
+      403,
+      405
+     ],
+     [
+      "T1#81",
+      405,
+      407
+     ],
+     [
+      "T2#58",
+      407,
+      409
+     ],
+     [
+      "T3#37",
+      409,
+      410
+     ],
+     [
+      "T1#82",
+      410,
+      412
+     ],
+     [
+      "T3#37",
+      412,
+      413
+     ],
+     [
+      "T2#59",
+      413,
+      415
+     ],
+     [
+      "T1#83",
+      415,
+      417
+     ],
+     [
+      "T3#37",
+      417,
+      418
+     ],
+     [
+      "T3#38",
+      418,
+      420
+     ],
+     [
+      "T1#84",
+      420,
+      422
+     ],
+     [
+      "T2#60",
+      422,
+      424
+     ],
+     [
+      "T3#38",
+      424,
+      425
+     ],
+     [
+      "T1#85",
+      425,
+      427
+     ],
+     [
+      "T2#61",
+      427,
+      429
+     ],
+     [
+      "T3#39",
+      429,
+      430
+     ],
+     [
+      "T1#86",
+      430,
+      432
+     ],
+     [
+      "T3#39",
+      432,
+      434
+     ],
+     [
+      "T2#62",
+      434,
+      435
+     ],
+     [
+      "T1#87",
+      435,
+      437
+     ],
+     [
+      "T2#62",
+      437,
+      438
+     ],
+     [
+      "T1#88",
+      440,
+      442
+     ],
+     [
+      "T2#63",
+      442,
+      444
+     ],
+     [
+      "T3#40",
+      444,
+      445
+     ],
+     [
+      "T1#89",
+      445,
+      447
+     ],
+     [
+      "T3#40",
+      447,
+      448
+     ],
+     [
+      "T2#64",
+      448,
+      450
+     ],
+     [
+      "T1#90",
+      450,
+      452
+     ],
+     [
+      "T3#40",
+      452,
+      453
+     ],
+     [
+      "T3#41",
+      453,
+      455
+     ],
+     [
+      "T1#91",
+      455,
+      457
+     ],
+     [
+      "T2#65",
+      457,
+      459
+     ],
+     [
+      "T3#41",
+      459,
+      460
+     ],
+     [
+      "T1#92",
+      460,
+      462
+     ],
+     [
+      "T2#66",
+      462,
+      464
+     ],
+     [
+      "T3#42",
+      464,
+      465
+     ],
+     [
+      "T1#93",
+      465,
+      467
+     ],
+     [
+      "T3#42",
+      467,
+      469
+     ],
+     [
+      "T2#67",
+      469,
+      470
+     ],
+     [
+      "T1#94",
+      470,
+      472
+     ],
+     [
+      "T2#67",
+      472,
+      473
+     ],
+     [
+      "T3#43",
+      473,
+      475
+     ],
+     [
+      "T1#95",
+      475,
+      477
+     ],
+     [
+      "T2#68",
+      477,
+      479
+     ],
+     [
+      "T3#43",
+      479,
+      480
+     ],
+     [
+      "T1#96",
+      480,
+      482
+     ],
+     [
+      "T2#69",
+      483,
+      485
+     ],
+     [
+      "T1#97",
+      485,
+      487
+     ],
+     [
+      "T3#44",
+      487,
+      490
+     ],
+     [
+      "T1#98",
+      490,
+      492
+     ],
+     [
+      "T2#70",
+      492,
+      494
+     ],
+     [
+      "T1#99",
+      495,
+      497
+     ],
+     [
+      "T2#71",
+      497,
+      499
+     ],
+     [
+      "T3#45",
+      499,
+      500
+     ],
+     [
+      "T1#100",
+      500,
+      502
+     ],
+     [
+      "T3#45",
+      502,
+      504
+     ],
+     [
+      "T2#72",
+      504,
+      505
+     ],
+     [
+      "T1#101",
+      505,
+      507
+     ],
+     [
+      "T2#72",
+      507,
+      508
+     ],
+     [
+      "T3#46",
+      508,
+      510
+     ],
+     [
+      "T1#102",
+      510,
+      512
+     ],
+     [
+      "T2#73",
+      512,
+      514
+     ],
+     [
+      "T3#46",
+      514,
+      515
+     ],
+     [
+      "T1#103",
+      515,
+      517
+     ],
+     [
+      "T3#47",
+      517,
+      518
+     ],
+     [
+      "T2#74",
+      518,
+      520
+     ],
+     [
+      "T1#104",
+      520,
+      522
+     ],
+     [
+      "T3#47",
+      522,
+      524
+     ],
+     [
+      "T1#105",
+      525,
+      527
+     ],
+     [
+      "T2#75",
+      527,
+      529
+     ],
+     [
+      "T3#48",
+      529,
+      530
+     ],
+     [
+      "T1#106",
+      530,
+      532
+     ],
+     [
+      "T2#76",
+      532,
+      534
+     ],
+     [
+      "T3#48",
+      534,
+      535
+     ],
+     [
+      "T1#107",
+      535,
+      537
+     ],
+     [
+      "T3#48",
+      537,
+      538
+     ],
+     [
+      "T2#77",
+      539,
+      540
+     ],
+     [
+      "T1#108",
+      540,
+      542
+     ],
+     [
+      "T2#77",
+      542,
+      543
+     ],
+     [
+      "T3#49",
+      543,
+      545
+     ],
+     [
+      "T1#109",
+      545,
+      547
+     ],
+     [
+      "T2#78",
+      547,
+      549
+     ],
+     [
+      "T3#49",
+      549,
+      550
+     ],
+     [
+      "T1#110",
+      550,
+      552
+     ],
+     [
+      "T3#50",
+      552,
+      553
+     ],
+     [
+      "T2#79",
+      553,
+      555
+     ],
+     [
+      "T1#111",
+      555,
+      557
+     ],
+     [
+      "T3#50",
+      557,
+      559
+     ],
+     [
+      "T1#112",
+      560,
+      562
+     ],
+     [
+      "T2#80",
+      562,
+      564
+     ],
+     [
+      "T3#51",
+      564,
+      565
+     ],
+     [
+      "T1#113",
+      565,
+      567
+     ],
+     [
+      "T2#81",
+      567,
+      569
+     ],
+     [
+      "T3#51",
+      569,
+      570
+     ],
+     [
+      "T1#114",
+      570,
+      572
+     ],
+     [
+      "T3#51",
+      572,
+      573
+     ],
+     [
+      "T3#52",
+      573,
+      574
+     ],
+     [
+      "T2#82",
+      574,
+      575
+     ],
+     [
+      "T1#115",
+      575,
+      577
+     ],
+     [
+      "T2#82",
+      577,
+      578
+     ],
+     [
+      "T3#52",
+      578,
+      580
+     ],
+     [
+      "T1#116",
+      580,
+      582
+     ],
+     [
+      "T2#83",
+      582,
+      584
+     ],
+     [
+      "T3#53",
+      584,
+      585
+     ],
+     [
+      "T1#117",
+      585,
+      587
+     ],
+     [
+      "T3#53",
+      587,
+      588
+     ],
+     [
+      "T2#84",
+      588,
+      590
+     ],
+     [
+      "T1#118",
+      590,
+      592
+     ],
+     [
+      "T3#53",
+      592,
+      593
+     ],
+     [
+      "T3#54",
+      594,
+      595
+     ],
+     [
+      "T1#119",
+      595,
+      597
+     ],
+     [
+      "T2#85",
+      597,
+      599
+     ],
+     [
+      "T3#54",
+      599,
+      600
+     ],
+     [
+      "T1#120",
+      600,
+      602
+     ],
+     [
+      "T2#86",
+      602,
+      604
+     ],
+     [
+      "T3#54",
+      604,
+      605
+     ],
+     [
+      "T1#121",
+      605,
+      607
+     ],
+     [
+      "T3#55",
+      607,
+      609
+     ],
+     [
+      "T2#87",
+      609,
+      610
+     ],
+     [
+      "T1#122",
+      610,
+      612
+     ],
+     [
+      "T2#87",
+      612,
+      613
+     ],
+     [
+      "T3#55",
+      613,
+      614
+     ],
+     [
+      "T1#123",
+      615,
+      617
+     ],
+     [
+      "T2#88",
+      617,
+      619
+     ],
+     [
+      "T3#56",
+      619,
+      620
+     ],
+     [
+      "T1#124",
+      620,
+      622
+     ],
+     [
+      "T3#56",
+      622,
+      623
+     ],
+     [
+      "T2#89",
+      623,
+      625
+     ],
+     [
+      "T1#125",
+      625,
+      627
+     ],
+     [
+      "T3#56",
+      627,
+      628
+     ],
+     [
+      "T3#57",
+      628,
+      630
+     ],
+     [
+      "T1#126",
+      630,
+      632
+     ],
+     [
+      "T2#90",
+      632,
+      634
+     ],
+     [
+      "T3#57",
+      634,
+      635
+     ],
+     [
+      "T1#127",
+      635,
+      637
+     ],
+     [
+      "T2#91",
+      637,
+      639
+     ],
+     [
+      "T3#58",
+      639,
+      640
+     ],
+     [
+      "T1#128",
+      640,
+      642
+     ],
+     [
+      "T3#58",
+      642,
+      644
+     ],
+     [
+      "T2#92",
+      644,
+      645
+     ],
+     [
+      "T1#129",
+      645,
+      647
+     ],
+     [
+      "T2#92",
+      647,
+      648
+     ],
+     [
+      "T3#59",
+      649,
+      650
+     ],
+     [
+      "T1#130",
+      650,
+      652
+     ],
+     [
+      "T2#93",
+      652,
+      654
+     ],
+     [
+      "T3#59",
+      654,
+      655
+     ],
+     [
+      "T1#131",
+      655,
+      657
+     ],
+     [
+      "T3#59",
+      657,
+      658
+     ],
+     [
+      "T2#94",
+      658,
+      660
+     ],
+     [
+      "T1#132",
+      660,
+      662
+     ],
+     [
+      "T3#60",
+      662,
+      665
+     ],
+     [
+      "T1#133",
+      665,
+      667
+     ],
+     [
+      "T2#95",
+      667,
+      669
+     ],
+     [
+      "T1#134",
+      670,
+      672
+     ],
+     [
+      "T2#96",
+      672,
+      674
+     ],
+     [
+      "T3#61",
+      674,
+      675
+     ],
+     [
+      "T1#135",
+      675,
+      677
+     ],
+     [
+      "T3#61",
+      677,
+      679
+     ],
+     [
+      "T2#97",
+      679,
+      680
+     ],
+     [
+      "T1#136",
+      680,
+      682
+     ],
+     [
+      "T2#97",
+      682,
+      683
+     ],
+     [
+      "T3#62",
+      683,
+      685
+     ],
+     [
+      "T1#137",
+      685,
+      687
+     ],
+     [
+      "T2#98",
+      687,
+      689
+     ],
+     [
+      "T3#62",
+      689,
+      690
+     ],
+     [
+      "T1#138",
+      690,
+      692
+     ],
+     [
+      "T2#99",
+      693,
+      695
+     ],
+     [
+      "T1#139",
+      695,
+      697
+     ],
+     [
+      "T3#63",
+      697,
+      700
+     ],
+     [
+      "T1#140",
+      700,
+      702
+     ],
+     [
+      "T2#100",
+      702,
+      704
+     ],
+     [
+      "T3#64",
+      704,
+      705
+     ],
+     [
+      "T1#141",
+      705,
+      707
+     ],
+     [
+      "T2#101",
+      707,
+      709
+     ],
+     [
+      "T3#64",
+      709,
+      710
+     ],
+     [
+      "T1#142",
+      710,
+      712
+     ],
+     [
+      "T3#64",
+      712,
+      713
+     ],
+     [
+      "T2#102",
+      714,
+      715
+     ],
+     [
+      "T1#143",
+      715,
+      717
+     ],
+     [
+      "T2#102",
+      717,
+      718
+     ],
+     [
+      "T3#65",
+      718,
+      720
+     ],
+     [
+      "T1#144",
+      720,
+      722
+     ],
+     [
+      "T2#103",
+      722,
+      724
+     ],
+     [
+      "T3#65",
+      724,
+      725
+     ],
+     [
+      "T1#145",
+      725,
+      727
+     ],
+     [
+      "T3#66",
+      727,
+      728
+     ],
+     [
+      "T2#104",
+      728,
+      730
+     ],
+     [
+      "T1#146",
+      730,
+      732
+     ],
+     [
+      "T3#66",
+      732,
+      734
+     ],
+     [
+      "T1#147",
+      735,
+      737
+     ],
+     [
+      "T2#105",
+      737,
+      739
+     ],
+     [
+      "T3#67",
+      739,
+      740
+     ],
+     [
+      "T1#148",
+      740,
+      742
+     ],
+     [
+      "T2#106",
+      742,
+      744
+     ],
+     [
+      "T3#67",
+      744,
+      745
+     ],
+     [
+      "T1#149",
+      745,
+      747
+     ],
+     [
+      "T3#67",
+      747,
+      748
+     ],
+     [
+      "T3#68",
+      748,
+      749
+     ],
+     [
+      "T2#107",
+      749,
+      750
+     ],
+     [
+      "T1#150",
+      750,
+      752
+     ],
+     [
+      "T2#107",
+      752,
+      753
+     ],
+     [
+      "T3#68",
+      753,
+      755
+     ],
+     [
+      "T1#151",
+      755,
+      757
+     ],
+     [
+      "T2#108",
+      757,
+      759
+     ],
+     [
+      "T3#69",
+      759,
+      760
+     ],
+     [
+      "T1#152",
+      760,
+      762
+     ],
+     [
+      "T3#69",
+      762,
+      763
+     ],
+     [
+      "T2#109",
+      763,
+      765
+     ],
+     [
+      "T1#153",
+      765,
+      767
+     ],
+     [
+      "T3#69",
+      767,
+      768
+     ]
+    ]
+   },
+   "hyperperiod": 385,
+   "id": "W4",
+   "label": "non-harmonic periods",
+   "max_deadline": 8,
+   "policies": {
+    "dm": {
+     "busy": 738,
+     "completed": 334,
+     "context_switches": 444,
+     "first_miss": 8,
+     "horizon": 770,
+     "idle": 32,
+     "jitter": 11,
+     "laxity_zero_switches": 0,
+     "mean_response": 3.7605,
+     "min_laxity": -5,
+     "miss_rate": 0.11976,
+     "missed": 40,
+     "preemptions": 110,
+     "released": 334,
+     "tie_events": 96,
+     "worst_response": 13
+    },
+    "edf": {
+     "busy": 738,
+     "completed": 334,
+     "context_switches": 372,
+     "first_miss": 19,
+     "horizon": 770,
+     "idle": 32,
+     "jitter": 6,
+     "laxity_zero_switches": 0,
+     "mean_response": 3.509,
+     "min_laxity": -1,
+     "miss_rate": 0.005988,
+     "missed": 2,
+     "preemptions": 38,
+     "released": 334,
+     "tie_events": 92,
+     "worst_response": 8
+    },
+    "fifo": {
+     "busy": 738,
+     "completed": 334,
+     "context_switches": 334,
+     "first_miss": 19,
+     "horizon": 770,
+     "idle": 32,
+     "jitter": 5,
+     "laxity_zero_switches": 6,
+     "mean_response": 3.515,
+     "min_laxity": -2,
+     "miss_rate": 0.047904,
+     "missed": 16,
+     "preemptions": 0,
+     "released": 334,
+     "tie_events": 68,
+     "worst_response": 7
+    },
+    "lst": {
+     "busy": 738,
+     "completed": 334,
+     "context_switches": 496,
+     "first_miss": 19,
+     "horizon": 770,
+     "idle": 32,
+     "jitter": 6,
+     "laxity_zero_switches": 2,
+     "mean_response": 3.7246,
+     "min_laxity": -1,
+     "miss_rate": 0.005988,
+     "missed": 2,
+     "preemptions": 162,
+     "released": 334,
+     "tie_events": 136,
+     "worst_response": 8
+    },
+    "lst:edf": {
+     "busy": 738,
+     "completed": 334,
+     "context_switches": 458,
+     "first_miss": 19,
+     "horizon": 770,
+     "idle": 32,
+     "jitter": 6,
+     "laxity_zero_switches": 0,
+     "mean_response": 3.6527,
+     "min_laxity": -1,
+     "miss_rate": 0.005988,
+     "missed": 2,
+     "preemptions": 124,
+     "released": 334,
+     "tie_events": 136,
+     "worst_response": 8
+    },
+    "lst:lzs": {
+     "busy": 738,
+     "completed": 334,
+     "context_switches": 496,
+     "first_miss": 19,
+     "horizon": 770,
+     "idle": 32,
+     "jitter": 6,
+     "laxity_zero_switches": 2,
+     "mean_response": 3.7246,
+     "min_laxity": -1,
+     "miss_rate": 0.005988,
+     "missed": 2,
+     "preemptions": 162,
+     "released": 334,
+     "tie_events": 136,
+     "worst_response": 8
+    },
+    "lst:rm": {
+     "busy": 738,
+     "completed": 334,
+     "context_switches": 492,
+     "first_miss": 19,
+     "horizon": 770,
+     "idle": 32,
+     "jitter": 7,
+     "laxity_zero_switches": 10,
+     "mean_response": 3.7545,
+     "min_laxity": -1,
+     "miss_rate": 0.005988,
+     "missed": 2,
+     "preemptions": 158,
+     "released": 334,
+     "tie_events": 136,
+     "worst_response": 9
+    },
+    "lst:stay": {
+     "busy": 738,
+     "completed": 334,
+     "context_switches": 416,
+     "first_miss": 19,
+     "horizon": 770,
+     "idle": 32,
+     "jitter": 6,
+     "laxity_zero_switches": 2,
+     "mean_response": 3.6587,
+     "min_laxity": -1,
+     "miss_rate": 0.005988,
+     "missed": 2,
+     "preemptions": 82,
+     "released": 334,
+     "tie_events": 136,
+     "worst_response": 8
+    },
+    "rm": {
+     "busy": 738,
+     "completed": 334,
+     "context_switches": 444,
+     "first_miss": 8,
+     "horizon": 770,
+     "idle": 32,
+     "jitter": 11,
+     "laxity_zero_switches": 0,
+     "mean_response": 3.7605,
+     "min_laxity": -5,
+     "miss_rate": 0.11976,
+     "missed": 40,
+     "preemptions": 110,
+     "released": 334,
+     "tie_events": 96,
+     "worst_response": 13
+    }
+   },
+   "spec": "T1(T=5,C=2,D=4,ph=0), T2(T=7,C=2,D=5,ph=0), T3(T=11,C=3,D=8,ph=0)",
+   "task_count": 3,
+   "tasks": [
+    [
+     "T1",
+     5,
+     2,
+     4,
+     0
+    ],
+    [
+     "T2",
+     7,
+     2,
+     5,
+     0
+    ],
+    [
+     "T3",
+     11,
+     3,
+     8,
+     0
+    ]
+   ],
+   "utilisation": 0.958442,
+   "witness": {
+    "checked": false,
+    "reason": "no witness (infeasible verdict)",
+    "valid": null
+   },
+   "witness_cost": {
+    "available": false,
+    "busy": 0,
+    "context_switches": 0,
+    "idle": 0,
+    "preemptions": 0,
+    "steps": 0
+   }
+  },
+  {
+   "alignment": {
+    "aligned": {
+     "edf": {
+      "horizon": 32,
+      "missed": 0,
+      "release_window": 20,
+      "released": 10
+     },
+     "lst": {
+      "horizon": 32,
+      "missed": 0,
+      "release_window": 20,
+      "released": 10
+     },
+     "rm": {
+      "horizon": 32,
+      "missed": 0,
+      "release_window": 20,
+      "released": 10
+     }
+    },
+    "aligned_agrees": true,
+    "checker_horizon": 20,
+    "checker_verdict": true,
+    "max_deadline": 12,
+    "naive": {
+     "edf": {
+      "horizon": 40,
+      "missed": 0,
+      "released": 20
+     },
+     "lst": {
+      "horizon": 40,
+      "missed": 0,
+      "released": 20
+     },
+     "rm": {
+      "horizon": 40,
+      "missed": 0,
+      "released": 20
+     }
+    },
+    "naive_agrees": true,
+    "optimal_policies": [
+     "lst",
+     "edf"
+    ],
+    "rm_control": {
+     "aligned_missed": 0,
+     "counterexample": false,
+     "naive_missed": 0
+    }
+   },
+   "cap_control": {
+    "explanation": "truncated runs are artefacts of the cap, not findings",
+    "false_infeasible_count": 3,
+    "full_truncated": false,
+    "full_verdict": true,
+    "rows": [
+     {
+      "feasible": false,
+      "limit": 4,
+      "states": 9,
+      "truncated": true
+     },
+     {
+      "feasible": false,
+      "limit": 8,
+      "states": 16,
+      "truncated": true
+     },
+     {
+      "feasible": false,
+      "limit": 16,
+      "states": 24,
+      "truncated": true
+     },
+     {
+      "feasible": true,
+      "limit": 4000000,
+      "states": 19,
+      "truncated": false
+     }
+    ],
+    "smallest_truncating_limit": 4
+   },
+   "checker": {
+    "allow_idle_false": true,
+    "allow_idle_true": true,
+    "feasible": true,
+    "horizon": 20,
+    "idle_enumeration_agrees": true,
+    "jobs": 10,
+    "pruned": 0,
+    "schedule": [
+     0,
+     1,
+     1,
+     2,
+     2,
+     2,
+     3,
+     4,
+     4,
+     5,
+     6,
+     6,
+     7,
+     -1,
+     -1,
+     8,
+     8,
+     9
+    ],
+    "schedule_length": 18,
+    "states": 19,
+    "truncated": false
+   },
+   "constrained_deadline": true,
+   "gantt": {
+    "edf": [
+     [
+      "T1#0",
+      0,
+      1
+     ],
+     [
+      "T2#0",
+      1,
+      3
+     ],
+     [
+      "T3#0",
+      3,
+      4
+     ],
+     [
+      "T1#1",
+      4,
+      5
+     ],
+     [
+      "T2#1",
+      5,
+      7
+     ],
+     [
+      "T3#0",
+      7,
+      8
+     ],
+     [
+      "T1#2",
+      8,
+      9
+     ],
+     [
+      "T3#0",
+      9,
+      10
+     ],
+     [
+      "T2#2",
+      10,
+      12
+     ],
+     [
+      "T1#3",
+      12,
+      13
+     ],
+     [
+      "T2#3",
+      15,
+      17
+     ],
+     [
+      "T1#4",
+      17,
+      18
+     ],
+     [
+      "T1#5",
+      20,
+      21
+     ],
+     [
+      "T2#4",
+      21,
+      23
+     ],
+     [
+      "T3#1",
+      23,
+      24
+     ],
+     [
+      "T1#6",
+      24,
+      25
+     ],
+     [
+      "T2#5",
+      25,
+      27
+     ],
+     [
+      "T3#1",
+      27,
+      28
+     ],
+     [
+      "T1#7",
+      28,
+      29
+     ],
+     [
+      "T3#1",
+      29,
+      30
+     ],
+     [
+      "T2#6",
+      30,
+      32
+     ],
+     [
+      "T1#8",
+      32,
+      33
+     ],
+     [
+      "T2#7",
+      35,
+      37
+     ],
+     [
+      "T1#9",
+      37,
+      38
+     ]
+    ],
+    "lst": [
+     [
+      "T1#0",
+      0,
+      1
+     ],
+     [
+      "T2#0",
+      1,
+      3
+     ],
+     [
+      "T3#0",
+      3,
+      4
+     ],
+     [
+      "T1#1",
+      4,
+      5
+     ],
+     [
+      "T2#1",
+      5,
+      7
+     ],
+     [
+      "T3#0",
+      7,
+      8
+     ],
+     [
+      "T1#2",
+      8,
+      9
+     ],
+     [
+      "T3#0",
+      9,
+      10
+     ],
+     [
+      "T2#2",
+      10,
+      12
+     ],
+     [
+      "T1#3",
+      12,
+      13
+     ],
+     [
+      "T2#3",
+      15,
+      17
+     ],
+     [
+      "T1#4",
+      17,
+      18
+     ],
+     [
+      "T1#5",
+      20,
+      21
+     ],
+     [
+      "T2#4",
+      21,
+      23
+     ],
+     [
+      "T3#1",
+      23,
+      24
+     ],
+     [
+      "T1#6",
+      24,
+      25
+     ],
+     [
+      "T2#5",
+      25,
+      27
+     ],
+     [
+      "T3#1",
+      27,
+      28
+     ],
+     [
+      "T1#7",
+      28,
+      29
+     ],
+     [
+      "T3#1",
+      29,
+      30
+     ],
+     [
+      "T2#6",
+      30,
+      32
+     ],
+     [
+      "T1#8",
+      32,
+      33
+     ],
+     [
+      "T2#7",
+      35,
+      37
+     ],
+     [
+      "T1#9",
+      37,
+      38
+     ]
+    ],
+    "rm": [
+     [
+      "T1#0",
+      0,
+      1
+     ],
+     [
+      "T2#0",
+      1,
+      3
+     ],
+     [
+      "T3#0",
+      3,
+      4
+     ],
+     [
+      "T1#1",
+      4,
+      5
+     ],
+     [
+      "T2#1",
+      5,
+      7
+     ],
+     [
+      "T3#0",
+      7,
+      8
+     ],
+     [
+      "T1#2",
+      8,
+      9
+     ],
+     [
+      "T3#0",
+      9,
+      10
+     ],
+     [
+      "T2#2",
+      10,
+      12
+     ],
+     [
+      "T1#3",
+      12,
+      13
+     ],
+     [
+      "T2#3",
+      15,
+      16
+     ],
+     [
+      "T1#4",
+      16,
+      17
+     ],
+     [
+      "T2#3",
+      17,
+      18
+     ],
+     [
+      "T1#5",
+      20,
+      21
+     ],
+     [
+      "T2#4",
+      21,
+      23
+     ],
+     [
+      "T3#1",
+      23,
+      24
+     ],
+     [
+      "T1#6",
+      24,
+      25
+     ],
+     [
+      "T2#5",
+      25,
+      27
+     ],
+     [
+      "T3#1",
+      27,
+      28
+     ],
+     [
+      "T1#7",
+      28,
+      29
+     ],
+     [
+      "T3#1",
+      29,
+      30
+     ],
+     [
+      "T2#6",
+      30,
+      32
+     ],
+     [
+      "T1#8",
+      32,
+      33
+     ],
+     [
+      "T2#7",
+      35,
+      36
+     ],
+     [
+      "T1#9",
+      36,
+      37
+     ],
+     [
+      "T2#7",
+      37,
+      38
+     ]
+    ]
+   },
+   "hyperperiod": 20,
+   "id": "W5",
+   "label": "heavy but feasible",
+   "max_deadline": 12,
+   "policies": {
+    "dm": {
+     "busy": 32,
+     "completed": 20,
+     "context_switches": 26,
+     "first_miss": null,
+     "horizon": 40,
+     "idle": 8,
+     "jitter": 9,
+     "laxity_zero_switches": 0,
+     "mean_response": 2.5,
+     "min_laxity": 1,
+     "miss_rate": 0.0,
+     "missed": 0,
+     "preemptions": 6,
+     "released": 20,
+     "tie_events": 4,
+     "worst_response": 10
+    },
+    "edf": {
+     "busy": 32,
+     "completed": 20,
+     "context_switches": 24,
+     "first_miss": null,
+     "horizon": 40,
+     "idle": 8,
+     "jitter": 9,
+     "laxity_zero_switches": 0,
+     "mean_response": 2.5,
+     "min_laxity": 1,
+     "miss_rate": 0.0,
+     "missed": 0,
+     "preemptions": 4,
+     "released": 20,
+     "tie_events": 4,
+     "worst_response": 10
+    },
+    "fifo": {
+     "busy": 32,
+     "completed": 20,
+     "context_switches": 20,
+     "first_miss": null,
+     "horizon": 40,
+     "idle": 8,
+     "jitter": 5,
+     "laxity_zero_switches": 2,
+     "mean_response": 2.6,
+     "min_laxity": 0,
+     "miss_rate": 0.0,
+     "missed": 0,
+     "preemptions": 0,
+     "released": 20,
+     "tie_events": 4,
+     "worst_response": 6
+    },
+    "lst": {
+     "busy": 32,
+     "completed": 20,
+     "context_switches": 24,
+     "first_miss": null,
+     "horizon": 40,
+     "idle": 8,
+     "jitter": 9,
+     "laxity_zero_switches": 0,
+     "mean_response": 2.5,
+     "min_laxity": 1,
+     "miss_rate": 0.0,
+     "missed": 0,
+     "preemptions": 4,
+     "released": 20,
+     "tie_events": 4,
+     "worst_response": 10
+    },
+    "lst:edf": {
+     "busy": 32,
+     "completed": 20,
+     "context_switches": 24,
+     "first_miss": null,
+     "horizon": 40,
+     "idle": 8,
+     "jitter": 9,
+     "laxity_zero_switches": 0,
+     "mean_response": 2.5,
+     "min_laxity": 1,
+     "miss_rate": 0.0,
+     "missed": 0,
+     "preemptions": 4,
+     "released": 20,
+     "tie_events": 4,
+     "worst_response": 10
+    },
+    "lst:lzs": {
+     "busy": 32,
+     "completed": 20,
+     "context_switches": 24,
+     "first_miss": null,
+     "horizon": 40,
+     "idle": 8,
+     "jitter": 9,
+     "laxity_zero_switches": 0,
+     "mean_response": 2.5,
+     "min_laxity": 1,
+     "miss_rate": 0.0,
+     "missed": 0,
+     "preemptions": 4,
+     "released": 20,
+     "tie_events": 4,
+     "worst_response": 10
+    },
+    "lst:rm": {
+     "busy": 32,
+     "completed": 20,
+     "context_switches": 26,
+     "first_miss": null,
+     "horizon": 40,
+     "idle": 8,
+     "jitter": 9,
+     "laxity_zero_switches": 0,
+     "mean_response": 2.5,
+     "min_laxity": 1,
+     "miss_rate": 0.0,
+     "missed": 0,
+     "preemptions": 6,
+     "released": 20,
+     "tie_events": 4,
+     "worst_response": 10
+    },
+    "lst:stay": {
+     "busy": 32,
+     "completed": 20,
+     "context_switches": 24,
+     "first_miss": null,
+     "horizon": 40,
+     "idle": 8,
+     "jitter": 9,
+     "laxity_zero_switches": 0,
+     "mean_response": 2.5,
+     "min_laxity": 1,
+     "miss_rate": 0.0,
+     "missed": 0,
+     "preemptions": 4,
+     "released": 20,
+     "tie_events": 4,
+     "worst_response": 10
+    },
+    "rm": {
+     "busy": 32,
+     "completed": 20,
+     "context_switches": 26,
+     "first_miss": null,
+     "horizon": 40,
+     "idle": 8,
+     "jitter": 9,
+     "laxity_zero_switches": 0,
+     "mean_response": 2.5,
+     "min_laxity": 1,
+     "miss_rate": 0.0,
+     "missed": 0,
+     "preemptions": 6,
+     "released": 20,
+     "tie_events": 4,
+     "worst_response": 10
+    }
+   },
+   "spec": "T1(T=4,C=1,D=3,ph=0), T2(T=5,C=2,D=4,ph=0), T3(T=20,C=3,D=12,ph=0)",
+   "task_count": 3,
+   "tasks": [
+    [
+     "T1",
+     4,
+     1,
+     3,
+     0
+    ],
+    [
+     "T2",
+     5,
+     2,
+     4,
+     0
+    ],
+    [
+     "T3",
+     20,
+     3,
+     12,
+     0
+    ]
+   ],
+   "utilisation": 0.8,
+   "witness": {
+    "busy": 16,
+    "checked": true,
+    "jobs": 10,
+    "reason": "every job finished strictly before its deadline",
+    "steps": 18,
+    "valid": true
+   },
+   "witness_cost": {
+    "available": true,
+    "busy": 16,
+    "context_switches": 10,
+    "idle": 2,
+    "preemptions": 0,
+    "steps": 18
+   }
+  },
+  {
+   "alignment": {
+    "aligned": {
+     "edf": {
+      "horizon": 17,
+      "missed": 1,
+      "release_window": 10,
+      "released": 4
+     },
+     "lst": {
+      "horizon": 17,
+      "missed": 1,
+      "release_window": 10,
+      "released": 4
+     },
+     "rm": {
+      "horizon": 17,
+      "missed": 1,
+      "release_window": 10,
+      "released": 4
+     }
+    },
+    "aligned_agrees": true,
+    "checker_horizon": 10,
+    "checker_verdict": false,
+    "max_deadline": 7,
+    "naive": {
+     "edf": {
+      "horizon": 20,
+      "missed": 2,
+      "released": 8
+     },
+     "lst": {
+      "horizon": 20,
+      "missed": 2,
+      "released": 8
+     },
+     "rm": {
+      "horizon": 20,
+      "missed": 2,
+      "released": 8
+     }
+    },
+    "naive_agrees": true,
+    "optimal_policies": [
+     "lst",
+     "edf"
+    ],
+    "rm_control": {
+     "aligned_missed": 1,
+     "counterexample": false,
+     "naive_missed": 2
+    }
+   },
+   "cap_control": {
+    "explanation": "truncated runs are artefacts of the cap, not findings",
+    "false_infeasible_count": 0,
+    "full_truncated": false,
+    "full_verdict": false,
+    "rows": [
+     {
+      "feasible": false,
+      "limit": 4,
+      "states": 11,
+      "truncated": true
+     },
+     {
+      "feasible": false,
+      "limit": 8,
+      "states": 15,
+      "truncated": true
+     },
+     {
+      "feasible": false,
+      "limit": 16,
+      "states": 19,
+      "truncated": true
+     },
+     {
+      "feasible": false,
+      "limit": 4000000,
+      "states": 21,
+      "truncated": false
+     }
+    ],
+    "smallest_truncating_limit": null
+   },
+   "checker": {
+    "allow_idle_false": false,
+    "allow_idle_true": false,
+    "feasible": false,
+    "horizon": 10,
+    "idle_enumeration_agrees": true,
+    "jobs": 4,
+    "pruned": 15,
+    "schedule": [],
+    "schedule_length": 0,
+    "states": 21,
+    "truncated": false
+   },
+   "constrained_deadline": true,
+   "gantt": {
+    "edf": [
+     [
+      "T1#0",
+      0,
+      2
+     ],
+     [
+      "T2#0",
+      2,
+      5
+     ],
+     [
+      "T3#0",
+      5,
+      7
+     ],
+     [
+      "T1#1",
+      7,
+      9
+     ],
+     [
+      "T1#2",
+      10,
+      12
+     ],
+     [
+      "T2#1",
+      12,
+      15
+     ],
+     [
+      "T3#1",
+      15,
+      17
+     ],
+     [
+      "T1#3",
+      17,
+      19
+     ]
+    ],
+    "lst": [
+     [
+      "T1#0",
+      0,
+      2
+     ],
+     [
+      "T2#0",
+      2,
+      5
+     ],
+     [
+      "T3#0",
+      5,
+      7
+     ],
+     [
+      "T1#1",
+      7,
+      9
+     ],
+     [
+      "T1#2",
+      10,
+      12
+     ],
+     [
+      "T2#1",
+      12,
+      15
+     ],
+     [
+      "T3#1",
+      15,
+      17
+     ],
+     [
+      "T1#3",
+      17,
+      19
+     ]
+    ],
+    "rm": [
+     [
+      "T1#0",
+      0,
+      2
+     ],
+     [
+      "T2#0",
+      2,
+      5
+     ],
+     [
+      "T1#1",
+      5,
+      7
+     ],
+     [
+      "T3#0",
+      7,
+      9
+     ],
+     [
+      "T1#2",
+      10,
+      12
+     ],
+     [
+      "T2#1",
+      12,
+      15
+     ],
+     [
+      "T1#3",
+      15,
+      17
+     ],
+     [
+      "T3#1",
+      17,
+      19
+     ]
+    ]
+   },
+   "hyperperiod": 10,
+   "id": "W6",
+   "label": "heavy and infeasible",
+   "max_deadline": 7,
+   "policies": {
+    "dm": {
+     "busy": 18,
+     "completed": 8,
+     "context_switches": 8,
+     "first_miss": 7,
+     "horizon": 20,
+     "idle": 2,
+     "jitter": 7,
+     "laxity_zero_switches": 0,
+     "mean_response": 4.5,
+     "min_laxity": -2,
+     "miss_rate": 0.25,
+     "missed": 2,
+     "preemptions": 0,
+     "released": 8,
+     "tie_events": 2,
+     "worst_response": 9
+    },
+    "edf": {
+     "busy": 18,
+     "completed": 8,
+     "context_switches": 8,
+     "first_miss": 8,
+     "horizon": 20,
+     "idle": 2,
+     "jitter": 5,
+     "laxity_zero_switches": 0,
+     "mean_response": 4.5,
+     "min_laxity": -1,
+     "miss_rate": 0.25,
+     "missed": 2,
+     "preemptions": 0,
+     "released": 8,
+     "tie_events": 4,
+     "worst_response": 7
+    },
+    "fifo": {
+     "busy": 18,
+     "completed": 8,
+     "context_switches": 8,
+     "first_miss": 8,
+     "horizon": 20,
+     "idle": 2,
+     "jitter": 5,
+     "laxity_zero_switches": 0,
+     "mean_response": 4.5,
+     "min_laxity": -1,
+     "miss_rate": 0.25,
+     "missed": 2,
+     "preemptions": 0,
+     "released": 8,
+     "tie_events": 4,
+     "worst_response": 7
+    },
+    "lst": {
+     "busy": 18,
+     "completed": 8,
+     "context_switches": 8,
+     "first_miss": 8,
+     "horizon": 20,
+     "idle": 2,
+     "jitter": 5,
+     "laxity_zero_switches": 0,
+     "mean_response": 4.5,
+     "min_laxity": -1,
+     "miss_rate": 0.25,
+     "missed": 2,
+     "preemptions": 0,
+     "released": 8,
+     "tie_events": 4,
+     "worst_response": 7
+    },
+    "lst:edf": {
+     "busy": 18,
+     "completed": 8,
+     "context_switches": 8,
+     "first_miss": 8,
+     "horizon": 20,
+     "idle": 2,
+     "jitter": 5,
+     "laxity_zero_switches": 0,
+     "mean_response": 4.5,
+     "min_laxity": -1,
+     "miss_rate": 0.25,
+     "missed": 2,
+     "preemptions": 0,
+     "released": 8,
+     "tie_events": 4,
+     "worst_response": 7
+    },
+    "lst:lzs": {
+     "busy": 18,
+     "completed": 8,
+     "context_switches": 8,
+     "first_miss": 8,
+     "horizon": 20,
+     "idle": 2,
+     "jitter": 5,
+     "laxity_zero_switches": 0,
+     "mean_response": 4.5,
+     "min_laxity": -1,
+     "miss_rate": 0.25,
+     "missed": 2,
+     "preemptions": 0,
+     "released": 8,
+     "tie_events": 4,
+     "worst_response": 7
+    },
+    "lst:rm": {
+     "busy": 18,
+     "completed": 8,
+     "context_switches": 12,
+     "first_miss": 7,
+     "horizon": 20,
+     "idle": 2,
+     "jitter": 6,
+     "laxity_zero_switches": 2,
+     "mean_response": 4.75,
+     "min_laxity": -1,
+     "miss_rate": 0.5,
+     "missed": 4,
+     "preemptions": 4,
+     "released": 8,
+     "tie_events": 4,
+     "worst_response": 8
+    },
+    "lst:stay": {
+     "busy": 18,
+     "completed": 8,
+     "context_switches": 8,
+     "first_miss": 8,
+     "horizon": 20,
+     "idle": 2,
+     "jitter": 5,
+     "laxity_zero_switches": 0,
+     "mean_response": 4.5,
+     "min_laxity": -1,
+     "miss_rate": 0.25,
+     "missed": 2,
+     "preemptions": 0,
+     "released": 8,
+     "tie_events": 4,
+     "worst_response": 7
+    },
+    "rm": {
+     "busy": 18,
+     "completed": 8,
+     "context_switches": 8,
+     "first_miss": 7,
+     "horizon": 20,
+     "idle": 2,
+     "jitter": 7,
+     "laxity_zero_switches": 0,
+     "mean_response": 4.5,
+     "min_laxity": -2,
+     "miss_rate": 0.25,
+     "missed": 2,
+     "preemptions": 0,
+     "released": 8,
+     "tie_events": 2,
+     "worst_response": 9
+    }
+   },
+   "spec": "T1(T=5,C=2,D=3,ph=0), T2(T=10,C=3,D=6,ph=0), T3(T=10,C=2,D=7,ph=0)",
+   "task_count": 3,
+   "tasks": [
+    [
+     "T1",
+     5,
+     2,
+     3,
+     0
+    ],
+    [
+     "T2",
+     10,
+     3,
+     6,
+     0
+    ],
+    [
+     "T3",
+     10,
+     2,
+     7,
+     0
+    ]
+   ],
+   "utilisation": 0.9,
+   "witness": {
+    "checked": false,
+    "reason": "no witness (infeasible verdict)",
+    "valid": null
+   },
+   "witness_cost": {
+    "available": false,
+    "busy": 0,
+    "context_switches": 0,
+    "idle": 0,
+    "preemptions": 0,
+    "steps": 0
+   }
+  },
+  {
+   "alignment": {
+    "aligned": {
+     "edf": {
+      "horizon": 31,
+      "missed": 0,
+      "release_window": 24,
+      "released": 9
+     },
+     "lst": {
+      "horizon": 31,
+      "missed": 0,
+      "release_window": 24,
+      "released": 9
+     },
+     "rm": {
+      "horizon": 31,
+      "missed": 1,
+      "release_window": 24,
+      "released": 9
+     }
+    },
+    "aligned_agrees": true,
+    "checker_horizon": 24,
+    "checker_verdict": true,
+    "max_deadline": 7,
+    "naive": {
+     "edf": {
+      "horizon": 48,
+      "missed": 0,
+      "released": 18
+     },
+     "lst": {
+      "horizon": 48,
+      "missed": 0,
+      "released": 18
+     },
+     "rm": {
+      "horizon": 48,
+      "missed": 2,
+      "released": 18
+     }
+    },
+    "naive_agrees": true,
+    "optimal_policies": [
+     "lst",
+     "edf"
+    ],
+    "rm_control": {
+     "aligned_missed": 1,
+     "counterexample": true,
+     "naive_missed": 2
+    }
+   },
+   "cap_control": {
+    "explanation": "truncated runs are artefacts of the cap, not findings",
+    "false_infeasible_count": 3,
+    "full_truncated": false,
+    "full_verdict": true,
+    "rows": [
+     {
+      "feasible": false,
+      "limit": 4,
+      "states": 8,
+      "truncated": true
+     },
+     {
+      "feasible": false,
+      "limit": 8,
+      "states": 13,
+      "truncated": true
+     },
+     {
+      "feasible": false,
+      "limit": 16,
+      "states": 22,
+      "truncated": true
+     },
+     {
+      "feasible": true,
+      "limit": 4000000,
+      "states": 23,
+      "truncated": false
+     }
+    ],
+    "smallest_truncating_limit": 4
+   },
+   "checker": {
+    "allow_idle_false": true,
+    "allow_idle_true": true,
+    "feasible": true,
+    "horizon": 24,
+    "idle_enumeration_agrees": true,
+    "jobs": 9,
+    "pruned": 0,
+    "schedule": [
+     0,
+     0,
+     1,
+     1,
+     1,
+     2,
+     2,
+     3,
+     3,
+     -1,
+     4,
+     4,
+     5,
+     5,
+     6,
+     6,
+     6,
+     -1,
+     7,
+     7,
+     8,
+     8
+    ],
+    "schedule_length": 22,
+    "states": 23,
+    "truncated": false
+   },
+   "constrained_deadline": true,
+   "gantt": {
+    "edf": [
+     [
+      "T1#0",
+      0,
+      2
+     ],
+     [
+      "T2#0",
+      2,
+      4
+     ],
+     [
+      "T3#0",
+      4,
+      7
+     ],
+     [
+      "T1#1",
+      7,
+      9
+     ],
+     [
+      "T2#1",
+      10,
+      12
+     ],
+     [
+      "T1#2",
+      12,
+      14
+     ],
+     [
+      "T3#1",
+      14,
+      17
+     ],
+     [
+      "T1#3",
+      18,
+      20
+     ],
+     [
+      "T2#2",
+      20,
+      22
+     ],
+     [
+      "T1#4",
+      24,
+      26
+     ],
+     [
+      "T2#3",
+      26,
+      28
+     ],
+     [
+      "T3#2",
+      28,
+      31
+     ],
+     [
+      "T1#5",
+      31,
+      33
+     ],
+     [
+      "T2#4",
+      34,
+      36
+     ],
+     [
+      "T1#6",
+      36,
+      38
+     ],
+     [
+      "T3#3",
+      38,
+      41
+     ],
+     [
+      "T1#7",
+      42,
+      44
+     ],
+     [
+      "T2#5",
+      44,
+      46
+     ]
+    ],
+    "lst": [
+     [
+      "T1#0",
+      0,
+      2
+     ],
+     [
+      "T3#0",
+      2,
+      3
+     ],
+     [
+      "T2#0",
+      3,
+      4
+     ],
+     [
+      "T3#0",
+      4,
+      5
+     ],
+     [
+      "T2#0",
+      5,
+      6
+     ],
+     [
+      "T3#0",
+      6,
+      7
+     ],
+     [
+      "T1#1",
+      7,
+      9
+     ],
+     [
+      "T2#1",
+      10,
+      12
+     ],
+     [
+      "T1#2",
+      12,
+      14
+     ],
+     [
+      "T3#1",
+      14,
+      17
+     ],
+     [
+      "T1#3",
+      18,
+      20
+     ],
+     [
+      "T2#2",
+      20,
+      22
+     ],
+     [
+      "T1#4",
+      24,
+      26
+     ],
+     [
+      "T3#2",
+      26,
+      27
+     ],
+     [
+      "T2#3",
+      27,
+      28
+     ],
+     [
+      "T3#2",
+      28,
+      29
+     ],
+     [
+      "T2#3",
+      29,
+      30
+     ],
+     [
+      "T3#2",
+      30,
+      31
+     ],
+     [
+      "T1#5",
+      31,
+      33
+     ],
+     [
+      "T2#4",
+      34,
+      36
+     ],
+     [
+      "T1#6",
+      36,
+      38
+     ],
+     [
+      "T3#3",
+      38,
+      41
+     ],
+     [
+      "T1#7",
+      42,
+      44
+     ],
+     [
+      "T2#5",
+      44,
+      46
+     ]
+    ],
+    "rm": [
+     [
+      "T1#0",
+      0,
+      2
+     ],
+     [
+      "T2#0",
+      2,
+      4
+     ],
+     [
+      "T3#0",
+      4,
+      6
+     ],
+     [
+      "T1#1",
+      6,
+      8
+     ],
+     [
+      "T3#0",
+      8,
+      9
+     ],
+     [
+      "T2#1",
+      10,
+      12
+     ],
+     [
+      "T1#2",
+      12,
+      14
+     ],
+     [
+      "T3#1",
+      14,
+      17
+     ],
+     [
+      "T1#3",
+      18,
+      20
+     ],
+     [
+      "T2#2",
+      20,
+      22
+     ],
+     [
+      "T1#4",
+      24,
+      26
+     ],
+     [
+      "T2#3",
+      26,
+      28
+     ],
+     [
+      "T3#2",
+      28,
+      30
+     ],
+     [
+      "T1#5",
+      30,
+      32
+     ],
+     [
+      "T3#2",
+      32,
+      33
+     ],
+     [
+      "T2#4",
+      34,
+      36
+     ],
+     [
+      "T1#6",
+      36,
+      38
+     ],
+     [
+      "T3#3",
+      38,
+      41
+     ],
+     [
+      "T1#7",
+      42,
+      44
+     ],
+     [
+      "T2#5",
+      44,
+      46
+     ]
+    ]
+   },
+   "hyperperiod": 24,
+   "id": "W7",
+   "label": "phased releases",
+   "max_deadline": 7,
+   "policies": {
+    "dm": {
+     "busy": 40,
+     "completed": 18,
+     "context_switches": 20,
+     "first_miss": 8,
+     "horizon": 48,
+     "idle": 8,
+     "jitter": 6,
+     "laxity_zero_switches": 0,
+     "mean_response": 3.1111,
+     "min_laxity": -1,
+     "miss_rate": 0.111111,
+     "missed": 2,
+     "preemptions": 2,
+     "released": 18,
+     "tie_events": 4,
+     "worst_response": 8
+    },
+    "edf": {
+     "busy": 40,
+     "completed": 18,
+     "context_switches": 18,
+     "first_miss": null,
+     "horizon": 48,
+     "idle": 8,
+     "jitter": 4,
+     "laxity_zero_switches": 0,
+     "mean_response": 3.0,
+     "min_laxity": 1,
+     "miss_rate": 0.0,
+     "missed": 0,
+     "preemptions": 0,
+     "released": 18,
+     "tie_events": 4,
+     "worst_response": 6
+    },
+    "fifo": {
+     "busy": 40,
+     "completed": 18,
+     "context_switches": 18,
+     "first_miss": null,
+     "horizon": 48,
+     "idle": 8,
+     "jitter": 3,
+     "laxity_zero_switches": 0,
+     "mean_response": 3.1111,
+     "min_laxity": 0,
+     "miss_rate": 0.0,
+     "missed": 0,
+     "preemptions": 0,
+     "released": 18,
+     "tie_events": 4,
+     "worst_response": 5
+    },
+    "lst": {
+     "busy": 40,
+     "completed": 18,
+     "context_switches": 24,
+     "first_miss": null,
+     "horizon": 48,
+     "idle": 8,
+     "jitter": 4,
+     "laxity_zero_switches": 0,
+     "mean_response": 3.2222,
+     "min_laxity": 1,
+     "miss_rate": 0.0,
+     "missed": 0,
+     "preemptions": 6,
+     "released": 18,
+     "tie_events": 6,
+     "worst_response": 6
+    },
+    "lst:edf": {
+     "busy": 40,
+     "completed": 18,
+     "context_switches": 22,
+     "first_miss": null,
+     "horizon": 48,
+     "idle": 8,
+     "jitter": 4,
+     "laxity_zero_switches": 0,
+     "mean_response": 3.1111,
+     "min_laxity": 1,
+     "miss_rate": 0.0,
+     "missed": 0,
+     "preemptions": 4,
+     "released": 18,
+     "tie_events": 6,
+     "worst_response": 6
+    },
+    "lst:lzs": {
+     "busy": 40,
+     "completed": 18,
+     "context_switches": 24,
+     "first_miss": null,
+     "horizon": 48,
+     "idle": 8,
+     "jitter": 4,
+     "laxity_zero_switches": 0,
+     "mean_response": 3.2222,
+     "min_laxity": 1,
+     "miss_rate": 0.0,
+     "missed": 0,
+     "preemptions": 6,
+     "released": 18,
+     "tie_events": 6,
+     "worst_response": 6
+    },
+    "lst:rm": {
+     "busy": 40,
+     "completed": 18,
+     "context_switches": 22,
+     "first_miss": null,
+     "horizon": 48,
+     "idle": 8,
+     "jitter": 4,
+     "laxity_zero_switches": 0,
+     "mean_response": 3.1111,
+     "min_laxity": 1,
+     "miss_rate": 0.0,
+     "missed": 0,
+     "preemptions": 4,
+     "released": 18,
+     "tie_events": 6,
+     "worst_response": 6
+    },
+    "lst:stay": {
+     "busy": 40,
+     "completed": 18,
+     "context_switches": 20,
+     "first_miss": null,
+     "horizon": 48,
+     "idle": 8,
+     "jitter": 4,
+     "laxity_zero_switches": 0,
+     "mean_response": 3.1111,
+     "min_laxity": 1,
+     "miss_rate": 0.0,
+     "missed": 0,
+     "preemptions": 2,
+     "released": 18,
+     "tie_events": 6,
+     "worst_response": 6
+    },
+    "rm": {
+     "busy": 40,
+     "completed": 18,
+     "context_switches": 20,
+     "first_miss": 8,
+     "horizon": 48,
+     "idle": 8,
+     "jitter": 6,
+     "laxity_zero_switches": 0,
+     "mean_response": 3.1111,
+     "min_laxity": -1,
+     "miss_rate": 0.111111,
+     "missed": 2,
+     "preemptions": 2,
+     "released": 18,
+     "tie_events": 4,
+     "worst_response": 8
+    }
+   },
+   "spec": "T1(T=6,C=2,D=4,ph=0), T2(T=8,C=2,D=5,ph=2), T3(T=12,C=3,D=7,ph=1)",
+   "task_count": 3,
+   "tasks": [
+    [
+     "T1",
+     6,
+     2,
+     4,
+     0
+    ],
+    [
+     "T2",
+     8,
+     2,
+     5,
+     2
+    ],
+    [
+     "T3",
+     12,
+     3,
+     7,
+     1
+    ]
+   ],
+   "utilisation": 0.833333,
+   "witness": {
+    "busy": 20,
+    "checked": true,
+    "jobs": 9,
+    "reason": "every job finished strictly before its deadline",
+    "steps": 22,
+    "valid": true
+   },
+   "witness_cost": {
+    "available": true,
+    "busy": 20,
+    "context_switches": 9,
+    "idle": 2,
+    "preemptions": 0,
+    "steps": 22
+   }
+  },
+  {
+   "alignment": {
+    "aligned": {
+     "edf": {
+      "horizon": 33,
+      "missed": 1,
+      "release_window": 30,
+      "released": 11
+     },
+     "lst": {
+      "horizon": 33,
+      "missed": 1,
+      "release_window": 30,
+      "released": 11
+     },
+     "rm": {
+      "horizon": 33,
+      "missed": 2,
+      "release_window": 30,
+      "released": 11
+     }
+    },
+    "aligned_agrees": true,
+    "checker_horizon": 30,
+    "checker_verdict": false,
+    "max_deadline": 3,
+    "naive": {
+     "edf": {
+      "horizon": 60,
+      "missed": 2,
+      "released": 22
+     },
+     "lst": {
+      "horizon": 60,
+      "missed": 2,
+      "released": 22
+     },
+     "rm": {
+      "horizon": 60,
+      "missed": 4,
+      "released": 22
+     }
+    },
+    "naive_agrees": true,
+    "optimal_policies": [
+     "lst",
+     "edf"
+    ],
+    "rm_control": {
+     "aligned_missed": 2,
+     "counterexample": false,
+     "naive_missed": 4
+    }
+   },
+   "cap_control": {
+    "explanation": "truncated runs are artefacts of the cap, not findings",
+    "false_infeasible_count": 0,
+    "full_truncated": false,
+    "full_verdict": false,
+    "rows": [
+     {
+      "feasible": false,
+      "limit": 4,
+      "states": 5,
+      "truncated": true
+     },
+     {
+      "feasible": false,
+      "limit": 8,
+      "states": 5,
+      "truncated": false
+     },
+     {
+      "feasible": false,
+      "limit": 16,
+      "states": 5,
+      "truncated": false
+     },
+     {
+      "feasible": false,
+      "limit": 4000000,
+      "states": 5,
+      "truncated": false
+     }
+    ],
+    "smallest_truncating_limit": null
+   },
+   "checker": {
+    "allow_idle_false": false,
+    "allow_idle_true": false,
+    "feasible": false,
+    "horizon": 30,
+    "idle_enumeration_agrees": true,
+    "jobs": 11,
+    "pruned": 4,
+    "schedule": [],
+    "schedule_length": 0,
+    "states": 5,
+    "truncated": false
+   },
+   "constrained_deadline": true,
+   "gantt": {
+    "edf": [
+     [
+      "T1#0",
+      0,
+      2
+     ],
+     [
+      "T2#0",
+      2,
+      4
+     ],
+     [
+      "T1#1",
+      5,
+      7
+     ],
+     [
+      "T2#1",
+      7,
+      9
+     ],
+     [
+      "T1#2",
+      10,
+      12
+     ],
+     [
+      "T2#2",
+      12,
+      14
+     ],
+     [
+      "T1#3",
+      15,
+      17
+     ],
+     [
+      "T2#3",
+      18,
+      20
+     ],
+     [
+      "T1#4",
+      20,
+      22
+     ],
+     [
+      "T2#4",
+      24,
+      26
+     ],
+     [
+      "T1#5",
+      26,
+      28
+     ],
+     [
+      "T1#6",
+      30,
+      32
+     ],
+     [
+      "T2#5",
+      32,
+      34
+     ],
+     [
+      "T1#7",
+      35,
+      37
+     ],
+     [
+      "T2#6",
+      37,
+      39
+     ],
+     [
+      "T1#8",
+      40,
+      42
+     ],
+     [
+      "T2#7",
+      42,
+      44
+     ],
+     [
+      "T1#9",
+      45,
+      47
+     ],
+     [
+      "T2#8",
+      48,
+      50
+     ],
+     [
+      "T1#10",
+      50,
+      52
+     ],
+     [
+      "T2#9",
+      54,
+      56
+     ],
+     [
+      "T1#11",
+      56,
+      58
+     ]
+    ],
+    "lst": [
+     [
+      "T1#0",
+      0,
+      1
+     ],
+     [
+      "T2#0",
+      1,
+      2
+     ],
+     [
+      "T1#0",
+      2,
+      3
+     ],
+     [
+      "T2#0",
+      3,
+      4
+     ],
+     [
+      "T1#1",
+      5,
+      7
+     ],
+     [
+      "T2#1",
+      7,
+      9
+     ],
+     [
+      "T1#2",
+      10,
+      12
+     ],
+     [
+      "T2#2",
+      12,
+      14
+     ],
+     [
+      "T1#3",
+      15,
+      17
+     ],
+     [
+      "T2#3",
+      18,
+      20
+     ],
+     [
+      "T1#4",
+      20,
+      22
+     ],
+     [
+      "T2#4",
+      24,
+      26
+     ],
+     [
+      "T1#5",
+      26,
+      28
+     ],
+     [
+      "T1#6",
+      30,
+      31
+     ],
+     [
+      "T2#5",
+      31,
+      32
+     ],
+     [
+      "T1#6",
+      32,
+      33
+     ],
+     [
+      "T2#5",
+      33,
+      34
+     ],
+     [
+      "T1#7",
+      35,
+      37
+     ],
+     [
+      "T2#6",
+      37,
+      39
+     ],
+     [
+      "T1#8",
+      40,
+      42
+     ],
+     [
+      "T2#7",
+      42,
+      44
+     ],
+     [
+      "T1#9",
+      45,
+      47
+     ],
+     [
+      "T2#8",
+      48,
+      50
+     ],
+     [
+      "T1#10",
+      50,
+      52
+     ],
+     [
+      "T2#9",
+      54,
+      56
+     ],
+     [
+      "T1#11",
+      56,
+      58
+     ]
+    ],
+    "rm": [
+     [
+      "T1#0",
+      0,
+      2
+     ],
+     [
+      "T2#0",
+      2,
+      4
+     ],
+     [
+      "T1#1",
+      5,
+      7
+     ],
+     [
+      "T2#1",
+      7,
+      9
+     ],
+     [
+      "T1#2",
+      10,
+      12
+     ],
+     [
+      "T2#2",
+      12,
+      14
+     ],
+     [
+      "T1#3",
+      15,
+      17
+     ],
+     [
+      "T2#3",
+      18,
+      20
+     ],
+     [
+      "T1#4",
+      20,
+      22
+     ],
+     [
+      "T2#4",
+      24,
+      25
+     ],
+     [
+      "T1#5",
+      25,
+      27
+     ],
+     [
+      "T2#4",
+      27,
+      28
+     ],
+     [
+      "T1#6",
+      30,
+      32
+     ],
+     [
+      "T2#5",
+      32,
+      34
+     ],
+     [
+      "T1#7",
+      35,
+      37
+     ],
+     [
+      "T2#6",
+      37,
+      39
+     ],
+     [
+      "T1#8",
+      40,
+      42
+     ],
+     [
+      "T2#7",
+      42,
+      44
+     ],
+     [
+      "T1#9",
+      45,
+      47
+     ],
+     [
+      "T2#8",
+      48,
+      50
+     ],
+     [
+      "T1#10",
+      50,
+      52
+     ],
+     [
+      "T2#9",
+      54,
+      55
+     ],
+     [
+      "T1#11",
+      55,
+      57
+     ],
+     [
+      "T2#9",
+      57,
+      58
+     ]
+    ]
+   },
+   "hyperperiod": 30,
+   "id": "W8",
+   "label": "tight deadlines",
+   "max_deadline": 3,
+   "policies": {
+    "dm": {
+     "busy": 44,
+     "completed": 22,
+     "context_switches": 24,
+     "first_miss": 3,
+     "horizon": 60,
+     "idle": 16,
+     "jitter": 2,
+     "laxity_zero_switches": 0,
+     "mean_response": 2.4545,
+     "min_laxity": -1,
+     "miss_rate": 0.181818,
+     "missed": 4,
+     "preemptions": 2,
+     "released": 22,
+     "tie_events": 6,
+     "worst_response": 4
+    },
+    "edf": {
+     "busy": 44,
+     "completed": 22,
+     "context_switches": 22,
+     "first_miss": 3,
+     "horizon": 60,
+     "idle": 16,
+     "jitter": 2,
+     "laxity_zero_switches": 0,
+     "mean_response": 2.3636,
+     "min_laxity": -1,
+     "miss_rate": 0.090909,
+     "missed": 2,
+     "preemptions": 0,
+     "released": 22,
+     "tie_events": 6,
+     "worst_response": 4
+    },
+    "fifo": {
+     "busy": 44,
+     "completed": 22,
+     "context_switches": 22,
+     "first_miss": 3,
+     "horizon": 60,
+     "idle": 16,
+     "jitter": 2,
+     "laxity_zero_switches": 0,
+     "mean_response": 2.3636,
+     "min_laxity": -1,
+     "miss_rate": 0.090909,
+     "missed": 2,
+     "preemptions": 0,
+     "released": 22,
+     "tie_events": 6,
+     "worst_response": 4
+    },
+    "lst": {
+     "busy": 44,
+     "completed": 22,
+     "context_switches": 26,
+     "first_miss": 3,
+     "horizon": 60,
+     "idle": 16,
+     "jitter": 2,
+     "laxity_zero_switches": 2,
+     "mean_response": 2.4545,
+     "min_laxity": -1,
+     "miss_rate": 0.090909,
+     "missed": 2,
+     "preemptions": 4,
+     "released": 22,
+     "tie_events": 8,
+     "worst_response": 4
+    },
+    "lst:edf": {
+     "busy": 44,
+     "completed": 22,
+     "context_switches": 26,
+     "first_miss": 3,
+     "horizon": 60,
+     "idle": 16,
+     "jitter": 2,
+     "laxity_zero_switches": 2,
+     "mean_response": 2.4545,
+     "min_laxity": -1,
+     "miss_rate": 0.090909,
+     "missed": 2,
+     "preemptions": 4,
+     "released": 22,
+     "tie_events": 8,
+     "worst_response": 4
+    },
+    "lst:lzs": {
+     "busy": 44,
+     "completed": 22,
+     "context_switches": 26,
+     "first_miss": 3,
+     "horizon": 60,
+     "idle": 16,
+     "jitter": 2,
+     "laxity_zero_switches": 2,
+     "mean_response": 2.4545,
+     "min_laxity": -1,
+     "miss_rate": 0.090909,
+     "missed": 2,
+     "preemptions": 4,
+     "released": 22,
+     "tie_events": 8,
+     "worst_response": 4
+    },
+    "lst:rm": {
+     "busy": 44,
+     "completed": 22,
+     "context_switches": 30,
+     "first_miss": 3,
+     "horizon": 60,
+     "idle": 16,
+     "jitter": 2,
+     "laxity_zero_switches": 4,
+     "mean_response": 2.5455,
+     "min_laxity": -1,
+     "miss_rate": 0.090909,
+     "missed": 2,
+     "preemptions": 8,
+     "released": 22,
+     "tie_events": 8,
+     "worst_response": 4
+    },
+    "lst:stay": {
+     "busy": 44,
+     "completed": 22,
+     "context_switches": 24,
+     "first_miss": 3,
+     "horizon": 60,
+     "idle": 16,
+     "jitter": 2,
+     "laxity_zero_switches": 0,
+     "mean_response": 2.4545,
+     "min_laxity": -1,
+     "miss_rate": 0.090909,
+     "missed": 2,
+     "preemptions": 2,
+     "released": 22,
+     "tie_events": 8,
+     "worst_response": 4
+    },
+    "rm": {
+     "busy": 44,
+     "completed": 22,
+     "context_switches": 24,
+     "first_miss": 3,
+     "horizon": 60,
+     "idle": 16,
+     "jitter": 2,
+     "laxity_zero_switches": 0,
+     "mean_response": 2.4545,
+     "min_laxity": -1,
+     "miss_rate": 0.181818,
+     "missed": 4,
+     "preemptions": 2,
+     "released": 22,
+     "tie_events": 6,
+     "worst_response": 4
+    }
+   },
+   "spec": "T1(T=5,C=2,D=3,ph=0), T2(T=6,C=2,D=3,ph=0)",
+   "task_count": 2,
+   "tasks": [
+    [
+     "T1",
+     5,
+     2,
+     3,
+     0
+    ],
+    [
+     "T2",
+     6,
+     2,
+     3,
+     0
+    ]
+   ],
+   "utilisation": 0.733333,
+   "witness": {
+    "checked": false,
+    "reason": "no witness (infeasible verdict)",
+    "valid": null
+   },
+   "witness_cost": {
+    "available": false,
+    "busy": 0,
+    "context_switches": 0,
+    "idle": 0,
+    "preemptions": 0,
+    "steps": 0
+   }
+  }
+ ]
+}

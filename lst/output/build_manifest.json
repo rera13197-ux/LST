@@ -1,0 +1,258 @@
+{
+ "all_clean": true,
+ "report_count": 14,
+ "reports": [
+  {
+   "clean": true,
+   "exercise": 1,
+   "lang": "en",
+   "max_page_fill": 0.754,
+   "missing_figures": [],
+   "missing_glyphs": [],
+   "module": "lst1_en",
+   "outputs": [
+    "/home/user/LST/lst/exercise-1/REPORT_EN.md",
+    "/home/user/LST/lst/exercise-1/docs/REPORT_EN.docx",
+    "/home/user/LST/lst/exercise-1/docs/REPORT_EN.pdf"
+   ],
+   "overflow": [],
+   "pages": 36,
+   "pdf_pages": 36,
+   "stem": "REPORT_EN"
+  },
+  {
+   "clean": true,
+   "exercise": 1,
+   "lang": "fa",
+   "max_page_fill": 0.734,
+   "missing_figures": [],
+   "missing_glyphs": [],
+   "module": "lst1_fa",
+   "outputs": [
+    "/home/user/LST/lst/exercise-1/REPORT_FA.md",
+    "/home/user/LST/lst/exercise-1/docs/REPORT_FA.docx",
+    "/home/user/LST/lst/exercise-1/docs/REPORT_FA.pdf"
+   ],
+   "overflow": [],
+   "pages": 36,
+   "pdf_pages": 36,
+   "stem": "REPORT_FA"
+  },
+  {
+   "clean": true,
+   "exercise": 2,
+   "lang": "en",
+   "max_page_fill": 0.754,
+   "missing_figures": [],
+   "missing_glyphs": [],
+   "module": "lst2_en",
+   "outputs": [
+    "/home/user/LST/lst/exercise-2/REPORT_EN.md",
+    "/home/user/LST/lst/exercise-2/docs/REPORT_EN.docx",
+    "/home/user/LST/lst/exercise-2/docs/REPORT_EN.pdf"
+   ],
+   "overflow": [],
+   "pages": 36,
+   "pdf_pages": 36,
+   "stem": "REPORT_EN"
+  },
+  {
+   "clean": true,
+   "exercise": 2,
+   "lang": "fa",
+   "max_page_fill": 0.734,
+   "missing_figures": [],
+   "missing_glyphs": [],
+   "module": "lst2_fa",
+   "outputs": [
+    "/home/user/LST/lst/exercise-2/REPORT_FA.md",
+    "/home/user/LST/lst/exercise-2/docs/REPORT_FA.docx",
+    "/home/user/LST/lst/exercise-2/docs/REPORT_FA.pdf"
+   ],
+   "overflow": [],
+   "pages": 36,
+   "pdf_pages": 36,
+   "stem": "REPORT_FA"
+  },
+  {
+   "clean": true,
+   "exercise": 3,
+   "lang": "en",
+   "max_page_fill": 0.709,
+   "missing_figures": [],
+   "missing_glyphs": [],
+   "module": "lst3_en",
+   "outputs": [
+    "/home/user/LST/lst/exercise-3/REPORT_EN.md",
+    "/home/user/LST/lst/exercise-3/docs/REPORT_EN.docx",
+    "/home/user/LST/lst/exercise-3/docs/REPORT_EN.pdf"
+   ],
+   "overflow": [],
+   "pages": 36,
+   "pdf_pages": 36,
+   "stem": "REPORT_EN"
+  },
+  {
+   "clean": true,
+   "exercise": 3,
+   "lang": "fa",
+   "max_page_fill": 0.709,
+   "missing_figures": [],
+   "missing_glyphs": [],
+   "module": "lst3_fa",
+   "outputs": [
+    "/home/user/LST/lst/exercise-3/REPORT_FA.md",
+    "/home/user/LST/lst/exercise-3/docs/REPORT_FA.docx",
+    "/home/user/LST/lst/exercise-3/docs/REPORT_FA.pdf"
+   ],
+   "overflow": [],
+   "pages": 36,
+   "pdf_pages": 36,
+   "stem": "REPORT_FA"
+  },
+  {
+   "clean": true,
+   "exercise": 4,
+   "lang": "en",
+   "max_page_fill": 0.754,
+   "missing_figures": [],
+   "missing_glyphs": [],
+   "module": "lst4_en",
+   "outputs": [
+    "/home/user/LST/lst/exercise-4/REPORT_EN.md",
+    "/home/user/LST/lst/exercise-4/docs/REPORT_EN.docx",
+    "/home/user/LST/lst/exercise-4/docs/REPORT_EN.pdf"
+   ],
+   "overflow": [],
+   "pages": 37,
+   "pdf_pages": 37,
+   "stem": "REPORT_EN"
+  },
+  {
+   "clean": true,
+   "exercise": 4,
+   "lang": "fa",
+   "max_page_fill": 0.734,
+   "missing_figures": [],
+   "missing_glyphs": [],
+   "module": "lst4_fa",
+   "outputs": [
+    "/home/user/LST/lst/exercise-4/REPORT_FA.md",
+    "/home/user/LST/lst/exercise-4/docs/REPORT_FA.docx",
+    "/home/user/LST/lst/exercise-4/docs/REPORT_FA.pdf"
+   ],
+   "overflow": [],
+   "pages": 37,
+   "pdf_pages": 37,
+   "stem": "REPORT_FA"
+  },
+  {
+   "clean": true,
+   "exercise": 5,
+   "lang": "en",
+   "max_page_fill": 0.709,
+   "missing_figures": [],
+   "missing_glyphs": [],
+   "module": "lst5_en",
+   "outputs": [
+    "/home/user/LST/lst/exercise-5/REPORT_EN.md",
+    "/home/user/LST/lst/exercise-5/docs/REPORT_EN.docx",
+    "/home/user/LST/lst/exercise-5/docs/REPORT_EN.pdf"
+   ],
+   "overflow": [],
+   "pages": 35,
+   "pdf_pages": 35,
+   "stem": "REPORT_EN"
+  },
+  {
+   "clean": true,
+   "exercise": 5,
+   "lang": "fa",
+   "max_page_fill": 0.709,
+   "missing_figures": [],
+   "missing_glyphs": [],
+   "module": "lst5_fa",
+   "outputs": [
+    "/home/user/LST/lst/exercise-5/REPORT_FA.md",
+    "/home/user/LST/lst/exercise-5/docs/REPORT_FA.docx",
+    "/home/user/LST/lst/exercise-5/docs/REPORT_FA.pdf"
+   ],
+   "overflow": [],
+   "pages": 35,
+   "pdf_pages": 35,
+   "stem": "REPORT_FA"
+  },
+  {
+   "clean": true,
+   "exercise": 6,
+   "lang": "en",
+   "max_page_fill": 0.719,
+   "missing_figures": [],
+   "missing_glyphs": [],
+   "module": "lst6_en",
+   "outputs": [
+    "/home/user/LST/lst/exercise-6/REPORT_EN.md",
+    "/home/user/LST/lst/exercise-6/docs/REPORT_EN.docx",
+    "/home/user/LST/lst/exercise-6/docs/REPORT_EN.pdf"
+   ],
+   "overflow": [],
+   "pages": 36,
+   "pdf_pages": 36,
+   "stem": "REPORT_EN"
+  },
+  {
+   "clean": true,
+   "exercise": 6,
+   "lang": "fa",
+   "max_page_fill": 0.709,
+   "missing_figures": [],
+   "missing_glyphs": [],
+   "module": "lst6_fa",
+   "outputs": [
+    "/home/user/LST/lst/exercise-6/REPORT_FA.md",
+    "/home/user/LST/lst/exercise-6/docs/REPORT_FA.docx",
+    "/home/user/LST/lst/exercise-6/docs/REPORT_FA.pdf"
+   ],
+   "overflow": [],
+   "pages": 36,
+   "pdf_pages": 36,
+   "stem": "REPORT_FA"
+  },
+  {
+   "clean": true,
+   "exercise": 7,
+   "lang": "en",
+   "max_page_fill": 0.754,
+   "missing_figures": [],
+   "missing_glyphs": [],
+   "module": "lst7_en",
+   "outputs": [
+    "/home/user/LST/lst/exercise-7/REPORT_EN.md",
+    "/home/user/LST/lst/exercise-7/docs/REPORT_EN.docx",
+    "/home/user/LST/lst/exercise-7/docs/REPORT_EN.pdf"
+   ],
+   "overflow": [],
+   "pages": 37,
+   "pdf_pages": 37,
+   "stem": "REPORT_EN"
+  },
+  {
+   "clean": true,
+   "exercise": 7,
+   "lang": "fa",
+   "max_page_fill": 0.734,
+   "missing_figures": [],
+   "missing_glyphs": [],
+   "module": "lst7_fa",
+   "outputs": [
+    "/home/user/LST/lst/exercise-7/REPORT_FA.md",
+    "/home/user/LST/lst/exercise-7/docs/REPORT_FA.docx",
+    "/home/user/LST/lst/exercise-7/docs/REPORT_FA.pdf"
+   ],
+   "overflow": [],
+   "pages": 37,
+   "pdf_pages": 37,
+   "stem": "REPORT_FA"
+  }
+ ]
+}
