@@ -1,5055 +1,1848 @@
 {
- "figures": [
-  {
-   "file": "fig_ex7_preemptions.png",
+ "charts": {
+  "fig_rw7_artefacts.png": {
    "kind": "bar",
    "labels": [
-    "lst",
-    "lst:edf",
-    "lst:rm",
-    "lst:stay",
-    "lst:lzs",
-    "edf",
-    "rm",
-    "dm",
-    "fifo"
+    "readers_preference",
+    "writers_preference",
+    "fair_fifo",
+    "mesa_signal",
+    "hoare_signal"
    ],
-   "source": "task_sets[0].policies.*.preemptions",
-   "title": "Preemptions by policy on K1",
+   "title": "[D] Finite-window control: zero-writer runs by mechanism",
    "values": [
-    4,
-    4,
-    4,
+    32,
+    0,
+    0,
+    32,
+    0
+   ],
+   "ylabel": "runs with zero writer completions [D]",
+   "zero_line": false
+  },
+  "fig_rw7_bounded_wait.png": {
+   "kind": "bar",
+   "labels": [
+    "readers_preference\n2r1w",
+    "readers_preference\n1r2w",
+    "writers_preference\n2r1w",
+    "writers_preference\n1r2w",
+    "fair_fifo\n2r1w",
+    "fair_fifo\n1r2w",
+    "mesa_signal\n2r1w",
+    "mesa_signal\n1r2w",
+    "hoare_signal\n2r1w",
+    "hoare_signal\n1r2w",
+    "dekker2\n1r1w",
+    "peterson2\n1r1w"
+   ],
+   "title": "[E] Bounded waiting: -1 means a fair starvation cycle",
+   "values": [
+    -1,
     2,
     4,
+    -1,
+    5,
+    5,
+    -1,
+    -1,
+    4,
+    -1,
+    3,
+    3
+   ],
+   "ylabel": "worst-case wait bound (-1 = unbounded) [E]"
+  },
+  "fig_rw7_operations.png": {
+   "kind": "bar",
+   "labels": [
+    "readers_preference",
+    "writers_preference",
+    "fair_fifo",
+    "mesa_signal",
+    "hoare_signal"
+   ],
+   "title": "[M] Completed operations under the base workload",
+   "values": [
+    454,
+    586,
+    511,
+    443,
+    587
+   ],
+   "ylabel": "completed operations [M]",
+   "zero_line": false
+  },
+  "fig_rw7_starvation.png": {
+   "kind": "bar",
+   "labels": [
+    "readers_preference\n2r1w",
+    "readers_preference\n1r2w",
+    "writers_preference\n2r1w",
+    "writers_preference\n1r2w",
+    "fair_fifo\n2r1w",
+    "fair_fifo\n1r2w",
+    "mesa_signal\n2r1w",
+    "mesa_signal\n1r2w",
+    "hoare_signal\n2r1w",
+    "hoare_signal\n1r2w",
+    "dekker2\n1r1w",
+    "peterson2\n1r1w"
+   ],
+   "title": "[E] Fair starvation cycles found",
+   "values": [
+    1,
     0,
     0,
+    1,
+    0,
+    0,
+    1,
+    2,
+    0,
+    1,
     0,
     0
    ],
-   "xlabel": "",
-   "ylabel": "preemptions"
+   "ylabel": "starving processes [E]",
+   "zero_line": false
   },
-  {
-   "file": "fig_ex7_misses.png",
-   "kind": "grouped_bar",
+  "fig_rw7_states.png": {
+   "kind": "bar",
    "labels": [
-    "K1",
-    "K2",
-    "K3",
-    "K4",
-    "K5",
-    "K6",
-    "K7",
-    "K8"
+    "readers_preference\n2r1w",
+    "readers_preference\n1r2w",
+    "writers_preference\n2r1w",
+    "writers_preference\n1r2w",
+    "fair_fifo\n2r1w",
+    "fair_fifo\n1r2w",
+    "mesa_signal\n2r1w",
+    "mesa_signal\n1r2w",
+    "hoare_signal\n2r1w",
+    "hoare_signal\n1r2w",
+    "dekker2\n1r1w",
+    "peterson2\n1r1w"
    ],
+   "title": "[E] Reachable state space per protocol",
+   "values": [
+    33,
+    31,
+    33,
+    31,
+    33,
+    31,
+    49,
+    49,
+    25,
+    31,
+    18,
+    10
+   ],
+   "ylabel": "reachable states [E]",
+   "zero_line": false
+  },
+  "fig_rw7_sweep_arrival.png": {
+   "kind": "lines",
    "series": [
     {
-     "name": "lst",
+     "name": "readers_preference",
      "values": [
-      0,
-      0,
-      0,
-      0,
-      16,
-      2,
-      9,
-      1
+      0.3146,
+      0.2198,
+      0.1168,
+      0.0607,
+      0.0166
      ]
     },
     {
-     "name": "edf",
+     "name": "writers_preference",
      "values": [
-      0,
-      0,
-      0,
-      0,
-      14,
-      2,
-      8,
-      1
+      0.3951,
+      0.381,
+      0.4664,
+      0.5817,
+      0.6503
      ]
     },
     {
-     "name": "rm",
+     "name": "fair_fifo",
      "values": [
-      0,
-      0,
-      0,
-      0,
-      10,
-      4,
-      6,
-      1
+      0.3256,
+      0.3315,
+      0.3416,
+      0.3338,
+      0.3343
+     ]
+    },
+    {
+     "name": "mesa_signal",
+     "values": [
+      0.2204,
+      0.1537,
+      0.1194,
+      0.0459,
+      0.0222
+     ]
+    },
+    {
+     "name": "hoare_signal",
+     "values": [
+      0.38,
+      0.3894,
+      0.4581,
+      0.5392,
+      0.6651
      ]
     }
    ],
-   "source": "task_sets[*].policies.*.missed",
-   "title": "Missed deadlines per set and policy",
-   "xlabel": "task set",
-   "ylabel": "missed deadlines"
-  },
-  {
-   "file": "fig_ex7_ties.png",
-   "kind": "heatmap",
-   "matrix": [
-    [
-     4,
-     8,
-     8,
-     12,
-     16,
-     8,
-     7,
-     2
-    ],
-    [
-     4,
-     8,
-     8,
-     12,
-     16,
-     8,
-     7,
-     2
-    ],
-    [
-     4,
-     8,
-     8,
-     12,
-     16,
-     8,
-     7,
-     2
-    ],
-    [
-     4,
-     8,
-     8,
-     12,
-     16,
-     8,
-     7,
-     2
-    ],
-    [
-     4,
-     8,
-     8,
-     12,
-     16,
-     8,
-     7,
-     2
-    ]
-   ],
-   "source": "task_sets[*].policies.*.tie_events",
-   "title": "Tie events per set and policy",
-   "xlabels": [
-    "K1",
-    "K2",
-    "K3",
-    "K4",
-    "K5",
-    "K6",
-    "K7",
-    "K8"
-   ],
-   "ylabels": [
-    "lst",
-    "lst:edf",
-    "lst:rm",
-    "lst:stay",
-    "lst:lzs"
-   ]
-  },
-  {
-   "file": "fig_ex7_gantt.png",
-   "kind": "gantt",
-   "rows": [
-    [
-     "T1#0",
-     0,
-     1
-    ],
-    [
-     "T2#0",
-     1,
-     2
-    ],
-    [
-     "T1#0",
-     2,
-     3
-    ],
-    [
-     "T2#0",
-     3,
-     4
-    ],
-    [
-     "T1#1",
-     4,
-     5
-    ],
-    [
-     "T2#1",
-     5,
-     6
-    ],
-    [
-     "T1#1",
-     6,
-     7
-    ],
-    [
-     "T2#1",
-     7,
-     8
-    ]
-   ],
-   "source": "task_sets[0].gantt.lst",
-   "title": "lst schedule on K1"
-  },
-  {
-   "file": "fig_ex7_taskcount.png",
-   "kind": "line",
-   "series": [
-    {
-     "name": "lst_preemptions",
-     "values": [
-      4,
-      6,
-      8,
-      10
-     ]
-    },
-    {
-     "name": "lst:edf_preemptions",
-     "values": [
-      4,
-      6,
-      8,
-      10
-     ]
-    },
-    {
-     "name": "lst:rm_preemptions",
-     "values": [
-      4,
-      6,
-      8,
-      10
-     ]
-    },
-    {
-     "name": "lst:stay_preemptions",
-     "values": [
-      2,
-      4,
-      6,
-      8
-     ]
-    },
-    {
-     "name": "lst:lzs_preemptions",
-     "values": [
-      4,
-      6,
-      8,
-      10
-     ]
-    }
-   ],
-   "source": "sweeps[0]",
-   "title": "Sweep task-count: number of equal tasks",
+   "title": "[M] Sweep: arrival rate",
    "x": [
+    0.15,
+    0.3,
+    0.45,
+    0.6,
+    0.75
+   ],
+   "xlabel": "arrival probability per idle process and step",
+   "ylabel": "writer share of completed operations"
+  },
+  "fig_rw7_sweep_readers.png": {
+   "kind": "lines",
+   "series": [
+    {
+     "name": "readers_preference",
+     "values": [
+      150,
+      52,
+      10,
+      4
+     ]
+    },
+    {
+     "name": "writers_preference",
+     "values": [
+      349,
+      331,
+      336,
+      345
+     ]
+    },
+    {
+     "name": "fair_fifo",
+     "values": [
+      238,
+      223,
+      228,
+      221
+     ]
+    },
+    {
+     "name": "mesa_signal",
+     "values": [
+      130,
+      45,
+      8,
+      4
+     ]
+    },
+    {
+     "name": "hoare_signal",
+     "values": [
+      352,
+      340,
+      334,
+      355
+     ]
+    }
+   ],
+   "title": "[M] Sweep: reader population",
+   "x": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "xlabel": "number of readers (one writer)",
+   "ylabel": "writer completions"
+  },
+  "fig_rw7_sweep_service.png": {
+   "kind": "lines",
+   "series": [
+    {
+     "name": "readers_preference",
+     "values": [
+      1.624,
+      1.332,
+      1.699,
+      1.681,
+      1.934
+     ]
+    },
+    {
+     "name": "writers_preference",
+     "values": [
+      1.206,
+      2.079,
+      3.132,
+      3.967,
+      5.974
+     ]
+    },
+    {
+     "name": "fair_fifo",
+     "values": [
+      1.373,
+      1.826,
+      2.301,
+      2.881,
+      4.042
+     ]
+    },
+    {
+     "name": "mesa_signal",
+     "values": [
+      1.546,
+      1.636,
+      1.594,
+      1.775,
+      2.09
+     ]
+    },
+    {
+     "name": "hoare_signal",
+     "values": [
+      1.193,
+      2.041,
+      3.061,
+      3.779,
+      5.868
+     ]
+    }
+   ],
+   "title": "[M] Sweep: writer service length",
+   "x": [
+    1,
     2,
     3,
     4,
-    5
+    6
    ],
-   "xlabel": "number of equal tasks",
-   "ylabel": "preemptions"
+   "xlabel": "writer critical-section length (integer steps)",
+   "ylabel": "mean waiting time (steps)"
   },
-  {
-   "file": "fig_ex7_deadline_lzs.png",
-   "kind": "line",
-   "series": [
-    {
-     "name": "lst_laxity_zero_switches",
-     "values": [
-      0,
-      2,
-      2,
-      2,
-      0
-     ]
-    },
-    {
-     "name": "lst:edf_laxity_zero_switches",
-     "values": [
-      0,
-      2,
-      2,
-      2,
-      0
-     ]
-    },
-    {
-     "name": "lst:rm_laxity_zero_switches",
-     "values": [
-      0,
-      2,
-      2,
-      2,
-      0
-     ]
-    },
-    {
-     "name": "lst:stay_laxity_zero_switches",
-     "values": [
-      0,
-      0,
-      0,
-      0,
-      0
-     ]
-    },
-    {
-     "name": "lst:lzs_laxity_zero_switches",
-     "values": [
-      0,
-      2,
-      2,
-      2,
-      0
-     ]
-    }
-   ],
-   "source": "sweeps[1]",
-   "title": "Sweep deadline-zero-switches: shared deadline (time units)",
-   "x": [
-    4,
-    5,
-    6,
-    7,
-    8
-   ],
-   "xlabel": "shared deadline (time units)",
-   "ylabel": "laxity_zero_switches"
-  },
-  {
-   "file": "fig_ex7_alignment.png",
-   "kind": "line",
-   "series": [
-    {
-     "name": "naive_lst_missed",
-     "values": [
-      0,
-      0,
-      0,
-      0,
-      16,
-      2,
-      9,
-      1
-     ]
-    },
-    {
-     "name": "aligned_lst_missed",
-     "values": [
-      0,
-      0,
-      0,
-      0,
-      8,
-      1,
-      4,
-      0
-     ]
-    },
-    {
-     "name": "checker_feasible",
-     "values": [
-      1,
-      1,
-      1,
-      1,
-      0,
-      0,
-      0,
-      1
-     ]
-    }
-   ],
-   "source": "sweeps[2]",
-   "title": "Sweep alignment: task set",
-   "x": [
-    "K1",
-    "K2",
-    "K3",
-    "K4",
-    "K5",
-    "K6",
-    "K7",
-    "K8"
-   ],
-   "xlabel": "task set",
-   "ylabel": "count"
-  },
-  {
-   "file": "fig_ex7_tiebreak.png",
-   "kind": "grouped_bar",
+  "fig_rw7_wait.png": {
+   "kind": "bar",
    "labels": [
-    "K1",
-    "K2",
-    "K3",
-    "K4",
-    "K5",
-    "K6",
-    "K7",
-    "K8"
+    "readers_preference",
+    "writers_preference",
+    "fair_fifo",
+    "mesa_signal",
+    "hoare_signal"
    ],
-   "series": [
-    {
-     "name": "lst",
-     "values": [
-      4,
-      12,
-      6,
-      8,
-      12,
-      4,
-      7,
-      2
-     ]
-    },
-    {
-     "name": "lst:edf",
-     "values": [
-      4,
-      12,
-      6,
-      8,
-      12,
-      4,
-      7,
-      2
-     ]
-    },
-    {
-     "name": "lst:rm",
-     "values": [
-      4,
-      12,
-      6,
-      8,
-      20,
-      8,
-      7,
-      2
-     ]
-    },
-    {
-     "name": "lst:stay",
-     "values": [
-      2,
-      6,
-      4,
-      6,
-      12,
-      2,
-      4,
-      1
-     ]
-    },
-    {
-     "name": "lst:lzs",
-     "values": [
-      4,
-      12,
-      6,
-      8,
-      12,
-      4,
-      7,
-      2
-     ]
-    }
+   "title": "[M] Mean waiting time under the base workload",
+   "values": [
+    4.348,
+    3.066,
+    3.798,
+    4.513,
+    3.076
    ],
-   "source": "task_sets[*].policies.*.preemptions",
-   "title": "Preemptions by LST tie-break and task set",
-   "xlabel": "task set",
-   "ylabel": "preemptions"
+   "ylabel": "mean wait in steps [M]",
+   "zero_line": false
   },
-  {
-   "file": "fig_ex7_lzs.png",
-   "kind": "heatmap",
-   "matrix": [
-    [
-     0,
-     0,
-     0,
-     0,
-     6,
-     2,
-     1,
-     1
-    ],
-    [
-     0,
-     0,
-     0,
-     0,
-     6,
-     2,
-     1,
-     1
-    ],
-    [
-     0,
-     0,
-     0,
-     0,
-     8,
-     4,
-     1,
-     1
-    ],
-    [
-     0,
-     0,
-     0,
-     0,
-     2,
-     0,
-     0,
-     0
-    ],
-    [
-     0,
-     0,
-     0,
-     0,
-     6,
-     2,
-     1,
-     1
-    ]
-   ],
-   "source": "task_sets[*].policies.*.laxity_zero_switches",
-   "title": "Laxity-zero switches by tie-break and task set",
-   "xlabels": [
-    "K1",
-    "K2",
-    "K3",
-    "K4",
-    "K5",
-    "K6",
-    "K7",
-    "K8"
-   ],
-   "ylabels": [
-    "lst",
-    "lst:edf",
-    "lst:rm",
-    "lst:stay",
-    "lst:lzs"
-   ]
-  },
-  {
-   "file": "fig_ex7_jitter.png",
-   "kind": "grouped_bar",
+  "fig_rw7_writer_share.png": {
+   "kind": "bar",
    "labels": [
-    "K1",
-    "K2",
-    "K3",
-    "K4",
-    "K5",
-    "K6",
-    "K7",
-    "K8"
+    "readers_preference",
+    "writers_preference",
+    "fair_fifo",
+    "mesa_signal",
+    "hoare_signal"
    ],
-   "series": [
-    {
-     "name": "lst",
-     "values": [
-      1,
-      1,
-      2,
-      3,
-      4,
-      2,
-      5,
-      2
-     ]
-    },
-    {
-     "name": "lst:stay",
-     "values": [
-      1,
-      1,
-      2,
-      3,
-      4,
-      2,
-      5,
-      3
-     ]
-    },
-    {
-     "name": "edf",
-     "values": [
-      2,
-      4,
-      4,
-      6,
-      5,
-      2,
-      6,
-      2
-     ]
-    }
+   "title": "[M] Writer share of completed operations",
+   "values": [
+    0.37,
+    0.9625,
+    0.6654,
+    0.3318,
+    0.9642
    ],
-   "source": "task_sets[*].policies.*.jitter",
-   "title": "Response jitter: LST, stay, EDF",
-   "xlabel": "task set",
-   "ylabel": "jitter"
+   "ylabel": "writer share [M]",
+   "zero_line": false
+  }
+ },
+ "counts": {
+  "checker_max_bound": 5,
+  "control_zero_writer_runs": 64,
+  "deadlock_states": 0,
+  "figure_count": 10,
+  "finding_count": 6,
+  "hand_agree": true,
+  "hand_compared_steps": 9,
+  "hand_divergent_count": 1,
+  "measurement_count": 12,
+  "measurement_max_wait": 226,
+  "mechanism_count": 7,
+  "mutual_exclusion_violations": 0,
+  "protocol_count": 12,
+  "short_horizon_artefacts": 0,
+  "starvation_free_protocols": 7,
+  "starving_processes": 6,
+  "starving_protocols": 5,
+  "states_total": 374,
+  "sweep_count": 3,
+  "transitions_total": 785,
+  "truncated_checks": 0,
+  "witnesses": 6,
+  "witnesses_valid": 6
+ },
+ "divergence": {
+  "checker_clock": "state transitions",
+  "control_zero_writer_runs": 64,
+  "detail_en": "[D] finite measurement windows are not proofs; every such case is an instrument artefact.",
+  "detail_fa": "[D] پنجرههای اندازهگیری محدود برهان نیستند؛ تکتک این موارد مصنوعِ ابزاراند.",
+  "measurement_clock": "time steps including service",
+  "short_horizon_artefacts": 0
+ },
+ "figures": [
+  {
+   "caption_en": "Generated from output/experiments.json by code/make_diagrams.py; every value is read at build time.",
+   "caption_fa": "تولیدشده از output/experiments.json بهدست code/make_diagrams.py؛ هر عدد هنگام ساخت خوانده میشود.",
+   "file": "fig_rw7_states.png",
+   "title_en": "Reachable state space",
+   "title_fa": "فضای حالت قابلدسترسی"
+  },
+  {
+   "caption_en": "Generated from output/experiments.json by code/make_diagrams.py; every value is read at build time.",
+   "caption_fa": "تولیدشده از output/experiments.json بهدست code/make_diagrams.py؛ هر عدد هنگام ساخت خوانده میشود.",
+   "file": "fig_rw7_starvation.png",
+   "title_en": "Fair starvation cycles",
+   "title_fa": "دورهای گرسنگیِ عادلانه"
+  },
+  {
+   "caption_en": "Generated from output/experiments.json by code/make_diagrams.py; every value is read at build time.",
+   "caption_fa": "تولیدشده از output/experiments.json بهدست code/make_diagrams.py؛ هر عدد هنگام ساخت خوانده میشود.",
+   "file": "fig_rw7_bounded_wait.png",
+   "title_en": "Bounded waiting verdict",
+   "title_fa": "حکم انتظار کراندار"
+  },
+  {
+   "caption_en": "Generated from output/experiments.json by code/make_diagrams.py; every value is read at build time.",
+   "caption_fa": "تولیدشده از output/experiments.json بهدست code/make_diagrams.py؛ هر عدد هنگام ساخت خوانده میشود.",
+   "file": "fig_rw7_operations.png",
+   "title_en": "Completed operations",
+   "title_fa": "عملیاتهای انجامشده"
+  },
+  {
+   "caption_en": "Generated from output/experiments.json by code/make_diagrams.py; every value is read at build time.",
+   "caption_fa": "تولیدشده از output/experiments.json بهدست code/make_diagrams.py؛ هر عدد هنگام ساخت خوانده میشود.",
+   "file": "fig_rw7_wait.png",
+   "title_en": "Mean waiting time",
+   "title_fa": "میانگین زمان انتظار"
+  },
+  {
+   "caption_en": "Generated from output/experiments.json by code/make_diagrams.py; every value is read at build time.",
+   "caption_fa": "تولیدشده از output/experiments.json بهدست code/make_diagrams.py؛ هر عدد هنگام ساخت خوانده میشود.",
+   "file": "fig_rw7_writer_share.png",
+   "title_en": "Writer share",
+   "title_fa": "سهم نویسنده"
+  },
+  {
+   "caption_en": "Generated from output/experiments.json by code/make_diagrams.py; every value is read at build time.",
+   "caption_fa": "تولیدشده از output/experiments.json بهدست code/make_diagrams.py؛ هر عدد هنگام ساخت خوانده میشود.",
+   "file": "fig_rw7_artefacts.png",
+   "title_en": "Instrument divergence control",
+   "title_fa": "کنترل ناهماهنگی ابزارها"
+  },
+  {
+   "caption_en": "Generated from output/experiments.json by code/make_diagrams.py; every value is read at build time.",
+   "caption_fa": "تولیدشده از output/experiments.json بهدست code/make_diagrams.py؛ هر عدد هنگام ساخت خوانده میشود.",
+   "file": "fig_rw7_sweep_arrival.png",
+   "title_en": "Sweep: arrival rate",
+   "title_fa": "جاروب: نرخ ورود"
+  },
+  {
+   "caption_en": "Generated from output/experiments.json by code/make_diagrams.py; every value is read at build time.",
+   "caption_fa": "تولیدشده از output/experiments.json بهدست code/make_diagrams.py؛ هر عدد هنگام ساخت خوانده میشود.",
+   "file": "fig_rw7_sweep_service.png",
+   "title_en": "Sweep: writer service",
+   "title_fa": "جاروب: کار نویسنده"
+  },
+  {
+   "caption_en": "Generated from output/experiments.json by code/make_diagrams.py; every value is read at build time.",
+   "caption_fa": "تولیدشده از output/experiments.json بهدست code/make_diagrams.py؛ هر عدد هنگام ساخت خوانده میشود.",
+   "file": "fig_rw7_sweep_readers.png",
+   "title_en": "Sweep: reader population",
+   "title_fa": "جاروب: جمعیت خوانندگان"
   }
  ],
  "findings": [
   {
-   "detail_en": "[M] On K1, LST records 4 preemptions and 8 context switches; EDF records 0 and 4. Both miss 0 deadlines. [E] The checker verdict is feasible after 5 states. Correctness does not order these two policies; overhead does.",
-   "detail_fa": "[M] روی K1، LST برابر 4 پیشگیری و 8 تعویض زمینه ثبت میکند؛ EDF برابر 0 و 4. هر دو 0 ضربالاجل از دست میدهند. [E] حکم چککننده پس از 5 حالت «شدنی» است. درستی این دو سیاست را مرتب نمیکند؛ سربار میکند.",
+   "detail_en": "[E] A fair cycle exists in which the writer never enters the critical section while readers keep entering. Its grant is never enabled on the cycle, so the schedule is fair, not merely unlucky.",
+   "detail_fa": "[E] دوری عادلانه هست که در آن نویسنده هرگز وارد ناحیهٔ بحرانی نمیشود، در حالی که خوانندگان پیوسته وارد میشوند. اجازهٔ ورود نویسنده روی هیچ حالتِ دور فعال نیست، پس زمانبندی عادلانه است، نه صرفاً بدشانس.",
    "id": "F1",
-   "kind": "M",
+   "kind": "E",
    "numbers": {
-    "checker_states": 5,
-    "edf_preemptions": 0,
-    "edf_switches": 4,
-    "lst_preemptions": 4,
-    "lst_switches": 8
+    "cycle_length": 3,
+    "other_grants": 1,
+    "protocol": "readers_preference:2r1w",
+    "starving_process": 2,
+    "states": 33,
+    "wait_bound": -1
    },
-   "source": "task_sets[0].policies",
-   "title_en": "Minimising slack is not minimising overhead",
-   "title_fa": "کمینه کردن لَکسیَتی، کمینه کردن سربار نیست",
-   "witness": []
+   "source": "protocols[readers_preference:2r1w].witness",
+   "title_en": "Readers preference starves the writer outright",
+   "title_fa": "اولویتخواننده، نویسنده را یکسره گرسنه میگذارد",
+   "witness": [
+    "R0 grant",
+    "R0 release",
+    "R0 request"
+   ]
   },
   {
-   "detail_en": "[E] Of 4 sets with implicit deadlines, 4 are feasible. Of 4 constrained sets, 1 are feasible and 3 are infeasible. Feasibility has discriminating power only in the constrained regime; that is why every sweep here moves a deadline rather than a definition.",
-   "detail_fa": "[E] از 4 مجموعه با ضربالاجل ضمنی، 4 شدنیاند. از 4 مجموعهٔ مقید، 1 شدنی و 3 نشدنیاند. شدنیبودن فقط در رژیم مقید قدرت تفکیک دارد؛ برای همین هر جاروبی اینجا ضربالاجلی را جابهجا میکند، نه تعریفی را.",
+   "detail_en": "[E] With two writers and one reader, a fair cycle keeps the reader waiting forever. Preference is a parameter that trades one kind of starvation for another; it does not remove starvation.",
+   "detail_fa": "[E] با دو نویسنده و یک خواننده، دوری عادلانه خواننده را برای همیشه منتظر نگه میدارد. اولویت پارامتری است که یک نوع گرسنگی را با نوع دیگری عوض میکند؛ گرسنگی را از بین نمیبرد.",
    "id": "F2",
-   "kind": "B",
+   "kind": "E",
    "numbers": {
-    "constrained_feasible": 1,
-    "constrained_infeasible": 3,
-    "constrained_sets": 4,
-    "implicit_feasible": 4,
-    "implicit_sets": 4
+    "cycle_length": 3,
+    "protocol": "writers_preference:1r2w",
+    "starving_process": 0,
+    "states": 31,
+    "wait_bound": -1
    },
-   "source": "task_sets[*].checker",
-   "title_en": "Implicit deadlines take the test away",
-   "title_fa": "ضربالاجل ضمنی، آزمون را از میان برمیدارد",
-   "witness": []
+   "source": "protocols[writers_preference:1r2w].witness",
+   "title_en": "Writers preference moves the starvation to the reader",
+   "title_fa": "اولویتنویسنده، گرسنگی را به خواننده منتقل میکند",
+   "witness": [
+    "W1 release",
+    "W1 request",
+    "W1 grant"
+   ]
   },
   {
-   "detail_en": "[D] On K8 the checker says feasible, yet the naive two-hyperperiod LST run misses 1 deadlines while the aligned run misses 0. The two instruments were looking at different job sets. Aligning the release window removes the disagreement; the instrument, not the theorem, was at fault.",
-   "detail_fa": "[D] روی K8 چککننده «شدنی» میگوید، ولی اجرای سادهلوح LST در دو دورهٔ بزرگ 1 خطا میدهد و اجرای همتراز 0 خطا. دو ابزار به دو مجموعهٔ متفاوت از کارها نگاه میکردند. همتراز کردنِ پنجرهٔ انتشار اختلاف را برمیدارد؛ مقصر ابزار بود، نه برهان.",
+   "detail_en": "[E] Signalling a waiting writer without giving it the head of the entry queue leaves fresh readers free to bypass it. Hoare-style handoff on the same configuration is starvation-free.",
+   "detail_fa": "[E] اگر نویسندهای را بیدار کنیم ولی جای سرِ صف ورود به آن ندهیم، خوانندگان تازه همچنان از کنارش رد میشوند. تحویلِ Hoare روی همان پیکربندی بدون گرسنگی است.",
    "id": "F3",
-   "kind": "D",
+   "kind": "E",
    "numbers": {
-    "aligned_agree": 8,
-    "aligned_missed_target": 0,
-    "naive_agree": 7,
-    "naive_missed_target": 1,
-    "set_count": 8
+    "hoare_starving": 0,
+    "hoare_states": 25,
+    "hoare_wait_bound": 3,
+    "mesa_starving": 1,
+    "mesa_states": 49
    },
-   "source": "task_sets[*].alignment",
-   "title_en": "Naive versus aligned comparison",
-   "title_fa": "مقایسهٔ سادهلوح در برابر همتراز",
-   "witness": []
+   "source": "protocols[mesa_signal:2r1w] vs protocols[hoare_signal:2r1w]",
+   "title_en": "A Mesa monitor does not bound waiting until the woken thread has a place",
+   "title_fa": "مانیتور Mesa تا وقتی به فرایند بیدارشده جایی در صف ندهد، انتظار را کراندار نمیکند",
+   "witness": [
+    "R0 grant",
+    "R0 release",
+    "R0 request"
+   ]
   },
   {
-   "detail_en": "[D] With a reduced state cap, K1 is reported infeasible 1 times, each run flagged truncated; with the cap restored the verdict is feasible after 5 states. The smallest truncating cap was 4. A truncated run is an artefact of the instrument and is never used as a finding.",
-   "detail_fa": "[D] با سقفِ حالتِ کاهش‌یافته، K1 به تعداد 1 بار نشدنی گزارش میشود که هر بار برچسب بریدگی دارد؛ با برگرداندن سقف، حکم پس از 5 حالت «شدنی» است. کمترین سقفِ بریدهکننده 4 بود. اجرای بریدهشده مصنوعِ ابزار است و هرگز یافته به حساب نمیآید.",
+   "detail_en": "[E] The FIFO queue and the two two-participant patterns have no fair starvation cycle at all in the checked configurations. Mutual exclusion and deadlock freedom hold for every reachable state of every protocol.",
+   "detail_fa": "[E] صف FIFO و دو الگوی دوشرکتکنندهای، در پیکربندیهای بررسیشده هیچ دورِ گرسنگیِ عادلانهای ندارند. انحصار متقابل و نبودِ بنبست روی تکتک حالتهای قابلدسترسیِ همهٔ پروتکلها برقرار است.",
    "id": "F4",
-   "kind": "D",
+   "kind": "E",
    "numbers": {
-    "false_infeasible_runs": 1,
-    "full_feasible": 1,
-    "full_states": 5,
-    "smallest_truncating_limit": 4
+    "deadlock_states": 0,
+    "dekker_states": 18,
+    "fifo_states": 33,
+    "fifo_wait_bound": 5,
+    "mutual_exclusion_violations": 0,
+    "peterson_states": 10
    },
-   "source": "task_sets[0].cap_control",
-   "title_en": "A state cap fabricates an infeasibility verdict",
-   "title_fa": "سقفِ حالت، حکمِ نشدنیبودن میسازد",
+   "source": "protocols[] (all)",
+   "title_en": "FIFO is starvation-free; Dekker and Peterson carry the pattern only between two",
+   "title_fa": "FIFO بدون گرسنگی است؛ دِکِر و پِترسون الگو را فقط بین دو شرکتکننده نگه میدارند",
    "witness": []
   },
   {
-   "detail_en": "[E] On all 5 feasible sets the checker's verdict is unchanged by the choice of tie-break, and 0 sets show a tie-break changing LST's zero-miss status at all. [M] On K2, lst records 12 preemptions while lst:stay records 6 and EDF 0. The widest spread between two tie-breaks is 8 preemptions on K5. Verification treats these as the same feasible outcome; the machine does not.",
-   "detail_fa": "[E] روی همهٔ 5 مجموعهٔ شدنی، حکم چککننده با عوض شدنِ تساویشکنی تغییر نمیکند، و 0 مجموعه نشان میدهند تساویشکنی اصولاً وضعیتِ صفرخطای LST را عوض کند. [M] روی K2، lst برابر 12 پیشگیری، lst:stay برابر 6 و EDF برابر 0 ثبت میکند. بیشترین شکافِ دو تساویشکنی برابر 8 پیشگیری روی K5 است. بررسی اینها را یک نتیجهٔ شدنی یکسان میداند؛ ماشین نه.",
+   "detail_en": "[M] Under one seeded workload the mechanisms complete different numbers of operations, show different mean waiting times, and give the writer very different shares. A yes/no verdict says nothing about any of these quantities.",
+   "detail_fa": "[M] زیر یک بارِ کاری بذرثابت، مکانیزمها شمار عملیاتهای متفاوت، میانگین انتظار متفاوت و سهم بسیار متفاوتی برای نویسنده دارند. حکمِ بله/خیر دربارهٔ هیچیک از این کمیتها چیزی نمیگوید.",
    "id": "F5",
    "kind": "M",
    "numbers": {
-    "edf_preemptions_K2": 0,
-    "feasible_sets": 5,
-    "lst_preemptions_K2": 12,
-    "stay_preemptions_K2": 6,
-    "verdict_changing_sets": 0,
-    "widest_spread": 8
+    "mean_wait_fair_fifo": 3.798,
+    "mean_wait_readers_preference": 4.348,
+    "operations_fair_fifo": 511,
+    "operations_readers_preference": 454,
+    "wait_samples": 514
    },
-   "source": "task_sets[*].policies",
-   "title_en": "Tie-breaking changes the cost, not the verdict",
-   "title_fa": "تساویشکنی هزینه را عوض میکند، نه حکم را",
+   "source": "measurements[]",
+   "title_en": "Verification calls schedules equivalent where measurement separates them",
+   "title_fa": "بررسی، برنامهها را همارز میداند جایی که اندازهگیری جدایشان میکند",
    "witness": []
   },
   {
-   "detail_en": "[M] On K5, lst records 6 switches at zero laxity, lst:stay records 2 and EDF 2; the largest value over all sets is 6. Yet on 6 sets LST has strictly smaller response jitter than EDF even though it preempts more: on K2 the jitters are 1 and 4. A single metric would have hidden this. We report the trade-off rather than declaring a winner the data does not support.",
-   "detail_fa": "[M] روی K5، lst برابر 6 تعویض در لَکسیَتی صفر، lst:stay برابر 2 و EDF برابر 2 ثبت میکند؛ بیشترین مقدار روی همهٔ مجموعهها 6 است. با این حال روی 6 مجموعه لرزش پاسخ LST اکیداً کوچکتر از EDF است، هرچند پیشگیری بیشتری دارد: روی K2 لرزشها برابر 1 و 4اند. یک سنجهٔ تنها این را پنهان میکرد. ما بدهبستان را گزارش میکنیم، نه برندهای را که داده پشتیبانی نمیکند.",
+   "detail_en": "[D] The checker counts bounded waiting in state transitions; the simulator counts waiting in time steps that include service time. Comparing those two magnitudes directly is a category error, not a contradiction. A control search over the seeded random study found the recorded number of finite-window artefacts: every run with zero writer completions belonged to a mechanism the checker had already proved capable of starvation. At this horizon the instruments agreed; suspect the instrument first, and never promote a short run into a correctness verdict.",
+   "detail_fa": "[D] چککننده انتظار کراندار را با گذرهای حالت میشمرد؛ شبیهساز انتظار را با گامهای زمانی میشمرد که طول کار را هم دربرمیگیرد. مقایسهٔ مستقیم این دو اندازه خطای مقوله است، نه تناقض. جستجوی کنترلی روی مطالعهٔ تصادفی بذرثابت، شمار ثبتشدهٔ مصنوعهای پنجرهٔ محدود را بهدست داد: تکتک اجراهایی با صفر عملیات نویسنده به مکانیزمی تعلق داشتند که چککننده پیشتر توان گرسنگیشان را اثبات کرده بود. در این افق دو ابزار همسخن بودند؛ نخست ابزار را مظنون بدان و هیچ اجرای کوتاهی را به حکمِ درستی ارتقا نده.",
    "id": "F6",
-   "kind": "M",
+   "kind": "D",
    "numbers": {
-    "edf_jitter_K2": 4,
-    "edf_zero_switches_K5": 2,
-    "lst_jitter_K2": 1,
-    "lst_lower_jitter_sets": 6,
-    "lst_zero_switches_K5": 6,
-    "max_zero_switches": 6,
-    "stay_zero_switches_K5": 2
+    "artefacts": 0,
+    "checker_max_bound": 5,
+    "control_mechanisms": 1,
+    "measurement_max_wait": 226,
+    "measurements": 1200,
+    "short_horizon": 200,
+    "starved_runs": 64,
+    "truncated": 0,
+    "workloads": 240
    },
-   "source": "task_sets[*].policies",
-   "title_en": "Laxity-zero thrashing is measurable, and the cheap policy is not cheap on every metric",
-   "title_fa": "لرزشِ لَکسیَتی صفر اندازهپذیر است، و سیاست ارزان در همهٔ سنجهها ارزان نیست",
+   "source": "random.per_mechanism[] + protocols[].bounded_wait + measurements[].max_wait",
+   "title_en": "The two instruments use different clocks; the finite-window control found no artefact",
+   "title_fa": "دو ابزار ساعتهای متفاوتی دارند؛ کنترلِ پنجرهٔ محدود مصنوعی نیافت",
    "witness": []
+  }
+ ],
+ "hand": {
+  "agree": true,
+  "compared_steps": 9,
+  "divergence": {
+   "a_allows": false,
+   "b_allows": true,
+   "divergent_count": 1,
+   "first_step": 5,
+   "rule_a": "writers_preference",
+   "rule_b": "readers_preference",
+   "witness": [
+    "R0 request",
+    "R0 grant",
+    "W2 request",
+    "R1 request",
+    "R1 grant"
+   ]
+  },
+  "rows": [
+   {
+    "action": "R0 request",
+    "agree": true,
+    "checker": "(1, 0, 0)",
+    "step": 1,
+    "verifier": "(1, 0, 0)"
+   },
+   {
+    "action": "R0 grant",
+    "agree": true,
+    "checker": "(2, 0, 0)",
+    "step": 2,
+    "verifier": "(2, 0, 0)"
+   },
+   {
+    "action": "R1 request",
+    "agree": true,
+    "checker": "(2, 1, 0)",
+    "step": 3,
+    "verifier": "(2, 1, 0)"
+   },
+   {
+    "action": "R1 grant",
+    "agree": true,
+    "checker": "(2, 2, 0)",
+    "step": 4,
+    "verifier": "(2, 2, 0)"
+   },
+   {
+    "action": "W2 request",
+    "agree": true,
+    "checker": "(2, 2, 1)",
+    "step": 5,
+    "verifier": "(2, 2, 1)"
+   },
+   {
+    "action": "R0 release",
+    "agree": true,
+    "checker": "(0, 2, 1)",
+    "step": 6,
+    "verifier": "(0, 2, 1)"
+   },
+   {
+    "action": "R1 release",
+    "agree": true,
+    "checker": "(0, 0, 1)",
+    "step": 7,
+    "verifier": "(0, 0, 1)"
+   },
+   {
+    "action": "W2 grant",
+    "agree": true,
+    "checker": "(0, 0, 2)",
+    "step": 8,
+    "verifier": "(0, 0, 2)"
+   },
+   {
+    "action": "W2 release",
+    "agree": true,
+    "checker": "(0, 0, 0)",
+    "step": 9,
+    "verifier": "(0, 0, 0)"
+   }
+  ]
+ },
+ "measurements": [
+  {
+   "config": "2r1w",
+   "id": "readers_preference:2r1w",
+   "max_wait": 85,
+   "mean_wait": 1.455,
+   "mechanism": "readers_preference",
+   "operations": 669,
+   "readers": 2,
+   "reads": 622,
+   "throughput": 0.5575,
+   "trials": 3,
+   "wait_samples": 675,
+   "writer_starved_trials": 0,
+   "writers": 1,
+   "writes": 47
+  },
+  {
+   "config": "1r2w",
+   "id": "readers_preference:1r2w",
+   "max_wait": 226,
+   "mean_wait": 4.348,
+   "mechanism": "readers_preference",
+   "operations": 454,
+   "readers": 1,
+   "reads": 286,
+   "throughput": 0.3783,
+   "trials": 3,
+   "wait_samples": 457,
+   "writer_starved_trials": 0,
+   "writers": 2,
+   "writes": 168
+  },
+  {
+   "config": "2r1w",
+   "id": "writers_preference:2r1w",
+   "max_wait": 28,
+   "mean_wait": 2.078,
+   "mechanism": "writers_preference",
+   "operations": 663,
+   "readers": 2,
+   "reads": 318,
+   "throughput": 0.5525,
+   "trials": 3,
+   "wait_samples": 666,
+   "writer_starved_trials": 0,
+   "writers": 1,
+   "writes": 345
+  },
+  {
+   "config": "1r2w",
+   "id": "writers_preference:1r2w",
+   "max_wait": 153,
+   "mean_wait": 3.066,
+   "mechanism": "writers_preference",
+   "operations": 586,
+   "readers": 1,
+   "reads": 22,
+   "throughput": 0.4883,
+   "trials": 3,
+   "wait_samples": 589,
+   "writer_starved_trials": 0,
+   "writers": 2,
+   "writes": 564
+  },
+  {
+   "config": "2r1w",
+   "id": "fair_fifo:2r1w",
+   "max_wait": 4,
+   "mean_wait": 1.847,
+   "mechanism": "fair_fifo",
+   "operations": 670,
+   "readers": 2,
+   "reads": 443,
+   "throughput": 0.5583,
+   "trials": 3,
+   "wait_samples": 674,
+   "writer_starved_trials": 0,
+   "writers": 1,
+   "writes": 227
+  },
+  {
+   "config": "1r2w",
+   "id": "fair_fifo:1r2w",
+   "max_wait": 5,
+   "mean_wait": 3.798,
+   "mechanism": "fair_fifo",
+   "operations": 511,
+   "readers": 1,
+   "reads": 171,
+   "throughput": 0.4258,
+   "trials": 3,
+   "wait_samples": 514,
+   "writer_starved_trials": 0,
+   "writers": 2,
+   "writes": 340
+  },
+  {
+   "config": "2r1w",
+   "id": "mesa_signal:2r1w",
+   "max_wait": 84,
+   "mean_wait": 1.635,
+   "mechanism": "mesa_signal",
+   "operations": 662,
+   "readers": 2,
+   "reads": 609,
+   "throughput": 0.5517,
+   "trials": 3,
+   "wait_samples": 665,
+   "writer_starved_trials": 0,
+   "writers": 1,
+   "writes": 53
+  },
+  {
+   "config": "1r2w",
+   "id": "mesa_signal:1r2w",
+   "max_wait": 37,
+   "mean_wait": 4.513,
+   "mechanism": "mesa_signal",
+   "operations": 443,
+   "readers": 1,
+   "reads": 296,
+   "throughput": 0.3692,
+   "trials": 3,
+   "wait_samples": 446,
+   "writer_starved_trials": 0,
+   "writers": 2,
+   "writes": 147
+  },
+  {
+   "config": "2r1w",
+   "id": "hoare_signal:2r1w",
+   "max_wait": 14,
+   "mean_wait": 2.111,
+   "mechanism": "hoare_signal",
+   "operations": 665,
+   "readers": 2,
+   "reads": 314,
+   "throughput": 0.5542,
+   "trials": 3,
+   "wait_samples": 668,
+   "writer_starved_trials": 0,
+   "writers": 1,
+   "writes": 351
+  },
+  {
+   "config": "1r2w",
+   "id": "hoare_signal:1r2w",
+   "max_wait": 147,
+   "mean_wait": 3.076,
+   "mechanism": "hoare_signal",
+   "operations": 587,
+   "readers": 1,
+   "reads": 21,
+   "throughput": 0.4892,
+   "trials": 3,
+   "wait_samples": 590,
+   "writer_starved_trials": 0,
+   "writers": 2,
+   "writes": 566
+  },
+  {
+   "config": "1r1w",
+   "id": "dekker2:1r1w",
+   "max_wait": 3,
+   "mean_wait": 1.689,
+   "mechanism": "dekker2",
+   "operations": 473,
+   "readers": 1,
+   "reads": 230,
+   "throughput": 0.3942,
+   "trials": 3,
+   "wait_samples": 476,
+   "writer_starved_trials": 0,
+   "writers": 1,
+   "writes": 243
+  },
+  {
+   "config": "1r1w",
+   "id": "peterson2:1r1w",
+   "max_wait": 3,
+   "mean_wait": 1.774,
+   "mechanism": "peterson2",
+   "operations": 470,
+   "readers": 1,
+   "reads": 235,
+   "throughput": 0.3917,
+   "trials": 3,
+   "wait_samples": 473,
+   "writer_starved_trials": 0,
+   "writers": 1,
+   "writes": 235
   }
  ],
  "meta": {
+  "arrival": 0.55,
+  "configs": {
+   "1r1w": [
+    "R",
+    "W"
+   ],
+   "1r2w": [
+    "R",
+    "W",
+    "W"
+   ],
+   "2r1w": [
+    "R",
+    "R",
+    "W"
+   ]
+  },
   "exercise": 7,
-  "figures": 10,
-  "findings": 6,
-  "generator": "code/run_experiments.py",
-  "horizon_cycles": 2,
-  "lst_tie_breaks": [
-   "lst",
-   "lst:edf",
-   "lst:rm",
-   "lst:stay",
-   "lst:lzs"
+  "generated": "2026-11-16T21:35:24",
+  "horizon": 400,
+  "languages": [
+   "en",
+   "fa"
   ],
-  "policies": [
-   "lst",
-   "lst:edf",
-   "lst:rm",
-   "lst:stay",
-   "lst:lzs",
-   "edf",
-   "rm",
-   "dm",
-   "fifo"
+  "mechanisms": [
+   "readers_preference",
+   "writers_preference",
+   "fair_fifo",
+   "mesa_signal",
+   "hoare_signal",
+   "dekker2",
+   "peterson2"
   ],
-  "question_en": "",
-  "question_fa": "",
-  "scope_en": "the cost of LST tie-breaking and laxity-zero thrashing, with verification kept separate from measurement",
-  "scope_fa": "هزینهٔ تساویشکنی LST و لرزشِ لَکسیَتی صفر، با جدا نگه داشتنِ بررسی از اندازهگیری",
-  "seed": 20261116,
-  "sweeps": 3,
-  "task_sets": 8
+  "random_workloads": 240,
+  "seed": 20261120,
+  "service_read": 3,
+  "service_write": 2,
+  "short_horizon": 200,
+  "state_limit": 120000,
+  "topic": "readers-writers",
+  "topic_en": "Readers-writers: four mechanisms and three more",
+  "topic_fa": "خواننده-نویسنده: چهار مکانیزم و سه تای دیگر",
+  "trials": 3
  },
+ "protocols": [
+  {
+   "bounded_wait": {
+    "0": 2,
+    "1": 2,
+    "2": -1
+   },
+   "config": "2r1w",
+   "deadlock_free": true,
+   "deadlock_states": 0,
+   "id": "readers_preference:2r1w",
+   "mechanism": "readers_preference",
+   "mutual_exclusion": true,
+   "mutual_exclusion_violations": 0,
+   "roles": [
+    "R",
+    "R",
+    "W"
+   ],
+   "starvation_free": false,
+   "starving_processes": [
+    2
+   ],
+   "states": 33,
+   "transitions": 86,
+   "truncated": false,
+   "witness": {
+    "cycle": [
+     "R0 grant",
+     "R0 release",
+     "R0 request"
+    ],
+    "cycle_length": 3,
+    "grant_enabled_in_cycle": 0,
+    "other_grants_in_cycle": 1,
+    "prefix": [
+     "R1 request",
+     "R1 grant",
+     "W2 request",
+     "R0 request"
+    ],
+    "process": 2,
+    "role": "W",
+    "type": "starvation"
+   },
+   "witnesses": {
+    "0": null,
+    "1": null,
+    "2": {
+     "cycle": [
+      "R0 grant",
+      "R0 release",
+      "R0 request"
+     ],
+     "cycle_length": 3,
+     "grant_enabled_in_cycle": 0,
+     "other_grants_in_cycle": 1,
+     "prefix": [
+      "R1 request",
+      "R1 grant",
+      "W2 request",
+      "R0 request"
+     ],
+     "process": 2,
+     "role": "W",
+     "type": "starvation"
+    }
+   }
+  },
+  {
+   "bounded_wait": {
+    "0": 2,
+    "1": 2,
+    "2": 2
+   },
+   "config": "1r2w",
+   "deadlock_free": true,
+   "deadlock_states": 0,
+   "id": "readers_preference:1r2w",
+   "mechanism": "readers_preference",
+   "mutual_exclusion": true,
+   "mutual_exclusion_violations": 0,
+   "roles": [
+    "R",
+    "W",
+    "W"
+   ],
+   "starvation_free": true,
+   "starving_processes": [],
+   "states": 31,
+   "transitions": 75,
+   "truncated": false,
+   "witness": null,
+   "witnesses": {
+    "0": null,
+    "1": null,
+    "2": null
+   }
+  },
+  {
+   "bounded_wait": {
+    "0": 4,
+    "1": 4,
+    "2": 3
+   },
+   "config": "2r1w",
+   "deadlock_free": true,
+   "deadlock_states": 0,
+   "id": "writers_preference:2r1w",
+   "mechanism": "writers_preference",
+   "mutual_exclusion": true,
+   "mutual_exclusion_violations": 0,
+   "roles": [
+    "R",
+    "R",
+    "W"
+   ],
+   "starvation_free": true,
+   "starving_processes": [],
+   "states": 33,
+   "transitions": 66,
+   "truncated": false,
+   "witness": null,
+   "witnesses": {
+    "0": null,
+    "1": null,
+    "2": null
+   }
+  },
+  {
+   "bounded_wait": {
+    "0": -1,
+    "1": 2,
+    "2": 2
+   },
+   "config": "1r2w",
+   "deadlock_free": true,
+   "deadlock_states": 0,
+   "id": "writers_preference:1r2w",
+   "mechanism": "writers_preference",
+   "mutual_exclusion": true,
+   "mutual_exclusion_violations": 0,
+   "roles": [
+    "R",
+    "W",
+    "W"
+   ],
+   "starvation_free": false,
+   "starving_processes": [
+    0
+   ],
+   "states": 31,
+   "transitions": 65,
+   "truncated": false,
+   "witness": {
+    "cycle": [
+     "W1 release",
+     "W1 request",
+     "W1 grant"
+    ],
+    "cycle_length": 3,
+    "grant_enabled_in_cycle": 0,
+    "other_grants_in_cycle": 1,
+    "prefix": [
+     "R0 request",
+     "W1 request",
+     "W1 grant",
+     "W2 request"
+    ],
+    "process": 0,
+    "role": "R",
+    "type": "starvation"
+   },
+   "witnesses": {
+    "0": {
+     "cycle": [
+      "W1 release",
+      "W1 request",
+      "W1 grant"
+     ],
+     "cycle_length": 3,
+     "grant_enabled_in_cycle": 0,
+     "other_grants_in_cycle": 1,
+     "prefix": [
+      "R0 request",
+      "W1 request",
+      "W1 grant",
+      "W2 request"
+     ],
+     "process": 0,
+     "role": "R",
+     "type": "starvation"
+    },
+    "1": null,
+    "2": null
+   }
+  },
+  {
+   "bounded_wait": {
+    "0": 5,
+    "1": 5,
+    "2": 5
+   },
+   "config": "2r1w",
+   "deadlock_free": true,
+   "deadlock_states": 0,
+   "id": "fair_fifo:2r1w",
+   "mechanism": "fair_fifo",
+   "mutual_exclusion": true,
+   "mutual_exclusion_violations": 0,
+   "roles": [
+    "R",
+    "R",
+    "W"
+   ],
+   "starvation_free": true,
+   "starving_processes": [],
+   "states": 33,
+   "transitions": 70,
+   "truncated": false,
+   "witness": null,
+   "witnesses": {
+    "0": null,
+    "1": null,
+    "2": null
+   }
+  },
+  {
+   "bounded_wait": {
+    "0": 5,
+    "1": 5,
+    "2": 5
+   },
+   "config": "1r2w",
+   "deadlock_free": true,
+   "deadlock_states": 0,
+   "id": "fair_fifo:1r2w",
+   "mechanism": "fair_fifo",
+   "mutual_exclusion": true,
+   "mutual_exclusion_violations": 0,
+   "roles": [
+    "R",
+    "W",
+    "W"
+   ],
+   "starvation_free": true,
+   "starving_processes": [],
+   "states": 31,
+   "transitions": 57,
+   "truncated": false,
+   "witness": null,
+   "witnesses": {
+    "0": null,
+    "1": null,
+    "2": null
+   }
+  },
+  {
+   "bounded_wait": {
+    "0": 2,
+    "1": 2,
+    "2": -1
+   },
+   "config": "2r1w",
+   "deadlock_free": true,
+   "deadlock_states": 0,
+   "id": "mesa_signal:2r1w",
+   "mechanism": "mesa_signal",
+   "mutual_exclusion": true,
+   "mutual_exclusion_violations": 0,
+   "roles": [
+    "R",
+    "R",
+    "W"
+   ],
+   "starvation_free": false,
+   "starving_processes": [
+    2
+   ],
+   "states": 49,
+   "transitions": 116,
+   "truncated": false,
+   "witness": {
+    "cycle": [
+     "R0 grant",
+     "R0 release",
+     "R0 request"
+    ],
+    "cycle_length": 3,
+    "grant_enabled_in_cycle": 0,
+    "other_grants_in_cycle": 1,
+    "prefix": [
+     "R0 request",
+     "R0 grant",
+     "R1 request",
+     "W2 request",
+     "R0 release",
+     "R0 request",
+     "R1 grant"
+    ],
+    "process": 2,
+    "role": "W",
+    "type": "starvation"
+   },
+   "witnesses": {
+    "0": null,
+    "1": null,
+    "2": {
+     "cycle": [
+      "R0 grant",
+      "R0 release",
+      "R0 request"
+     ],
+     "cycle_length": 3,
+     "grant_enabled_in_cycle": 0,
+     "other_grants_in_cycle": 1,
+     "prefix": [
+      "R0 request",
+      "R0 grant",
+      "R1 request",
+      "W2 request",
+      "R0 release",
+      "R0 request",
+      "R1 grant"
+     ],
+     "process": 2,
+     "role": "W",
+     "type": "starvation"
+    }
+   }
+  },
+  {
+   "bounded_wait": {
+    "0": 2,
+    "1": -1,
+    "2": -1
+   },
+   "config": "1r2w",
+   "deadlock_free": true,
+   "deadlock_states": 0,
+   "id": "mesa_signal:1r2w",
+   "mechanism": "mesa_signal",
+   "mutual_exclusion": true,
+   "mutual_exclusion_violations": 0,
+   "roles": [
+    "R",
+    "W",
+    "W"
+   ],
+   "starvation_free": false,
+   "starving_processes": [
+    1,
+    2
+   ],
+   "states": 49,
+   "transitions": 93,
+   "truncated": false,
+   "witness": {
+    "cycle": [
+     "R0 request",
+     "R0 grant",
+     "R0 release"
+    ],
+    "cycle_length": 3,
+    "grant_enabled_in_cycle": 0,
+    "other_grants_in_cycle": 1,
+    "prefix": [
+     "R0 request",
+     "R0 grant",
+     "W2 request",
+     "R0 release",
+     "W1 request"
+    ],
+    "process": 1,
+    "role": "W",
+    "type": "starvation"
+   },
+   "witnesses": {
+    "0": null,
+    "1": {
+     "cycle": [
+      "R0 request",
+      "R0 grant",
+      "R0 release"
+     ],
+     "cycle_length": 3,
+     "grant_enabled_in_cycle": 0,
+     "other_grants_in_cycle": 1,
+     "prefix": [
+      "R0 request",
+      "R0 grant",
+      "W2 request",
+      "R0 release",
+      "W1 request"
+     ],
+     "process": 1,
+     "role": "W",
+     "type": "starvation"
+    },
+    "2": {
+     "cycle": [
+      "R0 request",
+      "R0 grant",
+      "R0 release"
+     ],
+     "cycle_length": 3,
+     "grant_enabled_in_cycle": 0,
+     "other_grants_in_cycle": 1,
+     "prefix": [
+      "R0 request",
+      "R0 grant",
+      "W1 request",
+      "R0 release",
+      "W2 request"
+     ],
+     "process": 2,
+     "role": "W",
+     "type": "starvation"
+    }
+   }
+  },
+  {
+   "bounded_wait": {
+    "0": 4,
+    "1": 4,
+    "2": 3
+   },
+   "config": "2r1w",
+   "deadlock_free": true,
+   "deadlock_states": 0,
+   "id": "hoare_signal:2r1w",
+   "mechanism": "hoare_signal",
+   "mutual_exclusion": true,
+   "mutual_exclusion_violations": 0,
+   "roles": [
+    "R",
+    "R",
+    "W"
+   ],
+   "starvation_free": true,
+   "starving_processes": [],
+   "states": 25,
+   "transitions": 56,
+   "truncated": false,
+   "witness": null,
+   "witnesses": {
+    "0": null,
+    "1": null,
+    "2": null
+   }
+  },
+  {
+   "bounded_wait": {
+    "0": -1,
+    "1": 4,
+    "2": 4
+   },
+   "config": "1r2w",
+   "deadlock_free": true,
+   "deadlock_states": 0,
+   "id": "hoare_signal:1r2w",
+   "mechanism": "hoare_signal",
+   "mutual_exclusion": true,
+   "mutual_exclusion_violations": 0,
+   "roles": [
+    "R",
+    "W",
+    "W"
+   ],
+   "starvation_free": false,
+   "starving_processes": [
+    0
+   ],
+   "states": 31,
+   "transitions": 57,
+   "truncated": false,
+   "witness": {
+    "cycle": [
+     "W1 grant",
+     "W2 request",
+     "W1 release",
+     "W1 request",
+     "W2 grant",
+     "W2 release"
+    ],
+    "cycle_length": 6,
+    "grant_enabled_in_cycle": 0,
+    "other_grants_in_cycle": 2,
+    "prefix": [
+     "R0 request",
+     "W1 request"
+    ],
+    "process": 0,
+    "role": "R",
+    "type": "starvation"
+   },
+   "witnesses": {
+    "0": {
+     "cycle": [
+      "W1 grant",
+      "W2 request",
+      "W1 release",
+      "W1 request",
+      "W2 grant",
+      "W2 release"
+     ],
+     "cycle_length": 6,
+     "grant_enabled_in_cycle": 0,
+     "other_grants_in_cycle": 2,
+     "prefix": [
+      "R0 request",
+      "W1 request"
+     ],
+     "process": 0,
+     "role": "R",
+     "type": "starvation"
+    },
+    "1": null,
+    "2": null
+   }
+  },
+  {
+   "bounded_wait": {
+    "0": 3,
+    "1": 3
+   },
+   "config": "1r1w",
+   "deadlock_free": true,
+   "deadlock_states": 0,
+   "id": "dekker2:1r1w",
+   "mechanism": "dekker2",
+   "mutual_exclusion": true,
+   "mutual_exclusion_violations": 0,
+   "roles": [
+    "R",
+    "W"
+   ],
+   "starvation_free": true,
+   "starving_processes": [],
+   "states": 18,
+   "transitions": 28,
+   "truncated": false,
+   "witness": null,
+   "witnesses": {
+    "0": null,
+    "1": null
+   }
+  },
+  {
+   "bounded_wait": {
+    "0": 3,
+    "1": 3
+   },
+   "config": "1r1w",
+   "deadlock_free": true,
+   "deadlock_states": 0,
+   "id": "peterson2:1r1w",
+   "mechanism": "peterson2",
+   "mutual_exclusion": true,
+   "mutual_exclusion_violations": 0,
+   "roles": [
+    "R",
+    "W"
+   ],
+   "starvation_free": true,
+   "starving_processes": [],
+   "states": 10,
+   "transitions": 16,
+   "truncated": false,
+   "witness": null,
+   "witnesses": {
+    "0": null,
+    "1": null
+   }
+  }
+ ],
+ "provenance": {
+  "detail_en": "Checksums of the three programs that produced the data and the figures. No external author, year, DOI or page number is claimed anywhere in this exercise.",
+  "detail_fa": "درهمهای سه برنامهای که داده و شکلها را ساختند. در هیچ جای این تمرین نویسنده، سال، DOI یا شمارهٔ صفحهای خارجی ادعا نشده است.",
+  "files": [
+   {
+    "bytes": 19357,
+    "path": "code/rw_core.py",
+    "sha256": "f6a1b8d85938c5e6d396b1e15dfaa7d314968a3cc4d9ec47e337259d732e0482"
+   },
+   {
+    "bytes": 35583,
+    "path": "code/run_experiments.py",
+    "sha256": "c84a574f8110b261c77d8950663962d57bd9e63550fad19332621017c0213256"
+   },
+   {
+    "bytes": 3422,
+    "path": "code/make_diagrams.py",
+    "sha256": "b4de2991575b20d36ba4fac54b1b1981950db5034e929d5cef5389b2d233f849"
+   }
+  ],
+  "inherited": [],
+  "mismatches": 0
+ },
+ "random": {
+  "measurements": 1200,
+  "per_mechanism": {
+   "fair_fifo": {
+    "mean_writer_share": 0.3764,
+    "short_horizon_artefacts": 0,
+    "total_operations": 29177,
+    "writer_starved_runs": 0
+   },
+   "hoare_signal": {
+    "mean_writer_share": 0.6563,
+    "short_horizon_artefacts": 0,
+    "total_operations": 24588,
+    "writer_starved_runs": 0
+   },
+   "mesa_signal": {
+    "mean_writer_share": 0.1325,
+    "short_horizon_artefacts": 0,
+    "total_operations": 38841,
+    "writer_starved_runs": 32
+   },
+   "readers_preference": {
+    "mean_writer_share": 0.1423,
+    "short_horizon_artefacts": 0,
+    "total_operations": 39019,
+    "writer_starved_runs": 32
+   },
+   "writers_preference": {
+    "mean_writer_share": 0.6608,
+    "short_horizon_artefacts": 0,
+    "total_operations": 24561,
+    "writer_starved_runs": 0
+   }
+  },
+  "sf_mechanisms": [
+   "fair_fifo"
+  ],
+  "short_horizon": 200,
+  "total_artefacts": 0,
+  "total_starved": 64,
+  "truncated": 0,
+  "workloads": 240
+ },
+ "references": [
+  {
+   "status": "verified in this repository",
+   "title": "The generated data, figures and programs in this repository"
+  },
+  {
+   "status": "unverified: no external bibliographic database queried",
+   "title": "Classic readers-preference semaphore solution"
+  },
+  {
+   "status": "unverified: no external bibliographic database queried",
+   "title": "Mesa and Hoare monitor semantics"
+  },
+  {
+   "status": "unverified: no external bibliographic database queried",
+   "title": "Dekker and Peterson two-process mutual exclusion"
+  }
+ ],
+ "sources": [
+  {
+   "bytes": 19357,
+   "path": "code/rw_core.py",
+   "sha256": "f6a1b8d85938c5e6d396b1e15dfaa7d314968a3cc4d9ec47e337259d732e0482"
+  },
+  {
+   "bytes": 35583,
+   "path": "code/run_experiments.py",
+   "sha256": "c84a574f8110b261c77d8950663962d57bd9e63550fad19332621017c0213256"
+  },
+  {
+   "bytes": 3422,
+   "path": "code/make_diagrams.py",
+   "sha256": "b4de2991575b20d36ba4fac54b1b1981950db5034e929d5cef5389b2d233f849"
+  }
+ ],
  "sweeps": [
   {
-   "figure": "fig_ex7_taskcount.png",
-   "id": "task-count",
+   "figure": "fig_rw7_sweep_arrival.png",
+   "id": "arrival_rate",
    "series": [
     {
-     "name": "lst_preemptions",
+     "name": "readers_preference",
      "values": [
-      4,
-      6,
-      8,
-      10
+      0.3146,
+      0.2198,
+      0.1168,
+      0.0607,
+      0.0166
      ]
     },
     {
-     "name": "lst:edf_preemptions",
+     "name": "writers_preference",
      "values": [
-      4,
-      6,
-      8,
-      10
+      0.3951,
+      0.381,
+      0.4664,
+      0.5817,
+      0.6503
      ]
     },
     {
-     "name": "lst:rm_preemptions",
+     "name": "fair_fifo",
      "values": [
-      4,
-      6,
-      8,
-      10
+      0.3256,
+      0.3315,
+      0.3416,
+      0.3338,
+      0.3343
      ]
     },
     {
-     "name": "lst:stay_preemptions",
+     "name": "mesa_signal",
      "values": [
-      2,
-      4,
-      6,
-      8
+      0.2204,
+      0.1537,
+      0.1194,
+      0.0459,
+      0.0222
      ]
     },
     {
-     "name": "lst:lzs_preemptions",
+     "name": "hoare_signal",
      "values": [
-      4,
-      6,
-      8,
-      10
+      0.38,
+      0.3894,
+      0.4581,
+      0.5392,
+      0.6651
      ]
     }
    ],
-   "source": "sweeps[0]",
+   "title_en": "[M] Sweep: arrival rate",
+   "title_fa": "[M] جاروب: نرخ ورود",
    "x": [
+    0.15,
+    0.3,
+    0.45,
+    0.6,
+    0.75
+   ],
+   "xlabel_en": "arrival probability per idle process and step",
+   "xlabel_fa": "احتمال ورود به ازای هر فرایند بیکار و هر گام",
+   "ylabel_en": "writer share of completed operations",
+   "ylabel_fa": "سهم نویسنده از عملیاتهای انجامشده"
+  },
+  {
+   "figure": "fig_rw7_sweep_service.png",
+   "id": "writer_service",
+   "series": [
+    {
+     "name": "readers_preference",
+     "values": [
+      1.624,
+      1.332,
+      1.699,
+      1.681,
+      1.934
+     ]
+    },
+    {
+     "name": "writers_preference",
+     "values": [
+      1.206,
+      2.079,
+      3.132,
+      3.967,
+      5.974
+     ]
+    },
+    {
+     "name": "fair_fifo",
+     "values": [
+      1.373,
+      1.826,
+      2.301,
+      2.881,
+      4.042
+     ]
+    },
+    {
+     "name": "mesa_signal",
+     "values": [
+      1.546,
+      1.636,
+      1.594,
+      1.775,
+      2.09
+     ]
+    },
+    {
+     "name": "hoare_signal",
+     "values": [
+      1.193,
+      2.041,
+      3.061,
+      3.779,
+      5.868
+     ]
+    }
+   ],
+   "title_en": "[M] Sweep: writer service length",
+   "title_fa": "[M] جاروب: طول کار نویسنده",
+   "x": [
+    1,
     2,
     3,
     4,
-    5
+    6
    ],
-   "xlabel": "number of equal tasks",
-   "ylabel": "preemptions"
+   "xlabel_en": "writer critical-section length (integer steps)",
+   "xlabel_fa": "طول ناحیهٔ بحرانی نویسنده (گامهای صحیح)",
+   "ylabel_en": "mean waiting time (steps)",
+   "ylabel_fa": "میانگین انتظار (گام)"
   },
   {
-   "figure": "fig_ex7_deadline_lzs.png",
-   "id": "deadline-zero-switches",
+   "figure": "fig_rw7_sweep_readers.png",
+   "id": "reader_count",
    "series": [
     {
-     "name": "lst_laxity_zero_switches",
+     "name": "readers_preference",
      "values": [
-      0,
-      2,
-      2,
-      2,
-      0
+      150,
+      52,
+      10,
+      4
      ]
     },
     {
-     "name": "lst:edf_laxity_zero_switches",
+     "name": "writers_preference",
      "values": [
-      0,
-      2,
-      2,
-      2,
-      0
+      349,
+      331,
+      336,
+      345
      ]
     },
     {
-     "name": "lst:rm_laxity_zero_switches",
+     "name": "fair_fifo",
      "values": [
-      0,
-      2,
-      2,
-      2,
-      0
+      238,
+      223,
+      228,
+      221
      ]
     },
     {
-     "name": "lst:stay_laxity_zero_switches",
+     "name": "mesa_signal",
      "values": [
-      0,
-      0,
-      0,
-      0,
-      0
-     ]
-    },
-    {
-     "name": "lst:lzs_laxity_zero_switches",
-     "values": [
-      0,
-      2,
-      2,
-      2,
-      0
-     ]
-    }
-   ],
-   "source": "sweeps[1]",
-   "x": [
-    4,
-    5,
-    6,
-    7,
-    8
-   ],
-   "xlabel": "shared deadline (time units)",
-   "ylabel": "laxity_zero_switches"
-  },
-  {
-   "figure": "fig_ex7_alignment.png",
-   "id": "alignment",
-   "series": [
-    {
-     "name": "naive_lst_missed",
-     "values": [
-      0,
-      0,
-      0,
-      0,
-      16,
-      2,
-      9,
-      1
-     ]
-    },
-    {
-     "name": "aligned_lst_missed",
-     "values": [
-      0,
-      0,
-      0,
-      0,
+      130,
+      45,
       8,
-      1,
-      4,
-      0
+      4
      ]
     },
     {
-     "name": "checker_feasible",
+     "name": "hoare_signal",
      "values": [
-      1,
-      1,
-      1,
-      1,
-      0,
-      0,
-      0,
-      1
+      352,
+      340,
+      334,
+      355
      ]
     }
    ],
-   "source": "sweeps[2]",
+   "title_en": "[M] Sweep: reader population",
+   "title_fa": "[M] جاروب: جمعیت خوانندگان",
    "x": [
-    "K1",
-    "K2",
-    "K3",
-    "K4",
-    "K5",
-    "K6",
-    "K7",
-    "K8"
+    1,
+    2,
+    3,
+    4
    ],
-   "xlabel": "task set",
-   "ylabel": "count"
+   "xlabel_en": "number of readers (one writer)",
+   "xlabel_fa": "شمار خوانندگان (یک نویسنده)",
+   "ylabel_en": "writer completions",
+   "ylabel_fa": "عملیات انجامشدهٔ نویسنده"
   }
  ],
- "task_sets": [
+ "verifications": [
   {
-   "alignment": {
-    "aligned": {
-     "edf": {
-      "horizon": 8,
-      "missed": 0,
-      "release_window": 4,
-      "released": 2
-     },
-     "lst": {
-      "horizon": 8,
-      "missed": 0,
-      "release_window": 4,
-      "released": 2
-     },
-     "rm": {
-      "horizon": 8,
-      "missed": 0,
-      "release_window": 4,
-      "released": 2
-     }
-    },
-    "aligned_agrees": true,
-    "checker_horizon": 4,
-    "checker_verdict": true,
-    "max_deadline": 4,
-    "naive": {
-     "edf": {
-      "horizon": 8,
-      "missed": 0,
-      "released": 4
-     },
-     "lst": {
-      "horizon": 8,
-      "missed": 0,
-      "released": 4
-     },
-     "rm": {
-      "horizon": 8,
-      "missed": 0,
-      "released": 4
-     }
-    },
-    "naive_agrees": true,
-    "optimal_policies": [
-     "lst",
-     "edf"
-    ],
-    "rm_control": {
-     "aligned_missed": 0,
-     "counterexample": false,
-     "naive_missed": 0
-    }
-   },
-   "cap_control": {
-    "explanation": "truncated runs are artefacts of the cap, not findings",
-    "false_infeasible_count": 1,
-    "full_truncated": false,
-    "full_verdict": true,
-    "rows": [
-     {
-      "feasible": false,
-      "limit": 4,
-      "states": 7,
-      "truncated": true
-     },
-     {
-      "feasible": true,
-      "limit": 8,
-      "states": 5,
-      "truncated": false
-     },
-     {
-      "feasible": true,
-      "limit": 16,
-      "states": 5,
-      "truncated": false
-     },
-     {
-      "feasible": true,
-      "limit": 4000000,
-      "states": 5,
-      "truncated": false
-     }
-    ],
-    "smallest_truncating_limit": 4
-   },
-   "checker": {
-    "allow_idle_false": true,
-    "allow_idle_true": true,
-    "feasible": true,
-    "horizon": 4,
-    "idle_enumeration_agrees": true,
-    "jobs": 2,
-    "pruned": 0,
-    "schedule": [
-     0,
-     0,
-     1,
-     1
-    ],
-    "schedule_length": 4,
-    "states": 5,
-    "truncated": false
-   },
-   "constrained_deadline": false,
-   "gantt": {
-    "edf": [
-     [
-      "T1#0",
-      0,
-      2
-     ],
-     [
-      "T2#0",
-      2,
-      4
-     ],
-     [
-      "T1#1",
-      4,
-      6
-     ],
-     [
-      "T2#1",
-      6,
-      8
-     ]
-    ],
-    "lst": [
-     [
-      "T1#0",
-      0,
-      1
-     ],
-     [
-      "T2#0",
-      1,
-      2
-     ],
-     [
-      "T1#0",
-      2,
-      3
-     ],
-     [
-      "T2#0",
-      3,
-      4
-     ],
-     [
-      "T1#1",
-      4,
-      5
-     ],
-     [
-      "T2#1",
-      5,
-      6
-     ],
-     [
-      "T1#1",
-      6,
-      7
-     ],
-     [
-      "T2#1",
-      7,
-      8
-     ]
-    ],
-    "rm": [
-     [
-      "T1#0",
-      0,
-      2
-     ],
-     [
-      "T2#0",
-      2,
-      4
-     ],
-     [
-      "T1#1",
-      4,
-      6
-     ],
-     [
-      "T2#1",
-      6,
-      8
-     ]
-    ]
-   },
-   "hyperperiod": 4,
-   "id": "K1",
-   "label": "two equal short tasks",
-   "max_deadline": 4,
-   "policies": {
-    "dm": {
-     "busy": 8,
-     "completed": 4,
-     "context_switches": 4,
-     "first_miss": null,
-     "horizon": 8,
-     "idle": 0,
-     "jitter": 2,
-     "laxity_zero_switches": 0,
-     "mean_response": 3.0,
-     "min_laxity": 0,
-     "miss_rate": 0.0,
-     "missed": 0,
-     "preemptions": 0,
-     "released": 4,
-     "tie_events": 2,
-     "worst_response": 4
-    },
-    "edf": {
-     "busy": 8,
-     "completed": 4,
-     "context_switches": 4,
-     "first_miss": null,
-     "horizon": 8,
-     "idle": 0,
-     "jitter": 2,
-     "laxity_zero_switches": 0,
-     "mean_response": 3.0,
-     "min_laxity": 0,
-     "miss_rate": 0.0,
-     "missed": 0,
-     "preemptions": 0,
-     "released": 4,
-     "tie_events": 2,
-     "worst_response": 4
-    },
-    "fifo": {
-     "busy": 8,
-     "completed": 4,
-     "context_switches": 4,
-     "first_miss": null,
-     "horizon": 8,
-     "idle": 0,
-     "jitter": 2,
-     "laxity_zero_switches": 0,
-     "mean_response": 3.0,
-     "min_laxity": 0,
-     "miss_rate": 0.0,
-     "missed": 0,
-     "preemptions": 0,
-     "released": 4,
-     "tie_events": 2,
-     "worst_response": 4
-    },
-    "lst": {
-     "busy": 8,
-     "completed": 4,
-     "context_switches": 8,
-     "first_miss": null,
-     "horizon": 8,
-     "idle": 0,
-     "jitter": 1,
-     "laxity_zero_switches": 0,
-     "mean_response": 3.5,
-     "min_laxity": 0,
-     "miss_rate": 0.0,
-     "missed": 0,
-     "preemptions": 4,
-     "released": 4,
-     "tie_events": 4,
-     "worst_response": 4
-    },
-    "lst:edf": {
-     "busy": 8,
-     "completed": 4,
-     "context_switches": 8,
-     "first_miss": null,
-     "horizon": 8,
-     "idle": 0,
-     "jitter": 1,
-     "laxity_zero_switches": 0,
-     "mean_response": 3.5,
-     "min_laxity": 0,
-     "miss_rate": 0.0,
-     "missed": 0,
-     "preemptions": 4,
-     "released": 4,
-     "tie_events": 4,
-     "worst_response": 4
-    },
-    "lst:lzs": {
-     "busy": 8,
-     "completed": 4,
-     "context_switches": 8,
-     "first_miss": null,
-     "horizon": 8,
-     "idle": 0,
-     "jitter": 1,
-     "laxity_zero_switches": 0,
-     "mean_response": 3.5,
-     "min_laxity": 0,
-     "miss_rate": 0.0,
-     "missed": 0,
-     "preemptions": 4,
-     "released": 4,
-     "tie_events": 4,
-     "worst_response": 4
-    },
-    "lst:rm": {
-     "busy": 8,
-     "completed": 4,
-     "context_switches": 8,
-     "first_miss": null,
-     "horizon": 8,
-     "idle": 0,
-     "jitter": 1,
-     "laxity_zero_switches": 0,
-     "mean_response": 3.5,
-     "min_laxity": 0,
-     "miss_rate": 0.0,
-     "missed": 0,
-     "preemptions": 4,
-     "released": 4,
-     "tie_events": 4,
-     "worst_response": 4
-    },
-    "lst:stay": {
-     "busy": 8,
-     "completed": 4,
-     "context_switches": 6,
-     "first_miss": null,
-     "horizon": 8,
-     "idle": 0,
-     "jitter": 1,
-     "laxity_zero_switches": 0,
-     "mean_response": 3.5,
-     "min_laxity": 0,
-     "miss_rate": 0.0,
-     "missed": 0,
-     "preemptions": 2,
-     "released": 4,
-     "tie_events": 4,
-     "worst_response": 4
-    },
-    "rm": {
-     "busy": 8,
-     "completed": 4,
-     "context_switches": 4,
-     "first_miss": null,
-     "horizon": 8,
-     "idle": 0,
-     "jitter": 2,
-     "laxity_zero_switches": 0,
-     "mean_response": 3.0,
-     "min_laxity": 0,
-     "miss_rate": 0.0,
-     "missed": 0,
-     "preemptions": 0,
-     "released": 4,
-     "tie_events": 2,
-     "worst_response": 4
-    }
-   },
-   "spec": "T1(T=4,C=2,D=4,ph=0), T2(T=4,C=2,D=4,ph=0)",
-   "task_count": 2,
-   "tasks": [
-    [
-     "T1",
-     4,
-     2,
-     4,
-     0
-    ],
-    [
-     "T2",
-     4,
-     2,
-     4,
-     0
-    ]
-   ],
-   "utilisation": 1.0,
-   "witness": {
-    "busy": 4,
-    "checked": true,
-    "jobs": 2,
-    "reason": "every job finished strictly before its deadline",
-    "steps": 4,
-    "valid": true
-   },
-   "witness_cost": {
-    "available": true,
-    "busy": 4,
-    "context_switches": 2,
-    "idle": 0,
-    "preemptions": 0,
-    "steps": 4
-   }
+   "process": 2,
+   "protocol": "readers_preference:2r1w",
+   "steps": 10,
+   "valid": true,
+   "violations": []
   },
   {
-   "alignment": {
-    "aligned": {
-     "edf": {
-      "horizon": 16,
-      "missed": 0,
-      "release_window": 8,
-      "released": 2
-     },
-     "lst": {
-      "horizon": 16,
-      "missed": 0,
-      "release_window": 8,
-      "released": 2
-     },
-     "rm": {
-      "horizon": 16,
-      "missed": 0,
-      "release_window": 8,
-      "released": 2
-     }
-    },
-    "aligned_agrees": true,
-    "checker_horizon": 8,
-    "checker_verdict": true,
-    "max_deadline": 8,
-    "naive": {
-     "edf": {
-      "horizon": 16,
-      "missed": 0,
-      "released": 4
-     },
-     "lst": {
-      "horizon": 16,
-      "missed": 0,
-      "released": 4
-     },
-     "rm": {
-      "horizon": 16,
-      "missed": 0,
-      "released": 4
-     }
-    },
-    "naive_agrees": true,
-    "optimal_policies": [
-     "lst",
-     "edf"
-    ],
-    "rm_control": {
-     "aligned_missed": 0,
-     "counterexample": false,
-     "naive_missed": 0
-    }
-   },
-   "cap_control": {
-    "explanation": "truncated runs are artefacts of the cap, not findings",
-    "false_infeasible_count": 2,
-    "full_truncated": false,
-    "full_verdict": true,
-    "rows": [
-     {
-      "feasible": false,
-      "limit": 4,
-      "states": 9,
-      "truncated": true
-     },
-     {
-      "feasible": false,
-      "limit": 8,
-      "states": 13,
-      "truncated": true
-     },
-     {
-      "feasible": true,
-      "limit": 16,
-      "states": 9,
-      "truncated": false
-     },
-     {
-      "feasible": true,
-      "limit": 4000000,
-      "states": 9,
-      "truncated": false
-     }
-    ],
-    "smallest_truncating_limit": 4
-   },
-   "checker": {
-    "allow_idle_false": true,
-    "allow_idle_true": true,
-    "feasible": true,
-    "horizon": 8,
-    "idle_enumeration_agrees": true,
-    "jobs": 2,
-    "pruned": 0,
-    "schedule": [
-     0,
-     0,
-     0,
-     0,
-     1,
-     1,
-     1,
-     1
-    ],
-    "schedule_length": 8,
-    "states": 9,
-    "truncated": false
-   },
-   "constrained_deadline": false,
-   "gantt": {
-    "edf": [
-     [
-      "T1#0",
-      0,
-      4
-     ],
-     [
-      "T2#0",
-      4,
-      8
-     ],
-     [
-      "T1#1",
-      8,
-      12
-     ],
-     [
-      "T2#1",
-      12,
-      16
-     ]
-    ],
-    "lst": [
-     [
-      "T1#0",
-      0,
-      1
-     ],
-     [
-      "T2#0",
-      1,
-      2
-     ],
-     [
-      "T1#0",
-      2,
-      3
-     ],
-     [
-      "T2#0",
-      3,
-      4
-     ],
-     [
-      "T1#0",
-      4,
-      5
-     ],
-     [
-      "T2#0",
-      5,
-      6
-     ],
-     [
-      "T1#0",
-      6,
-      7
-     ],
-     [
-      "T2#0",
-      7,
-      8
-     ],
-     [
-      "T1#1",
-      8,
-      9
-     ],
-     [
-      "T2#1",
-      9,
-      10
-     ],
-     [
-      "T1#1",
-      10,
-      11
-     ],
-     [
-      "T2#1",
-      11,
-      12
-     ],
-     [
-      "T1#1",
-      12,
-      13
-     ],
-     [
-      "T2#1",
-      13,
-      14
-     ],
-     [
-      "T1#1",
-      14,
-      15
-     ],
-     [
-      "T2#1",
-      15,
-      16
-     ]
-    ],
-    "rm": [
-     [
-      "T1#0",
-      0,
-      4
-     ],
-     [
-      "T2#0",
-      4,
-      8
-     ],
-     [
-      "T1#1",
-      8,
-      12
-     ],
-     [
-      "T2#1",
-      12,
-      16
-     ]
-    ]
-   },
-   "hyperperiod": 8,
-   "id": "K2",
-   "label": "two equal long tasks",
-   "max_deadline": 8,
-   "policies": {
-    "dm": {
-     "busy": 16,
-     "completed": 4,
-     "context_switches": 4,
-     "first_miss": null,
-     "horizon": 16,
-     "idle": 0,
-     "jitter": 4,
-     "laxity_zero_switches": 0,
-     "mean_response": 6.0,
-     "min_laxity": 0,
-     "miss_rate": 0.0,
-     "missed": 0,
-     "preemptions": 0,
-     "released": 4,
-     "tie_events": 2,
-     "worst_response": 8
-    },
-    "edf": {
-     "busy": 16,
-     "completed": 4,
-     "context_switches": 4,
-     "first_miss": null,
-     "horizon": 16,
-     "idle": 0,
-     "jitter": 4,
-     "laxity_zero_switches": 0,
-     "mean_response": 6.0,
-     "min_laxity": 0,
-     "miss_rate": 0.0,
-     "missed": 0,
-     "preemptions": 0,
-     "released": 4,
-     "tie_events": 2,
-     "worst_response": 8
-    },
-    "fifo": {
-     "busy": 16,
-     "completed": 4,
-     "context_switches": 4,
-     "first_miss": null,
-     "horizon": 16,
-     "idle": 0,
-     "jitter": 4,
-     "laxity_zero_switches": 0,
-     "mean_response": 6.0,
-     "min_laxity": 0,
-     "miss_rate": 0.0,
-     "missed": 0,
-     "preemptions": 0,
-     "released": 4,
-     "tie_events": 2,
-     "worst_response": 8
-    },
-    "lst": {
-     "busy": 16,
-     "completed": 4,
-     "context_switches": 16,
-     "first_miss": null,
-     "horizon": 16,
-     "idle": 0,
-     "jitter": 1,
-     "laxity_zero_switches": 0,
-     "mean_response": 7.5,
-     "min_laxity": 0,
-     "miss_rate": 0.0,
-     "missed": 0,
-     "preemptions": 12,
-     "released": 4,
-     "tie_events": 8,
-     "worst_response": 8
-    },
-    "lst:edf": {
-     "busy": 16,
-     "completed": 4,
-     "context_switches": 16,
-     "first_miss": null,
-     "horizon": 16,
-     "idle": 0,
-     "jitter": 1,
-     "laxity_zero_switches": 0,
-     "mean_response": 7.5,
-     "min_laxity": 0,
-     "miss_rate": 0.0,
-     "missed": 0,
-     "preemptions": 12,
-     "released": 4,
-     "tie_events": 8,
-     "worst_response": 8
-    },
-    "lst:lzs": {
-     "busy": 16,
-     "completed": 4,
-     "context_switches": 16,
-     "first_miss": null,
-     "horizon": 16,
-     "idle": 0,
-     "jitter": 1,
-     "laxity_zero_switches": 0,
-     "mean_response": 7.5,
-     "min_laxity": 0,
-     "miss_rate": 0.0,
-     "missed": 0,
-     "preemptions": 12,
-     "released": 4,
-     "tie_events": 8,
-     "worst_response": 8
-    },
-    "lst:rm": {
-     "busy": 16,
-     "completed": 4,
-     "context_switches": 16,
-     "first_miss": null,
-     "horizon": 16,
-     "idle": 0,
-     "jitter": 1,
-     "laxity_zero_switches": 0,
-     "mean_response": 7.5,
-     "min_laxity": 0,
-     "miss_rate": 0.0,
-     "missed": 0,
-     "preemptions": 12,
-     "released": 4,
-     "tie_events": 8,
-     "worst_response": 8
-    },
-    "lst:stay": {
-     "busy": 16,
-     "completed": 4,
-     "context_switches": 10,
-     "first_miss": null,
-     "horizon": 16,
-     "idle": 0,
-     "jitter": 1,
-     "laxity_zero_switches": 0,
-     "mean_response": 7.5,
-     "min_laxity": 0,
-     "miss_rate": 0.0,
-     "missed": 0,
-     "preemptions": 6,
-     "released": 4,
-     "tie_events": 8,
-     "worst_response": 8
-    },
-    "rm": {
-     "busy": 16,
-     "completed": 4,
-     "context_switches": 4,
-     "first_miss": null,
-     "horizon": 16,
-     "idle": 0,
-     "jitter": 4,
-     "laxity_zero_switches": 0,
-     "mean_response": 6.0,
-     "min_laxity": 0,
-     "miss_rate": 0.0,
-     "missed": 0,
-     "preemptions": 0,
-     "released": 4,
-     "tie_events": 2,
-     "worst_response": 8
-    }
-   },
-   "spec": "T1(T=8,C=4,D=8,ph=0), T2(T=8,C=4,D=8,ph=0)",
-   "task_count": 2,
-   "tasks": [
-    [
-     "T1",
-     8,
-     4,
-     8,
-     0
-    ],
-    [
-     "T2",
-     8,
-     4,
-     8,
-     0
-    ]
-   ],
-   "utilisation": 1.0,
-   "witness": {
-    "busy": 8,
-    "checked": true,
-    "jobs": 2,
-    "reason": "every job finished strictly before its deadline",
-    "steps": 8,
-    "valid": true
-   },
-   "witness_cost": {
-    "available": true,
-    "busy": 8,
-    "context_switches": 2,
-    "idle": 0,
-    "preemptions": 0,
-    "steps": 8
-   }
+   "process": 0,
+   "protocol": "writers_preference:1r2w",
+   "steps": 10,
+   "valid": true,
+   "violations": []
   },
   {
-   "alignment": {
-    "aligned": {
-     "edf": {
-      "horizon": 12,
-      "missed": 0,
-      "release_window": 6,
-      "released": 3
-     },
-     "lst": {
-      "horizon": 12,
-      "missed": 0,
-      "release_window": 6,
-      "released": 3
-     },
-     "rm": {
-      "horizon": 12,
-      "missed": 0,
-      "release_window": 6,
-      "released": 3
-     }
-    },
-    "aligned_agrees": true,
-    "checker_horizon": 6,
-    "checker_verdict": true,
-    "max_deadline": 6,
-    "naive": {
-     "edf": {
-      "horizon": 12,
-      "missed": 0,
-      "released": 6
-     },
-     "lst": {
-      "horizon": 12,
-      "missed": 0,
-      "released": 6
-     },
-     "rm": {
-      "horizon": 12,
-      "missed": 0,
-      "released": 6
-     }
-    },
-    "naive_agrees": true,
-    "optimal_policies": [
-     "lst",
-     "edf"
-    ],
-    "rm_control": {
-     "aligned_missed": 0,
-     "counterexample": false,
-     "naive_missed": 0
-    }
-   },
-   "cap_control": {
-    "explanation": "truncated runs are artefacts of the cap, not findings",
-    "false_infeasible_count": 1,
-    "full_truncated": false,
-    "full_verdict": true,
-    "rows": [
-     {
-      "feasible": false,
-      "limit": 4,
-      "states": 11,
-      "truncated": true
-     },
-     {
-      "feasible": true,
-      "limit": 8,
-      "states": 7,
-      "truncated": false
-     },
-     {
-      "feasible": true,
-      "limit": 16,
-      "states": 7,
-      "truncated": false
-     },
-     {
-      "feasible": true,
-      "limit": 4000000,
-      "states": 7,
-      "truncated": false
-     }
-    ],
-    "smallest_truncating_limit": 4
-   },
-   "checker": {
-    "allow_idle_false": true,
-    "allow_idle_true": true,
-    "feasible": true,
-    "horizon": 6,
-    "idle_enumeration_agrees": true,
-    "jobs": 3,
-    "pruned": 0,
-    "schedule": [
-     0,
-     0,
-     1,
-     1,
-     2,
-     2
-    ],
-    "schedule_length": 6,
-    "states": 7,
-    "truncated": false
-   },
-   "constrained_deadline": false,
-   "gantt": {
-    "edf": [
-     [
-      "T1#0",
-      0,
-      2
-     ],
-     [
-      "T2#0",
-      2,
-      4
-     ],
-     [
-      "T3#0",
-      4,
-      6
-     ],
-     [
-      "T1#1",
-      6,
-      8
-     ],
-     [
-      "T2#1",
-      8,
-      10
-     ],
-     [
-      "T3#1",
-      10,
-      12
-     ]
-    ],
-    "lst": [
-     [
-      "T1#0",
-      0,
-      1
-     ],
-     [
-      "T2#0",
-      1,
-      2
-     ],
-     [
-      "T3#0",
-      2,
-      3
-     ],
-     [
-      "T1#0",
-      3,
-      4
-     ],
-     [
-      "T2#0",
-      4,
-      5
-     ],
-     [
-      "T3#0",
-      5,
-      6
-     ],
-     [
-      "T1#1",
-      6,
-      7
-     ],
-     [
-      "T2#1",
-      7,
-      8
-     ],
-     [
-      "T3#1",
-      8,
-      9
-     ],
-     [
-      "T1#1",
-      9,
-      10
-     ],
-     [
-      "T2#1",
-      10,
-      11
-     ],
-     [
-      "T3#1",
-      11,
-      12
-     ]
-    ],
-    "rm": [
-     [
-      "T1#0",
-      0,
-      2
-     ],
-     [
-      "T2#0",
-      2,
-      4
-     ],
-     [
-      "T3#0",
-      4,
-      6
-     ],
-     [
-      "T1#1",
-      6,
-      8
-     ],
-     [
-      "T2#1",
-      8,
-      10
-     ],
-     [
-      "T3#1",
-      10,
-      12
-     ]
-    ]
-   },
-   "hyperperiod": 6,
-   "id": "K3",
-   "label": "three equal tasks",
-   "max_deadline": 6,
-   "policies": {
-    "dm": {
-     "busy": 12,
-     "completed": 6,
-     "context_switches": 6,
-     "first_miss": null,
-     "horizon": 12,
-     "idle": 0,
-     "jitter": 4,
-     "laxity_zero_switches": 0,
-     "mean_response": 4.0,
-     "min_laxity": 0,
-     "miss_rate": 0.0,
-     "missed": 0,
-     "preemptions": 0,
-     "released": 6,
-     "tie_events": 6,
-     "worst_response": 6
-    },
-    "edf": {
-     "busy": 12,
-     "completed": 6,
-     "context_switches": 6,
-     "first_miss": null,
-     "horizon": 12,
-     "idle": 0,
-     "jitter": 4,
-     "laxity_zero_switches": 0,
-     "mean_response": 4.0,
-     "min_laxity": 0,
-     "miss_rate": 0.0,
-     "missed": 0,
-     "preemptions": 0,
-     "released": 6,
-     "tie_events": 6,
-     "worst_response": 6
-    },
-    "fifo": {
-     "busy": 12,
-     "completed": 6,
-     "context_switches": 6,
-     "first_miss": null,
-     "horizon": 12,
-     "idle": 0,
-     "jitter": 4,
-     "laxity_zero_switches": 0,
-     "mean_response": 4.0,
-     "min_laxity": 0,
-     "miss_rate": 0.0,
-     "missed": 0,
-     "preemptions": 0,
-     "released": 6,
-     "tie_events": 6,
-     "worst_response": 6
-    },
-    "lst": {
-     "busy": 12,
-     "completed": 6,
-     "context_switches": 12,
-     "first_miss": null,
-     "horizon": 12,
-     "idle": 0,
-     "jitter": 2,
-     "laxity_zero_switches": 0,
-     "mean_response": 5.0,
-     "min_laxity": 0,
-     "miss_rate": 0.0,
-     "missed": 0,
-     "preemptions": 6,
-     "released": 6,
-     "tie_events": 8,
-     "worst_response": 6
-    },
-    "lst:edf": {
-     "busy": 12,
-     "completed": 6,
-     "context_switches": 12,
-     "first_miss": null,
-     "horizon": 12,
-     "idle": 0,
-     "jitter": 2,
-     "laxity_zero_switches": 0,
-     "mean_response": 5.0,
-     "min_laxity": 0,
-     "miss_rate": 0.0,
-     "missed": 0,
-     "preemptions": 6,
-     "released": 6,
-     "tie_events": 8,
-     "worst_response": 6
-    },
-    "lst:lzs": {
-     "busy": 12,
-     "completed": 6,
-     "context_switches": 12,
-     "first_miss": null,
-     "horizon": 12,
-     "idle": 0,
-     "jitter": 2,
-     "laxity_zero_switches": 0,
-     "mean_response": 5.0,
-     "min_laxity": 0,
-     "miss_rate": 0.0,
-     "missed": 0,
-     "preemptions": 6,
-     "released": 6,
-     "tie_events": 8,
-     "worst_response": 6
-    },
-    "lst:rm": {
-     "busy": 12,
-     "completed": 6,
-     "context_switches": 12,
-     "first_miss": null,
-     "horizon": 12,
-     "idle": 0,
-     "jitter": 2,
-     "laxity_zero_switches": 0,
-     "mean_response": 5.0,
-     "min_laxity": 0,
-     "miss_rate": 0.0,
-     "missed": 0,
-     "preemptions": 6,
-     "released": 6,
-     "tie_events": 8,
-     "worst_response": 6
-    },
-    "lst:stay": {
-     "busy": 12,
-     "completed": 6,
-     "context_switches": 10,
-     "first_miss": null,
-     "horizon": 12,
-     "idle": 0,
-     "jitter": 2,
-     "laxity_zero_switches": 0,
-     "mean_response": 5.0,
-     "min_laxity": 0,
-     "miss_rate": 0.0,
-     "missed": 0,
-     "preemptions": 4,
-     "released": 6,
-     "tie_events": 8,
-     "worst_response": 6
-    },
-    "rm": {
-     "busy": 12,
-     "completed": 6,
-     "context_switches": 6,
-     "first_miss": null,
-     "horizon": 12,
-     "idle": 0,
-     "jitter": 4,
-     "laxity_zero_switches": 0,
-     "mean_response": 4.0,
-     "min_laxity": 0,
-     "miss_rate": 0.0,
-     "missed": 0,
-     "preemptions": 0,
-     "released": 6,
-     "tie_events": 6,
-     "worst_response": 6
-    }
-   },
-   "spec": "T1(T=6,C=2,D=6,ph=0), T2(T=6,C=2,D=6,ph=0), T3(T=6,C=2,D=6,ph=0)",
-   "task_count": 3,
-   "tasks": [
-    [
-     "T1",
-     6,
-     2,
-     6,
-     0
-    ],
-    [
-     "T2",
-     6,
-     2,
-     6,
-     0
-    ],
-    [
-     "T3",
-     6,
-     2,
-     6,
-     0
-    ]
-   ],
-   "utilisation": 1.0,
-   "witness": {
-    "busy": 6,
-    "checked": true,
-    "jobs": 3,
-    "reason": "every job finished strictly before its deadline",
-    "steps": 6,
-    "valid": true
-   },
-   "witness_cost": {
-    "available": true,
-    "busy": 6,
-    "context_switches": 3,
-    "idle": 0,
-    "preemptions": 0,
-    "steps": 6
-   }
+   "process": 2,
+   "protocol": "mesa_signal:2r1w",
+   "steps": 13,
+   "valid": true,
+   "violations": []
   },
   {
-   "alignment": {
-    "aligned": {
-     "edf": {
-      "horizon": 16,
-      "missed": 0,
-      "release_window": 8,
-      "released": 4
-     },
-     "lst": {
-      "horizon": 16,
-      "missed": 0,
-      "release_window": 8,
-      "released": 4
-     },
-     "rm": {
-      "horizon": 16,
-      "missed": 0,
-      "release_window": 8,
-      "released": 4
-     }
-    },
-    "aligned_agrees": true,
-    "checker_horizon": 8,
-    "checker_verdict": true,
-    "max_deadline": 8,
-    "naive": {
-     "edf": {
-      "horizon": 16,
-      "missed": 0,
-      "released": 8
-     },
-     "lst": {
-      "horizon": 16,
-      "missed": 0,
-      "released": 8
-     },
-     "rm": {
-      "horizon": 16,
-      "missed": 0,
-      "released": 8
-     }
-    },
-    "naive_agrees": true,
-    "optimal_policies": [
-     "lst",
-     "edf"
-    ],
-    "rm_control": {
-     "aligned_missed": 0,
-     "counterexample": false,
-     "naive_missed": 0
-    }
-   },
-   "cap_control": {
-    "explanation": "truncated runs are artefacts of the cap, not findings",
-    "false_infeasible_count": 2,
-    "full_truncated": false,
-    "full_verdict": true,
-    "rows": [
-     {
-      "feasible": false,
-      "limit": 4,
-      "states": 15,
-      "truncated": true
-     },
-     {
-      "feasible": false,
-      "limit": 8,
-      "states": 21,
-      "truncated": true
-     },
-     {
-      "feasible": true,
-      "limit": 16,
-      "states": 9,
-      "truncated": false
-     },
-     {
-      "feasible": true,
-      "limit": 4000000,
-      "states": 9,
-      "truncated": false
-     }
-    ],
-    "smallest_truncating_limit": 4
-   },
-   "checker": {
-    "allow_idle_false": true,
-    "allow_idle_true": true,
-    "feasible": true,
-    "horizon": 8,
-    "idle_enumeration_agrees": true,
-    "jobs": 4,
-    "pruned": 0,
-    "schedule": [
-     0,
-     0,
-     1,
-     1,
-     2,
-     2,
-     3,
-     3
-    ],
-    "schedule_length": 8,
-    "states": 9,
-    "truncated": false
-   },
-   "constrained_deadline": false,
-   "gantt": {
-    "edf": [
-     [
-      "T1#0",
-      0,
-      2
-     ],
-     [
-      "T2#0",
-      2,
-      4
-     ],
-     [
-      "T3#0",
-      4,
-      6
-     ],
-     [
-      "T4#0",
-      6,
-      8
-     ],
-     [
-      "T1#1",
-      8,
-      10
-     ],
-     [
-      "T2#1",
-      10,
-      12
-     ],
-     [
-      "T3#1",
-      12,
-      14
-     ],
-     [
-      "T4#1",
-      14,
-      16
-     ]
-    ],
-    "lst": [
-     [
-      "T1#0",
-      0,
-      1
-     ],
-     [
-      "T2#0",
-      1,
-      2
-     ],
-     [
-      "T3#0",
-      2,
-      3
-     ],
-     [
-      "T4#0",
-      3,
-      4
-     ],
-     [
-      "T1#0",
-      4,
-      5
-     ],
-     [
-      "T2#0",
-      5,
-      6
-     ],
-     [
-      "T3#0",
-      6,
-      7
-     ],
-     [
-      "T4#0",
-      7,
-      8
-     ],
-     [
-      "T1#1",
-      8,
-      9
-     ],
-     [
-      "T2#1",
-      9,
-      10
-     ],
-     [
-      "T3#1",
-      10,
-      11
-     ],
-     [
-      "T4#1",
-      11,
-      12
-     ],
-     [
-      "T1#1",
-      12,
-      13
-     ],
-     [
-      "T2#1",
-      13,
-      14
-     ],
-     [
-      "T3#1",
-      14,
-      15
-     ],
-     [
-      "T4#1",
-      15,
-      16
-     ]
-    ],
-    "rm": [
-     [
-      "T1#0",
-      0,
-      2
-     ],
-     [
-      "T2#0",
-      2,
-      4
-     ],
-     [
-      "T3#0",
-      4,
-      6
-     ],
-     [
-      "T4#0",
-      6,
-      8
-     ],
-     [
-      "T1#1",
-      8,
-      10
-     ],
-     [
-      "T2#1",
-      10,
-      12
-     ],
-     [
-      "T3#1",
-      12,
-      14
-     ],
-     [
-      "T4#1",
-      14,
-      16
-     ]
-    ]
-   },
-   "hyperperiod": 8,
-   "id": "K4",
-   "label": "four equal tasks",
-   "max_deadline": 8,
-   "policies": {
-    "dm": {
-     "busy": 16,
-     "completed": 8,
-     "context_switches": 8,
-     "first_miss": null,
-     "horizon": 16,
-     "idle": 0,
-     "jitter": 6,
-     "laxity_zero_switches": 0,
-     "mean_response": 5.0,
-     "min_laxity": 0,
-     "miss_rate": 0.0,
-     "missed": 0,
-     "preemptions": 0,
-     "released": 8,
-     "tie_events": 10,
-     "worst_response": 8
-    },
-    "edf": {
-     "busy": 16,
-     "completed": 8,
-     "context_switches": 8,
-     "first_miss": null,
-     "horizon": 16,
-     "idle": 0,
-     "jitter": 6,
-     "laxity_zero_switches": 0,
-     "mean_response": 5.0,
-     "min_laxity": 0,
-     "miss_rate": 0.0,
-     "missed": 0,
-     "preemptions": 0,
-     "released": 8,
-     "tie_events": 10,
-     "worst_response": 8
-    },
-    "fifo": {
-     "busy": 16,
-     "completed": 8,
-     "context_switches": 8,
-     "first_miss": null,
-     "horizon": 16,
-     "idle": 0,
-     "jitter": 6,
-     "laxity_zero_switches": 0,
-     "mean_response": 5.0,
-     "min_laxity": 0,
-     "miss_rate": 0.0,
-     "missed": 0,
-     "preemptions": 0,
-     "released": 8,
-     "tie_events": 10,
-     "worst_response": 8
-    },
-    "lst": {
-     "busy": 16,
-     "completed": 8,
-     "context_switches": 16,
-     "first_miss": null,
-     "horizon": 16,
-     "idle": 0,
-     "jitter": 3,
-     "laxity_zero_switches": 0,
-     "mean_response": 6.5,
-     "min_laxity": 0,
-     "miss_rate": 0.0,
-     "missed": 0,
-     "preemptions": 8,
-     "released": 8,
-     "tie_events": 12,
-     "worst_response": 8
-    },
-    "lst:edf": {
-     "busy": 16,
-     "completed": 8,
-     "context_switches": 16,
-     "first_miss": null,
-     "horizon": 16,
-     "idle": 0,
-     "jitter": 3,
-     "laxity_zero_switches": 0,
-     "mean_response": 6.5,
-     "min_laxity": 0,
-     "miss_rate": 0.0,
-     "missed": 0,
-     "preemptions": 8,
-     "released": 8,
-     "tie_events": 12,
-     "worst_response": 8
-    },
-    "lst:lzs": {
-     "busy": 16,
-     "completed": 8,
-     "context_switches": 16,
-     "first_miss": null,
-     "horizon": 16,
-     "idle": 0,
-     "jitter": 3,
-     "laxity_zero_switches": 0,
-     "mean_response": 6.5,
-     "min_laxity": 0,
-     "miss_rate": 0.0,
-     "missed": 0,
-     "preemptions": 8,
-     "released": 8,
-     "tie_events": 12,
-     "worst_response": 8
-    },
-    "lst:rm": {
-     "busy": 16,
-     "completed": 8,
-     "context_switches": 16,
-     "first_miss": null,
-     "horizon": 16,
-     "idle": 0,
-     "jitter": 3,
-     "laxity_zero_switches": 0,
-     "mean_response": 6.5,
-     "min_laxity": 0,
-     "miss_rate": 0.0,
-     "missed": 0,
-     "preemptions": 8,
-     "released": 8,
-     "tie_events": 12,
-     "worst_response": 8
-    },
-    "lst:stay": {
-     "busy": 16,
-     "completed": 8,
-     "context_switches": 14,
-     "first_miss": null,
-     "horizon": 16,
-     "idle": 0,
-     "jitter": 3,
-     "laxity_zero_switches": 0,
-     "mean_response": 6.5,
-     "min_laxity": 0,
-     "miss_rate": 0.0,
-     "missed": 0,
-     "preemptions": 6,
-     "released": 8,
-     "tie_events": 12,
-     "worst_response": 8
-    },
-    "rm": {
-     "busy": 16,
-     "completed": 8,
-     "context_switches": 8,
-     "first_miss": null,
-     "horizon": 16,
-     "idle": 0,
-     "jitter": 6,
-     "laxity_zero_switches": 0,
-     "mean_response": 5.0,
-     "min_laxity": 0,
-     "miss_rate": 0.0,
-     "missed": 0,
-     "preemptions": 0,
-     "released": 8,
-     "tie_events": 10,
-     "worst_response": 8
-    }
-   },
-   "spec": "T1(T=8,C=2,D=8,ph=0), T2(T=8,C=2,D=8,ph=0), T3(T=8,C=2,D=8,ph=0), T4(T=8,C=2,D=8,ph=0)",
-   "task_count": 4,
-   "tasks": [
-    [
-     "T1",
-     8,
-     2,
-     8,
-     0
-    ],
-    [
-     "T2",
-     8,
-     2,
-     8,
-     0
-    ],
-    [
-     "T3",
-     8,
-     2,
-     8,
-     0
-    ],
-    [
-     "T4",
-     8,
-     2,
-     8,
-     0
-    ]
-   ],
-   "utilisation": 1.0,
-   "witness": {
-    "busy": 8,
-    "checked": true,
-    "jobs": 4,
-    "reason": "every job finished strictly before its deadline",
-    "steps": 8,
-    "valid": true
-   },
-   "witness_cost": {
-    "available": true,
-    "busy": 8,
-    "context_switches": 4,
-    "idle": 0,
-    "preemptions": 0,
-    "steps": 8
-   }
+   "process": 1,
+   "protocol": "mesa_signal:1r2w",
+   "steps": 11,
+   "valid": true,
+   "violations": []
   },
   {
-   "alignment": {
-    "aligned": {
-     "edf": {
-      "horizon": 43,
-      "missed": 7,
-      "release_window": 36,
-      "released": 13
-     },
-     "lst": {
-      "horizon": 43,
-      "missed": 8,
-      "release_window": 36,
-      "released": 13
-     },
-     "rm": {
-      "horizon": 43,
-      "missed": 5,
-      "release_window": 36,
-      "released": 13
-     }
-    },
-    "aligned_agrees": true,
-    "checker_horizon": 36,
-    "checker_verdict": false,
-    "max_deadline": 7,
-    "naive": {
-     "edf": {
-      "horizon": 72,
-      "missed": 14,
-      "released": 26
-     },
-     "lst": {
-      "horizon": 72,
-      "missed": 16,
-      "released": 26
-     },
-     "rm": {
-      "horizon": 72,
-      "missed": 10,
-      "released": 26
-     }
-    },
-    "naive_agrees": true,
-    "optimal_policies": [
-     "lst",
-     "edf"
-    ],
-    "rm_control": {
-     "aligned_missed": 5,
-     "counterexample": false,
-     "naive_missed": 10
-    }
-   },
-   "cap_control": {
-    "explanation": "truncated runs are artefacts of the cap, not findings",
-    "false_infeasible_count": 0,
-    "full_truncated": false,
-    "full_verdict": false,
-    "rows": [
-     {
-      "feasible": false,
-      "limit": 4,
-      "states": 8,
-      "truncated": true
-     },
-     {
-      "feasible": false,
-      "limit": 8,
-      "states": 10,
-      "truncated": true
-     },
-     {
-      "feasible": false,
-      "limit": 16,
-      "states": 11,
-      "truncated": false
-     },
-     {
-      "feasible": false,
-      "limit": 4000000,
-      "states": 11,
-      "truncated": false
-     }
-    ],
-    "smallest_truncating_limit": null
-   },
-   "checker": {
-    "allow_idle_false": false,
-    "allow_idle_true": false,
-    "feasible": false,
-    "horizon": 36,
-    "idle_enumeration_agrees": true,
-    "jobs": 13,
-    "pruned": 14,
-    "schedule": [],
-    "schedule_length": 0,
-    "states": 11,
-    "truncated": false
-   },
-   "constrained_deadline": true,
-   "gantt": {
-    "edf": [
-     [
-      "T1#0",
-      0,
-      3
-     ],
-     [
-      "T2#0",
-      3,
-      6
-     ],
-     [
-      "T3#0",
-      6,
-      8
-     ],
-     [
-      "T1#1",
-      8,
-      11
-     ],
-     [
-      "T2#1",
-      11,
-      14
-     ],
-     [
-      "T1#2",
-      14,
-      17
-     ],
-     [
-      "T3#1",
-      17,
-      19
-     ],
-     [
-      "T1#3",
-      19,
-      22
-     ],
-     [
-      "T2#2",
-      22,
-      25
-     ],
-     [
-      "T1#4",
-      25,
-      28
-     ],
-     [
-      "T3#2",
-      28,
-      30
-     ],
-     [
-      "T2#3",
-      30,
-      33
-     ],
-     [
-      "T1#5",
-      33,
-      36
-     ],
-     [
-      "T1#6",
-      36,
-      39
-     ],
-     [
-      "T2#4",
-      39,
-      42
-     ],
-     [
-      "T3#3",
-      42,
-      44
-     ],
-     [
-      "T1#7",
-      44,
-      47
-     ],
-     [
-      "T2#5",
-      47,
-      50
-     ],
-     [
-      "T1#8",
-      50,
-      53
-     ],
-     [
-      "T3#4",
-      53,
-      55
-     ],
-     [
-      "T1#9",
-      55,
-      58
-     ],
-     [
-      "T2#6",
-      58,
-      61
-     ],
-     [
-      "T1#10",
-      61,
-      64
-     ],
-     [
-      "T3#5",
-      64,
-      66
-     ],
-     [
-      "T2#7",
-      66,
-      69
-     ],
-     [
-      "T1#11",
-      69,
-      72
-     ]
-    ],
-    "lst": [
-     [
-      "T1#0",
-      0,
-      2
-     ],
-     [
-      "T2#0",
-      2,
-      3
-     ],
-     [
-      "T1#0",
-      3,
-      4
-     ],
-     [
-      "T2#0",
-      4,
-      6
-     ],
-     [
-      "T3#0",
-      6,
-      8
-     ],
-     [
-      "T1#1",
-      8,
-      11
-     ],
-     [
-      "T2#1",
-      11,
-      14
-     ],
-     [
-      "T1#2",
-      14,
-      17
-     ],
-     [
-      "T3#1",
-      17,
-      19
-     ],
-     [
-      "T1#3",
-      19,
-      21
-     ],
-     [
-      "T2#2",
-      21,
-      22
-     ],
-     [
-      "T1#3",
-      22,
-      23
-     ],
-     [
-      "T2#2",
-      23,
-      25
-     ],
-     [
-      "T1#4",
-      25,
-      28
-     ],
-     [
-      "T3#2",
-      28,
-      29
-     ],
-     [
-      "T2#3",
-      29,
-      30
-     ],
-     [
-      "T3#2",
-      30,
-      31
-     ],
-     [
-      "T2#3",
-      31,
-      33
-     ],
-     [
-      "T1#5",
-      33,
-      36
-     ],
-     [
-      "T1#6",
-      36,
-      38
-     ],
-     [
-      "T2#4",
-      38,
-      39
-     ],
-     [
-      "T1#6",
-      39,
-      40
-     ],
-     [
-      "T2#4",
-      40,
-      42
-     ],
-     [
-      "T3#3",
-      42,
-      44
-     ],
-     [
-      "T1#7",
-      44,
-      47
-     ],
-     [
-      "T2#5",
-      47,
-      50
-     ],
-     [
-      "T1#8",
-      50,
-      53
-     ],
-     [
-      "T3#4",
-      53,
-      55
-     ],
-     [
-      "T1#9",
-      55,
-      57
-     ],
-     [
-      "T2#6",
-      57,
-      58
-     ],
-     [
-      "T1#9",
-      58,
-      59
-     ],
-     [
-      "T2#6",
-      59,
-      61
-     ],
-     [
-      "T1#10",
-      61,
-      64
-     ],
-     [
-      "T3#5",
-      64,
-      65
-     ],
-     [
-      "T2#7",
-      65,
-      66
-     ],
-     [
-      "T3#5",
-      66,
-      67
-     ],
-     [
-      "T2#7",
-      67,
-      69
-     ],
-     [
-      "T1#11",
-      69,
-      72
-     ]
-    ],
-    "rm": [
-     [
-      "T1#0",
-      0,
-      3
-     ],
-     [
-      "T2#0",
-      3,
-      6
-     ],
-     [
-      "T1#1",
-      6,
-      9
-     ],
-     [
-      "T2#1",
-      9,
-      12
-     ],
-     [
-      "T1#2",
-      12,
-      15
-     ],
-     [
-      "T3#0",
-      15,
-      17
-     ],
-     [
-      "T3#1",
-      17,
-      18
-     ],
-     [
-      "T1#3",
-      18,
-      21
-     ],
-     [
-      "T2#2",
-      21,
-      24
-     ],
-     [
-      "T1#4",
-      24,
-      27
-     ],
-     [
-      "T2#3",
-      27,
-      30
-     ],
-     [
-      "T1#5",
-      30,
-      33
-     ],
-     [
-      "T3#1",
-      33,
-      34
-     ],
-     [
-      "T3#2",
-      34,
-      36
-     ],
-     [
-      "T1#6",
-      36,
-      39
-     ],
-     [
-      "T2#4",
-      39,
-      42
-     ],
-     [
-      "T1#7",
-      42,
-      45
-     ],
-     [
-      "T2#5",
-      45,
-      48
-     ],
-     [
-      "T1#8",
-      48,
-      51
-     ],
-     [
-      "T3#3",
-      51,
-      53
-     ],
-     [
-      "T3#4",
-      53,
-      54
-     ],
-     [
-      "T1#9",
-      54,
-      57
-     ],
-     [
-      "T2#6",
-      57,
-      60
-     ],
-     [
-      "T1#10",
-      60,
-      63
-     ],
-     [
-      "T2#7",
-      63,
-      66
-     ],
-     [
-      "T1#11",
-      66,
-      69
-     ],
-     [
-      "T3#4",
-      69,
-      70
-     ],
-     [
-      "T3#5",
-      70,
-      72
-     ]
-    ]
-   },
-   "hyperperiod": 36,
-   "id": "K5",
-   "label": "mixed periods, heavy thrashing",
-   "max_deadline": 7,
-   "policies": {
-    "dm": {
-     "busy": 72,
-     "completed": 26,
-     "context_switches": 28,
-     "first_miss": 5,
-     "horizon": 72,
-     "idle": 0,
-     "jitter": 19,
-     "laxity_zero_switches": 0,
-     "mean_response": 6.6923,
-     "min_laxity": -15,
-     "miss_rate": 0.384615,
-     "missed": 10,
-     "preemptions": 2,
-     "released": 26,
-     "tie_events": 2,
-     "worst_response": 22
-    },
-    "edf": {
-     "busy": 72,
-     "completed": 26,
-     "context_switches": 26,
-     "first_miss": 5,
-     "horizon": 72,
-     "idle": 0,
-     "jitter": 5,
-     "laxity_zero_switches": 2,
-     "mean_response": 5.5385,
-     "min_laxity": -2,
-     "miss_rate": 0.538462,
-     "missed": 14,
-     "preemptions": 0,
-     "released": 26,
-     "tie_events": 10,
-     "worst_response": 8
-    },
-    "fifo": {
-     "busy": 72,
-     "completed": 26,
-     "context_switches": 26,
-     "first_miss": 5,
-     "horizon": 72,
-     "idle": 0,
-     "jitter": 5,
-     "laxity_zero_switches": 2,
-     "mean_response": 5.5385,
-     "min_laxity": -2,
-     "miss_rate": 0.538462,
-     "missed": 14,
-     "preemptions": 0,
-     "released": 26,
-     "tie_events": 10,
-     "worst_response": 8
-    },
-    "lst": {
-     "busy": 72,
-     "completed": 26,
-     "context_switches": 38,
-     "first_miss": 5,
-     "horizon": 72,
-     "idle": 0,
-     "jitter": 4,
-     "laxity_zero_switches": 6,
-     "mean_response": 5.7692,
-     "min_laxity": -2,
-     "miss_rate": 0.615385,
-     "missed": 16,
-     "preemptions": 12,
-     "released": 26,
-     "tie_events": 16,
-     "worst_response": 8
-    },
-    "lst:edf": {
-     "busy": 72,
-     "completed": 26,
-     "context_switches": 38,
-     "first_miss": 5,
-     "horizon": 72,
-     "idle": 0,
-     "jitter": 4,
-     "laxity_zero_switches": 6,
-     "mean_response": 5.7692,
-     "min_laxity": -2,
-     "miss_rate": 0.615385,
-     "missed": 16,
-     "preemptions": 12,
-     "released": 26,
-     "tie_events": 16,
-     "worst_response": 8
-    },
-    "lst:lzs": {
-     "busy": 72,
-     "completed": 26,
-     "context_switches": 38,
-     "first_miss": 5,
-     "horizon": 72,
-     "idle": 0,
-     "jitter": 4,
-     "laxity_zero_switches": 6,
-     "mean_response": 5.7692,
-     "min_laxity": -2,
-     "miss_rate": 0.615385,
-     "missed": 16,
-     "preemptions": 12,
-     "released": 26,
-     "tie_events": 16,
-     "worst_response": 8
-    },
-    "lst:rm": {
-     "busy": 72,
-     "completed": 26,
-     "context_switches": 46,
-     "first_miss": 5,
-     "horizon": 72,
-     "idle": 0,
-     "jitter": 4,
-     "laxity_zero_switches": 8,
-     "mean_response": 6.0,
-     "min_laxity": -2,
-     "miss_rate": 0.769231,
-     "missed": 20,
-     "preemptions": 20,
-     "released": 26,
-     "tie_events": 16,
-     "worst_response": 8
-    },
-    "lst:stay": {
-     "busy": 72,
-     "completed": 26,
-     "context_switches": 38,
-     "first_miss": 4,
-     "horizon": 72,
-     "idle": 0,
-     "jitter": 4,
-     "laxity_zero_switches": 2,
-     "mean_response": 6.0,
-     "min_laxity": -2,
-     "miss_rate": 0.769231,
-     "missed": 20,
-     "preemptions": 12,
-     "released": 26,
-     "tie_events": 16,
-     "worst_response": 8
-    },
-    "rm": {
-     "busy": 72,
-     "completed": 26,
-     "context_switches": 28,
-     "first_miss": 5,
-     "horizon": 72,
-     "idle": 0,
-     "jitter": 19,
-     "laxity_zero_switches": 0,
-     "mean_response": 6.6923,
-     "min_laxity": -15,
-     "miss_rate": 0.384615,
-     "missed": 10,
-     "preemptions": 2,
-     "released": 26,
-     "tie_events": 2,
-     "worst_response": 22
-    }
-   },
-   "spec": "T1(T=6,C=3,D=4,ph=0), T2(T=9,C=3,D=5,ph=0), T3(T=12,C=2,D=7,ph=0)",
-   "task_count": 3,
-   "tasks": [
-    [
-     "T1",
-     6,
-     3,
-     4,
-     0
-    ],
-    [
-     "T2",
-     9,
-     3,
-     5,
-     0
-    ],
-    [
-     "T3",
-     12,
-     2,
-     7,
-     0
-    ]
-   ],
-   "utilisation": 1.0,
-   "witness": {
-    "checked": false,
-    "reason": "no witness (infeasible verdict)",
-    "valid": null
-   },
-   "witness_cost": {
-    "available": false,
-    "busy": 0,
-    "context_switches": 0,
-    "idle": 0,
-    "preemptions": 0,
-    "steps": 0
-   }
+   "process": 2,
+   "protocol": "mesa_signal:1r2w",
+   "steps": 11,
+   "valid": true,
+   "violations": []
   },
   {
-   "alignment": {
-    "aligned": {
-     "edf": {
-      "horizon": 33,
-      "missed": 1,
-      "release_window": 30,
-      "released": 11
-     },
-     "lst": {
-      "horizon": 33,
-      "missed": 1,
-      "release_window": 30,
-      "released": 11
-     },
-     "rm": {
-      "horizon": 33,
-      "missed": 2,
-      "release_window": 30,
-      "released": 11
-     }
-    },
-    "aligned_agrees": true,
-    "checker_horizon": 30,
-    "checker_verdict": false,
-    "max_deadline": 3,
-    "naive": {
-     "edf": {
-      "horizon": 60,
-      "missed": 2,
-      "released": 22
-     },
-     "lst": {
-      "horizon": 60,
-      "missed": 2,
-      "released": 22
-     },
-     "rm": {
-      "horizon": 60,
-      "missed": 4,
-      "released": 22
-     }
-    },
-    "naive_agrees": true,
-    "optimal_policies": [
-     "lst",
-     "edf"
-    ],
-    "rm_control": {
-     "aligned_missed": 2,
-     "counterexample": false,
-     "naive_missed": 4
-    }
-   },
-   "cap_control": {
-    "explanation": "truncated runs are artefacts of the cap, not findings",
-    "false_infeasible_count": 0,
-    "full_truncated": false,
-    "full_verdict": false,
-    "rows": [
-     {
-      "feasible": false,
-      "limit": 4,
-      "states": 5,
-      "truncated": true
-     },
-     {
-      "feasible": false,
-      "limit": 8,
-      "states": 5,
-      "truncated": false
-     },
-     {
-      "feasible": false,
-      "limit": 16,
-      "states": 5,
-      "truncated": false
-     },
-     {
-      "feasible": false,
-      "limit": 4000000,
-      "states": 5,
-      "truncated": false
-     }
-    ],
-    "smallest_truncating_limit": null
-   },
-   "checker": {
-    "allow_idle_false": false,
-    "allow_idle_true": false,
-    "feasible": false,
-    "horizon": 30,
-    "idle_enumeration_agrees": true,
-    "jobs": 11,
-    "pruned": 4,
-    "schedule": [],
-    "schedule_length": 0,
-    "states": 5,
-    "truncated": false
-   },
-   "constrained_deadline": true,
-   "gantt": {
-    "edf": [
-     [
-      "T1#0",
-      0,
-      2
-     ],
-     [
-      "T2#0",
-      2,
-      4
-     ],
-     [
-      "T1#1",
-      5,
-      7
-     ],
-     [
-      "T2#1",
-      7,
-      9
-     ],
-     [
-      "T1#2",
-      10,
-      12
-     ],
-     [
-      "T2#2",
-      12,
-      14
-     ],
-     [
-      "T1#3",
-      15,
-      17
-     ],
-     [
-      "T2#3",
-      18,
-      20
-     ],
-     [
-      "T1#4",
-      20,
-      22
-     ],
-     [
-      "T2#4",
-      24,
-      26
-     ],
-     [
-      "T1#5",
-      26,
-      28
-     ],
-     [
-      "T1#6",
-      30,
-      32
-     ],
-     [
-      "T2#5",
-      32,
-      34
-     ],
-     [
-      "T1#7",
-      35,
-      37
-     ],
-     [
-      "T2#6",
-      37,
-      39
-     ],
-     [
-      "T1#8",
-      40,
-      42
-     ],
-     [
-      "T2#7",
-      42,
-      44
-     ],
-     [
-      "T1#9",
-      45,
-      47
-     ],
-     [
-      "T2#8",
-      48,
-      50
-     ],
-     [
-      "T1#10",
-      50,
-      52
-     ],
-     [
-      "T2#9",
-      54,
-      56
-     ],
-     [
-      "T1#11",
-      56,
-      58
-     ]
-    ],
-    "lst": [
-     [
-      "T1#0",
-      0,
-      1
-     ],
-     [
-      "T2#0",
-      1,
-      2
-     ],
-     [
-      "T1#0",
-      2,
-      3
-     ],
-     [
-      "T2#0",
-      3,
-      4
-     ],
-     [
-      "T1#1",
-      5,
-      7
-     ],
-     [
-      "T2#1",
-      7,
-      9
-     ],
-     [
-      "T1#2",
-      10,
-      12
-     ],
-     [
-      "T2#2",
-      12,
-      14
-     ],
-     [
-      "T1#3",
-      15,
-      17
-     ],
-     [
-      "T2#3",
-      18,
-      20
-     ],
-     [
-      "T1#4",
-      20,
-      22
-     ],
-     [
-      "T2#4",
-      24,
-      26
-     ],
-     [
-      "T1#5",
-      26,
-      28
-     ],
-     [
-      "T1#6",
-      30,
-      31
-     ],
-     [
-      "T2#5",
-      31,
-      32
-     ],
-     [
-      "T1#6",
-      32,
-      33
-     ],
-     [
-      "T2#5",
-      33,
-      34
-     ],
-     [
-      "T1#7",
-      35,
-      37
-     ],
-     [
-      "T2#6",
-      37,
-      39
-     ],
-     [
-      "T1#8",
-      40,
-      42
-     ],
-     [
-      "T2#7",
-      42,
-      44
-     ],
-     [
-      "T1#9",
-      45,
-      47
-     ],
-     [
-      "T2#8",
-      48,
-      50
-     ],
-     [
-      "T1#10",
-      50,
-      52
-     ],
-     [
-      "T2#9",
-      54,
-      56
-     ],
-     [
-      "T1#11",
-      56,
-      58
-     ]
-    ],
-    "rm": [
-     [
-      "T1#0",
-      0,
-      2
-     ],
-     [
-      "T2#0",
-      2,
-      4
-     ],
-     [
-      "T1#1",
-      5,
-      7
-     ],
-     [
-      "T2#1",
-      7,
-      9
-     ],
-     [
-      "T1#2",
-      10,
-      12
-     ],
-     [
-      "T2#2",
-      12,
-      14
-     ],
-     [
-      "T1#3",
-      15,
-      17
-     ],
-     [
-      "T2#3",
-      18,
-      20
-     ],
-     [
-      "T1#4",
-      20,
-      22
-     ],
-     [
-      "T2#4",
-      24,
-      25
-     ],
-     [
-      "T1#5",
-      25,
-      27
-     ],
-     [
-      "T2#4",
-      27,
-      28
-     ],
-     [
-      "T1#6",
-      30,
-      32
-     ],
-     [
-      "T2#5",
-      32,
-      34
-     ],
-     [
-      "T1#7",
-      35,
-      37
-     ],
-     [
-      "T2#6",
-      37,
-      39
-     ],
-     [
-      "T1#8",
-      40,
-      42
-     ],
-     [
-      "T2#7",
-      42,
-      44
-     ],
-     [
-      "T1#9",
-      45,
-      47
-     ],
-     [
-      "T2#8",
-      48,
-      50
-     ],
-     [
-      "T1#10",
-      50,
-      52
-     ],
-     [
-      "T2#9",
-      54,
-      55
-     ],
-     [
-      "T1#11",
-      55,
-      57
-     ],
-     [
-      "T2#9",
-      57,
-      58
-     ]
-    ]
-   },
-   "hyperperiod": 30,
-   "id": "K6",
-   "label": "tight pair, infeasible",
-   "max_deadline": 3,
-   "policies": {
-    "dm": {
-     "busy": 44,
-     "completed": 22,
-     "context_switches": 24,
-     "first_miss": 3,
-     "horizon": 60,
-     "idle": 16,
-     "jitter": 2,
-     "laxity_zero_switches": 0,
-     "mean_response": 2.4545,
-     "min_laxity": -1,
-     "miss_rate": 0.181818,
-     "missed": 4,
-     "preemptions": 2,
-     "released": 22,
-     "tie_events": 6,
-     "worst_response": 4
-    },
-    "edf": {
-     "busy": 44,
-     "completed": 22,
-     "context_switches": 22,
-     "first_miss": 3,
-     "horizon": 60,
-     "idle": 16,
-     "jitter": 2,
-     "laxity_zero_switches": 0,
-     "mean_response": 2.3636,
-     "min_laxity": -1,
-     "miss_rate": 0.090909,
-     "missed": 2,
-     "preemptions": 0,
-     "released": 22,
-     "tie_events": 6,
-     "worst_response": 4
-    },
-    "fifo": {
-     "busy": 44,
-     "completed": 22,
-     "context_switches": 22,
-     "first_miss": 3,
-     "horizon": 60,
-     "idle": 16,
-     "jitter": 2,
-     "laxity_zero_switches": 0,
-     "mean_response": 2.3636,
-     "min_laxity": -1,
-     "miss_rate": 0.090909,
-     "missed": 2,
-     "preemptions": 0,
-     "released": 22,
-     "tie_events": 6,
-     "worst_response": 4
-    },
-    "lst": {
-     "busy": 44,
-     "completed": 22,
-     "context_switches": 26,
-     "first_miss": 3,
-     "horizon": 60,
-     "idle": 16,
-     "jitter": 2,
-     "laxity_zero_switches": 2,
-     "mean_response": 2.4545,
-     "min_laxity": -1,
-     "miss_rate": 0.090909,
-     "missed": 2,
-     "preemptions": 4,
-     "released": 22,
-     "tie_events": 8,
-     "worst_response": 4
-    },
-    "lst:edf": {
-     "busy": 44,
-     "completed": 22,
-     "context_switches": 26,
-     "first_miss": 3,
-     "horizon": 60,
-     "idle": 16,
-     "jitter": 2,
-     "laxity_zero_switches": 2,
-     "mean_response": 2.4545,
-     "min_laxity": -1,
-     "miss_rate": 0.090909,
-     "missed": 2,
-     "preemptions": 4,
-     "released": 22,
-     "tie_events": 8,
-     "worst_response": 4
-    },
-    "lst:lzs": {
-     "busy": 44,
-     "completed": 22,
-     "context_switches": 26,
-     "first_miss": 3,
-     "horizon": 60,
-     "idle": 16,
-     "jitter": 2,
-     "laxity_zero_switches": 2,
-     "mean_response": 2.4545,
-     "min_laxity": -1,
-     "miss_rate": 0.090909,
-     "missed": 2,
-     "preemptions": 4,
-     "released": 22,
-     "tie_events": 8,
-     "worst_response": 4
-    },
-    "lst:rm": {
-     "busy": 44,
-     "completed": 22,
-     "context_switches": 30,
-     "first_miss": 3,
-     "horizon": 60,
-     "idle": 16,
-     "jitter": 2,
-     "laxity_zero_switches": 4,
-     "mean_response": 2.5455,
-     "min_laxity": -1,
-     "miss_rate": 0.090909,
-     "missed": 2,
-     "preemptions": 8,
-     "released": 22,
-     "tie_events": 8,
-     "worst_response": 4
-    },
-    "lst:stay": {
-     "busy": 44,
-     "completed": 22,
-     "context_switches": 24,
-     "first_miss": 3,
-     "horizon": 60,
-     "idle": 16,
-     "jitter": 2,
-     "laxity_zero_switches": 0,
-     "mean_response": 2.4545,
-     "min_laxity": -1,
-     "miss_rate": 0.090909,
-     "missed": 2,
-     "preemptions": 2,
-     "released": 22,
-     "tie_events": 8,
-     "worst_response": 4
-    },
-    "rm": {
-     "busy": 44,
-     "completed": 22,
-     "context_switches": 24,
-     "first_miss": 3,
-     "horizon": 60,
-     "idle": 16,
-     "jitter": 2,
-     "laxity_zero_switches": 0,
-     "mean_response": 2.4545,
-     "min_laxity": -1,
-     "miss_rate": 0.181818,
-     "missed": 4,
-     "preemptions": 2,
-     "released": 22,
-     "tie_events": 6,
-     "worst_response": 4
-    }
-   },
-   "spec": "T1(T=5,C=2,D=3,ph=0), T2(T=6,C=2,D=3,ph=0)",
-   "task_count": 2,
-   "tasks": [
-    [
-     "T1",
-     5,
-     2,
-     3,
-     0
-    ],
-    [
-     "T2",
-     6,
-     2,
-     3,
-     0
-    ]
-   ],
-   "utilisation": 0.733333,
-   "witness": {
-    "checked": false,
-    "reason": "no witness (infeasible verdict)",
-    "valid": null
-   },
-   "witness_cost": {
-    "available": false,
-    "busy": 0,
-    "context_switches": 0,
-    "idle": 0,
-    "preemptions": 0,
-    "steps": 0
-   }
-  },
-  {
-   "alignment": {
-    "aligned": {
-     "edf": {
-      "horizon": 16,
-      "missed": 4,
-      "release_window": 10,
-      "released": 5
-     },
-     "lst": {
-      "horizon": 16,
-      "missed": 4,
-      "release_window": 10,
-      "released": 5
-     },
-     "rm": {
-      "horizon": 16,
-      "missed": 3,
-      "release_window": 10,
-      "released": 5
-     }
-    },
-    "aligned_agrees": true,
-    "checker_horizon": 10,
-    "checker_verdict": false,
-    "max_deadline": 6,
-    "naive": {
-     "edf": {
-      "horizon": 20,
-      "missed": 8,
-      "released": 10
-     },
-     "lst": {
-      "horizon": 20,
-      "missed": 9,
-      "released": 10
-     },
-     "rm": {
-      "horizon": 20,
-      "missed": 6,
-      "released": 10
-     }
-    },
-    "naive_agrees": true,
-    "optimal_policies": [
-     "lst",
-     "edf"
-    ],
-    "rm_control": {
-     "aligned_missed": 3,
-     "counterexample": false,
-     "naive_missed": 6
-    }
-   },
-   "cap_control": {
-    "explanation": "truncated runs are artefacts of the cap, not findings",
-    "false_infeasible_count": 0,
-    "full_truncated": false,
-    "full_verdict": false,
-    "rows": [
-     {
-      "feasible": false,
-      "limit": 4,
-      "states": 6,
-      "truncated": true
-     },
-     {
-      "feasible": false,
-      "limit": 8,
-      "states": 6,
-      "truncated": false
-     },
-     {
-      "feasible": false,
-      "limit": 16,
-      "states": 6,
-      "truncated": false
-     },
-     {
-      "feasible": false,
-      "limit": 4000000,
-      "states": 6,
-      "truncated": false
-     }
-    ],
-    "smallest_truncating_limit": null
-   },
-   "checker": {
-    "allow_idle_false": false,
-    "allow_idle_true": false,
-    "feasible": false,
-    "horizon": 10,
-    "idle_enumeration_agrees": true,
-    "jobs": 5,
-    "pruned": 10,
-    "schedule": [],
-    "schedule_length": 0,
-    "states": 6,
-    "truncated": false
-   },
-   "constrained_deadline": true,
-   "gantt": {
-    "edf": [
-     [
-      "T1#0",
-      0,
-      2
-     ],
-     [
-      "T2#0",
-      2,
-      4
-     ],
-     [
-      "T3#0",
-      4,
-      7
-     ],
-     [
-      "T1#1",
-      7,
-      9
-     ],
-     [
-      "T2#1",
-      9,
-      11
-     ],
-     [
-      "T1#2",
-      11,
-      13
-     ],
-     [
-      "T2#2",
-      13,
-      15
-     ],
-     [
-      "T3#1",
-      15,
-      18
-     ],
-     [
-      "T1#3",
-      18,
-      20
-     ]
-    ],
-    "lst": [
-     [
-      "T1#0",
-      0,
-      1
-     ],
-     [
-      "T2#0",
-      1,
-      2
-     ],
-     [
-      "T1#0",
-      2,
-      3
-     ],
-     [
-      "T2#0",
-      3,
-      4
-     ],
-     [
-      "T3#0",
-      4,
-      7
-     ],
-     [
-      "T1#1",
-      7,
-      8
-     ],
-     [
-      "T2#1",
-      8,
-      9
-     ],
-     [
-      "T1#1",
-      9,
-      10
-     ],
-     [
-      "T2#1",
-      10,
-      11
-     ],
-     [
-      "T1#2",
-      11,
-      12
-     ],
-     [
-      "T2#2",
-      12,
-      13
-     ],
-     [
-      "T1#2",
-      13,
-      14
-     ],
-     [
-      "T2#2",
-      14,
-      15
-     ],
-     [
-      "T3#1",
-      15,
-      18
-     ],
-     [
-      "T1#3",
-      18,
-      19
-     ],
-     [
-      "T2#3",
-      19,
-      20
-     ]
-    ],
-    "rm": [
-     [
-      "T1#0",
-      0,
-      2
-     ],
-     [
-      "T2#0",
-      2,
-      4
-     ],
-     [
-      "T3#0",
-      4,
-      5
-     ],
-     [
-      "T1#1",
-      5,
-      7
-     ],
-     [
-      "T2#1",
-      7,
-      9
-     ],
-     [
-      "T3#0",
-      9,
-      10
-     ],
-     [
-      "T1#2",
-      10,
-      12
-     ],
-     [
-      "T2#2",
-      12,
-      14
-     ],
-     [
-      "T3#0",
-      14,
-      15
-     ],
-     [
-      "T1#3",
-      15,
-      17
-     ],
-     [
-      "T2#3",
-      17,
-      19
-     ],
-     [
-      "T3#1",
-      19,
-      20
-     ]
-    ]
-   },
-   "hyperperiod": 10,
-   "id": "K7",
-   "label": "tight triple, overload",
-   "max_deadline": 6,
-   "policies": {
-    "dm": {
-     "busy": 20,
-     "completed": 9,
-     "context_switches": 12,
-     "first_miss": 3,
-     "horizon": 20,
-     "idle": 0,
-     "jitter": 13,
-     "laxity_zero_switches": 0,
-     "mean_response": 4.3333,
-     "min_laxity": -9,
-     "miss_rate": 0.6,
-     "missed": 6,
-     "preemptions": 2,
-     "released": 10,
-     "tie_events": 1,
-     "worst_response": 15
-    },
-    "edf": {
-     "busy": 20,
-     "completed": 9,
-     "context_switches": 9,
-     "first_miss": 3,
-     "horizon": 20,
-     "idle": 0,
-     "jitter": 6,
-     "laxity_zero_switches": 0,
-     "mean_response": 4.8889,
-     "min_laxity": -3,
-     "miss_rate": 0.8,
-     "missed": 8,
-     "preemptions": 0,
-     "released": 10,
-     "tie_events": 4,
-     "worst_response": 8
-    },
-    "fifo": {
-     "busy": 20,
-     "completed": 9,
-     "context_switches": 9,
-     "first_miss": 3,
-     "horizon": 20,
-     "idle": 0,
-     "jitter": 6,
-     "laxity_zero_switches": 0,
-     "mean_response": 4.8889,
-     "min_laxity": -3,
-     "miss_rate": 0.8,
-     "missed": 8,
-     "preemptions": 0,
-     "released": 10,
-     "tie_events": 4,
-     "worst_response": 8
-    },
-    "lst": {
-     "busy": 20,
-     "completed": 8,
-     "context_switches": 16,
-     "first_miss": 3,
-     "horizon": 20,
-     "idle": 0,
-     "jitter": 5,
-     "laxity_zero_switches": 1,
-     "mean_response": 5.25,
-     "min_laxity": -3,
-     "miss_rate": 0.9,
-     "missed": 9,
-     "preemptions": 7,
-     "released": 10,
-     "tie_events": 7,
-     "worst_response": 8
-    },
-    "lst:edf": {
-     "busy": 20,
-     "completed": 8,
-     "context_switches": 16,
-     "first_miss": 3,
-     "horizon": 20,
-     "idle": 0,
-     "jitter": 5,
-     "laxity_zero_switches": 1,
-     "mean_response": 5.25,
-     "min_laxity": -3,
-     "miss_rate": 0.9,
-     "missed": 9,
-     "preemptions": 7,
-     "released": 10,
-     "tie_events": 7,
-     "worst_response": 8
-    },
-    "lst:lzs": {
-     "busy": 20,
-     "completed": 8,
-     "context_switches": 16,
-     "first_miss": 3,
-     "horizon": 20,
-     "idle": 0,
-     "jitter": 5,
-     "laxity_zero_switches": 1,
-     "mean_response": 5.25,
-     "min_laxity": -3,
-     "miss_rate": 0.9,
-     "missed": 9,
-     "preemptions": 7,
-     "released": 10,
-     "tie_events": 7,
-     "worst_response": 8
-    },
-    "lst:rm": {
-     "busy": 20,
-     "completed": 8,
-     "context_switches": 16,
-     "first_miss": 3,
-     "horizon": 20,
-     "idle": 0,
-     "jitter": 5,
-     "laxity_zero_switches": 1,
-     "mean_response": 5.25,
-     "min_laxity": -3,
-     "miss_rate": 0.9,
-     "missed": 9,
-     "preemptions": 7,
-     "released": 10,
-     "tie_events": 7,
-     "worst_response": 8
-    },
-    "lst:stay": {
-     "busy": 20,
-     "completed": 8,
-     "context_switches": 13,
-     "first_miss": 3,
-     "horizon": 20,
-     "idle": 0,
-     "jitter": 5,
-     "laxity_zero_switches": 0,
-     "mean_response": 5.25,
-     "min_laxity": -3,
-     "miss_rate": 0.9,
-     "missed": 9,
-     "preemptions": 4,
-     "released": 10,
-     "tie_events": 7,
-     "worst_response": 8
-    },
-    "rm": {
-     "busy": 20,
-     "completed": 9,
-     "context_switches": 12,
-     "first_miss": 3,
-     "horizon": 20,
-     "idle": 0,
-     "jitter": 13,
-     "laxity_zero_switches": 0,
-     "mean_response": 4.3333,
-     "min_laxity": -9,
-     "miss_rate": 0.6,
-     "missed": 6,
-     "preemptions": 2,
-     "released": 10,
-     "tie_events": 1,
-     "worst_response": 15
-    }
-   },
-   "spec": "T1(T=5,C=2,D=3,ph=0), T2(T=5,C=2,D=3,ph=0), T3(T=10,C=3,D=6,ph=0)",
-   "task_count": 3,
-   "tasks": [
-    [
-     "T1",
-     5,
-     2,
-     3,
-     0
-    ],
-    [
-     "T2",
-     5,
-     2,
-     3,
-     0
-    ],
-    [
-     "T3",
-     10,
-     3,
-     6,
-     0
-    ]
-   ],
-   "utilisation": 1.1,
-   "witness": {
-    "checked": false,
-    "reason": "no witness (infeasible verdict)",
-    "valid": null
-   },
-   "witness_cost": {
-    "available": false,
-    "busy": 0,
-    "context_switches": 0,
-    "idle": 0,
-    "preemptions": 0,
-    "steps": 0
-   }
-  },
-  {
-   "alignment": {
-    "aligned": {
-     "edf": {
-      "horizon": 8,
-      "missed": 0,
-      "release_window": 4,
-      "released": 2
-     },
-     "lst": {
-      "horizon": 8,
-      "missed": 0,
-      "release_window": 4,
-      "released": 2
-     },
-     "rm": {
-      "horizon": 8,
-      "missed": 0,
-      "release_window": 4,
-      "released": 2
-     }
-    },
-    "aligned_agrees": true,
-    "checker_horizon": 4,
-    "checker_verdict": true,
-    "max_deadline": 4,
-    "naive": {
-     "edf": {
-      "horizon": 8,
-      "missed": 1,
-      "released": 4
-     },
-     "lst": {
-      "horizon": 8,
-      "missed": 1,
-      "released": 4
-     },
-     "rm": {
-      "horizon": 8,
-      "missed": 1,
-      "released": 4
-     }
-    },
-    "naive_agrees": false,
-    "optimal_policies": [
-     "lst",
-     "edf"
-    ],
-    "rm_control": {
-     "aligned_missed": 0,
-     "counterexample": true,
-     "naive_missed": 1
-    }
-   },
-   "cap_control": {
-    "explanation": "truncated runs are artefacts of the cap, not findings",
-    "false_infeasible_count": 1,
-    "full_truncated": false,
-    "full_verdict": true,
-    "rows": [
-     {
-      "feasible": false,
-      "limit": 4,
-      "states": 5,
-      "truncated": true
-     },
-     {
-      "feasible": true,
-      "limit": 8,
-      "states": 7,
-      "truncated": false
-     },
-     {
-      "feasible": true,
-      "limit": 16,
-      "states": 7,
-      "truncated": false
-     },
-     {
-      "feasible": true,
-      "limit": 4000000,
-      "states": 7,
-      "truncated": false
-     }
-    ],
-    "smallest_truncating_limit": 4
-   },
-   "checker": {
-    "allow_idle_false": true,
-    "allow_idle_true": true,
-    "feasible": true,
-    "horizon": 4,
-    "idle_enumeration_agrees": true,
-    "jobs": 2,
-    "pruned": 0,
-    "schedule": [
-     0,
-     0,
-     -1,
-     1,
-     1,
-     1
-    ],
-    "schedule_length": 6,
-    "states": 7,
-    "truncated": false
-   },
-   "constrained_deadline": true,
-   "gantt": {
-    "edf": [
-     [
-      "T1#0",
-      0,
-      2
-     ],
-     [
-      "T2#0",
-      3,
-      6
-     ],
-     [
-      "T1#1",
-      6,
-      8
-     ]
-    ],
-    "lst": [
-     [
-      "T1#0",
-      0,
-      2
-     ],
-     [
-      "T2#0",
-      3,
-      5
-     ],
-     [
-      "T1#1",
-      5,
-      6
-     ],
-     [
-      "T2#0",
-      6,
-      7
-     ],
-     [
-      "T1#1",
-      7,
-      8
-     ]
-    ],
-    "rm": [
-     [
-      "T1#0",
-      0,
-      2
-     ],
-     [
-      "T2#0",
-      3,
-      6
-     ],
-     [
-      "T1#1",
-      6,
-      8
-     ]
-    ]
-   },
-   "hyperperiod": 4,
-   "id": "K8",
-   "label": "phased, deadline past hyperperiod",
-   "max_deadline": 4,
-   "policies": {
-    "dm": {
-     "busy": 7,
-     "completed": 3,
-     "context_switches": 4,
-     "first_miss": 7,
-     "horizon": 8,
-     "idle": 1,
-     "jitter": 3,
-     "laxity_zero_switches": 0,
-     "mean_response": 3.0,
-     "min_laxity": -1,
-     "miss_rate": 0.25,
-     "missed": 1,
-     "preemptions": 1,
-     "released": 4,
-     "tie_events": 1,
-     "worst_response": 5
-    },
-    "edf": {
-     "busy": 7,
-     "completed": 3,
-     "context_switches": 3,
-     "first_miss": 7,
-     "horizon": 8,
-     "idle": 1,
-     "jitter": 2,
-     "laxity_zero_switches": 0,
-     "mean_response": 3.0,
-     "min_laxity": -1,
-     "miss_rate": 0.25,
-     "missed": 1,
-     "preemptions": 0,
-     "released": 4,
-     "tie_events": 1,
-     "worst_response": 4
-    },
-    "fifo": {
-     "busy": 7,
-     "completed": 3,
-     "context_switches": 3,
-     "first_miss": 7,
-     "horizon": 8,
-     "idle": 1,
-     "jitter": 2,
-     "laxity_zero_switches": 0,
-     "mean_response": 3.0,
-     "min_laxity": -1,
-     "miss_rate": 0.25,
-     "missed": 1,
-     "preemptions": 0,
-     "released": 4,
-     "tie_events": 1,
-     "worst_response": 4
-    },
-    "lst": {
-     "busy": 7,
-     "completed": 3,
-     "context_switches": 5,
-     "first_miss": 7,
-     "horizon": 8,
-     "idle": 1,
-     "jitter": 2,
-     "laxity_zero_switches": 1,
-     "mean_response": 3.3333,
-     "min_laxity": -1,
-     "miss_rate": 0.25,
-     "missed": 1,
-     "preemptions": 2,
-     "released": 4,
-     "tie_events": 2,
-     "worst_response": 4
-    },
-    "lst:edf": {
-     "busy": 7,
-     "completed": 3,
-     "context_switches": 5,
-     "first_miss": 7,
-     "horizon": 8,
-     "idle": 1,
-     "jitter": 2,
-     "laxity_zero_switches": 1,
-     "mean_response": 3.3333,
-     "min_laxity": -1,
-     "miss_rate": 0.25,
-     "missed": 1,
-     "preemptions": 2,
-     "released": 4,
-     "tie_events": 2,
-     "worst_response": 4
-    },
-    "lst:lzs": {
-     "busy": 7,
-     "completed": 3,
-     "context_switches": 5,
-     "first_miss": 7,
-     "horizon": 8,
-     "idle": 1,
-     "jitter": 2,
-     "laxity_zero_switches": 1,
-     "mean_response": 3.3333,
-     "min_laxity": -1,
-     "miss_rate": 0.25,
-     "missed": 1,
-     "preemptions": 2,
-     "released": 4,
-     "tie_events": 2,
-     "worst_response": 4
-    },
-    "lst:rm": {
-     "busy": 7,
-     "completed": 3,
-     "context_switches": 5,
-     "first_miss": 7,
-     "horizon": 8,
-     "idle": 1,
-     "jitter": 2,
-     "laxity_zero_switches": 1,
-     "mean_response": 3.3333,
-     "min_laxity": -1,
-     "miss_rate": 0.25,
-     "missed": 1,
-     "preemptions": 2,
-     "released": 4,
-     "tie_events": 2,
-     "worst_response": 4
-    },
-    "lst:stay": {
-     "busy": 7,
-     "completed": 3,
-     "context_switches": 4,
-     "first_miss": 7,
-     "horizon": 8,
-     "idle": 1,
-     "jitter": 3,
-     "laxity_zero_switches": 0,
-     "mean_response": 3.3333,
-     "min_laxity": -1,
-     "miss_rate": 0.25,
-     "missed": 1,
-     "preemptions": 1,
-     "released": 4,
-     "tie_events": 2,
-     "worst_response": 5
-    },
-    "rm": {
-     "busy": 7,
-     "completed": 3,
-     "context_switches": 3,
-     "first_miss": 7,
-     "horizon": 8,
-     "idle": 1,
-     "jitter": 2,
-     "laxity_zero_switches": 0,
-     "mean_response": 3.0,
-     "min_laxity": -1,
-     "miss_rate": 0.25,
-     "missed": 1,
-     "preemptions": 0,
-     "released": 4,
-     "tie_events": 1,
-     "worst_response": 4
-    }
-   },
-   "spec": "T1(T=4,C=2,D=3,ph=0), T2(T=4,C=3,D=4,ph=3)",
-   "task_count": 2,
-   "tasks": [
-    [
-     "T1",
-     4,
-     2,
-     3,
-     0
-    ],
-    [
-     "T2",
-     4,
-     3,
-     4,
-     3
-    ]
-   ],
-   "utilisation": 1.25,
-   "witness": {
-    "busy": 5,
-    "checked": true,
-    "jobs": 2,
-    "reason": "every job finished strictly before its deadline",
-    "steps": 6,
-    "valid": true
-   },
-   "witness_cost": {
-    "available": true,
-    "busy": 5,
-    "context_switches": 2,
-    "idle": 1,
-    "preemptions": 0,
-    "steps": 6
-   }
+   "process": 0,
+   "protocol": "hoare_signal:1r2w",
+   "steps": 14,
+   "valid": true,
+   "violations": []
   }
  ]
 }

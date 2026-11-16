@@ -19,6 +19,7 @@ sys.path.insert(0, HERE)
 sys.path.insert(0, os.path.join(HERE, "content"))
 
 import lst_data  # noqa: E402
+import rw7_data  # noqa: E402
 from check_outputs import check  # noqa: E402
 
 BRANCH = {
@@ -37,7 +38,7 @@ SCOPE = {
     4: "آیا ادعای بهینگی در برابر جستجوی جامع دوام میآورد",
     5: "دک کوتاه دوزبانه با متن گوینده",
     6: "مقاله دوزبانه + دو دک سمینار، عددها از ۱ تا ۵",
-    7: "تساویشکنی و لرزش لَکسیَتی صفر",
+    7: "readers‑writers: هفت مکانیزم، بررسی جامع گرسنگیِ عادلانه، اندازهگیری انتظار",
 }
 QUESTION = {
     1: "لَکسیَتی چیست، LST دقیقاً چه چیزی را کمینه میکند، و این انتخاب چه هزینهای دارد وقتی اندازهگیری شود نه تعریف؟",
@@ -46,7 +47,7 @@ QUESTION = {
     4: "آیا ادعای بهینگی در برابر جستجوی جامع روی مجموعههای ضربالاجلمقید دوام میآورد، و زیر بار اضافه چه رخ میدهد؟",
     5: "LST را در چند دقیقه برای کسی که هیچ نمیداند توضیح بده، فقط با عددهایی که تمرینهای دیگر واقعاً تولید کردهاند.",
     6: "تمرینهای ۱ تا ۵ را در یک مقالهٔ دوزبانه ترکیب کن: LST چیست، کجاست، چه چیزی قطعاً درست است، و چه هزینهای دارد.",
-    7: "تساویشکنی واقعاً چه چیزی را عوض میکند، و لرزشِ لَکسیَتی صفر چقدر هزینه دارد؟",
+    7: "کدام مکانیزمهای خواننده-نویسنده انحصار متقابل، نبود بنبست و نبود گرسنگی را تضمین میکنند، و هر تضمین چقدر هزینه دارد؟",
 }
 TITLE_EN = {
     1: "Exercise 1 — What LST Actually Minimises",
@@ -55,7 +56,7 @@ TITLE_EN = {
     4: "Exercise 4 — Optimality, Exhaustive Verification and Overload",
     5: "Exercise 5 — A Short Bilingual Presentation",
     6: "Exercise 6 — A Bilingual Paper and Seminar",
-    7: "Exercise 7 — Tie-Breaking and Laxity-Zero Thrashing",
+    7: "Exercise 7 — Readers-Writers: Verification and Measurement",
 }
 
 
@@ -232,6 +233,141 @@ def readme(n):
     return "\n".join(lines)
 
 
+
+def readme7():
+    """Exercise 7 is readers-writers, built from its own data layer."""
+    D = rw7_data.prepare()
+    C, meta = D["counts"], D["meta"]
+    pg = pages(7)
+    en_pages = pg.get("REPORT_EN.pdf", {}).get("pages", "—")
+    fa_pages = pg.get("REPORT_FA.pdf", {}).get("pages", "—")
+    r, hand = D["random"], D["hand"]
+    lines = [
+        "# تمرین ۷ — " + TITLE_EN[7],
+        "",
+        f"**Branch:** `{BRANCH[7]}`  ",
+        f"**{TITLE_EN[7]}**",
+        "",
+        "> **وضعیت: کامل.** آزمایشها، شکلها، تستها و هر چهار فایلِ گزارش ساخته و ",
+        "> راستیآزمایی شدهاند. هر عددی که در این README و در گزارشها میآید ",
+        "> هنگام ساخت از `output/experiments.json` خوانده میشود.",
+        "",
+        "> **یادداشت نام شاخه.** نام برنچ از اسکلت اولیه به ارث رسیده است؛ ",
+        "> محتوای این تمرین **readers‑writers** است، نه تساویشکنی LST.",
+        "",
+        "---",
+        "",
+        "## پرسش",
+        "",
+        QUESTION[7],
+        "",
+        "## روش",
+        "",
+        "دو ابزار کاملاً جدا: **[E] بررسی جامع** روی گراف متناهیِ حالتها ",
+        "(انحصار متقابل، بنبست، دورِ گرسنگیِ عادلانه، انتظار کراندار) و ",
+        "**[M] اندازهگیری** با شبیهساز رخدادگسستهٔ بذرثابت (عملیات انجامشده، ",
+        "زمان انتظار، توان عملیاتی). **[D]** تفاوتِ ساعتِ دو ابزار است: چککننده ",
+        "گذرِ حالت میشمرد و شبیهساز گام زمانی. وقتی جور درنمیآیند، نخست ابزار ",
+        "مظنون است، نه داده. هر شاهد نقض توسط مفسری مستقل بازپخش میشود.",
+        "",
+        "## یافتههای اصلی (همه از فایل داده)",
+        "",
+    ]
+    for f in D["findings"]:
+        lines.append(f"- **{f['id']} [{f['kind']}] {f['title_fa']}** — "
+                     f"عددها در `output/experiments.json` ← `{f['source']}`.")
+    lines += [
+        "",
+        "## عددهای کلیدی",
+        "",
+        "| کمیت | مقدار | ابزار |",
+        "|---|---|---|",
+        f"| مکانیزمها / نمونهٔ پروتکل | {C['mechanism_count']} / {C['protocol_count']} | [E] |",
+        f"| حالتها / گذرهای قابلدسترسی | {C['states_total']} / {C['transitions_total']} | [E] |",
+        f"| نمونههای بدون گرسنگی / گرسنهکننده | {C['starvation_free_protocols']} / {C['starving_protocols']} | [E] |",
+        f"| نقض انحصار متقابل / حالت بنبست | {C['mutual_exclusion_violations']} / {C['deadlock_states']} | [E] |",
+        f"| شاهدها / شاهدهای معتبر | {C['witnesses']} / {C['witnesses_valid']} | [E] |",
+        f"| بررسیهای بریدهشده | {C['truncated_checks']} | [E] |",
+        f"| بزرگترین کران چککننده / بیشترین انتظار | {C['checker_max_bound']} / {C['measurement_max_wait']} | [D] |",
+        f"| شکلها / جاروبها / یافتهها | {C['figure_count']} / {C['sweep_count']} / {C['finding_count']} | [M] |",
+        f"| بذر تصادف / افق / تکرارها | {meta['seed']} / {meta['horizon']} / {meta['trials']} | [M] |",
+        "",
+        "## مطالعهٔ تصادفی بزرگ",
+        "",
+        "| کمیت | مقدار |",
+        "|---|---|",
+        f"| بارهای کاری / اندازهگیریها | {r['workloads']} / {r['measurements']} |",
+        f"| افق کوتاه | {r['short_horizon']} |",
+        f"| اجراهای با صفر نویسنده | {r['total_starved']} |",
+        f"| مصنوعهای پنجرهٔ محدود | {r['total_artefacts']} |",
+        f"| بریدهشده | {r['truncated']} |",
+        "",
+        "## جدول دستی",
+        "",
+        f"ردگیری دستی مستقل و تابع گذرِ چککننده روی {hand['compared_steps']} گام ",
+        f"مقایسه شدند و تطابق «{hand['agree']}» است؛ شاهد واگرایی ",
+        f"اولویتنویسنده و اولویتخواننده در {hand['divergence']['divergent_count']} ",
+        "تصمیم چاپ شده است.",
+        "",
+        "## تحویلدادهها",
+        "",
+        "| فایل | نوع | شمارش صفحه |",
+        "|---|---|---|",
+    ]
+    for stem, label in (("REPORT_EN", "گزارش انگلیسی"),
+                        ("REPORT_FA", "گزارش فارسی")):
+        docx = pg.get(f"{stem}.docx", {}).get("pages", "—")
+        pdf = pg.get(f"{stem}.pdf", {}).get("pages", "—")
+        lines.append(f"| `{stem}.md` | مارکداون همان مدل | محصول جانبی |")
+        lines.append(f"| `docs/{stem}.docx` | {label}، Word | {docx} صفحه (تخمین اندازهگیریشده) |")
+        lines.append(f"| `docs/{stem}.pdf` | {label}، PDF | {pdf} صفحه (دقیق، خواندهشده از فایل) |")
+    lines += [
+        f"| `output/experiments.json` | یگانه مرجع عددها | — |",
+        f"| `diagrams/` | {C['figure_count']} شکل تولیدشده | — |",
+        "| `code/` + `tests/` | کد و تستهای سبز | — |",
+        "",
+        f"قانونِ حجم برقرار است: PDF انگلیسی {en_pages} صفحه و PDF فارسی ",
+        f"{fa_pages} صفحه (هر دو در بازهٔ بیست تا چهل). ساخت تمیز است یعنی ",
+        "`overflow` و `missing_figures` و `missing_glyphs` خالیاند و شمارش ",
+        "صفحههای مولد با شمارش PDF یکی است؛ `output/build_manifest.json` آن را ثبت میکند.",
+        "",
+        "## چطور اجرایش کنیم",
+        "",
+        "```bash",
+        "python3 code/run_experiments.py     # عددها -> output/experiments.json",
+        "python3 code/make_diagrams.py       # شکلها -> diagrams/",
+        "python3 -m pytest tests -q          # تستها",
+        "```",
+        "",
+        "ساختِ گزارش از ریشهٔ درختِ چندتمرینیه:",
+        "",
+        "```bash",
+        "python3 tools/build_report.py rw7_en exercise-7 REPORT_EN",
+        "python3 tools/build_report.py rw7_fa exercise-7 REPORT_FA",
+        "python3 tools/verify_builds.py       # همهٔ گزارشها + مانیفست ساخت تمیز",
+        "```",
+        "",
+        "## ساختار این شاخه",
+        "",
+        "همه چیز در **ریشهٔ شاخه** است، نه در پوشهای تودرتو.",
+        "",
+        "| مسیر | توضیح |",
+        "|---|---|",
+        "| `README.md` | همین فایل |",
+        "| `code/rw_core.py` | مدل readers‑writers: چککنندهٔ جامع، راستیآزمای مستقل، شبیهساز |",
+        "| `code/run_experiments.py` | تولید عددها |",
+        "| `code/make_diagrams.py` | تولید شکلها از همان JSON |",
+        "| `code/lst_core.py`, `code/lab_kit.py` | رونوشتهای همتراز هستهٔ شش تمرین LST (در این تمرین بهکار نمیروند) |",
+        "| `tests/` | تستهای سبز، مستقل از خواهرها |",
+        "| `output/` | خروجی خام کد |",
+        "| `diagrams/` | شکلها |",
+        "| `docs/` | فایلهای قابلتحویل |",
+        "| `REPORT_EN.md`, `REPORT_FA.md` | مارکداون همان مدل محتوا |",
+        "",
+    ]
+    return "\n".join(lines)
+
+
 def branch_index():
     h = hashes()
     published = bool(h)
@@ -244,11 +380,10 @@ def branch_index():
         "هش جدول، هش **کامیتِ محتوا** است؛ کامیتِ کوچکی که این فایلِ هشها را حمل ",
         "میکند فرزند آن است (نمیتوان هشِ کامیتی را در همان کامیت نوشت).",
         "",
-        "| تمرین | برنچ | محدوده | وضعیت | هش کامیت محتوا |",
+        "| تمرین | برنچ | محدوده | وضعیت | هش کامیت والد |",
         "|---|---|---|---|---|",
     ]
     for n in range(1, 8):
-        D = lst_data.prepare(n)
         pg = pages(n)
         en = pg.get("REPORT_EN.pdf", {}).get("pages", "—")
         fa = pg.get("REPORT_FA.pdf", {}).get("pages", "—")
@@ -264,6 +399,10 @@ def branch_index():
         "هر برنچ تمرین فقط همان تمرین را در ریشه دارد، به همراه ",
         "`PROJECT_PROGRESS.md` و این فایل. هش کامل همهٔ برنچها در ",
         "`output/push_hashes.json` همان برنچ ثبت شده است.",
+        "",
+        "> **یادداشت:** تمرین ۷ دربارهٔ الگوریتم خواننده-نویسنده است. نام ",
+        "> `Exercise-7-LST-Tie-Breaking-And-Thrashing` از اسکلت اولیهٔ LST به ",
+        "> ارث رسیده و برای پیوستگیِ برنچهای منتشرشده تغییر نکرده است.",
         "",
     ]
     if published:
@@ -297,7 +436,10 @@ def progress():
                          encoding="utf-8"))
     r4 = lst_data.prepare(4)["random"]
     d1 = lst_data.prepare(1)["derived"]
-    d7 = lst_data.prepare(7)["derived"]
+    W = rw7_data.prepare()
+    rwc = W["counts"]
+    f1 = next(f for f in W["findings"] if f["id"] == "F1")["numbers"]
+    f3 = next(f for f in W["findings"] if f["id"] == "F3")["numbers"]
     h = hashes()
     published = bool(h)
     state = "کامل و منتشر شده" if published else "کامل، آمادهٔ انتشار"
@@ -380,30 +522,40 @@ def progress():
         f"{r4['implicit_sets']} مجموعه با `D = T`، "
         f"{r4['implicit_feasible']} حکم «شدنی» داد؛ برای همین سنجهٔ واقعی ",
         "  ضربالاجل مقید است.",
-        f"* **تساویشکنی هزینه دارد، درستی را نه [M].** تمرین ۷ نشان داد "
-        f"{d7['witness_cheaper_count']} مجموعه شاهدی ارزانتر از LST دارند و ",
-        "  شکافِ پیشگیریها بین تساویشکنیها اندازهپذیر است؛ در همان حال روی ",
-        "  برخی مجموعهها لرزش پاسخ LST کمتر از EDF است، پس یک سنجهٔ تنها ",
-        "  رتبهای دروغین میداد.",
+        f"* **اولویتخواننده نویسنده را گرسنه میگذارد [E].** تمرین ۷ روی "
+        f"`{f1['protocol']}` دوری عادلانه به طول {f1['cycle_length']} یافت که "
+        f"در آن اجازهٔ ورود نویسنده هرگز فعال نمیشود، در حالی که بقیه "
+        f"{f1['other_grants']} بار وارد ناحیهٔ بحرانی میشوند. شاهد "
+        "توسط مفسر مستقل بازپخش و تأیید شده است.",
+        f"* **Mesa در برابر Hoare [E].** بدون دادنِ جای سرِ صف به فرایند "
+        f"بیدارشده، {f3['mesa_starving']} فرایند گرسنه میماند؛ تحویلِ Hoare "
+        f"روی همان پیکربندی {f3['hoare_starving']} فرایند گرسنه دارد و کران "
+        f"انتظار نویسنده {f3['hoare_wait_bound']} است.",
+        f"* **دو ابزار ساعت متفاوتی دارند [D].** بزرگترین کران چککننده "
+        f"{rwc['checker_max_bound']} گذرِ حالت است، در حالی که بیشترین انتظار "
+        f"اندازهگیریشده {rwc['measurement_max_wait']} گام زمانی است؛ "
+        f"مصنوعهای پنجرهٔ محدود {rwc['short_horizon_artefacts']} و اجراهای "
+        f"با صفر نویسنده {rwc['control_zero_writer_runs']} بودند. مقایسهٔ "
+        "مستقیم این دو عدد خطای مقوله است، نه تناقض.",
         "* **جدول دستی و برنامه جوراند [M].** ردگیری مستقل تمرین ۳ با شبیهساز ",
         "  گامبهگام جور شد و شاهد واگرایی دو قاعدهٔ دستی چاپ شده است.",
         "",
         "## ۴. تستها",
         "",
-        "`python3 -m pytest tests -q` از ریشهٔ درخت: ۱۲۶ تست سبز (هسته + ",
+        "`python3 -m pytest tests -q` از ریشهٔ درخت: ۱۳۱ تست سبز (هسته + ",
         "راستیآزمایی گزارشها، منشأ عددها، دکها، انطباق رونوشتها).",
-        "هر تمرین هم `python3 -m pytest tests -q` مخصوص خود را دارد که روی ",
-        "شاخهٔ تخت و بدون پوشههای خواهر هم سبز است.",
+        "هر تمرین هم `python3 -m pytest tests -q` مخصوص خود را دارد (تمرین ۷: ۱۵ تست) "
+        "که روی شاخهٔ تخت و بدون پوشههای خواهر هم سبز است.",
         "",
         "## ۵. هشهای انتشار",
         "",
     ]
     if published:
         lines += [
-            "هش **کامیت محتوا** هر برنچ (کامیت وضعیت، فرزند آن است). هش کامل در ",
+            "هش **کامیت والد** هر برنچ (کامیت وضعیت، فرزند آن است). هش کامل در ",
             "`output/push_hashes.json` همین برنچ هم هست.",
             "",
-            "| برنچ | هش کامیت محتوا |",
+            "| برنچ | هش کامیت والد |",
             "|---|---|",
         ]
         for b in ["main"] + [BRANCH[n] for n in range(1, 8)]:
@@ -429,6 +581,7 @@ def progress():
         "| ۲۰۲۶-۱۱-۱۶ | تستهای منشأ عددها، راستیآزمایی شاهدها، همترازسازی و صفحهها. |",
         "| ۲۰۲۶-۱۱-۱۶ | رفع باگ `push_lst.sh`: staging با `--work-tree` نسبی درخت خالی میداد. |",
         "| ۲۰۲۶-۱۱-۱۶ | انتشار `main` + هفت برنچ تمرین روی `rera13197-ux/LST`. |",
+        "| ۲۰۲۶-۱۱-۱۶ | اصلاح موضوع تمرین ۷: readers‑writers بهجای تساویشکنی LST؛ مدل تازه، ۱۲ پروتکل، ۶ شاهد راستیآزمایی، ۱۰ شکل، گزارش ۳۹/۳۹ صفحه. |",
         "",
     ]
     return "\n".join(lines)
@@ -443,7 +596,9 @@ def root_readme():
 ## وضعیت فعلی (تولیدشده از داده)
 
 هفت تمرین کاملاند: آزمایشها، شکلها، تستها، گزارشهای دوزبانه (DOCX + PDF + MD)
-و دکها. جزئیات و هشها در [PROJECT_PROGRESS.md](PROJECT_PROGRESS.md) و
+و دکها. تمرین ۷ دربارهٔ الگوریتم خواننده-نویسنده است (بررسی جامع گرسنگیِ
+عادلانه و اندازهگیری انتظار)، نه تساویشکنی LST. جزئیات و هشها در
+[PROJECT_PROGRESS.md](PROJECT_PROGRESS.md) و
 [EXERCISE_BRANCH_INDEX.md](EXERCISE_BRANCH_INDEX.md).
 
 ### ابزارهای اضافهشده
@@ -491,7 +646,8 @@ python3 tools/update_docs.py
 def main():
     for n in range(1, 8):
         p = os.path.join(REPO, f"exercise-{n}", "README.md")
-        open(p, "w", encoding="utf-8").write(readme(n))
+        text = readme7() if n == 7 else readme(n)
+        open(p, "w", encoding="utf-8").write(text)
         print("wrote", os.path.relpath(p, REPO))
     for name, fn in (("EXERCISE_BRANCH_INDEX.md", branch_index),
                      ("PROJECT_PROGRESS.md", progress),

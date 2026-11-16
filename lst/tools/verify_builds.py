@@ -23,8 +23,10 @@ def main():
     for n in range(1, 8):
         for lang in ("en", "fa"):
             stem = f"REPORT_{lang.upper()}"
+            module = (f"lst{n}_{lang}" if n <= 6
+                      else f"rw{n}_{lang}")
             cmd = [sys.executable, os.path.join(HERE, "build_report.py"),
-                   f"lst{n}_{lang}", f"exercise-{n}", stem]
+                   module, f"exercise-{n}", stem]
             p = subprocess.run(cmd, cwd=REPO, capture_output=True, text=True)
             text = p.stdout.strip()
             try:

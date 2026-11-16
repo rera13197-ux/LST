@@ -45,7 +45,7 @@ def main() -> int:
     data = {
         "generated": datetime.date.today().isoformat(),
         "remote": REMOTE,
-        "kind": ("content commit; the small status commit that carries this "
+        "kind": ("parent commit; the small status commit that carries this "
                  "file is its child"),
         "branches": {b: found[b] for b in WANTED},
     }

@@ -1,4 +1,4 @@
-"""Generic, bilingual report builder for the seven LST exercises.
+"""Generic, bilingual report builder for the six LST exercises.
 
 A content module is three lines::
 

@@ -1,55 +1,57 @@
-# Tie-Breaking, Laxity-Zero Thrashing and Their Cost
+# Readers-Writers: Verification and Measurement
 
-**the checker is silent about cost; the simulator is not**
+**Exercise 7 - bilingual report (EN/FA)**
 
 - **Exercise:** Exercise 7
 - **Course:** Real-Time Scheduling
-- **Topic:** Least Slack Time (LST) scheduling
-- **Deliverables:** bilingual EN/FA report, DOCX + PDF; diagrams; code; tests
+- **Topic:** Readers-writers
 - **Repository:** github.com/rera13197-ux/LST
 - **Branch:** Exercise-7-LST-Tie-Breaking-And-Thrashing
-- **Random seed:** 20261116
+- **Random seed:** 20261120
+- **Protocols:** 12
+- **Figures:** 10
+- **Method:** two separate instruments: exhaustive checking and measurement
 - **Status:** complete: every number regenerated from a program run
-- **Page count:** measured from the produced PDF, see tools/check_outputs.py
-- **Method:** two separate instruments: exhaustive verification and measurement
 
 ## Table of contents
 
 - The question (p. 3)
 - Two instruments, two kinds of claim (p. 4)
 - Model and notation (p. 5)
-- The scheduling rule (p. 6)
-- Why deadlines must be constrained (p. 7)
-- Experimental design (p. 8)
-- A worked schedule (p. 9)
-- Task set K1 (p. 10)
-- Task set K2 (p. 11)
-- Task set K3 (p. 12)
-- Task set K4 (p. 13)
-- Task set K5 (p. 14)
-- Task set K6 (p. 15)
-- Task set K7 (p. 16)
-- Task set K8 (p. 17)
-- Sweeps: task-count (p. 18)
-- Sweeps: deadline-zero-switches (p. 19)
-- Sweeps: alignment (p. 20)
-- Finding: F1 (p. 21)
-- Finding: F2 (p. 22)
-- Finding: F3 (p. 23)
-- Finding: F4 (p. 24)
-- Finding: F5 (p. 25)
-- Finding: F6 (p. 26)
-- Figures — group 1 (p. 27)
-- Figures — group 2 (p. 28)
-- Figures — group 3 (p. 29)
-- Figures — group 4 (p. 30)
-- When the two instruments disagree (p. 31)
-- A defect produced by a state cap (p. 32)
-- Verification is coarse, measurement is not (p. 33)
-- Limitations we state ourselves (p. 34)
-- Reproducibility (p. 35)
-- Deliverables and checks (p. 36)
-- Appendix: the data contract (p. 37)
+- Mechanisms, part one (p. 6)
+- Mechanisms, part two (p. 7)
+- [E] Exhaustive checker (p. 8)
+- Verdicts, part one (p. 9)
+- Verdicts, part two (p. 10)
+- Mutual exclusion and deadlock (p. 11)
+- What counts as starvation (p. 12)
+- Bounded waiting verdict (p. 13)
+- Independent verifier (p. 14)
+- A hand table, printed by two implementations (p. 15)
+- Where two hand rules part company (p. 16)
+- [M] Measurement design (p. 17)
+- Measurement results, part one (p. 18)
+- Measurement results, part two (p. 19)
+- [M] Sweep: arrival rate (p. 20)
+- [M] Sweep: writer service length (p. 21)
+- [M] Sweep: reader population (p. 22)
+- Finding F1 [E] (p. 23)
+- Finding F2 [E] (p. 24)
+- Finding F3 [E] (p. 25)
+- Finding F4 [E] (p. 26)
+- Finding F5 [M] (p. 27)
+- Finding F6 [D] (p. 28)
+- Figures, group 1 (p. 29)
+- Figures, group 2 (p. 30)
+- Figures, group 3 (p. 31)
+- Figures, group 4 (p. 32)
+- [D] When the instruments disagree (p. 33)
+- The large seeded random study (p. 34)
+- Provenance of every number (p. 35)
+- Limitations (p. 36)
+- How to reproduce (p. 37)
+- Deliverables (p. 38)
+- References and verification status (p. 39)
 
 
 <!-- page 1 -->
@@ -63,20 +65,9 @@
 
 ## The question
 
-What does tie-breaking actually change, and how expensive is laxity-zero thrashing when measurement and verification are kept apart?
+Which readers-writers mechanisms actually guarantee mutual exclusion, deadlock freedom and freedom from starvation, and what does each guarantee cost in completed operations and waiting time?
 
-This report states what was asked and how it was answered before giving any result, so that a reader can try to refute the claim.
-
-| Instrument | [E] + [M] |
-|---|---|
-| Scope | the cost of LST tie-breaking and laxity-zero thrashing, with verification kept separate from measurement |
-| Random seed | 20261116 |
-| Task sets | 8 |
-| Policies measured | 9 |
-
-*Scope of this exercise*
-
-> **Intent.** Nothing in this report is a definition restated louder. The subject is what the two instruments reveal when they are pointed at the same task sets.
+This report states what was asked and how it was answered before giving any result, so a reader can try to refute the claim.
 
 
 <!-- page 4 -->
@@ -84,18 +75,13 @@ This report states what was asked and how it was answered before giving any resu
 
 ## Two instruments, two kinds of claim
 
-Two tools are used in this project and they answer different questions. The exhaustive checker walks every reachable state and returns a verdict, true or false, together with a witness schedule when the verdict is true. The discrete-event simulator counts what happens in a particular run. The reports tag every claim with the tool that produced it: [E] for verification and [M] for measurement. A sentence of the form 'it never missed in our runs, therefore it is correct' is not written here.
+[E] The exhaustive checker enumerates every reachable global state of a small protocol instance. It answers yes/no questions and returns a witness schedule for every counterexample. [M] The seeded simulator runs a finite workload and counts operations and waiting times. The two instruments are never substituted for one another: a verdict is not a cost, and a cost is not a verdict.
 
+- [E] asks whether a property holds in every reachable state.
+- [M] asks how much work the mechanism completes.
+- [D] is what happens when the two are compared carelessly.
 
-### Which claim comes from where
-
-- [E] exhaustive verification — feasibility, witnesses, idle-enumeration controls, optimality counterexamples.
-- [M] measurement — preemptions, switches, laxity-zero switches, tie events, response time, jitter, first miss.
-- [D] disagreement — a mismatch; the instrument is suspected first.
-
-[M] Preemptions, context switches, laxity-zero switches, tie events, minimum observed laxity, response time and jitter are counted by the simulator over an integer timeline. [E] Feasibility is decided by the checker, and every witness schedule it returns is re-checked by a separate verifier that shares no code with the checker. When the two instruments disagree, the instrument is the first suspect, not the theorem and not the data.
-
-> **Standing rule.** Every witness schedule returned by the checker is walked again by a verifier that does not call the checker. This is a standing rule, not a one-off check.
+> **Note.** When the tools disagree, suspect the tool first, not the data.
 
 
 <!-- page 5 -->
@@ -103,949 +89,703 @@ Two tools are used in this project and they answer different questions. The exha
 
 ## Model and notation
 
-One processor, preemptive, independent jobs, integer time. Execution time is taken equal to the worst-case estimate, so a schedule worked out by hand and the program's timeline can be compared unit by unit without tolerance. A preemption is counted but not charged to the timeline; overhead is therefore a measurement, not a distortion of the model. A job's slack is how long it could still wait and still meet its deadline.
+Each process is thinking, waiting, or inside the critical section. The global state is a tuple of per-process states, the entry queue, the signalled process and a turn variable. There is no unbounded counter, so the reachable graph is finite and a lasso is a genuine infinite execution. Readers may share the critical section; a writer must have it alone.
 
 ```text
-laxity(job, t) = deadline(job) - t - remaining(job)
-LST(t)        = argmin laxity(job, t) over ready jobs
+state = (process states, entry queue, signalled, turn)
+process state: 0 thinking, 1 waiting, 2 in critical section
+readers may share; a writer requires an empty section
 ```
-*Definition, not a measurement*
-
-| Symbol | Meaning |
+| Mechanisms | 7 |
 |---|---|
-| T | period |
-| C | worst-case execution, equal to actual here |
-| D | relative deadline |
-| t | integer time instant |
-| U | descriptive utilisation ratio |
-
-*Notation*
-
-The tie-break rule of LST is a parameter in the simulator, not a hidden implementation choice, because whether it changes correctness or cost is itself one of the questions of this project. The checker enumerates work-conserving schedules only; forced idle, when nothing has been released yet, is always allowed. Optional idle is a separate mode used as a control, never as the default.
+| Configurations | 3 |
+| Protocol instances | 12 |
+| State limit | 120000 |
 
 
 <!-- page 6 -->
 
 
-## The scheduling rule
+## Mechanisms, part one
 
-The rule is short; the interesting part is what it does when two jobs reach the same slack. The tie-break is an explicit parameter of the simulator.
+The mechanism is a parameter, not an implementation detail. These four are semaphore-style or monitor-style admission rules over the same shared state.
 
 ```text
-at every integer instant t:
-    release every job whose release time is t
-    mark a job missed if t reaches its deadline
-    ready = jobs released and not finished
-    if ready is empty: idle for this unit (forced idle)
-    else:
-        slack(j) = deadline(j) - t - remaining(j)
-        best     = min slack over ready
-        run the ready job attaining best, chosen by tie_break
-        count a preemption if the previous job still has work
-        count a laxity-zero switch if both slacks are zero
+readers_preference  : readers bypass waiting writers
+writers_preference  : a waiting writer blocks new readers
+fair_fifo           : entry queue, leading readers batched
+mesa_signal         : signal without a place in the entry queue
 ```
-*Discrete-time rule as implemented in the core*
+*Admission rules, part one*
 
-
-### Tie-break policies
-
-- lst / lst:edf / lst:rm / lst:stay / lst:lzs — index, earliest deadline, shortest period, keep the running job, or switch by earliest deadline at zero laxity.
-- edf / rm / dm / fifo — baseline policies with no tie-break parameter.
-
-> **Parameter, not detail.** The tie-break never silently changes: it is part of the policy name and of every generated data row.
+> **Note.** Preference trades one kind of starvation for another.
 
 
 <!-- page 7 -->
 
 
-## Why deadlines must be constrained
+## Mechanisms, part two
 
-With implicit deadlines equal to periods and utilisation at most one, every synchronous periodic task set is feasible on a preemptive uniprocessor. An optimality experiment then has nothing to decide: the checker always says feasible and every optimal policy records the same zero misses. All experiments therefore use constrained deadlines, deadline smaller than the period, where utilisation is necessary but not sufficient and the feasible / infeasible split is real. This choice is a design decision about the measuring instrument, not a claim about the algorithm.
+Hoare-style handoff gives the woken thread a place. Dekker and Peterson carry the mutual-exclusion pattern only between two participants; the checker only admits them in that configuration.
 
-| Regime | What the checker can say |
-|---|---|
-| implicit deadline, U no more than one | always feasible, so no optimality test |
-| constrained deadline | feasible and infeasible sets both occur |
+```text
+hoare_signal        : signal with immediate handoff at the head
+dekker2             : two participants, turn alternates on release
+peterson2           : two participants, turn set on request
+```
+*Admission rules, part two*
 
-*Design of the measuring instrument*
-
-> **The split used here.** In this exercise 4 of 8 sets use a constrained deadline. The split into 5 feasible and 3 infeasible sets is the [E] verdict, not a guess.
+> **Note.** Two-participant patterns cannot be assumed for a third.
 
 
 <!-- page 8 -->
 
 
-## Experimental design
+## [E] Exhaustive checker
 
-[M] The table below lists every task set used in this exercise. All rows come from the same generator and the same seed; no set was removed because its result was inconvenient. The verdict column is [E]: it is the exhaustive checker's decision over one hyperperiod, with a witness re-checked independently. Periods, execution times, deadlines and phases are integers.
+[E] A breadth-first search from the all-thinking state records every reachable state and transition. Mutual exclusion and deadlock are checked on every state. Starvation is a reachable cycle on which the waiting process never gets its grant enabled while some other process does enter the critical section: a fair cycle, not merely an unlucky schedule. Bounded waiting is reported as minus one when such a cycle exists, because worst-case waiting is then infinite.
 
-```text
-K1: T1(T=4,C=2,D=4,ph=0), T2(T=4,C=2,D=4,ph=0)
-K2: T1(T=8,C=4,D=8,ph=0), T2(T=8,C=4,D=8,ph=0)
-K3: T1(T=6,C=2,D=6,ph=0), T2(T=6,C=2,D=6,ph=0), T3(T=6,C=2,D=6,ph=0)
-K4: T1(T=8,C=2,D=8,ph=0), T2(T=8,C=2,D=8,ph=0), T3(T=8,C=2,D=8,ph=0), T4(T=8,C=2,D=8,ph=0)
-K5: T1(T=6,C=3,D=4,ph=0), T2(T=9,C=3,D=5,ph=0), T3(T=12,C=2,D=7,ph=0)
-K6: T1(T=5,C=2,D=3,ph=0), T2(T=6,C=2,D=3,ph=0)
-K7: T1(T=5,C=2,D=3,ph=0), T2(T=5,C=2,D=3,ph=0), T3(T=10,C=3,D=6,ph=0)
-K8: T1(T=4,C=2,D=3,ph=0), T2(T=4,C=3,D=4,ph=3)
-```
-*Full task specifications, read from the data file*
+- Breadth-first exploration with memoisation.
+- Fair-cycle search with a separate independent verifier.
+- Truncated runs are counted and excluded from conclusions.
 
-| Set | U | hyperperiod | D < T | verdict |
-|---|---|---|---|---|
-| K1 | 1.0 | 4 | no | feasible |
-| K2 | 1.0 | 8 | no | feasible |
-| K3 | 1.0 | 6 | no | feasible |
-| K4 | 1.0 | 8 | no | feasible |
-| K5 | 1.0 | 36 | yes | infeasible |
-| K6 | 0.733333 | 30 | yes | infeasible |
-| K7 | 1.1 | 10 | yes | infeasible |
-| K8 | 1.25 | 4 | yes | feasible |
-
-*Task sets used, read from experiments.json*
-
-| Random seed | 20261116 |
+| Reachable states | 374 |
 |---|---|
-| Policies measured | 9 |
-| Feasible sets [E] | 5 |
-| Infeasible sets [E] | 3 |
-| Checker states visited [E] | 59 |
-| Truncated checker runs | 0 |
-
-*Generated data at a glance*
+| Transitions | 785 |
+| Truncated checks | 0 |
 
 
 <!-- page 9 -->
 
 
-## A worked schedule
+## Verdicts, part one
 
-The schedule below is reproduced from the generated data, not typed by hand. Each row is a maximal run of one job on the processor. It is the object that a hand computation must match unit for unit; the agreement between an independent hand trace and the simulator's timeline is itself a test in this repository.
+[E] Every row is a separate protocol instance: one mechanism under one reader/writer configuration.
 
-```text
-T1#0  [0, 1)
-T2#0  [1, 2)
-T1#0  [2, 3)
-T2#0  [3, 4)
-T1#1  [4, 5)
-T2#1  [5, 6)
-T1#1  [6, 7)
-T2#1  [7, 8)
-```
-*Runs read from the generated data*
+| protocol | states | ME | DL-free | SF | starving |
+|---|---|---|---|---|---|
+| readers_preference:2r1w | 33 | yes | yes | no | 1 |
+| readers_preference:1r2w | 31 | yes | yes | yes | 0 |
+| writers_preference:2r1w | 33 | yes | yes | yes | 0 |
+| writers_preference:1r2w | 31 | yes | yes | no | 1 |
+| fair_fifo:2r1w | 33 | yes | yes | yes | 0 |
+| fair_fifo:1r2w | 31 | yes | yes | yes | 0 |
 
-| Values read from | output/experiments.json |
-|---|---|
-
-*Trace provenance*
-
-> **Why two programs.** The hand trace and the simulator are two independent programs. Their agreement is checked by a test, and their disagreement would be reported as an instrument defect.
+*Exhaustive verdicts [E]*
 
 
 <!-- page 10 -->
 
 
-## Task set K1
+## Verdicts, part two
 
-| Task specification | T1(T=4,C=2,D=4,ph=0), T2(T=4,C=2,D=4,ph=0) |
-|---|---|
-| Utilisation (descriptive) | 1.0 |
-| Hyperperiod | 4 |
-| Constrained deadline | no |
-| Checker verdict [E] | feasible |
-| States visited [E] | 5 |
-| Branches pruned [E] | 0 |
-| Jobs in checker horizon | 2 |
-| Checker truncated | no |
-| Idle enumeration agrees [E] | yes |
-| Independent witness | valid |
-| Aligned comparison agrees | yes |
-| Naive comparison agrees | yes |
+[E] Every row is a separate protocol instance: one mechanism under one reader/writer configuration.
 
-*Set parameters and [E] verdict*
+| protocol | states | ME | DL-free | SF | starving |
+|---|---|---|---|---|---|
+| mesa_signal:2r1w | 49 | yes | yes | no | 1 |
+| mesa_signal:1r2w | 49 | yes | yes | no | 2 |
+| hoare_signal:2r1w | 25 | yes | yes | yes | 0 |
+| hoare_signal:1r2w | 31 | yes | yes | no | 1 |
+| dekker2:1r1w | 18 | yes | yes | yes | 0 |
+| peterson2:1r1w | 10 | yes | yes | yes | 0 |
 
-| Policy | missed | preemptions | switches | zero-sw | min laxity | ties |
-|---|---|---|---|---|---|---|
-| lst | 0 | 4 | 8 | 0 | 0 | 4 |
-| lst:edf | 0 | 4 | 8 | 0 | 0 | 4 |
-| lst:rm | 0 | 4 | 8 | 0 | 0 | 4 |
-| lst:stay | 0 | 2 | 6 | 0 | 0 | 4 |
-| lst:lzs | 0 | 4 | 8 | 0 | 0 | 4 |
-| edf | 0 | 0 | 4 | 0 | 0 | 2 |
-| rm | 0 | 0 | 4 | 0 | 0 | 2 |
-| dm | 0 | 0 | 4 | 0 | 0 | 2 |
-| fifo | 0 | 0 | 4 | 0 | 0 | 2 |
-
-*All policies on this set [M]*
-
-> **What this set shows.** [E] verdict feasible, 5 states, 0 pruned, independent witness valid. [M] LST recorded 4 preemptions and 0 missed deadlines; EDF recorded 0 preemptions on the same set. Tie events observed: 4.
+*Exhaustive verdicts [E]*
 
 
 <!-- page 11 -->
 
 
-## Task set K2
+## Mutual exclusion and deadlock
 
-| Task specification | T1(T=8,C=4,D=8,ph=0), T2(T=8,C=4,D=8,ph=0) |
+[E] Both properties are checked on every reachable state, not on a sample of runs. The counts below are sums over all protocol instances.
+
+| Mutual-exclusion violations | 0 |
 |---|---|
-| Utilisation (descriptive) | 1.0 |
-| Hyperperiod | 8 |
-| Constrained deadline | no |
-| Checker verdict [E] | feasible |
-| States visited [E] | 9 |
-| Branches pruned [E] | 0 |
-| Jobs in checker horizon | 2 |
-| Checker truncated | no |
-| Idle enumeration agrees [E] | yes |
-| Independent witness | valid |
-| Aligned comparison agrees | yes |
-| Naive comparison agrees | yes |
+| Deadlock states | 0 |
+| Starving protocol instances | 5 |
+| Starvation-free instances | 7 |
 
-*Set parameters and [E] verdict*
-
-| Policy | missed | preemptions | switches | zero-sw | min laxity | ties |
-|---|---|---|---|---|---|---|
-| lst | 0 | 12 | 16 | 0 | 0 | 8 |
-| lst:edf | 0 | 12 | 16 | 0 | 0 | 8 |
-| lst:rm | 0 | 12 | 16 | 0 | 0 | 8 |
-| lst:stay | 0 | 6 | 10 | 0 | 0 | 8 |
-| lst:lzs | 0 | 12 | 16 | 0 | 0 | 8 |
-| edf | 0 | 0 | 4 | 0 | 0 | 2 |
-| rm | 0 | 0 | 4 | 0 | 0 | 2 |
-| dm | 0 | 0 | 4 | 0 | 0 | 2 |
-| fifo | 0 | 0 | 4 | 0 | 0 | 2 |
-
-*All policies on this set [M]*
-
-> **What this set shows.** [E] verdict feasible, 9 states, 0 pruned, independent witness valid. [M] LST recorded 12 preemptions and 0 missed deadlines; EDF recorded 0 preemptions on the same set. Tie events observed: 8.
+> **Note.** Zero violations here is a property of the model, not a claim about any particular runtime lock.
 
 
 <!-- page 12 -->
 
 
-## Task set K3
+## What counts as starvation
 
-| Task specification | T1(T=6,C=2,D=6,ph=0), T2(T=6,C=2,D=6,ph=0), T3(T=6,C=2,D=6,ph=0) |
-|---|---|
-| Utilisation (descriptive) | 1.0 |
-| Hyperperiod | 6 |
-| Constrained deadline | no |
-| Checker verdict [E] | feasible |
-| States visited [E] | 7 |
-| Branches pruned [E] | 0 |
-| Jobs in checker horizon | 3 |
-| Checker truncated | no |
-| Idle enumeration agrees [E] | yes |
-| Independent witness | valid |
-| Aligned comparison agrees | yes |
-| Naive comparison agrees | yes |
+A process waiting a long time is not yet starved. Starvation requires an infinite fair execution in which it never enters. The checker therefore looks for a reachable cycle with two conditions.
 
-*Set parameters and [E] verdict*
+- the waiting process's grant is never enabled on the cycle;
+- some other process does enter the critical section on the cycle.
 
-| Policy | missed | preemptions | switches | zero-sw | min laxity | ties |
-|---|---|---|---|---|---|---|
-| lst | 0 | 6 | 12 | 0 | 0 | 8 |
-| lst:edf | 0 | 6 | 12 | 0 | 0 | 8 |
-| lst:rm | 0 | 6 | 12 | 0 | 0 | 8 |
-| lst:stay | 0 | 4 | 10 | 0 | 0 | 8 |
-| lst:lzs | 0 | 6 | 12 | 0 | 0 | 8 |
-| edf | 0 | 0 | 6 | 0 | 0 | 6 |
-| rm | 0 | 0 | 6 | 0 | 0 | 6 |
-| dm | 0 | 0 | 6 | 0 | 0 | 6 |
-| fifo | 0 | 0 | 6 | 0 | 0 | 6 |
-
-*All policies on this set [M]*
-
-> **What this set shows.** [E] verdict feasible, 7 states, 0 pruned, independent witness valid. [M] LST recorded 6 preemptions and 0 missed deadlines; EDF recorded 0 preemptions on the same set. Tie events observed: 8.
+> **Note.** Without the second condition a stuttering schedule would fake starvation.
 
 
 <!-- page 13 -->
 
 
-## Task set K4
+## Bounded waiting verdict
 
-| Task specification | T1(T=8,C=2,D=8,ph=0), T2(T=8,C=2,D=8,ph=0), T3(T=8,C=2,D=8,ph=0), T4(T=8,C=2,D=8,ph=0) |
+[E] Minus one means a fair starvation cycle exists, so worst-case waiting is infinite. Other entries are the largest shortest path into the critical section, counted in state transitions.
+
+| protocol | max bound |
 |---|---|
-| Utilisation (descriptive) | 1.0 |
-| Hyperperiod | 8 |
-| Constrained deadline | no |
-| Checker verdict [E] | feasible |
-| States visited [E] | 9 |
-| Branches pruned [E] | 0 |
-| Jobs in checker horizon | 4 |
-| Checker truncated | no |
-| Idle enumeration agrees [E] | yes |
-| Independent witness | valid |
-| Aligned comparison agrees | yes |
-| Naive comparison agrees | yes |
+| readers_preference:2r1w | -1 |
+| readers_preference:1r2w | 2 |
+| writers_preference:2r1w | 3 |
+| writers_preference:1r2w | -1 |
+| fair_fifo:2r1w | 5 |
+| fair_fifo:1r2w | 5 |
+| mesa_signal:2r1w | -1 |
+| mesa_signal:1r2w | -1 |
 
-*Set parameters and [E] verdict*
+*Bounded waiting [E]*
 
-| Policy | missed | preemptions | switches | zero-sw | min laxity | ties |
-|---|---|---|---|---|---|---|
-| lst | 0 | 8 | 16 | 0 | 0 | 12 |
-| lst:edf | 0 | 8 | 16 | 0 | 0 | 12 |
-| lst:rm | 0 | 8 | 16 | 0 | 0 | 12 |
-| lst:stay | 0 | 6 | 14 | 0 | 0 | 12 |
-| lst:lzs | 0 | 8 | 16 | 0 | 0 | 12 |
-| edf | 0 | 0 | 8 | 0 | 0 | 10 |
-| rm | 0 | 0 | 8 | 0 | 0 | 10 |
-| dm | 0 | 0 | 8 | 0 | 0 | 10 |
-| fifo | 0 | 0 | 8 | 0 | 0 | 10 |
-
-*All policies on this set [M]*
-
-> **What this set shows.** [E] verdict feasible, 9 states, 0 pruned, independent witness valid. [M] LST recorded 8 preemptions and 0 missed deadlines; EDF recorded 0 preemptions on the same set. Tie events observed: 12.
+> **Note.** Transitions are not time steps; see the divergence page.
 
 
 <!-- page 14 -->
 
 
-## Task set K5
+## Independent verifier
 
-| Task specification | T1(T=6,C=3,D=4,ph=0), T2(T=9,C=3,D=5,ph=0), T3(T=12,C=2,D=7,ph=0) |
+[E] No counterexample is accepted on the checker's word. An independent interpreter, written separately and sharing no transition function with the checker, replays the prefix and then the cycle twice. It re-derives every admission decision, checks that the starving process stays waiting, and checks mutual exclusion after every action. The table records the result for every witness.
+
+| protocol | process | steps | valid |
+|---|---|---|---|
+| readers_preference:2r1w | 2 | 10 | yes |
+| writers_preference:1r2w | 0 | 10 | yes |
+| mesa_signal:2r1w | 2 | 13 | yes |
+| mesa_signal:1r2w | 1 | 11 | yes |
+| mesa_signal:1r2w | 2 | 11 | yes |
+| hoare_signal:1r2w | 0 | 14 | yes |
+
+*Every witness re-checked [E]*
+
+```text
+R0 grant
+R0 release
+R0 request
+```
+*First starvation cycle (witness)*
+
+| Witnesses | 6 |
 |---|---|
-| Utilisation (descriptive) | 1.0 |
-| Hyperperiod | 36 |
-| Constrained deadline | yes |
-| Checker verdict [E] | infeasible |
-| States visited [E] | 11 |
-| Branches pruned [E] | 14 |
-| Jobs in checker horizon | 13 |
-| Checker truncated | no |
-| Idle enumeration agrees [E] | yes |
-| Independent witness | not applicable |
-| Aligned comparison agrees | yes |
-| Naive comparison agrees | yes |
-
-*Set parameters and [E] verdict*
-
-| Policy | missed | preemptions | switches | zero-sw | min laxity | ties |
-|---|---|---|---|---|---|---|
-| lst | 16 | 12 | 38 | 6 | -2 | 16 |
-| lst:edf | 16 | 12 | 38 | 6 | -2 | 16 |
-| lst:rm | 20 | 20 | 46 | 8 | -2 | 16 |
-| lst:stay | 20 | 12 | 38 | 2 | -2 | 16 |
-| lst:lzs | 16 | 12 | 38 | 6 | -2 | 16 |
-| edf | 14 | 0 | 26 | 2 | -2 | 10 |
-| rm | 10 | 2 | 28 | 0 | -15 | 2 |
-| dm | 10 | 2 | 28 | 0 | -15 | 2 |
-| fifo | 14 | 0 | 26 | 2 | -2 | 10 |
-
-*All policies on this set [M]*
-
-> **What this set shows.** [E] verdict infeasible, 11 states, 14 pruned, independent witness not applicable. [M] LST recorded 12 preemptions and 16 missed deadlines; EDF recorded 0 preemptions on the same set. Tie events observed: 16.
+| Verified valid | 6 |
 
 
 <!-- page 15 -->
 
 
-## Task set K6
+## A hand table, printed by two implementations
 
-| Task specification | T1(T=5,C=2,D=3,ph=0), T2(T=6,C=2,D=3,ph=0) |
+[M] A small independent interpreter replays a fixed action sequence for writers preference. Its process-state timeline is compared step by step with the checker's transition function.
+
+| step | action | process states | agree |
+|---|---|---|---|
+| 1 | R0 request | (1, 0, 0) | yes |
+| 2 | R0 grant | (2, 0, 0) | yes |
+| 3 | R1 request | (2, 1, 0) | yes |
+| 4 | R1 grant | (2, 2, 0) | yes |
+| 5 | W2 request | (2, 2, 1) | yes |
+| 6 | R0 release | (0, 2, 1) | yes |
+| 7 | R1 release | (0, 0, 1) | yes |
+| 8 | W2 grant | (0, 0, 2) | yes |
+| 9 | W2 release | (0, 0, 0) | yes |
+
+*Hand trace [M]*
+
+| Compared steps | 9 |
 |---|---|
-| Utilisation (descriptive) | 0.733333 |
-| Hyperperiod | 30 |
-| Constrained deadline | yes |
-| Checker verdict [E] | infeasible |
-| States visited [E] | 5 |
-| Branches pruned [E] | 4 |
-| Jobs in checker horizon | 11 |
-| Checker truncated | no |
-| Idle enumeration agrees [E] | yes |
-| Independent witness | not applicable |
-| Aligned comparison agrees | yes |
-| Naive comparison agrees | yes |
-
-*Set parameters and [E] verdict*
-
-| Policy | missed | preemptions | switches | zero-sw | min laxity | ties |
-|---|---|---|---|---|---|---|
-| lst | 2 | 4 | 26 | 2 | -1 | 8 |
-| lst:edf | 2 | 4 | 26 | 2 | -1 | 8 |
-| lst:rm | 2 | 8 | 30 | 4 | -1 | 8 |
-| lst:stay | 2 | 2 | 24 | 0 | -1 | 8 |
-| lst:lzs | 2 | 4 | 26 | 2 | -1 | 8 |
-| edf | 2 | 0 | 22 | 0 | -1 | 6 |
-| rm | 4 | 2 | 24 | 0 | -1 | 6 |
-| dm | 4 | 2 | 24 | 0 | -1 | 6 |
-| fifo | 2 | 0 | 22 | 0 | -1 | 6 |
-
-*All policies on this set [M]*
-
-> **What this set shows.** [E] verdict infeasible, 5 states, 4 pruned, independent witness not applicable. [M] LST recorded 4 preemptions and 2 missed deadlines; EDF recorded 0 preemptions on the same set. Tie events observed: 8.
+| Agree | yes |
 
 
 <!-- page 16 -->
 
 
-## Task set K7
+## Where two hand rules part company
 
-| Task specification | T1(T=5,C=2,D=3,ph=0), T2(T=5,C=2,D=3,ph=0), T3(T=10,C=3,D=6,ph=0) |
+[M] On the same prefix, writers preference refuses a new reader while a writer waits, and readers preference admits it. The first differing step is a printed witness: the two rules are different algorithms.
+
+```text
+R0 request
+R0 grant
+W2 request
+R1 request
+R1 grant
+```
+*Divergence witness*
+
+| First divergent step | 5 |
 |---|---|
-| Utilisation (descriptive) | 1.1 |
-| Hyperperiod | 10 |
-| Constrained deadline | yes |
-| Checker verdict [E] | infeasible |
-| States visited [E] | 6 |
-| Branches pruned [E] | 10 |
-| Jobs in checker horizon | 5 |
-| Checker truncated | no |
-| Idle enumeration agrees [E] | yes |
-| Independent witness | not applicable |
-| Aligned comparison agrees | yes |
-| Naive comparison agrees | yes |
-
-*Set parameters and [E] verdict*
-
-| Policy | missed | preemptions | switches | zero-sw | min laxity | ties |
-|---|---|---|---|---|---|---|
-| lst | 9 | 7 | 16 | 1 | -3 | 7 |
-| lst:edf | 9 | 7 | 16 | 1 | -3 | 7 |
-| lst:rm | 9 | 7 | 16 | 1 | -3 | 7 |
-| lst:stay | 9 | 4 | 13 | 0 | -3 | 7 |
-| lst:lzs | 9 | 7 | 16 | 1 | -3 | 7 |
-| edf | 8 | 0 | 9 | 0 | -3 | 4 |
-| rm | 6 | 2 | 12 | 0 | -9 | 1 |
-| dm | 6 | 2 | 12 | 0 | -9 | 1 |
-| fifo | 8 | 0 | 9 | 0 | -3 | 4 |
-
-*All policies on this set [M]*
-
-> **What this set shows.** [E] verdict infeasible, 6 states, 10 pruned, independent witness not applicable. [M] LST recorded 7 preemptions and 9 missed deadlines; EDF recorded 0 preemptions on the same set. Tie events observed: 7.
+| Writers preference allows | no |
+| Readers preference allows | yes |
+| Divergent decisions | 1 |
 
 
 <!-- page 17 -->
 
 
-## Task set K8
+## [M] Measurement design
 
-| Task specification | T1(T=4,C=2,D=3,ph=0), T2(T=4,C=3,D=4,ph=3) |
+[M] A seeded discrete-event simulator advances in integer steps. At each step it finishes due service, admits new requests with a fixed arrival probability, and grants as many compatible processes as the mechanism allows. It records completed reads and writes, the mean and maximum waiting time, throughput and the number of finite runs with zero writer completions. The mechanism's admission rule is shared with the checker on purpose: the policy is the object under study, not the instrument.
+
+| Random seed | 20261120 |
 |---|---|
-| Utilisation (descriptive) | 1.25 |
-| Hyperperiod | 4 |
-| Constrained deadline | yes |
-| Checker verdict [E] | feasible |
-| States visited [E] | 7 |
-| Branches pruned [E] | 0 |
-| Jobs in checker horizon | 2 |
-| Checker truncated | no |
-| Idle enumeration agrees [E] | yes |
-| Independent witness | valid |
-| Aligned comparison agrees | yes |
-| Naive comparison agrees | no |
-
-*Set parameters and [E] verdict*
-
-| Policy | missed | preemptions | switches | zero-sw | min laxity | ties |
-|---|---|---|---|---|---|---|
-| lst | 1 | 2 | 5 | 1 | -1 | 2 |
-| lst:edf | 1 | 2 | 5 | 1 | -1 | 2 |
-| lst:rm | 1 | 2 | 5 | 1 | -1 | 2 |
-| lst:stay | 1 | 1 | 4 | 0 | -1 | 2 |
-| lst:lzs | 1 | 2 | 5 | 1 | -1 | 2 |
-| edf | 1 | 0 | 3 | 0 | -1 | 1 |
-| rm | 1 | 0 | 3 | 0 | -1 | 1 |
-| dm | 1 | 1 | 4 | 0 | -1 | 1 |
-| fifo | 1 | 0 | 3 | 0 | -1 | 1 |
-
-*All policies on this set [M]*
-
-> **What this set shows.** [E] verdict feasible, 7 states, 0 pruned, independent witness valid. [M] LST recorded 2 preemptions and 1 missed deadlines; EDF recorded 0 preemptions on the same set. Tie events observed: 2.
+| Horizon | 400 |
+| Trials | 3 |
+| Arrival probability | 0.55 |
+| Reader service | 3 |
+| Writer service | 2 |
 
 
 <!-- page 18 -->
 
 
-## Sweeps: task-count
+## Measurement results, part one
 
-[M] A sweep changes one parameter and holds everything else fixed. The plot and the table are drawn from the same array in the generated data; the caption names the JSON path so a reader can re-read the values. Where the curves overlap, we write that the measurement does not separate the policies instead of inventing a ranking.
+[M] Sums over the seeded trials for each instance.
 
-| Values read from | sweeps[0] |
-|---|---|
-| Swept parameter | number of equal tasks |
+| protocol | reads | writes | ops | mean wait |
+|---|---|---|---|---|
+| readers_preference:2r1w | 622 | 47 | 669 | 1.455 |
+| readers_preference:1r2w | 286 | 168 | 454 | 4.348 |
+| writers_preference:2r1w | 318 | 345 | 663 | 2.078 |
+| writers_preference:1r2w | 22 | 564 | 586 | 3.066 |
+| fair_fifo:2r1w | 443 | 227 | 670 | 1.847 |
+| fair_fifo:1r2w | 171 | 340 | 511 | 3.798 |
 
-*Provenance*
-
-![Figure 1: Sweep task-count: number of equal tasks — values from sweeps[0]](fig_ex7_taskcount.png)
-
-*Figure 1. Sweep task-count: number of equal tasks — values from sweeps[0]*
-
-| number of equal tasks | lst_preemptions | lst:edf_preemptions | lst:rm_preemptions | lst:stay_preemptions | lst:lzs_preemptions |
-|---|---|---|---|---|---|
-| 2 | 4 | 4 | 4 | 2 | 4 |
-| 3 | 6 | 6 | 6 | 4 | 6 |
-| 4 | 8 | 8 | 8 | 6 | 8 |
-| 5 | 10 | 10 | 10 | 8 | 10 |
-
-*Values behind the plot*
-
-> **Reading the sweep.** 4 points and 5 series are plotted. Where ranges overlap the measurement does not separate the policies.
+*Completed work [M]*
 
 
 <!-- page 19 -->
 
 
-## Sweeps: deadline-zero-switches
+## Measurement results, part two
 
-[M] A sweep changes one parameter and holds everything else fixed. The plot and the table are drawn from the same array in the generated data; the caption names the JSON path so a reader can re-read the values. Where the curves overlap, we write that the measurement does not separate the policies instead of inventing a ranking.
+[M] Sums over the seeded trials for each instance.
 
-| Values read from | sweeps[1] |
-|---|---|
-| Swept parameter | shared deadline (time units) |
+| protocol | reads | writes | ops | mean wait |
+|---|---|---|---|---|
+| mesa_signal:2r1w | 609 | 53 | 662 | 1.635 |
+| mesa_signal:1r2w | 296 | 147 | 443 | 4.513 |
+| hoare_signal:2r1w | 314 | 351 | 665 | 2.111 |
+| hoare_signal:1r2w | 21 | 566 | 587 | 3.076 |
+| dekker2:1r1w | 230 | 243 | 473 | 1.689 |
+| peterson2:1r1w | 235 | 235 | 470 | 1.774 |
 
-*Provenance*
-
-![Figure 2: Sweep deadline-zero-switches: shared deadline (time units) — values from sweeps[1]](fig_ex7_deadline_lzs.png)
-
-*Figure 2. Sweep deadline-zero-switches: shared deadline (time units) — values from sweeps[1]*
-
-| shared deadline (time units) | lst_laxity_zero_switches | lst:edf_laxity_zero_switches | lst:rm_laxity_zero_switches | lst:stay_laxity_zero_switches | lst:lzs_laxity_zero_switches |
-|---|---|---|---|---|---|
-| 4 | 0 | 0 | 0 | 0 | 0 |
-| 5 | 2 | 2 | 2 | 0 | 2 |
-| 6 | 2 | 2 | 2 | 0 | 2 |
-| 7 | 2 | 2 | 2 | 0 | 2 |
-| 8 | 0 | 0 | 0 | 0 | 0 |
-
-*Values behind the plot*
-
-> **Reading the sweep.** 5 points and 5 series are plotted. Where ranges overlap the measurement does not separate the policies.
+*Completed work [M]*
 
 
 <!-- page 20 -->
 
 
-## Sweeps: alignment
+## [M] Sweep: arrival rate
 
-[M] A sweep changes one parameter and holds everything else fixed. The plot and the table are drawn from the same array in the generated data; the caption names the JSON path so a reader can re-read the values. Where the curves overlap, we write that the measurement does not separate the policies instead of inventing a ranking.
+[M] One parameter is swept while the rest are held fixed. The curve and the table are drawn from an array in the generated data file.
 
-| Values read from | sweeps[2] |
-|---|---|
-| Swept parameter | task set |
+![Figure 1: arrival probability per idle process and step / writer share of completed operations](fig_rw7_sweep_arrival.png)
 
-*Provenance*
+*Figure 1. arrival probability per idle process and step / writer share of completed operations*
 
-![Figure 3: Sweep alignment: task set — values from sweeps[2]](fig_ex7_alignment.png)
+| x | readers_preference | writers_preference | fair_fifo | mesa_signal | hoare_signal |
+|---|---|---|---|---|---|
+| 0.15 | 0.3146 | 0.3951 | 0.3256 | 0.2204 | 0.38 |
+| 0.3 | 0.2198 | 0.381 | 0.3315 | 0.1537 | 0.3894 |
+| 0.45 | 0.1168 | 0.4664 | 0.3416 | 0.1194 | 0.4581 |
+| 0.6 | 0.0607 | 0.5817 | 0.3338 | 0.0459 | 0.5392 |
+| 0.75 | 0.0166 | 0.6503 | 0.3343 | 0.0222 | 0.6651 |
 
-*Figure 3. Sweep alignment: task set — values from sweeps[2]*
-
-| task set | naive_lst_missed | aligned_lst_missed | checker_feasible |
-|---|---|---|---|
-| K1 | 0 | 0 | 1 |
-| K2 | 0 | 0 | 1 |
-| K3 | 0 | 0 | 1 |
-| K4 | 0 | 0 | 1 |
-| K5 | 16 | 8 | 0 |
-| K6 | 2 | 1 | 0 |
-| K7 | 9 | 4 | 0 |
-| K8 | 1 | 0 | 1 |
-
-*Values behind the plot*
-
-> **Reading the sweep.** 8 points and 3 series are plotted. Where ranges overlap the measurement does not separate the policies.
+*Sweep values [M]*
 
 
 <!-- page 21 -->
 
 
-## Finding: F1
+## [M] Sweep: writer service length
 
+[M] One parameter is swept while the rest are held fixed. The curve and the table are drawn from an array in the generated data file.
 
-### Minimising slack is not minimising overhead
+![Figure 2: writer critical-section length (integer steps) / mean waiting time (steps)](fig_rw7_sweep_service.png)
 
-[M] measurement
+*Figure 2. writer critical-section length (integer steps) / mean waiting time (steps)*
 
-[M] On K1, LST records 4 preemptions and 8 context switches; EDF records 0 and 4. Both miss 0 deadlines. [E] The checker verdict is feasible after 5 states. Correctness does not order these two policies; overhead does.
+| x | readers_preference | writers_preference | fair_fifo | mesa_signal | hoare_signal |
+|---|---|---|---|---|---|
+| 1 | 1.624 | 1.206 | 1.373 | 1.546 | 1.193 |
+| 2 | 1.332 | 2.079 | 1.826 | 1.636 | 2.041 |
+| 3 | 1.699 | 3.132 | 2.301 | 1.594 | 3.061 |
+| 4 | 1.681 | 3.967 | 2.881 | 1.775 | 3.779 |
+| 6 | 1.934 | 5.974 | 4.042 | 2.09 | 5.868 |
 
-| Key | Value |
-|---|---|
-| checker states | 5 |
-| edf preemptions | 0 |
-| edf switches | 4 |
-| lst preemptions | 4 |
-| lst switches | 8 |
-
-*Numbers read from the data file*
-
-> **Why this is a finding.** A disagreement is treated as an instrument defect until the two job sets are aligned; the gold is in the resolution, not in the headline.
+*Sweep values [M]*
 
 
 <!-- page 22 -->
 
 
-## Finding: F2
+## [M] Sweep: reader population
 
+[M] One parameter is swept while the rest are held fixed. The curve and the table are drawn from an array in the generated data file.
 
-### Implicit deadlines take the test away
+![Figure 3: number of readers (one writer) / writer completions](fig_rw7_sweep_readers.png)
 
-[E] + [M]
+*Figure 3. number of readers (one writer) / writer completions*
 
-[E] Of 4 sets with implicit deadlines, 4 are feasible. Of 4 constrained sets, 1 are feasible and 3 are infeasible. Feasibility has discriminating power only in the constrained regime; that is why every sweep here moves a deadline rather than a definition.
+| x | readers_preference | writers_preference | fair_fifo | mesa_signal | hoare_signal |
+|---|---|---|---|---|---|
+| 1 | 150 | 349 | 238 | 130 | 352 |
+| 2 | 52 | 331 | 223 | 45 | 340 |
+| 3 | 10 | 336 | 228 | 8 | 334 |
+| 4 | 4 | 345 | 221 | 4 | 355 |
 
-| Key | Value |
-|---|---|
-| constrained feasible | 1 |
-| constrained infeasible | 3 |
-| constrained sets | 4 |
-| implicit feasible | 4 |
-| implicit sets | 4 |
-
-*Numbers read from the data file*
-
-> **Why this is a finding.** A disagreement is treated as an instrument defect until the two job sets are aligned; the gold is in the resolution, not in the headline.
+*Sweep values [M]*
 
 
 <!-- page 23 -->
 
 
-## Finding: F3
+## Finding F1 [E]
 
+Readers preference starves the writer outright
 
-### Naive versus aligned comparison
+[E] A fair cycle exists in which the writer never enters the critical section while readers keep entering. Its grant is never enabled on the cycle, so the schedule is fair, not merely unlucky.
 
-[D] disagreement
-
-[D] On K8 the checker says feasible, yet the naive two-hyperperiod LST run misses 1 deadlines while the aligned run misses 0. The two instruments were looking at different job sets. Aligning the release window removes the disagreement; the instrument, not the theorem, was at fault.
-
-| Key | Value |
+| cycle length | 3 |
 |---|---|
-| aligned agree | 8 |
-| aligned missed target | 0 |
-| naive agree | 7 |
-| naive missed target | 1 |
-| set count | 8 |
+| other grants | 1 |
+| protocol | readers_preference:2r1w |
+| starving process | 2 |
+| states | 33 |
+| wait bound | -1 |
 
-*Numbers read from the data file*
+*Numbers from the data file*
 
-> **Why this is a finding.** A disagreement is treated as an instrument defect until the two job sets are aligned; the gold is in the resolution, not in the headline.
+```text
+R0 grant
+R0 release
+R0 request
+```
+*Witness schedule [E]*
+
+> **Note.** Source: protocols[readers_preference:2r1w].witness
 
 
 <!-- page 24 -->
 
 
-## Finding: F4
+## Finding F2 [E]
 
+Writers preference moves the starvation to the reader
 
-### A state cap fabricates an infeasibility verdict
+[E] With two writers and one reader, a fair cycle keeps the reader waiting forever. Preference is a parameter that trades one kind of starvation for another; it does not remove starvation.
 
-[D] disagreement
-
-[D] With a reduced state cap, K1 is reported infeasible 1 times, each run flagged truncated; with the cap restored the verdict is feasible after 5 states. The smallest truncating cap was 4. A truncated run is an artefact of the instrument and is never used as a finding.
-
-| Key | Value |
+| cycle length | 3 |
 |---|---|
-| false infeasible runs | 1 |
-| full feasible | 1 |
-| full states | 5 |
-| smallest truncating limit | 4 |
+| protocol | writers_preference:1r2w |
+| starving process | 0 |
+| states | 31 |
+| wait bound | -1 |
 
-*Numbers read from the data file*
+*Numbers from the data file*
 
-> **Why this is a finding.** A disagreement is treated as an instrument defect until the two job sets are aligned; the gold is in the resolution, not in the headline.
+```text
+W1 release
+W1 request
+W1 grant
+```
+*Witness schedule [E]*
+
+> **Note.** Source: protocols[writers_preference:1r2w].witness
 
 
 <!-- page 25 -->
 
 
-## Finding: F5
+## Finding F3 [E]
 
+A Mesa monitor does not bound waiting until the woken thread has a place
 
-### Tie-breaking changes the cost, not the verdict
+[E] Signalling a waiting writer without giving it the head of the entry queue leaves fresh readers free to bypass it. Hoare-style handoff on the same configuration is starvation-free.
 
-[M] measurement
-
-[E] On all 5 feasible sets the checker's verdict is unchanged by the choice of tie-break, and 0 sets show a tie-break changing LST's zero-miss status at all. [M] On K2, lst records 12 preemptions while lst:stay records 6 and EDF 0. The widest spread between two tie-breaks is 8 preemptions on K5. Verification treats these as the same feasible outcome; the machine does not.
-
-| Key | Value |
+| hoare starving | 0 |
 |---|---|
-| edf preemptions K2 | 0 |
-| feasible sets | 5 |
-| lst preemptions K2 | 12 |
-| stay preemptions K2 | 6 |
-| verdict changing sets | 0 |
-| widest spread | 8 |
+| hoare states | 25 |
+| hoare wait bound | 3 |
+| mesa starving | 1 |
+| mesa states | 49 |
 
-*Numbers read from the data file*
+*Numbers from the data file*
 
-> **Why this is a finding.** A disagreement is treated as an instrument defect until the two job sets are aligned; the gold is in the resolution, not in the headline.
+```text
+R0 grant
+R0 release
+R0 request
+```
+*Witness schedule [E]*
+
+> **Note.** Source: protocols[mesa_signal:2r1w] vs protocols[hoare_signal:2r1w]
 
 
 <!-- page 26 -->
 
 
-## Finding: F6
+## Finding F4 [E]
 
+FIFO is starvation-free; Dekker and Peterson carry the pattern only between two
 
-### Laxity-zero thrashing is measurable, and the cheap policy is not cheap on every metric
+[E] The FIFO queue and the two two-participant patterns have no fair starvation cycle at all in the checked configurations. Mutual exclusion and deadlock freedom hold for every reachable state of every protocol.
 
-[M] measurement
-
-[M] On K5, lst records 6 switches at zero laxity, lst:stay records 2 and EDF 2; the largest value over all sets is 6. Yet on 6 sets LST has strictly smaller response jitter than EDF even though it preempts more: on K2 the jitters are 1 and 4. A single metric would have hidden this. We report the trade-off rather than declaring a winner the data does not support.
-
-| Key | Value |
+| deadlock states | 0 |
 |---|---|
-| edf jitter K2 | 4 |
-| edf zero switches K5 | 2 |
-| lst jitter K2 | 1 |
-| lst lower jitter sets | 6 |
-| lst zero switches K5 | 6 |
-| max zero switches | 6 |
-| stay zero switches K5 | 2 |
+| dekker states | 18 |
+| fifo states | 33 |
+| fifo wait bound | 5 |
+| mutual exclusion violations | 0 |
+| peterson states | 10 |
 
-*Numbers read from the data file*
+*Numbers from the data file*
 
-> **Why this is a finding.** A disagreement is treated as an instrument defect until the two job sets are aligned; the gold is in the resolution, not in the headline.
+> **Note.** Source: protocols[] (all)
 
 
 <!-- page 27 -->
 
 
-## Figures — group 1
+## Finding F5 [M]
 
-All figures are generated from the same data file. Plot labels are deliberately plain ASCII identifiers so that the images are reproducible without a shaping stack; the bilingual explanation lives in the captions and in the surrounding text. Each caption names the JSON path the values were read from.
+Verification calls schedules equivalent where measurement separates them
 
-![Figure 4: Preemptions by policy on K1 — values from task_sets[0].policies.*.preemptions](fig_ex7_preemptions.png)
+[M] Under one seeded workload the mechanisms complete different numbers of operations, show different mean waiting times, and give the writer very different shares. A yes/no verdict says nothing about any of these quantities.
 
-*Figure 4. Preemptions by policy on K1 — values from task_sets[0].policies.*.preemptions*
+| mean wait fair fifo | 3.798 |
+|---|---|
+| mean wait readers preference | 4.348 |
+| operations fair fifo | 511 |
+| operations readers preference | 454 |
+| wait samples | 514 |
 
-![Figure 5: Missed deadlines per set and policy — values from task_sets[*].policies.*.missed](fig_ex7_misses.png)
+*Numbers from the data file*
 
-*Figure 5. Missed deadlines per set and policy — values from task_sets[*].policies.*.missed*
+> **Note.** Source: measurements[]
 
 
 <!-- page 28 -->
 
 
-## Figures — group 2
+## Finding F6 [D]
 
-All figures are generated from the same data file. Plot labels are deliberately plain ASCII identifiers so that the images are reproducible without a shaping stack; the bilingual explanation lives in the captions and in the surrounding text. Each caption names the JSON path the values were read from.
+The two instruments use different clocks; the finite-window control found no artefact
 
-![Figure 6: Tie events per set and policy — values from task_sets[*].policies.*.tie_events](fig_ex7_ties.png)
+[D] The checker counts bounded waiting in state transitions; the simulator counts waiting in time steps that include service time. Comparing those two magnitudes directly is a category error, not a contradiction. A control search over the seeded random study found the recorded number of finite-window artefacts: every run with zero writer completions belonged to a mechanism the checker had already proved capable of starvation. At this horizon the instruments agreed; suspect the instrument first, and never promote a short run into a correctness verdict.
 
-*Figure 6. Tie events per set and policy — values from task_sets[*].policies.*.tie_events*
+| artefacts | 0 |
+|---|---|
+| checker max bound | 5 |
+| control mechanisms | 1 |
+| measurement max wait | 226 |
+| measurements | 1200 |
+| short horizon | 200 |
+| starved runs | 64 |
+| truncated | 0 |
+| workloads | 240 |
 
-![Figure 7: lst schedule on K1 — values from task_sets[0].gantt.lst](fig_ex7_gantt.png)
+*Numbers from the data file*
 
-*Figure 7. lst schedule on K1 — values from task_sets[0].gantt.lst*
+> **Note.** Source: random.per_mechanism[] + protocols[].bounded_wait + measurements[].max_wait
 
 
 <!-- page 29 -->
 
 
-## Figures — group 3
+## Figures, group 1
 
-All figures are generated from the same data file. Plot labels are deliberately plain ASCII identifiers so that the images are reproducible without a shaping stack; the bilingual explanation lives in the captions and in the surrounding text. Each caption names the JSON path the values were read from.
+[M] Every chart is drawn from output/experiments.json by code/make_diagrams.py. Captions name the data source; no value is typed into a figure or into this report.
 
-![Figure 8: Preemptions by LST tie-break and task set — values from task_sets[*].policies.*.preemptions](fig_ex7_tiebreak.png)
+![Figure 4: Reachable state space. Generated from output/experiments.json by code/make_diagrams.py; every value is read at build time.](fig_rw7_states.png)
 
-*Figure 8. Preemptions by LST tie-break and task set — values from task_sets[*].policies.*.preemptions*
+*Figure 4. Reachable state space. Generated from output/experiments.json by code/make_diagrams.py; every value is read at build time.*
 
-![Figure 9: Laxity-zero switches by tie-break and task set — values from task_sets[*].policies.*.laxity_zero_switches](fig_ex7_lzs.png)
+![Figure 5: Fair starvation cycles. Generated from output/experiments.json by code/make_diagrams.py; every value is read at build time.](fig_rw7_starvation.png)
 
-*Figure 9. Laxity-zero switches by tie-break and task set — values from task_sets[*].policies.*.laxity_zero_switches*
+*Figure 5. Fair starvation cycles. Generated from output/experiments.json by code/make_diagrams.py; every value is read at build time.*
 
 
 <!-- page 30 -->
 
 
-## Figures — group 4
+## Figures, group 2
 
-All figures are generated from the same data file. Plot labels are deliberately plain ASCII identifiers so that the images are reproducible without a shaping stack; the bilingual explanation lives in the captions and in the surrounding text. Each caption names the JSON path the values were read from.
+[M] Every chart is drawn from output/experiments.json by code/make_diagrams.py. Captions name the data source; no value is typed into a figure or into this report.
 
-![Figure 10: Response jitter: LST, stay, EDF — values from task_sets[*].policies.*.jitter](fig_ex7_jitter.png)
+![Figure 6: Bounded waiting verdict. Generated from output/experiments.json by code/make_diagrams.py; every value is read at build time.](fig_rw7_bounded_wait.png)
 
-*Figure 10. Response jitter: LST, stay, EDF — values from task_sets[*].policies.*.jitter*
+*Figure 6. Bounded waiting verdict. Generated from output/experiments.json by code/make_diagrams.py; every value is read at build time.*
+
+![Figure 7: Completed operations. Generated from output/experiments.json by code/make_diagrams.py; every value is read at build time.](fig_rw7_operations.png)
+
+*Figure 7. Completed operations. Generated from output/experiments.json by code/make_diagrams.py; every value is read at build time.*
 
 
 <!-- page 31 -->
 
 
-## When the two instruments disagree
+## Figures, group 3
 
-The naive comparison puts a checker over one hyperperiod next to a simulator running two hyperperiods. Those two are not looking at the same job set, so a mismatch is expected and is an artefact of the instrument, not a discovery about scheduling. The aligned comparison gives both instruments the jobs released in one hyperperiod and enough time to finish them. The counts below show how much of the apparent disagreement disappears once the instruments are aligned. This is the same lesson learned earlier in this project, when the checker called a feasible set infeasible because it treated a forced idle instant as a dead end: the bug was in the checker.
+[M] Every chart is drawn from output/experiments.json by code/make_diagrams.py. Captions name the data source; no value is typed into a figure or into this report.
 
-| Set | checker | naive agrees | aligned agrees | aligned horizon |
-|---|---|---|---|---|
-| K1 | feasible | yes | yes | 8 |
-| K2 | feasible | yes | yes | 16 |
-| K3 | feasible | yes | yes | 12 |
-| K4 | feasible | yes | yes | 16 |
-| K5 | infeasible | yes | yes | 43 |
-| K6 | infeasible | yes | yes | 33 |
-| K7 | infeasible | yes | yes | 16 |
-| K8 | feasible | no | yes | 8 |
+![Figure 8: Mean waiting time. Generated from output/experiments.json by code/make_diagrams.py; every value is read at build time.](fig_rw7_wait.png)
 
-*Naive versus aligned comparison*
+*Figure 8. Mean waiting time. Generated from output/experiments.json by code/make_diagrams.py; every value is read at build time.*
 
-| Naive comparisons agreeing | 7 |
-|---|---|
-| Aligned comparisons agreeing | 8 |
-| Task sets | 8 |
-| Truncated checker runs | 0 |
-| [E] RM counterexamples | 1 |
-| [M] witness cheaper than LST | 5 |
-| [D] cap artefacts | 5 |
+![Figure 9: Writer share. Generated from output/experiments.json by code/make_diagrams.py; every value is read at build time.](fig_rw7_writer_share.png)
 
-*Agreement counts [D]*
-
-> **Instrument alignment.** Naive comparisons that agree: 7. Aligned comparisons that agree: 8. The difference is measured, not argued.
+*Figure 9. Writer share. Generated from output/experiments.json by code/make_diagrams.py; every value is read at build time.*
 
 
 <!-- page 32 -->
 
 
-## A defect produced by a state cap
+## Figures, group 4
 
-The checker has a state cap. With the cap set low, the very same task set that the full checker proves feasible is reported infeasible and the run is flagged truncated. [D] This is a disagreement between the instrument and the data, and the instrument is the suspect. [E] With the cap restored the verdict returns to feasible. A truncated run is never used as a finding anywhere in this project; it is reported as an artefact, with the limit and the state count that produced it.
+[M] Every chart is drawn from output/experiments.json by code/make_diagrams.py. Captions name the data source; no value is typed into a figure or into this report.
 
-| Cap on states | verdict | states visited | truncated |
-|---|---|---|---|
-| 4 | infeasible | 7 | yes |
-| 8 | feasible | 5 | no |
-| 16 | feasible | 5 | no |
-| 4000000 | feasible | 5 | no |
+![Figure 10: Instrument divergence control. Generated from output/experiments.json by code/make_diagrams.py; every value is read at build time.](fig_rw7_artefacts.png)
 
-*Checker verdict as a function of the cap [D]*
-
-| Task specification | T1(T=4,C=2,D=4,ph=0), T2(T=4,C=2,D=4,ph=0) |
-|---|---|
-| [D] false infeasible verdicts | 1 |
-| [E] full verdict | feasible |
-
-*The same set under different caps*
-
-> **Artefacts, not findings.** Across the 8 sets of this exercise, 5 produce a false infeasible verdict under a reduced cap. None of those verdicts is used as a result.
+*Figure 10. Instrument divergence control. Generated from output/experiments.json by code/make_diagrams.py; every value is read at build time.*
 
 
 <!-- page 33 -->
 
 
-## Verification is coarse, measurement is not
+## [D] When the instruments disagree
 
-[E] The checker answers one question: does a feasible schedule exist. The witness it returns is one such schedule. [M] The simulator counts what that witness costs and what LST costs on the same task set. When the two numbers differ, the schedules are equivalent for verification and very different for the machine. This is not a contradiction; it is the limit of what a feasibility verdict can promise, made visible by measurement. A claim that all optimal schedules cost the same is refuted by the witness rows below.
+[D] The checker counts bounded waiting in state transitions; the simulator counts waiting in time steps that include service time. Comparing those two magnitudes directly is a category error, not a contradiction. A control search over the seeded random study found the recorded number of finite-window artefacts: every run with zero writer completions belonged to a mechanism the checker had already proved capable of starvation. At this horizon the instruments agreed; suspect the instrument first, and never promote a short run into a correctness verdict.
 
-| Set | witness preemptions | LST preemptions | EDF preemptions | witness valid |
-|---|---|---|---|---|
-| K1 | 0 | 4 | 0 | yes |
-| K2 | 0 | 12 | 0 | yes |
-| K3 | 0 | 6 | 0 | yes |
-| K4 | 0 | 8 | 0 | yes |
-| K5 | 0 | 12 | 0 | no |
-| K6 | 0 | 4 | 0 | no |
-| K7 | 0 | 7 | 0 | no |
-| K8 | 0 | 2 | 0 | yes |
-
-*Witness cost versus policy cost [M]*
-
-| [M] sets where the witness is cheaper | 5 |
+| Checker clock | state transitions |
 |---|---|
-| [E] independently valid witnesses | 5 |
-| [E] RM counterexamples | 1 |
+| Measurement clock | time steps including service |
+| Largest checker bound | 5 |
+| Largest measured wait | 226 |
+| Finite-window artefacts | 0 |
 
-*What the two instruments can say*
+*Different units [D]*
 
-> **Complement, not contradiction.** A feasibility verdict is a coarse equivalence: it groups schedules that measurement can separate. Reporting the grouping as if it were a cost claim would be the mistake.
+> **Note.** [D] finite measurement windows are not proofs; every such case is an instrument artefact.
 
 
 <!-- page 34 -->
 
 
-## Limitations we state ourselves
+## The large seeded random study
 
-The model is a single preemptive processor with no release cost, no cache or migration effects and execution equal to the worst case. Therefore these measurements say nothing about multicore behaviour or about runtime variance. The checker's verdict is exact only for the enumerated job set and only when its run was not truncated; every truncation flag is reported and no conclusion is drawn from a truncated run. Utilisation is a descriptive ratio here, never a schedulability test. Finally, a measurement that does not separate two policies is reported as inconclusive rather than as a tie broken by preference.
+[M] A fixed-seed generator varies the reader population, the writer population, the arrival probability and both service lengths. Each workload is run once per mechanism in a short window. [D] Zero-writer runs are counted but never promoted into correctness verdicts.
 
-- single processor; no multicore or migration claim
-- execution equals worst case; no runtime variance
-- checker state cap; every truncation is reported
-- integer time; no floating tolerance needed
-- overlapping ranges are called inconclusive
+| mechanism | zero-writer runs | artefacts | mean writer share |
+|---|---|---|---|
+| fair_fifo | 0 | 0 | 0.3764 |
+| hoare_signal | 0 | 0 | 0.6563 |
+| mesa_signal | 32 | 0 | 0.1325 |
+| readers_preference | 32 | 0 | 0.1423 |
+| writers_preference | 0 | 0 | 0.6608 |
 
-> **Stated in advance.** A result obtained from a truncated checker state space is an artefact of the cap. It is never reported as a finding.
+*Random study [M]/[D]*
+
+| Workloads | 240 |
+|---|---|
+| Measurements | 1200 |
+| Short horizon | 200 |
+| Truncated | 0 |
 
 
 <!-- page 35 -->
 
 
-## Reproducibility
+## Provenance of every number
 
-Every artefact is regenerated by the commands below, from the exercise folder or from the multi-exercise tree root. The seed, the policy list and the figure list are read from the generated data; deleting any output file and re-running must reproduce byte-identical numbers. The report itself is built from a content module that contains prose only.
+A test collects every numeric token allowed by the data file and fails if the report prints a number that is not there. The three producer programs are checksummed below.
 
-```text
-python3 code/run_experiments.py
-python3 code/make_diagrams.py
-python3 -m pytest tests -q
-python3 tools/build_report.py lstN_en exercise-N REPORT_EN
-python3 tools/build_report.py lstN_fa exercise-N REPORT_FA
-python3 tools/check_outputs.py exercise-N
-```
-*Commands (from the exercise folder / tree root)*
+| file | bytes | sha256 prefix |
+|---|---|---|
+| code/rw_core.py | 19357 | f6a1b8d85938 |
+| code/run_experiments.py | 35583 | c84a574f8110 |
+| code/make_diagrams.py | 3422 | b4de2991575b |
 
-| Random seed | 20261116 |
+*Producer checksums*
+
+| Checksum mismatches | 0 |
 |---|---|
-| Policies measured | lst, lst:edf, lst:rm, lst:stay, lst:lzs, edf, rm, dm, fifo |
-| Figures | 10 |
-| Findings | 6 |
-| Sweeps | 3 |
 
-*Data file summary*
-
-> **Definition of a clean build.** A clean build is defined as empty overflow, missing figures and missing glyphs lists, with the generator's page count equal to the PDF page count.
+> **Note.** Checksums of the three programs that produced the data and the figures. No external author, year, DOI or page number is claimed anywhere in this exercise.
 
 
 <!-- page 36 -->
 
 
-## Deliverables and checks
+## Limitations
 
-The table lists the artefacts of this exercise. Word and PDF are rendered from one content model, so their page counts agree with the generator's explicit page list; the exact PDF count is read back from the file by the checker. The Markdown file is a by-product of the same model. Speaker decks, where required, carry notes on every slide.
+The exhaustive results hold for the checked small configurations, not for an unbounded number of processes. The simulator uses a seeded synthetic workload rather than a particular operating system's lock implementation, so absolute waiting times are not portable even though the ordering is reproducible. No external author, year, DOI or page number is claimed: the references table states the verification status of every entry.
 
-| Artefact | kind | how it is produced |
-|---|---|---|
-| REPORT_EN.docx / REPORT_EN.pdf | English report | tools/build_report.py lst7_en |
-| REPORT_FA.docx / REPORT_FA.pdf | Persian report | tools/build_report.py lst7_fa |
-| output/experiments.json | all numbers | code/run_experiments.py |
-| diagrams/ | generated figures | code/make_diagrams.py |
-| tests/ | green tests | python3 -m pytest |
+- Small configurations only for exhaustive results.
+- Synthetic seeded workload, not a specific OS lock.
+- No external bibliographic metadata is claimed.
+
+
+<!-- page 37 -->
+
+
+## How to reproduce
+
+Run from the multi-exercise tree root for the reports, and from the exercise folder for the data and figures. On a flattened branch the code and tests sit at the root.
+
+```text
+python3 code/run_experiments.py
+python3 code/make_diagrams.py
+python3 -m pytest tests -q
+python3 tools/build_report.py rw7_en exercise-7 REPORT_EN
+python3 tools/build_report.py rw7_fa exercise-7 REPORT_FA
+python3 tools/verify_builds.py
+```
+*Commands*
+
+
+<!-- page 38 -->
+
+
+## Deliverables
+
+The English and Persian reports are rendered from one content model, so their page counts agree with the produced PDFs.
+
+| path | what |
+|---|---|
+| REPORT_EN.md / REPORT_FA.md | Markdown of the same model |
+| docs/REPORT_EN.docx / .pdf | English Word and PDF |
+| docs/REPORT_FA.docx / .pdf | Persian Word and PDF |
+| output/experiments.json | the only source of numbers |
+| diagrams/ | generated figures |
+| code/ + tests/ | code and green tests |
 
 *Artefact table*
 
 | Figures | 10 |
 |---|---|
 | Findings | 6 |
-| Independently valid witnesses | 5 |
-| Truncated checker runs | 0 |
-
-*Checks*
-
-> **Two kinds of page count.** Word page counts are estimated by the checker against the real section geometry; PDF page counts are exact because they are read back from the file.
+| Sweeps | 3 |
 
 
-<!-- page 37 -->
+<!-- page 39 -->
 
 
-## Appendix: the data contract
+## References and verification status
 
-The generated data file is the single source of numbers. Its top-level keys are listed below together with what they contain. A test in this repository checks that every numeric token in the generated report also occurs in this file or in values derived from it; a typed-in measurement would fail that test.
+Every entry states whether it was verified inside this repository or left explicitly unverified. No author, year, DOI or page number is invented.
 
-```text
-top-level keys of output/experiments.json:
-  figures
-  findings
-  meta
-  sweeps
-  task_sets
-```
-*Data contract*
-
-| Key | Contains |
+| item | status |
 |---|---|
-| meta | seed, policies, scope |
-| task_sets | per-set measurements and [E] verdicts |
-| sweeps | parameter sweeps |
-| findings | tagged findings |
-| figures | plot specifications and JSON paths |
+| The generated data, figures and programs in this repository | verified in this repository |
+| Classic readers-preference semaphore solution | unverified: no external bibliographic database queried |
+| Mesa and Hoare monitor semantics | unverified: no external bibliographic database queried |
+| Dekker and Peterson two-process mutual exclusion | unverified: no external bibliographic database queried |
 
-*Key meanings*
-
-> **Enforced by a test.** If a number appears in this report that cannot be found in the data file, the provenance test fails and the report is rebuilt.
+*Verified and unverified*

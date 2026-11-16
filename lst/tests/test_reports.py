@@ -21,14 +21,16 @@ sys.path.insert(0, os.path.join(ROOT, "core"))
 
 import lab_kit  # noqa: E402
 import lst_data  # noqa: E402
+import rw7_data  # noqa: E402
 
 EXERCISES = list(range(1, 8))
+LST_EXERCISES = list(range(1, 7))
 STEMS = ("REPORT_EN", "REPORT_FA")
 NUM_RE = re.compile(r"-?\d+(?:\.\d+)?")
 
 
 def read(n):
-    return lst_data.read(n)
+    return rw7_data.read() if n == 7 else lst_data.read(n)
 
 
 def test_build_manifest_all_clean():
@@ -57,7 +59,7 @@ def test_no_handwritten_number_in_report(n, stem):
     """
     md = os.path.join(ROOT, f"exercise-{n}", f"{stem}.md")
     text = open(md, encoding="utf-8").read()
-    allowed = lst_data.numbers(n)
+    allowed = rw7_data.numbers() if n == 7 else lst_data.numbers(n)
     unexplained = sorted({tok for tok in NUM_RE.findall(text)
                           if tok not in allowed})
     assert not unexplained, f"exercise-{n}/{stem}: {unexplained}"
@@ -82,20 +84,20 @@ def test_every_figure_exists(n):
         assert os.path.exists(os.path.join(base, "diagrams", fig["file"])), fig["file"]
 
 
-@pytest.mark.parametrize("n", EXERCISES)
+@pytest.mark.parametrize("n", LST_EXERCISES)
 def test_checker_runs_are_not_truncated(n):
     for s in read(n)["task_sets"]:
         assert s["checker"]["truncated"] is False, (n, s["id"])
 
 
-@pytest.mark.parametrize("n", EXERCISES)
+@pytest.mark.parametrize("n", LST_EXERCISES)
 def test_every_feasible_verdict_has_a_valid_independent_witness(n):
     for s in read(n)["task_sets"]:
         if s["checker"]["feasible"]:
             assert s["witness"]["valid"] is True, (n, s["id"])
 
 
-@pytest.mark.parametrize("n", EXERCISES)
+@pytest.mark.parametrize("n", LST_EXERCISES)
 def test_alignment_never_makes_things_worse(n):
     sets = read(n)["task_sets"]
     naive = sum(1 for s in sets if s["alignment"]["naive_agrees"])
@@ -131,23 +133,81 @@ def test_exercise_four_random_study_relationships():
     assert r["rm_misses_on_feasible"] >= 0
 
 
-def test_exercise_seven_tie_break_verdict_invariance():
-    d = read(7)
-    for s in d["task_sets"]:
-        # The claim is that tie-breaking never changes the outcome, whatever
-        # that outcome is.  K8 is a phased set whose naive two-hyperperiod run
-        # misses deadlines even though the checker (over one hyperperiod) says
-        # feasible; that is an instrument-alignment artefact, not a tie-break
-        # effect, so comparing the aligned run is the correct check.
-        outcomes = {s["policies"][p]["missed"] == 0
-                    for p in lab_kit.LST_POLICIES}
-        assert len(outcomes) == 1, s["id"]
-        if s["checker"]["feasible"]:
-            assert s["alignment"]["aligned"]["lst"]["missed"] == 0, s["id"]
-    spreads = [max(s["policies"][p]["preemptions"] for p in lab_kit.LST_POLICIES)
-               - min(s["policies"][p]["preemptions"] for p in lab_kit.LST_POLICIES)
-               for s in d["task_sets"]]
-    assert max(spreads) > 0, "tie-breaking must have a measurable cost"
+def test_rw_every_counterexample_is_independently_verified():
+    D = rw7_data.prepare()
+    C = D["counts"]
+    assert C["witnesses"] == C["witnesses_valid"] > 0
+    for v in D["verifications"]:
+        assert v["valid"] is True and v["violations"] == []
+        assert v["steps"] > 0
+
+
+def test_rw_no_exclusivity_or_deadlock_violation():
+    C = rw7_data.prepare()["counts"]
+    assert C["mutual_exclusion_violations"] == 0
+    assert C["deadlock_states"] == 0
+    assert C["truncated_checks"] == 0
+
+
+def test_rw_starvation_witnesses_are_fair_cycles():
+    for p in rw7_data.prepare()["protocols"]:
+        if p["witness"] is None:
+            continue
+        w = p["witness"]
+        assert w["grant_enabled_in_cycle"] == 0
+        assert w["other_grants_in_cycle"] > 0
+        assert w["cycle_length"] > 0
+
+
+def test_rw_mechanisms_have_distinct_verdicts():
+    ps = {(p["mechanism"], p["config"]): p
+          for p in rw7_data.prepare()["protocols"]}
+    assert ps[("readers_preference", "2r1w")]["starvation_free"] is False
+    assert ps[("writers_preference", "1r2w")]["starvation_free"] is False
+    assert ps[("mesa_signal", "2r1w")]["starvation_free"] is False
+    assert ps[("hoare_signal", "2r1w")]["starvation_free"] is True
+    assert ps[("fair_fifo", "2r1w")]["starvation_free"] is True
+    assert ps[("dekker2", "1r1w")]["starvation_free"] is True
+    assert ps[("peterson2", "1r1w")]["starvation_free"] is True
+
+
+def test_rw_hand_trace_and_divergence():
+    h = rw7_data.prepare()["hand"]
+    assert h["agree"] is True
+    assert h["compared_steps"] > 0
+    assert h["divergence"]["divergent_count"] > 0
+    assert h["divergence"]["witness"]
+
+
+def test_rw_random_study_is_a_control():
+    r = rw7_data.prepare()["random"]
+    assert r["truncated"] == 0
+    assert r["total_artefacts"] < r["total_starved"]
+    assert r["measurements"] == r["workloads"] * len(r["per_mechanism"])
+
+
+def test_rw_numbers_have_provenance():
+    allowed = rw7_data.numbers()
+    for stem in STEMS:
+        md = os.path.join(ROOT, "exercise-7", f"{stem}.md")
+        text = open(md, encoding="utf-8").read()
+        unexplained = sorted({t for t in NUM_RE.findall(text)
+                              if t not in allowed})
+        assert not unexplained, f"exercise-7/{stem}: {unexplained}"
+
+
+def test_rw_figures_and_charts_match():
+    D = rw7_data.prepare()
+    assert set(D["charts"]) == {f["file"] for f in D["figures"]}
+    for f in D["figures"]:
+        assert os.path.exists(os.path.join(ROOT, "exercise-7",
+                                           "diagrams", f["file"])), f["file"]
+
+
+def test_rw_references_have_explicit_status():
+    for r in rw7_data.prepare()["references"]:
+        assert r.get("title") and r.get("status")
+        assert "DOI" not in r["title"]
 
 
 def test_inherited_numbers_match_their_sources():

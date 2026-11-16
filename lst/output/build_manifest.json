@@ -222,36 +222,36 @@
    "clean": true,
    "exercise": 7,
    "lang": "en",
-   "max_page_fill": 0.754,
+   "max_page_fill": 0.724,
    "missing_figures": [],
    "missing_glyphs": [],
-   "module": "lst7_en",
+   "module": "rw7_en",
    "outputs": [
     "/home/user/LST/lst/exercise-7/REPORT_EN.md",
     "/home/user/LST/lst/exercise-7/docs/REPORT_EN.docx",
     "/home/user/LST/lst/exercise-7/docs/REPORT_EN.pdf"
    ],
    "overflow": [],
-   "pages": 37,
-   "pdf_pages": 37,
+   "pages": 39,
+   "pdf_pages": 39,
    "stem": "REPORT_EN"
   },
   {
    "clean": true,
    "exercise": 7,
    "lang": "fa",
-   "max_page_fill": 0.734,
+   "max_page_fill": 0.724,
    "missing_figures": [],
    "missing_glyphs": [],
-   "module": "lst7_fa",
+   "module": "rw7_fa",
    "outputs": [
     "/home/user/LST/lst/exercise-7/REPORT_FA.md",
     "/home/user/LST/lst/exercise-7/docs/REPORT_FA.docx",
     "/home/user/LST/lst/exercise-7/docs/REPORT_FA.pdf"
    ],
    "overflow": [],
-   "pages": 37,
-   "pdf_pages": 37,
+   "pages": 39,
+   "pdf_pages": 39,
    "stem": "REPORT_FA"
   }
  ]
