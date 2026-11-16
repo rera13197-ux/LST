@@ -5,15 +5,15 @@
 هش جدول، هش **کامیتِ محتوا** است؛ کامیتِ کوچکی که این فایلِ هشها را حمل 
 میکند فرزند آن است (نمیتوان هشِ کامیتی را در همان کامیت نوشت).
 
-| تمرین | برنچ | محدوده | وضعیت | هش کامیت محتوا |
+| تمرین | برنچ | محدوده | وضعیت | هش کامیت والد |
 |---|---|---|---|---|
-| 1 | `Exercise-1-LST-Introduction` | تعریف لَکسیَتی، شبهکد، مثال دستی، نخستین اندازهگیریها — گزارشها: EN 36 / FA 36 صفحه | منتشر شده | `4c4e6cb4` |
-| 2 | `Exercise-2-LST-EDF-RM-Comparison` | LST در برابر EDF و RM روی بارهای کاری مختلف — گزارشها: EN 36 / FA 36 صفحه | منتشر شده | `18f824ef` |
-| 3 | `Exercise-3-LST-Manual-Scheduling` | زمانبندی دستی که برنامه همان را چاپ کند — گزارشها: EN 36 / FA 36 صفحه | منتشر شده | `7ab4e72e` |
-| 4 | `Exercise-4-LST-Optimality-And-Overload` | آیا ادعای بهینگی در برابر جستجوی جامع دوام میآورد — گزارشها: EN 37 / FA 37 صفحه | منتشر شده | `5a94c0d3` |
-| 5 | `Exercise-5-LST-Presentation` | دک کوتاه دوزبانه با متن گوینده — گزارشها: EN 35 / FA 35 صفحه | منتشر شده | `7e2bc216` |
-| 6 | `Exercise-6-LST-Paper-And-Seminar` | مقاله دوزبانه + دو دک سمینار، عددها از ۱ تا ۵ — گزارشها: EN 36 / FA 36 صفحه | منتشر شده | `9d39700c` |
-| 7 | `Exercise-7-LST-Tie-Breaking-And-Thrashing` | تساویشکنی و لرزش لَکسیَتی صفر — گزارشها: EN 37 / FA 37 صفحه | منتشر شده | `20d546d9` |
+| 1 | `Exercise-1-LST-Introduction` | تعریف لَکسیَتی، شبهکد، مثال دستی، نخستین اندازهگیریها — گزارشها: EN 36 / FA 36 صفحه | منتشر شده | `86ce4a96` |
+| 2 | `Exercise-2-LST-EDF-RM-Comparison` | LST در برابر EDF و RM روی بارهای کاری مختلف — گزارشها: EN 36 / FA 36 صفحه | منتشر شده | `d24f5160` |
+| 3 | `Exercise-3-LST-Manual-Scheduling` | زمانبندی دستی که برنامه همان را چاپ کند — گزارشها: EN 36 / FA 36 صفحه | منتشر شده | `59657c5f` |
+| 4 | `Exercise-4-LST-Optimality-And-Overload` | آیا ادعای بهینگی در برابر جستجوی جامع دوام میآورد — گزارشها: EN 37 / FA 37 صفحه | منتشر شده | `5360ad6e` |
+| 5 | `Exercise-5-LST-Presentation` | دک کوتاه دوزبانه با متن گوینده — گزارشها: EN 35 / FA 35 صفحه | منتشر شده | `965eae0e` |
+| 6 | `Exercise-6-LST-Paper-And-Seminar` | مقاله دوزبانه + دو دک سمینار، عددها از ۱ تا ۵ — گزارشها: EN 36 / FA 36 صفحه | منتشر شده | `130437a8` |
+| 7 | `Exercise-7-LST-Tie-Breaking-And-Thrashing` | readers‑writers: هفت مکانیزم، بررسی جامع گرسنگیِ عادلانه، اندازهگیری انتظار — گزارشها: EN 39 / FA 39 صفحه | منتشر شده | `f5f41836` |
 
 ## وضعیت انتشار
 
@@ -22,16 +22,20 @@
 `PROJECT_PROGRESS.md` و این فایل. هش کامل همهٔ برنچها در 
 `output/push_hashes.json` همان برنچ ثبت شده است.
 
+> **یادداشت:** تمرین ۷ دربارهٔ الگوریتم خواننده-نویسنده است. نام 
+> `Exercise-7-LST-Tie-Breaking-And-Thrashing` از اسکلت اولیهٔ LST به 
+> ارث رسیده و برای پیوستگیِ برنچهای منتشرشده تغییر نکرده است.
+
 | برنچ | هش کامل کامیت محتوا |
 |---|---|
-| `main` | `1441b0c188cc914e972b0b49a6cabe35ce0a1f79` |
-| `Exercise-1-LST-Introduction` | `4c4e6cb4fa712608ce349ecb36d569f2dd35ba3d` |
-| `Exercise-2-LST-EDF-RM-Comparison` | `18f824ef4e80e71954c41ba058adc6221e98e6f9` |
-| `Exercise-3-LST-Manual-Scheduling` | `7ab4e72e07adf53233c3b94ef5d5c3e113a35ba6` |
-| `Exercise-4-LST-Optimality-And-Overload` | `5a94c0d3c67a3326a8aab7916cd9713eaeacaf6f` |
-| `Exercise-5-LST-Presentation` | `7e2bc216cadaa7c4634be89931f27132efb0134f` |
-| `Exercise-6-LST-Paper-And-Seminar` | `9d39700c97d5d2d0227f39554ade14a838e284bc` |
-| `Exercise-7-LST-Tie-Breaking-And-Thrashing` | `20d546d9126c06cfa4c65c77129adbd463e1634f` |
+| `main` | `f91f62a1eae96283064fdecfc0ff7b522e2f2d82` |
+| `Exercise-1-LST-Introduction` | `86ce4a9645351c53e70cc9e07a85e9bec4fa1e4c` |
+| `Exercise-2-LST-EDF-RM-Comparison` | `d24f51607d36b7564a508959d32e452e14168453` |
+| `Exercise-3-LST-Manual-Scheduling` | `59657c5f50b6217260def10989cc956dd17e3301` |
+| `Exercise-4-LST-Optimality-And-Overload` | `5360ad6ea96ef82d29769767ed7a0d1956c50adb` |
+| `Exercise-5-LST-Presentation` | `965eae0eabd37c6c025ab994d6bbbb390c97917b` |
+| `Exercise-6-LST-Paper-And-Seminar` | `130437a82a60fcbd1085648355c70aee7b124034` |
+| `Exercise-7-LST-Tie-Breaking-And-Thrashing` | `f5f41836ec241ff1f97f219b4680cf6938bab325` |
 
 ## قراردادها
 
