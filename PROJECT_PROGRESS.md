@@ -83,14 +83,14 @@ READMEی بهروزشده دارد. تمرین ۵ دک کوتاه دوزبانه
 
 | برنچ | هش کامیت والد |
 |---|---|
-| `main` | `1441b0c188cc914e972b0b49a6cabe35ce0a1f79` |
-| `Exercise-1-LST-Introduction` | `4c4e6cb4fa712608ce349ecb36d569f2dd35ba3d` |
-| `Exercise-2-LST-EDF-RM-Comparison` | `18f824ef4e80e71954c41ba058adc6221e98e6f9` |
-| `Exercise-3-LST-Manual-Scheduling` | `7ab4e72e07adf53233c3b94ef5d5c3e113a35ba6` |
-| `Exercise-4-LST-Optimality-And-Overload` | `5a94c0d3c67a3326a8aab7916cd9713eaeacaf6f` |
-| `Exercise-5-LST-Presentation` | `7e2bc216cadaa7c4634be89931f27132efb0134f` |
-| `Exercise-6-LST-Paper-And-Seminar` | `9d39700c97d5d2d0227f39554ade14a838e284bc` |
-| `Exercise-7-LST-Tie-Breaking-And-Thrashing` | `20d546d9126c06cfa4c65c77129adbd463e1634f` |
+| `main` | `f91f62a1eae96283064fdecfc0ff7b522e2f2d82` |
+| `Exercise-1-LST-Introduction` | `86ce4a9645351c53e70cc9e07a85e9bec4fa1e4c` |
+| `Exercise-2-LST-EDF-RM-Comparison` | `d24f51607d36b7564a508959d32e452e14168453` |
+| `Exercise-3-LST-Manual-Scheduling` | `59657c5f50b6217260def10989cc956dd17e3301` |
+| `Exercise-4-LST-Optimality-And-Overload` | `5360ad6ea96ef82d29769767ed7a0d1956c50adb` |
+| `Exercise-5-LST-Presentation` | `965eae0eabd37c6c025ab994d6bbbb390c97917b` |
+| `Exercise-6-LST-Paper-And-Seminar` | `130437a82a60fcbd1085648355c70aee7b124034` |
+| `Exercise-7-LST-Tie-Breaking-And-Thrashing` | `f5f41836ec241ff1f97f219b4680cf6938bab325` |
 
 ## ۶. تغییرات
 
